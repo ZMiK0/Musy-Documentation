@@ -1,0 +1,155 @@
+This is TeX, Version 3.141592653 (TeX Live 2024/nixos.org) (preloaded format=tex 1980.1.1)  26 MAY 2025 02:51
+**docfile.tex
+(./docfile.tex
+! Undefined control sequence.
+l.1 \documentclass
+                  [12pt, a4paper]{article} % Tipo de documento (article, rep...
+
+? 
+! Undefined control sequence.
+l.2 \usepackage
+               [utf8]{inputenc}            % Soporte para caracteres en espa...
+
+? 
+! Undefined control sequence.
+l.3 \usepackage
+               [spanish]{babel}            % Idiomas (hyphenation, traduccio...
+
+? 
+! Undefined control sequence.
+l.4 \usepackage
+               {amsmath}                   % Matem^^c3^^a1ticas
+? 
+! Undefined control sequence.
+l.5 \usepackage
+               {graphicx}                  % Para incluir im^^c3^^a1genes
+? 
+! Undefined control sequence.
+l.7 \title
+          {Mi primer documento en \LaTeX}  % T^^c3^^adtulo
+? 
+! Undefined control sequence.
+l.7 \title{Mi primer documento en \LaTeX
+                                        }  % T^^c3^^adtulo
+? 
+! Undefined control sequence.
+l.8 \author
+           {Tu nombre}                     % Autor
+? 
+! Undefined control sequence.
+l.9 \date
+         {\today}                          % Fecha
+? 
+! Undefined control sequence.
+l.9 \date{\today
+                }                          % Fecha
+? 
+! Undefined control sequence.
+l.11 \begin
+           {document}
+? 
+! Undefined control sequence.
+l.13 \maketitle
+                  % Genera el t^^c3^^adtulo, autor y fecha
+? 
+! Undefined control sequence.
+l.15 \section
+             {Introducci^^c3^^b3n}
+? 
+Missing character: There is no ^^c3 in font cmr10!
+Missing character: There is no ^^b3 in font cmr10!
+Missing character: There is no ^^c2 in font cmr10!
+Missing character: There is no ^^a1 in font cmr10!
+! Undefined control sequence.
+l.16 ...do! Este es mi primer documento con \LaTeX
+                                                  .
+? 
+Missing character: There is no ^^c3 in font cmr10!
+Missing character: There is no ^^ad in font cmr10!
+Missing character: There is no ^^c3 in font cmr10!
+Missing character: There is no ^^a1 in font cmr10!
+! Undefined control sequence.
+l.18 ...ad va un p^^c3^^a1rrafo de ejemplo. \LaTeX
+                                                  {} es ideal para escribir ...
+
+? 
+Missing character: There is no ^^c3 in font cmr10!
+Missing character: There is no ^^ad in font cmr10!
+Missing character: There is no ^^c3 in font cmr10!
+Missing character: There is no ^^a9 in font cmr10!
+! Undefined control sequence.
+l.20 \section
+             {Matem^^c3^^a1ticas}
+? 
+Missing character: There is no ^^c3 in font cmr10!
+Missing character: There is no ^^a1 in font cmr10!
+Missing character: There is no ^^c3 in font cmr10!
+Missing character: There is no ^^b3 in font cmr10!
+Missing character: There is no ^^c3 in font cmr10!
+Missing character: There is no ^^ad in font cmr10!
+! Undefined control sequence.
+l.22 \[
+       
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \intop 
+\int ->\intop 
+              \nolimits 
+l.23     \int
+             _{a}^{b} x^2 \,dx
+? 
+! Undefined control sequence.
+l.24 \]
+       
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \par 
+l.25 
+     
+? 
+! Undefined control sequence.
+l.26 \section
+             {Im^^c3^^a1genes}
+? 
+Missing character: There is no ^^c3 in font cmr10!
+Missing character: There is no ^^a1 in font cmr10!
+! Undefined control sequence.
+l.27 \begin
+           {figure}[h]
+? 
+! Undefined control sequence.
+l.29     \includegraphics
+                         [width=0.5\textwidth]{imagenes/ejemplo.png}
+? 
+! Missing number, treated as zero.
+<to be read again> 
+                   [
+l.29     \includegraphics[
+                          width=0.5\textwidth]{imagenes/ejemplo.png}
+? 
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   [
+l.29     \includegraphics[
+                          width=0.5\textwidth]{imagenes/ejemplo.png}
+? 
+! Undefined control sequence.
+l.29     \includegraphics[width=0.5\textwidth
+                                             ]{imagenes/ejemplo.png}
+? 
+! Undefined control sequence.
+l.30     \caption
+                 {Una imagen de ejemplo.}
+? 
+! Undefined control sequence.
+l.31     \label
+               {fig:ejemplo}
+? 
+[1] )
+Output written on docfile.dvi (1 page, 976 bytes).
