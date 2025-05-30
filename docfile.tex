@@ -40,6 +40,10 @@
 
 \end{titlepage}
 
+\tableofcontents
+\listoffigures
+\listoftables
+
 \section{Introducción}
 
 Con el aumento de precios y la inclusión de anuncios en las suscripciones premium de plataformas multimedia como Spotify o iTunes, se prevé un resurgimiento de la reproducción local de música. Este proyecto tiene como objetivo ofrecer una alternativa moderna, intuitiva y sencilla frente a las aplicaciones de reproducción local existentes.
@@ -80,5 +84,51 @@ distribuidas en tres capas principales:
         \end{itemize}
 
     El entorno de desarrollo está configurado en Visual Studio Code, utilizando extensiones específicas para cada tecnología mencionada, lo que garantiza un flujo de trabajo eficiente.
+
+\section{Despliegue y pruebas}
+
+En este apartado se detallan los pasos seguidos para el despliegue de la aplicación de escritorio, así como las pruebas realizadas para garantizar su correcto funcionamiento.
+
+        \subsection{Despliegue de la aplicación}
+
+        Se elaboró un proceso de empaquetado y distribución de la aplicación utilizando Tauri, que permite generar ejecutables multiplatadorma (Windows, MacOs, Linux). Para ello:
+
+        \begin{itemize}
+            \item Se utilizó el sistema de bundling de Tauri para empaquetar los recursos frontend (Angular) junto al backend (Rust).
+            \item Se generaron instaladores específicos para diferentes sistemas operativos: \begin{itemize}
+                \item \textbf{.exe} para Windows
+                \item \textbf{.dmg} para MacOs
+                \item \textbf{.AppImage} para Linux
+                \end{itemize}
+        \end{itemize}
+
+        \subsection{Pruebas realizadas}
+
+        Con el objetivo de validar la funcionalidad y estabilidad de la aplicación, se llevaron a cabo las siguientes pruebas:
+
+            \subsubsection{Pruebas de integración}
+
+            \begin{itemize}
+                \item Se comprobó la comunicación entre el frontend y el backend, asegurando que las llamadas desde Angular a Rust (a través de Tauri) funcionaban correctamente.
+                \item Se testearon casos como la carga de archivos de audio, reproducción en diferentes formatos y manejo de errores.
+            \end{itemize}
+
+            \subsubsection{Pruebas de usabilidad}
+
+            \begin{itemize}
+                \item Se realizaron test con usuarios reales para evaluar la experiencia de uso (UX), recogiendo feedback sobre la interfaz y la fluidez de la reproducción musical.
+                \item Se analizaron posibles cuellos de botella en el rendimiento, especialmente al manejar playlist con muchas canciones o archivos de alta resolución.
+            \end{itemize}
+
+        La aplicación fue testeada en los tres sistemas operativos principales (Windows, MacOs y Linux), aunque el desarrollo se centró principalmente en las versiones para MacOs y Linux. \\
+
+        El rendimiento de la aplicación resulta significativamente mejorado al aprovechar las características nativas de Tauri, en comparación con soluciones basadas en Electron. \\
+
+        \begin{figure}[h!]
+            \centering
+            \includegraphics[width=0.8\textwidth]{media/imagemusyram.png}
+            \caption{Rendimiento de la aplicación en MacOs}
+            \label{fig:ejemplo}
+        \end{figure}
 
 \end{document}

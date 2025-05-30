@@ -1,15 +1,15 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024/nixos.org) (preloaded format=xelatex 1980.1.1)  29 MAY 2025 10:53
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.5.29)  30 MAY 2025 10:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/belz/Proyectos/DocumentacionMusy/docfile
-(/home/belz/Proyectos/DocumentacionMusy/docfile.tex
+**/Users/belz/Proyectos/Musy-Documentation/docfile
+(/Users/belz/Proyectos/Musy-Documentation/docfile.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
-(/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/base/article.cls
+(/usr/local/texlive/2025/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2024/06/29 v1.4n Standard LaTeX document class
-(/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/base/size11.clo
+(/usr/local/texlive/2025/texmf-dist/tex/latex/base/size11.clo
 File: size11.clo 2024/06/29 v1.4n Standard LaTeX file (size option)
 )
 \c@part=\count192
@@ -23,7 +23,7 @@ File: size11.clo 2024/06/29 v1.4n Standard LaTeX file (size option)
 \abovecaptionskip=\skip49
 \belowcaptionskip=\skip50
 \bibindent=\dimen141
-) (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/base/inputenc.sty
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2024/02/08 v1.3d Input encoding file
 \inpenc@prehook=\toks17
 \inpenc@posthook=\toks18
@@ -31,15 +31,15 @@ Package: inputenc 2024/02/08 v1.3d Input encoding file
 
 Package inputenc Warning: inputenc package ignored with utf8 based engines.
 
-) (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/generic/babel/babel.sty
+) (/usr/local/texlive/2025/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2025/02/14 v25.4 The multilingual framework for pdfLaTeX, LuaLaTeX and XeLaTeX
 \babel@savecnt=\count266
 \U@D=\dimen142
 \l@unhyphenated=\language90
- (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/generic/babel/xebabel.def)
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/babel/xebabel.def)
 \bbl@readstream=\read2
 \bbl@dirlevel=\count267
- (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/generic/babel-spanish/spanish.ldf
+ (/usr/local/texlive/2025/texmf-dist/tex/generic/babel-spanish/spanish.ldf
 Language: spanish.ldf 2021/05/27 v5.0q Spanish support from the babel system
 \es@quottoks=\toks19
 \es@quotdepth=\count268
@@ -47,30 +47,30 @@ Package babel Info: Making " an active character on input line 570.
 Package babel Info: Making . an active character on input line 675.
 Package babel Info: Making < an active character on input line 722.
 Package babel Info: Making > an active character on input line 722.
-)) (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/generic/babel/locale/es/babel-spanish.tex
+)) (/usr/local/texlive/2025/texmf-dist/tex/generic/babel/locale/es/babel-spanish.tex
 Package babel Info: Importing font and identification data for spanish
 (babel)             from babel-es.ini. Reported on input line 11.
-) (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/graphics/graphicx.sty
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
- (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/graphics/keyval.sty
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks20
-) (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/graphics/graphics.sty
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
- (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/graphics/trig.sty
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
-) (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/graphics-cfg/graphics.cfg
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: xetex.def on input line 106.
- (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/graphics-def/xetex.def
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics-def/xetex.def
 File: xetex.def 2022/09/22 v5.0n Graphics/color driver for xetex
 ))
 \Gin@req@height=\dimen143
 \Gin@req@width=\dimen144
-) (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/fontspec/fontspec.sty (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/l3packages/xparse/xparse.sty (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/l3kernel/expl3.sty
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/fontspec/fontspec.sty (/usr/local/texlive/2025/texmf-dist/tex/latex/l3packages/xparse/xparse.sty (/usr/local/texlive/2025/texmf-dist/tex/latex/l3kernel/expl3.sty
 Package: expl3 2025-01-18 L3 programming layer (loader) 
- (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/l3backend/l3backend-xetex.def
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
 File: l3backend-xetex.def 2024-05-08 L3 backend support: XeTeX
 \g__graphics_track_int=\count269
 \l__pdf_internal_box=\box52
@@ -80,7 +80,7 @@ File: l3backend-xetex.def 2024-05-08 L3 backend support: XeTeX
 Package: xparse 2024-08-16 L3 Experimental document command parser
 )
 Package: fontspec 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaTeX
- (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/fontspec/fontspec-xetex.sty
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
 Package: fontspec-xetex 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaTeX
 \l__fontspec_script_int=\count272
 \l__fontspec_language_int=\count273
@@ -96,11 +96,11 @@ Package: fontspec-xetex 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaTeX
 \l__fontspec_tmpa_dim=\dimen145
 \l__fontspec_tmpb_dim=\dimen146
 \l__fontspec_tmpc_dim=\dimen147
- (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/base/fontenc.sty
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
-) (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/fontspec/fontspec.cfg))) (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/setspace/setspace.sty
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/fontspec/fontspec.cfg))) (/usr/local/texlive/2025/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2022/12/04 v6.7b set line spacing
-) (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/anyfontsize/anyfontsize.sty
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/anyfontsize/anyfontsize.sty
 Invalid UTF-8 byte or sequence at line 3 replaced by U+FFFD.
 Invalid UTF-8 byte or sequence at line 3 replaced by U+FFFD.
 Package: anyfontsize 2007/11/22 anyfontsize.sty by pts
@@ -219,16 +219,61 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 [1
 
-]
-Overfull \hbox (18.45583pt too wide) in paragraph at lines 57--58
+] (./docfile.toc
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 7.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 7.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 7.
+)
+\tf@toc=\write3
+\openout3 = `docfile.toc'.
+
+ (./docfile.lof
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+)
+\tf@lof=\write4
+\openout4 = `docfile.lof'.
+
+ (./docfile.lot
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+)
+\tf@lot=\write5
+\openout5 = `docfile.lot'.
+
+
+
+[1]
+Overfull \hbox (18.45583pt too wide) in paragraph at lines 61--62
 []\TU/IBMPlexSerif(0)/m/n/10.95 Para la realización del proyecto se empleará la metodología ágil SCRUM.
  []
 
 
 
-[1]
+[2]
 
-[2] (./docfile.aux
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 123--124
+
+ []
+
+
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 125--126
+
+ []
+
+File: media/imagemusyram.png Graphic file (type bmp)
+<media/imagemusyram.png>
+
+
+[5] (./docfile.aux
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
 )
@@ -238,12 +283,12 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 4993 strings out of 473842
- 135456 string characters out of 5710491
- 569025 words of memory out of 5000000
- 28031 multiletter control sequences out of 15000+600000
- 561762 words of font info for 68 fonts, out of 8000000 for 9000
+ 5045 strings out of 473832
+ 134313 string characters out of 5729481
+ 568027 words of memory out of 5000000
+ 28071 multiletter control sequences out of 15000+600000
+ 564517 words of font info for 79 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 79i,5n,93p,451b,289s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 79i,5n,93p,453b,362s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on docfile.pdf (3 pages).
+Output written on docfile.pdf (6 pages).
