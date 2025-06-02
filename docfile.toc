@@ -12,3 +12,7 @@
 \contentsline {subsection}{\numberline {6.2}Pruebas realizadas}{3}{}%
 \contentsline {subsubsection}{\numberline {6.2.1}Pruebas de integración}{3}{}%
 \contentsline {subsubsection}{\numberline {6.2.2}Pruebas de usabilidad}{4}{}%
+\contentsline {section}{\numberline {7}Conclusiones}{4}{}%
+\contentsline {subsection}{\numberline {7.1}Logros principales}{4}{}%
+\contentsline {subsection}{\numberline {7.2}Dificultades clave}{5}{}%
+\contentsline {subsection}{\numberline {7.3}Valoración global}{5}{}%

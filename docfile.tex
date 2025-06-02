@@ -122,9 +122,9 @@ En este apartado se detallan los pasos seguidos para el despliegue de la aplicac
         \begin{itemize}
             \item Se utilizó el sistema de bundling de Tauri para empaquetar los recursos frontend (Angular) junto al backend (Rust).
             \item Se generaron instaladores específicos para diferentes sistemas operativos: \begin{itemize}
+                \item \textbf{.AppImage} para Linux
                 \item \textbf{.exe} para Windows
                 \item \textbf{.dmg} para MacOs
-                \item \textbf{.AppImage} para Linux
                 \end{itemize}
         \end{itemize}
 
@@ -156,5 +156,25 @@ En este apartado se detallan los pasos seguidos para el despliegue de la aplicac
             \caption{Rendimiento de la aplicación en MacOs}
             \label{fig:ejemplo}
         \end{figure}
+
+\section{Conclusiones}
+
+        \subsection{Logros principales}
+
+        Se ha desarrollado con éxito un reproductor de música multiplataforma (Linux, MacOs y Windows) utilizando Tauri, que cumple con los objetivos principales de:
+
+        \begin{itemize}
+            \item Optimización de recursos (Mucho menor consumo de ram respecto a otras webapps basadas en Electro).
+            \item Compatibilidad de formatos de audio (FLAC, MP3, etc...).
+            \item Arquitectura modular para el desarrollo futuro.
+        \end{itemize}
+
+        \subsection{Dificultades clave}
+
+        El principal desafío técnico fue la curva de aprendizaje asociada a Rust, lenguaje de programación de sistemas con el que no se contaba experiencia previa. Esta dificultad se resolvió mediante el estudio de documentación oficial, tutoriales especializados y la implementación de pruebas piloto. Adicionalmente, fue necesario adaptar los conocimientos existentes en desarrollo web al framework Angular, cuyo paradigma de componentes requirió un período de adaptación.
+
+        \subsection{Valoración global}
+
+        A pesar de las dificultades, el proyecto valida el potencial de Tauri para aplicaciones de audio eficientes, ofreciendo un rendimiento superior al de frameworks tradicionales. La escalabilidad de la arquitectura permite añadir funcionalidades como cambios en la apariencia en futuras iteraciones.
 
 \end{document}
