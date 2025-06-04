@@ -1,7 +1,8 @@
 \documentclass[11pt, a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
-\usepackage{graphicx}      
+\usepackage{graphicx}   
+\usepackage{float}   
 \usepackage{fontspec}
 \usepackage{setspace}
 \usepackage{anyfontsize}
@@ -66,14 +67,14 @@
     Este proyecto aborda la ausencia de reproductores de musica offline modernos además de abordar el alto consumo de recursos en aplicaciones web, proponiendo una solución basada en tauri (Rust + Angular) para garantizar eficiencia. Se desarrolló una aplicación de escritorio compatible con Linux, MacOs y Windows, priorizando la optimización de memoria y la experiencia de usuario. El resultado es una aplicación escalable con arquitectura modular para futuras extensiones, validando así el potencial de Tauri en aplicaciones de escritorio.
 \end{abstract}
 
-\noindent \textbf{Palabras clave}: Tauri, Rust, Angular, reproductor de música, rendimiento, UI moderna, dropdown menu.
+\noindent \textbf{Palabras clave}: Tauri, Rust, Angular, reproductor de música, rendimiento, UI moderna.
 
 \selectlanguage{english}
 \begin{abstract}
     This project addresses both the lack of modern offline music players and the high resource consumption in web applications by proposing an efficient solution based on Tauri (Rust + Angular). A cross-platform desktop application was developed for Linux, MacOs, and Windows, with the particular emphasis on memory optimization and user experience. The result is a scalable application with modular architecture for future extensions, demonstrating Tauri's potential for desktop applications.
 \end{abstract}
 
-\noindent \textbf{Keywords}: Tauri, Rust, Angular, music player, performance, modern UI, dropdown menu.
+\noindent \textbf{Keywords}: Tauri, Rust, Angular, music player, performance, modern UI.
 
 \selectlanguage{spanish}
 
@@ -244,12 +245,12 @@ En esta sección se explicarán en detalle los componentes principales de la apl
 
             \subsubsection{Playbar}
 
-            Componente principal para la reproducción de música, esta compuesto por 3 divs:
+            El componente principal para la reproducción de música está compuesto por tres contenedores \verb|div|:
 
             \begin{itemize}
-                \item \textbf{Izquierdo}. Aquí se encuentran la foto de la canción, el título y el artista.
-                \item \textbf{Central}. Contiene otros 2 divs mas pequeños, uno para los botones de play, pause, shuffle, last song, next song, repeat; y otro para la barra de reproducción. Más adelante se explicarán cada uno de ellos en el apartado de servicios.
-                \item \textbf{Derecho}.Este div unicamente contiene la barra para ajustar el volumen. A futuro es posible que se implemente un botón para abrir el menú de la cola e interactuar con ella.
+                \item \textbf{Izquierdo}. En el primero se muestran la portada de la canción, el título y el artista.
+                \item \textbf{Central}. El segundo contiene dos subcontenedores: uno para los botones de control (reproducción, aleatorio, anterior/siguiente, repetición) y otro para la barra de progreso.
+                \item \textbf{Derecho}. El tercero incluye exclusivamente la barra de volumen. En futuras iteraciones podría implementarse un botón para gestionar la cola de reproducción.
             \end{itemize}
 
             La parte del componente de typescript contiene únicamente métododos que llaman al servicio de manejo de canciones \verb|song-management.service.ts|.
@@ -258,10 +259,26 @@ En esta sección se explicarán en detalle los componentes principales de la apl
 
             Componente donde se interactua con las playlist, ya sea creando nuevas o borrando las existentes. Contiene diversos botones para navegar por la aplicación.
 
+            Estos son sus atributos:
+
+            \begin{lstlisting}[caption={Atributos Y Constructora Sidebar}]
+playlists: Playlist[] = []
+name:string = ""
+isModalOpen:boolean = false;
+isModalOpenSearch:boolean = false;
+songs:Song[] = []
+filteredSongs:Song[] = []
+coverPath: string = "assets/black.jpg"
+
+constructor (public mainScreenStatus:MainScreenStatusService, public songManagement:SongManagementService) {}
+            \end{lstlisting}
+
+            Se explicarán más adelante.
+
                 \paragraph{Playlist}
                 ‎ 
 
-                \begin{lstlisting}[caption={Atributos y Constructora}]
+                \begin{lstlisting}[caption={Atributos y Constructora Playlist}]
 coverPath = 'assets/black.jpg';
 
 isDropDownOpen: boolean = false;
@@ -281,7 +298,7 @@ constructor (public mainScreenStatus:MainScreenStatusService) {}
 @Input() refreshFn!: () => void;
                 \end{lstlisting}
 
-                Cada playlist es un botón que cambia el contenido de la \verb|mainscreen|, enviando la lista de canciones a ese componente mediante un servicio. Algunos de los métodos más importantes de este componente son:
+                Cada playlist funciona como un botón que actualiza el contenido de la \verb|mainscreen|, que envía la lista de canciones correspondiente a ese componente mediante un servicio. Algunos de los métodos más importantes de este componente destacan:
 
                 \begin{lstlisting}[caption={getCoverPath()}]
 
@@ -301,7 +318,7 @@ async getCoverPath(): Promise<string> {
 }
                 \end{lstlisting}
 
-                Debido a que la ruta de la portada no es válida para ser mostrada directamente, hay que convertirla en un blob. Este método se encarga de ello, y, en el caso de que no exista una portada retorna una imagen default.
+                Debido a que la ruta de la portada no es válida para ser mostrada directamente, ha de convertirse en un blob. Este método se encarga de ello y, en el caso de que no exista una portada se carga una imagen predeterminada.
 
                 \begin{lstlisting}[caption={Dropdown}]
 toggleDropDown() {
@@ -321,7 +338,14 @@ toggleDropDown() {
   }
                 \end{lstlisting}
 
-                Por temas de diseño, se ha decidido crear un dropdown menu donde aparecerá el boton de eliminar playlist. A futuro es posible que se implementen más botones como por ejemplo para añadir una playlist a favoritos.
+                Por temas de diseño, se ha decidido crear un dropdown menu (menú desplegable) con opciones como el boton de eliminación de playlist. A futuro es posible que se implementen más botones como por ejemplo para añadir una playlist a favoritos.
+
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.6\textwidth]{media/screenshots/remove_playlist.png}
+                    \caption{Eliminar playlist}
+                    \label{fig:eliminar playlist}
+                \end{figure}
 
                 \begin{lstlisting}[caption={removePlaylist()}]
 async removePlaylist() {
@@ -331,9 +355,157 @@ async removePlaylist() {
   }
                 \end{lstlisting}
 
-                Para eliminar una playlist de la sidebar se hace una llamada al backend donde se realizará una consulta sql para eliminarla de la base de datos (Esto se verá mas adelante en el apartado de Rust y SQL).
+                Para eliminar una playlist de la sidebar se hace una petición al backend donde se realizará una consulta sql para eliminarla de la base de datos (Esto se verá mas adelante en el apartado de Rust y SQL).
+
+                \paragraph{Botón New Playlist}
+                ‎ \\
+
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.6\textwidth]{media/screenshots/new_playlist.png}
+                    \caption{Menú de nueva playlist}
+                    \label{fig:nueva playlist}
+                \end{figure}
+
+                Cuando el atributo \verb|isModalOpen| de \verb|sidebar| cambia a \verb|true| se abre un menu modal donde es posible crear una nueva playlist vacía.
+
+                Estos son los métodos más destacados:
+
+                \begin{lstlisting}[caption={selectCover()}]
+async selectCover() {
+    const file = await open({
+      multiple: false,
+      directory: false,
+    });
+
+    if(file == null) {
+      return
+    }
+
+    const fileData = await readFile(file);
+    const ogBlob = new Blob([fileData], { type: 'image/*' });
+    const thumbnail = await this.createThumbnail(ogBlob, 200, 200);
+
+    try {
+      await mkdir('pcovers', { baseDir: BaseDirectory.AppData });
+    } catch {
+      console.log("Already Created")
+    }
+    
+
+    let randomName = (Math.floor(Math.random() * (Math.floor(200000) - Math.ceil(1) + 1)) + Math.ceil(1)).toString();
+    await writeFile(`pcovers/${randomName}.jpg`, thumbnail, {baseDir: BaseDirectory.AppData})
+
+    const data_dir = await appDataDir();
+    let newPath = data_dir + "/pcovers/" + randomName + ".jpg";
+    console.log(newPath)
+
+    this.coverPath = newPath;
+}
+                \end{lstlisting}
+
+                Usando la APP de tauri \verb|plugin-dialog| aparece una ventana del sistema que permite la selección de una imagen. Una vez seleccionada, un blob es creado y transformado en una imagen de baja resolución (con el fin de ahorrar espacio y mejorar el rendimiento). Esta nueva imagen es guardad con un nombre aleatorio dentro de \textit{pcovers}, carpeta la cual es creada si esta no existe previamente. A continuación el método \verb|createThumbnail| encontrado en la línea 13.
+
+                \begin{lstlisting}[caption={createThumbnail()}]
+async createThumbnail(blob: Blob, maxWidth: number, maxHeight: number): Promise<Uint8Array> {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => {
+            const canvas = document.createElement('canvas');
+            const scale = Math.min(
+                maxWidth / img.width,
+                maxHeight / img.height
+            );
+            canvas.width = img.width * scale;
+            canvas.height = img.height * scale;
+            
+            const ctx = canvas.getContext('2d')!;
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            
+            canvas.toBlob(async (thumbnailBlob) => {
+                if (!thumbnailBlob) {
+                    reject(new Error("Failed to create thumbnail blob"));
+                    return;
+                }
+                
+                try {
+                    const arrayBuffer = await thumbnailBlob.arrayBuffer();
+                    const uint8Array = new Uint8Array(arrayBuffer);
+                    resolve(uint8Array);
+                } catch (error) {
+                    reject(error);
+                }
+            }, 'image/jpeg', 0.7);
+        };
+        
+        img.onerror = () => {
+            reject(new Error("Failed to load image"));
+        };
+        
+        img.src = URL.createObjectURL(blob);
+    });
+}
+                \end{lstlisting}
+
+                La MDN Canvas API es usada para la transformación de la imagen. \\
+
+                Una vez seleccionados la portada y el nombre de la playlist, al pulsar el boton \textit{done} se ejecuta el siguiente método, que realiza las siguientes acciones secuenciales:
+
+                \begin{enumerate}
+                    \item Envía una petición al backend implementado en Rust para crear la nueva playlist.
+                    \item Cierra el menú modal de creación.
+                    \item Actualiza la lista de playlist en la interfaz.
+                    \item Restablece la imagen predeterminada en el atributo de la clase para futuras iteraciones (última línea del método).
+                \end{enumerate}
+
+                \begin{lstlisting}[caption={createPlaylist()}]
+async createPlaylist() {
+    const data_dir = await appDataDir();
+    invoke('create_playlist', {name: this.name, cover_path: this.coverPath, db_path: data_dir})
+    this.close()
+    this.refresh()
+    this.coverPath = "assets/black.jpg"
+}
+                \end{lstlisting}
+
+                \paragraph{Boton Search}
+
+                ‎ \\
+
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.8\textwidth]{media/screenshots/search_song.png}
+                    \caption{Menú de buscar canción}
+                    \label{fig:buscar}
+                \end{figure}
+
+                \begin{lstlisting}[caption={searchSong()}]
+async searchSong() {
+    await this.getAllSongs();
+    this.filteredSongs = this.songs;
+    this.isModalOpenSearch = true;
+}
+
+async getAllSongs() {
+    const data_dir = await appDataDir();
+    try {
+      this.songs = await invoke<Song[]>('get_all_songs', {db_path: data_dir});
+    } catch (error) {
+      console.error('Error fetching songs:', error);
+      this.songs = [];
+    }
+}
+                \end{lstlisting}
+
+                Cuando el botón de \textit{search} es pulsado, la sidebar espera a recibir todas las canciones encontradas en la carpeta de música para posteriormente popular la lista de canciones filtradas y abrir el menú modal de búsqueda. \\
+
+                En este menú es posible encontrar y buscar todas las canciones e interactuar con ellas como si estuvieran dentro de una playlist (esto es explicado más adelante).
+
+
 
             \subsubsection{Mainscreen}
+
+            
 
             \subsubsection{Servicios}
 
