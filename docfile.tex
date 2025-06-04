@@ -14,6 +14,17 @@
     pdftitle={Musy Documentación},
     pdfauthor={Beltrán González Martos}
 }
+\usepackage{listings}
+\usepackage{xcolor-material}
+\definecolor{codebackground}{rgb}{0.95,0.95,0.95}
+\lstset{
+    backgroundcolor=\color{codebackground},
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny\color{gray}
+}
 \onehalfspacing
 \setmainfont{IBM Plex Serif}
 
@@ -55,14 +66,14 @@
     Este proyecto aborda la ausencia de reproductores de musica offline modernos además de abordar el alto consumo de recursos en aplicaciones web, proponiendo una solución basada en tauri (Rust + Angular) para garantizar eficiencia. Se desarrolló una aplicación de escritorio compatible con Linux, MacOs y Windows, priorizando la optimización de memoria y la experiencia de usuario. El resultado es una aplicación escalable con arquitectura modular para futuras extensiones, validando así el potencial de Tauri en aplicaciones de escritorio.
 \end{abstract}
 
-\noindent \textbf{Palabras clave}: Tauri, Rust, Angular, reproductor de música, rendimiento, UI moderna.
+\noindent \textbf{Palabras clave}: Tauri, Rust, Angular, reproductor de música, rendimiento, UI moderna, dropdown menu.
 
 \selectlanguage{english}
 \begin{abstract}
     This project addresses both the lack of modern offline music players and the high resource consumption in web applications by proposing an efficient solution based on Tauri (Rust + Angular). A cross-platform desktop application was developed for Linux, MacOs, and Windows, with the particular emphasis on memory optimization and user experience. The result is a scalable application with modular architecture for future extensions, demonstrating Tauri's potential for desktop applications.
 \end{abstract}
 
-\noindent \textbf{Keywords}: Tauri, Rust, Angular, music player, performance, modern UI
+\noindent \textbf{Keywords}: Tauri, Rust, Angular, music player, performance, modern UI, dropdown menu.
 
 \selectlanguage{spanish}
 
@@ -71,6 +82,7 @@
 \tableofcontents
 \listoffigures
 \listoftables
+\lstlistoflistings
 
 
 \clearpage
@@ -230,11 +242,100 @@ En esta sección se explicarán en detalle los componentes principales de la apl
 
         Angular
 
-            \subsubsection{Sidebar}
-
             \subsubsection{Playbar}
 
-            \subsubsection{Mainpage}
+            Componente principal para la reproducción de música, esta compuesto por 3 divs:
+
+            \begin{itemize}
+                \item \textbf{Izquierdo}. Aquí se encuentran la foto de la canción, el título y el artista.
+                \item \textbf{Central}. Contiene otros 2 divs mas pequeños, uno para los botones de play, pause, shuffle, last song, next song, repeat; y otro para la barra de reproducción. Más adelante se explicarán cada uno de ellos en el apartado de servicios.
+                \item \textbf{Derecho}.Este div unicamente contiene la barra para ajustar el volumen. A futuro es posible que se implemente un botón para abrir el menú de la cola e interactuar con ella.
+            \end{itemize}
+
+            La parte del componente de typescript contiene únicamente métododos que llaman al servicio de manejo de canciones \verb|song-management.service.ts|.
+
+            \subsubsection{Sidebar}
+
+            Componente donde se interactua con las playlist, ya sea creando nuevas o borrando las existentes. Contiene diversos botones para navegar por la aplicación.
+
+                \paragraph{Playlist}
+                ‎ 
+
+                \begin{lstlisting}[caption={Atributos y Constructora}]
+coverPath = 'assets/black.jpg';
+
+isDropDownOpen: boolean = false;
+
+constructor (public mainScreenStatus:MainScreenStatusService) {}
+
+@Input() playlistId!: number;
+
+@Input() playlistName!: string;
+
+@Input() playlistDate!: string;
+
+@Input() playlistCoverPath!: string;
+
+@Input() playlistIsStarred!: boolean;
+
+@Input() refreshFn!: () => void;
+                \end{lstlisting}
+
+                Cada playlist es un botón que cambia el contenido de la \verb|mainscreen|, enviando la lista de canciones a ese componente mediante un servicio. Algunos de los métodos más importantes de este componente son:
+
+                \begin{lstlisting}[caption={getCoverPath()}]
+
+async getCoverPath(): Promise<string> {
+    if (!this.coverPath) return 'assets/black.jpg';
+    console.log("Hola")
+
+    const fileData = await readFile(this.playlistCoverPath);
+        
+    const blob = new Blob([fileData], { type: 'image/jpeg' });
+
+    if (this.coverPath) {
+        URL.revokeObjectURL(this.coverPath);
+    }
+
+    return URL.createObjectURL(blob);
+}
+                \end{lstlisting}
+
+                Debido a que la ruta de la portada no es válida para ser mostrada directamente, hay que convertirla en un blob. Este método se encarga de ello, y, en el caso de que no exista una portada retorna una imagen default.
+
+                \begin{lstlisting}[caption={Dropdown}]
+toggleDropDown() {
+    this.isDropDownOpen = !this.isDropDownOpen;
+  }
+
+  closeDropDown() {
+    this.isDropDownOpen = false;
+  }
+
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: Event) {
+    const target = event.target as HTMLElement;
+    if (!target.closest('.relative.inline-block')) {
+      this.closeDropDown();
+    }
+  }
+                \end{lstlisting}
+
+                Por temas de diseño, se ha decidido crear un dropdown menu donde aparecerá el boton de eliminar playlist. A futuro es posible que se implementen más botones como por ejemplo para añadir una playlist a favoritos.
+
+                \begin{lstlisting}[caption={removePlaylist()}]
+async removePlaylist() {
+    const data_dir = await appDataDir();
+    invoke('remove_playlist', {playlist_id: this.playlistId, db_path: data_dir});
+    this.refreshFn();
+  }
+                \end{lstlisting}
+
+                Para eliminar una playlist de la sidebar se hace una llamada al backend donde se realizará una consulta sql para eliminarla de la base de datos (Esto se verá mas adelante en el apartado de Rust y SQL).
+
+            \subsubsection{Mainscreen}
+
+            \subsubsection{Servicios}
 
         \subsection{Backend}
 
