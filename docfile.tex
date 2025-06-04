@@ -5,6 +5,15 @@
 \usepackage{fontspec}
 \usepackage{setspace}
 \usepackage{anyfontsize}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=magenta,
+    urlcolor=cyan,
+    pdftitle={Musy Documentación},
+    pdfauthor={Beltrán González Martos}
+}
 \onehalfspacing
 \setmainfont{IBM Plex Serif}
 
@@ -111,13 +120,17 @@ distribuidas en tres capas principales:
 
     El entorno de desarrollo está configurado en Visual Studio Code, utilizando extensiones específicas para cada tecnología mencionada, lo que garantiza un flujo de trabajo eficiente.
 
+\section{Especificación de Requisitos de Software}
+
+
+
 \section{Despliegue y pruebas}
 
 En este apartado se detallan los pasos seguidos para el despliegue de la aplicación de escritorio, así como las pruebas realizadas para garantizar su correcto funcionamiento.
 
         \subsection{Despliegue de la aplicación}
 
-        Se elaboró un proceso de empaquetado y distribución de la aplicación utilizando Tauri, que permite generar ejecutables multiplatadorma (Windows, MacOs, Linux). Para ello:
+        Se elaboró un proceso de empaquetado y distribución de la aplicación utilizando Tauri, que permite generar ejecutables multiplataforma (Windows, MacOs, Linux). Para ello:
 
         \begin{itemize}
             \item Se utilizó el sistema de bundling de Tauri para empaquetar los recursos frontend (Angular) junto al backend (Rust).
@@ -156,6 +169,83 @@ En este apartado se detallan los pasos seguidos para el despliegue de la aplicac
             \caption{Rendimiento de la aplicación en MacOs}
             \label{fig:ejemplo}
         \end{figure}
+
+\section{Estado del arte}
+
+En la actualidad, el panorama de reproducción musical se divide principalmente en dos enfoques: plataformas de streaming y reproductores locales tradicionales. A continuación, se analizan sus características, ventajas y desventajas.
+
+        \subsection{Plataformas de streaming}
+
+        Las plataformas de streaming (Spotify, Apple Music, etc...) dominan el mercado actual debido a:
+
+        \begin{itemize}
+            \item Acceso instantáneo a catálogos musicales extensos (más de 100 millones de canciones).
+            \item Interfaces modernas con recomendaciones basadas en algoritmos.
+            \item Sincronización multiplataforma (dispositivos móviles, web y escritorio).
+        \end{itemize}
+
+        Sin embargo, presentan limitaciones significativas:
+
+        \begin{itemize}
+            \item Dependencia de conexión a internet permanente.
+            \item Modelo de negiocio basado en suscripciones o publicidad invasiva.
+            \item Falta de propiedad real sobre la música (acceso condicionado al pago).
+        \end{itemize}
+
+        \subsection{Reproductores locales tradicionales}
+
+        Los reproductores de música offline (Winamp, Strawberry, etc...) ofrecen:
+
+        \begin{itemize}
+            \item Control completo sobre los archivos musicales (propiedad permanente).
+            \item Uso sin restricciones de conectividad o cuentas de usuario.
+            \item Menor consumo de recursos al evitar dependencias en la nube.
+        \end{itemize}
+
+        No obstante, adolecen de problemas críticos:
+
+        \begin{itemize}
+            \item Interfaces obsoletas y experiencias de usuario poco intuitivas.
+            \item Dificultad para encontrar versiones actualizadas (muchos proyectos estan abandonados).
+            \item Limitada compatibilidad con formatos modernos o sistemas operativos recientes.
+        \end{itemize}
+
+        \subsection{Mi propuesta}
+
+        Este análisis evidencia la necesidad de reproductores locales que combinen:
+
+        \begin{itemize}
+            \item Diseño contemporáneo (similar al streaming).
+            \item Independencia de infraestructuras en la nube.
+            \item Soporten estándares actuales (formatos lossless, metadatos avanzados).
+        \end{itemize}
+
+        La solución propuesta en este proyecto busca ocupar este espacio, aprovechando tecnologías modernas (Tauri, Rust, Angular) para superar las limitaciones de ambas aproximaciones.
+
+\section{Profundización de conceptos}
+
+En esta sección se explicarán en detalle los componentes principales de la aplicación.
+
+        \subsection{Frontend}
+
+        Angular
+
+            \subsubsection{Sidebar}
+
+            \subsubsection{Playbar}
+
+            \subsubsection{Mainpage}
+
+        \subsection{Backend}
+
+        Rust y SQLite
+
+            \subsubsection{Tauri API}
+
+            \subsubsection{Sync method}
+
+            \subsubsection{SQL CRUD}
+
 
 \section{Conclusiones}
 

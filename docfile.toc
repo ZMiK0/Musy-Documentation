@@ -1,18 +1,32 @@
 \babel@toc {spanish}{}\relax 
 \babel@toc {english}{}\relax 
 \babel@toc {spanish}{}\relax 
-\contentsline {section}{\numberline {1}Introducción}{1}{}%
-\contentsline {section}{\numberline {2}Justificación del tema elegido}{1}{}%
-\contentsline {section}{\numberline {3}Objetivos}{1}{}%
-\contentsline {section}{\numberline {4}Metodología}{1}{}%
-\contentsline {section}{\numberline {5}Tecnologías y herramientas usadas en el proyecto}{2}{}%
-\contentsline {subsection}{\numberline {5.1}Razones}{2}{}%
-\contentsline {section}{\numberline {6}Despliegue y pruebas}{3}{}%
-\contentsline {subsection}{\numberline {6.1}Despliegue de la aplicación}{3}{}%
-\contentsline {subsection}{\numberline {6.2}Pruebas realizadas}{3}{}%
-\contentsline {subsubsection}{\numberline {6.2.1}Pruebas de integración}{3}{}%
-\contentsline {subsubsection}{\numberline {6.2.2}Pruebas de usabilidad}{4}{}%
-\contentsline {section}{\numberline {7}Conclusiones}{4}{}%
-\contentsline {subsection}{\numberline {7.1}Logros principales}{4}{}%
-\contentsline {subsection}{\numberline {7.2}Dificultades clave}{5}{}%
-\contentsline {subsection}{\numberline {7.3}Valoración global}{5}{}%
+\contentsline {section}{\numberline {1}Introducción}{1}{section.1}%
+\contentsline {section}{\numberline {2}Justificación del tema elegido}{1}{section.2}%
+\contentsline {section}{\numberline {3}Objetivos}{1}{section.3}%
+\contentsline {section}{\numberline {4}Metodología}{1}{section.4}%
+\contentsline {section}{\numberline {5}Tecnologías y herramientas usadas en el proyecto}{2}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Razones}{2}{subsection.5.1}%
+\contentsline {section}{\numberline {6}Especificación de Requisitos de Software}{3}{section.6}%
+\contentsline {section}{\numberline {7}Despliegue y pruebas}{3}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Despliegue de la aplicación}{3}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Pruebas realizadas}{3}{subsection.7.2}%
+\contentsline {subsubsection}{\numberline {7.2.1}Pruebas de integración}{3}{subsubsection.7.2.1}%
+\contentsline {subsubsection}{\numberline {7.2.2}Pruebas de usabilidad}{4}{subsubsection.7.2.2}%
+\contentsline {section}{\numberline {8}Estado del arte}{4}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Plataformas de streaming}{4}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Reproductores locales tradicionales}{5}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Mi propuesta}{5}{subsection.8.3}%
+\contentsline {section}{\numberline {9}Profundización de conceptos}{6}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Frontend}{6}{subsection.9.1}%
+\contentsline {subsubsection}{\numberline {9.1.1}Sidebar}{6}{subsubsection.9.1.1}%
+\contentsline {subsubsection}{\numberline {9.1.2}Playbar}{6}{subsubsection.9.1.2}%
+\contentsline {subsubsection}{\numberline {9.1.3}Mainpage}{6}{subsubsection.9.1.3}%
+\contentsline {subsection}{\numberline {9.2}Backend}{6}{subsection.9.2}%
+\contentsline {subsubsection}{\numberline {9.2.1}Tauri API}{6}{subsubsection.9.2.1}%
+\contentsline {subsubsection}{\numberline {9.2.2}Sync method}{6}{subsubsection.9.2.2}%
+\contentsline {subsubsection}{\numberline {9.2.3}SQL CRUD}{6}{subsubsection.9.2.3}%
+\contentsline {section}{\numberline {10}Conclusiones}{6}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Logros principales}{6}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Dificultades clave}{7}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}Valoración global}{7}{subsection.10.3}%
