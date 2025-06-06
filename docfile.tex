@@ -245,6 +245,13 @@ En esta sección se explicarán en detalle los componentes principales de la apl
 
             \subsubsection{Playbar}
 
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=1\textwidth]{media/screenshots/playbar.png}
+                \caption{Playbar}
+                \label{fig:playbar}
+            \end{figure}
+
             El componente principal para la reproducción de música está compuesto por tres contenedores \verb|div|:
 
             \begin{itemize}
@@ -256,6 +263,13 @@ En esta sección se explicarán en detalle los componentes principales de la apl
             La parte del componente de typescript contiene únicamente métododos que llaman al servicio de manejo de canciones \verb|song-management.service.ts|.
 
             \subsubsection{Sidebar}
+
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=0.4\textwidth]{media/screenshots/sidebar.png}
+                \caption{Sidebar}
+                \label{fig:sidebar}
+            \end{figure}
 
             Componente donde se interactua con las playlist, ya sea creando nuevas o borrando las existentes. Contiene diversos botones para navegar por la aplicación.
 
@@ -273,7 +287,7 @@ coverPath: string = "assets/black.jpg"
 constructor (public mainScreenStatus:MainScreenStatusService, public songManagement:SongManagementService) {}
             \end{lstlisting}
 
-            Se explicarán más adelante.
+            Serán explicados más adelante.
 
                 \paragraph{Playlist}
                 ‎ 
@@ -505,7 +519,118 @@ async getAllSongs() {
 
             \subsubsection{Mainscreen}
 
-            
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=1\textwidth]{media/screenshots/playlist.png}
+                \caption{Mainscreen}
+                \label{fig:Mainscreen}
+            \end{figure}
+
+            Componente donde son mostradas las canciones de una playlist junto a su información y los botones para iniciar a escuchar o para añadir a la cola.
+
+            El archivo de typescript de este componente no posee nada sustancial, lo interesante es encontrado en sus subcomponentes.
+
+                \paragraph{Playlist Button}
+                ‎
+
+                Este componente es mostrado cuando se inicia el menú modal para añadir una canción a una determinada playlist.
+
+                Estos son sus atributos:
+
+                \begin{lstlisting}[caption={Atributos Playlist Button}]
+coverPath = 'assets/black.jpg';
+
+constructor (public mainScreenStatus:MainScreenStatusService) {}
+
+@Input() playlistId!: number;
+
+@Input() playlistName!: string;
+
+@Input() playlistCoverPath!: string;
+
+@Input() songId!: string;
+                \end{lstlisting}
+
+                El componente recibe los metadatos de una playlist junto al id de la canción para su posterior adición a esta. \\
+
+                Sus métodos más importantes son:
+
+                \begin{lstlisting}[caption={getCoverPath()}]
+async ngOnInit() {
+    this.coverPath = await this.getCoverPath();
+}
+
+async getCoverPath(): Promise<string> {
+    if (!this.coverPath) return 'assets/black.jpg';
+
+    const fileData = await readFile(this.playlistCoverPath);
+
+    const blob = new Blob([fileData], { type: 'image/jpeg' });
+
+    if (this.coverPath) {
+        URL.revokeObjectURL(this.coverPath);
+    }
+
+    return URL.createObjectURL(blob);
+}
+                \end{lstlisting}
+
+                Como ha sido explicado antes, las rutas de imágenes no son aptas para ser mostradas directamente en Angular, por ello debe de crearse un \verb|blob| y asignarselo a la variable \verb|coverPath| cuando se inicializa el componente. (Por supuesto con una imagen predeterminada en caso de que no sea posible encontrar una imagen válida).
+
+                \begin{lstlisting}[caption={addSongToPlaylist()}]
+async addSongToPlaylist() {
+    const data_dir = await appDataDir();
+    invoke('add_song_to_playlist', {playlist_id: this.playlistId, song_id: this.songId, db_path: data_dir})
+    this.mainScreenStatus.refresh();
+}
+                \end{lstlisting}
+
+                Se realiza una llamada a Rust para añadir la canción a la base de datos y se actualiza la \verb|mainpage|.
+
+
+                \paragraph{Song Button}
+                ‎
+
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=1\textwidth]{media/screenshots/songbutton.png}
+                    \caption{Song Button}
+                    \label{fig:songbutton}
+                \end{figure}
+
+                Cada canción dentro de una playlist tiene un componente dedicado para su gestión y su información, pulsando sobre este se inicia la reproducción directa de una canción. A la derecha se encuentra un \textit{dropdown menu} el cual permite añadir la canción a la cola, añadirla a otra playlist y, si no se encuentra sobre \verb|all songs| eliminarla de la playlist (El concepto de \verb|All Songs se explicará más adelante|). \\
+
+                Los atributos del componente son:
+
+                \begin{lstlisting}[caption={Atributos Song Button}]
+isModalOpen: boolean = false;
+
+isDropDownOpen: boolean = false;
+
+constructor (public songManagement:SongManagementService, public songAdding:SongAddingService, public mainScreenStatus:MainScreenStatusService) {}
+
+@Input() id!: string;
+@Input() path!: string;
+@Input() title!: string;
+@Input() artist!: string;
+@Input() album!: string;
+@Input() year!: string;
+@Input() duration!: string;
+@Input() coverPath!: string;
+@Input() isStarred!: boolean;
+
+@Input() playlistId!: number;
+
+coverUrl: string = 'assets/black.jpg';
+                \end{lstlisting}
+
+                Entre ellos se encuentran los metadatos de cada canción y la playlist en la que se encuentran mostrados ahora mismo. Estos datos son recibidos desde el componente padre. \\
+
+                Este componente posee una cantidad interesante de métodos que serán explicados a continuación:
+
+                
+
+                
 
             \subsubsection{Servicios}
 
