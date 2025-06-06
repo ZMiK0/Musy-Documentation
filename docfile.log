@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024/nixos.org) (preloaded format=xelatex 1980.1.1)  6 JUN 2025 03:50
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024/nixos.org) (preloaded format=xelatex 1980.1.1)  6 JUN 2025 20:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -447,13 +447,15 @@ LaTeX Info: Redefining \% on input line 3.
 \tf@lot=\write6
 \openout6 = `docfile.lot'.
 
- (./docfile.lol)
+ (./docfile.lol
+
+[3])
 \tf@lol=\write7
 \openout7 = `docfile.lol'.
 
 
 
-[3]
+[4]
 Overfull \hbox (18.45583pt too wide) in paragraph at lines 109--110
 []\TU/IBMPlexSerif(0)/m/n/10.95 Para la realización del proyecto se empleará la metodología ágil SCRUM.
  []
@@ -567,35 +569,49 @@ Overfull \hbox (1.81548pt too wide) in paragraph at lines 529--530
  []
 
 Missing character: There is no ‎ (U+200E) in font IBM Plex Serif/OT:script=latn;language=dflt;mapping=tex-text;!
-
-
-[15]
-Underfull \hbox (badness 10000) in paragraph at lines 554--555
-
- []
-
-Missing character: There is no ‎ (U+200E) in font IBM Plex Serif/OT:script=latn;language=dflt;mapping=tex-text;!
 File: media/screenshots/songbutton.png Graphic file (type bmp)
 <media/screenshots/songbutton.png>
 
+Underfull \hbox (badness 10000) in paragraph at lines 543--544
+
+ []
+
+
+
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 569--570
+
+ []
+
+
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 601--602
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 627--628
-
- []
-
-
 
 [17]
+Overfull \hbox (2.12009pt too wide) in paragraph at lines 632--633
+\TU/IBMPlexSerif(0)/m/n/10.95 tipo Song para posteriormente ser enviados al servicio [][]\TU/lmtt/m/n/10.95 song-management
+ []
+
+
+Overfull \hbox (7.94019pt too wide) in paragraph at lines 646--647
+[]\TU/IBMPlexSerif(0)/m/n/10.95 Se reciben y se almacenan todas las playlist en el servicio [][]\TU/lmtt/m/n/10.95 song-adding
+ []
+
+Missing character: There is no ‎ (U+200E) in font IBM Plex Serif/OT:script=latn;language=dflt;mapping=tex-text;!
+
 
 [18]
+Underfull \hbox (badness 10000) in paragraph at lines 672--673
 
-[19] (./docfile.aux
+ []
+
+
+
+[19]
+
+[20]
+
+[21] (./docfile.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 LaTeX Info: Redefining \. on input line 14.
@@ -617,4 +633,4 @@ Here is how much of TeX's memory you used:
  1348 hyphenation exceptions out of 8191
  79i,6n,93p,610b,1738s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on docfile.pdf (23 pages).
+Output written on docfile.pdf (26 pages).

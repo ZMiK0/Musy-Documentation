@@ -530,6 +530,124 @@ async getAllSongs() {
 
             El archivo de typescript de este componente no posee nada sustancial, lo interesante es encontrado en sus subcomponentes.
 
+                \paragraph{Song Button}
+                ‎
+
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=1\textwidth]{media/screenshots/songbutton.png}
+                    \caption{Song Button}
+                    \label{fig:songbutton}
+                \end{figure}
+
+                Cada canción dentro de una playlist tiene un componente dedicado para su gestión y su información, pulsando sobre este se inicia la reproducción directa de una canción. A la derecha se encuentra un \textit{dropdown menu} el cual permite añadir la canción a la cola, añadirla a otra playlist y, si no se encuentra sobre \verb|all songs| eliminarla de la playlist (El concepto de \verb|All Songs se explicará más adelante|). \\
+
+                Los atributos del componente son:
+
+                \begin{lstlisting}[caption={Atributos Song Button}]
+isModalOpen: boolean = false;
+
+isDropDownOpen: boolean = false;
+
+constructor (public songManagement:SongManagementService, public songAdding:SongAddingService, public mainScreenStatus:MainScreenStatusService) {}
+
+@Input() id!: string;
+@Input() path!: string;
+@Input() title!: string;
+@Input() artist!: string;
+@Input() album!: string;
+@Input() year!: string;
+@Input() duration!: string;
+@Input() coverPath!: string;
+@Input() isStarred!: boolean;
+
+@Input() playlistId!: number;
+
+coverUrl: string = 'assets/black.jpg';
+                \end{lstlisting}
+
+                Entre ellos se encuentran los metadatos de cada canción y la playlist en la que se encuentran mostrados ahora mismo. Estos datos son recibidos desde el componente padre. \\
+
+                Además posee la interfaz \verb|Song|:
+
+                \begin{lstlisting}[caption={Song}]
+interface Song {
+  id:string,
+  path:string,
+  title:string,
+  artist:string,
+  album:string,
+  year:string,
+  duration:string,
+  coverPath:string,
+  isStarred:boolean
+}
+                \end{lstlisting}
+
+                Este componente posee una cantidad interesante de métodos que serán explicados a continuación:
+
+                \begin{lstlisting}[caption={getCoverPath()}]
+async getCoverPath(): Promise<string> {
+    if (!this.coverPath) return 'assets/black.jpg';
+    console.log("Hola")
+
+    const fileData = await readFile(this.coverPath);
+    
+    const blob = new Blob([fileData], { type: 'image/jpeg' });
+
+    if (this.coverUrl) {
+      URL.revokeObjectURL(this.coverUrl);
+    }
+
+    return URL.createObjectURL(blob);
+}
+                \end{lstlisting}
+
+                Como ha sido explicado antes, las rutas de imágenes no son aptas para ser mostradas directamente en Angular, por ello debe de crearse un \verb|blob| y asignarselo a la variable \verb|coverPath| cuando se inicializa el componente. (Por supuesto con una imagen predeterminada en caso de que no sea posible encontrar una imagen válida).
+
+                \begin{lstlisting}[caption={Dropdown menu}]
+toggleDropDown() {
+    this.isDropDownOpen = !this.isDropDownOpen;
+}
+
+closeDropDown() {
+    this.isDropDownOpen = false;
+}
+                \end{lstlisting}
+
+                Para acceder a las opciones de las canciones un \textit{dropdown menu} es desplegado.
+
+                \begin{lstlisting}[caption={playSong() y addSongToQueue()}]
+playSong() {
+    let song:Song = {id: this.id, path: this.path, title:this.title, artist: this.artist, album: this.album, year: this.year, duration: this.duration, coverPath: this.coverPath, isStarred: this.isStarred };
+    this.songManagement.setOneSong(song);
+}
+
+addSongToQueue() {
+    let song:Song = {id: this.id, path: this.path, title:this.title, artist: this.artist, album: this.album, year: this.year, duration: this.duration, coverPath: this.coverPath, isStarred: this.isStarred };
+    this.songManagement.addOneSong(song);
+}
+                \end{lstlisting}
+
+                Los metadatos de la canción son empaquetados en una variable de tipo Song para posteriormente ser enviados al servicio \verb|song-management| ya sea para su inmediata reproducción o para ser añadidos a la cola de canciones.
+
+                \begin{lstlisting}[caption={addSongToPlaylist()}]
+addSongToPlaylist() {
+    this.songAdding.getAllPlaylists();
+    this.isModalOpen = true;
+}
+
+close() {
+    this.isModalOpen = false;
+    this.songAdding.letGo();
+}
+                \end{lstlisting}
+
+                Se reciben y se almacenan todas las playlist en el servicio \verb|song-adding| y se abre el modal con la lista de playlist para elegir en cual insertar la canción.
+
+                Una vez la canción ha sido añadida se cierra el menu modal y se vuelve a llamar al servicio para que libere todas las playlist de su memoria y asi mejorar el rendimiento.
+
+
                 \paragraph{Playlist Button}
                 ‎
 
@@ -575,7 +693,7 @@ async getCoverPath(): Promise<string> {
 }
                 \end{lstlisting}
 
-                Como ha sido explicado antes, las rutas de imágenes no son aptas para ser mostradas directamente en Angular, por ello debe de crearse un \verb|blob| y asignarselo a la variable \verb|coverPath| cuando se inicializa el componente. (Por supuesto con una imagen predeterminada en caso de que no sea posible encontrar una imagen válida).
+                Mismo método usado en el componente anterior.
 
                 \begin{lstlisting}[caption={addSongToPlaylist()}]
 async addSongToPlaylist() {
@@ -586,51 +704,6 @@ async addSongToPlaylist() {
                 \end{lstlisting}
 
                 Se realiza una llamada a Rust para añadir la canción a la base de datos y se actualiza la \verb|mainpage|.
-
-
-                \paragraph{Song Button}
-                ‎
-
-                \begin{figure}[H]
-                    \centering
-                    \includegraphics[width=1\textwidth]{media/screenshots/songbutton.png}
-                    \caption{Song Button}
-                    \label{fig:songbutton}
-                \end{figure}
-
-                Cada canción dentro de una playlist tiene un componente dedicado para su gestión y su información, pulsando sobre este se inicia la reproducción directa de una canción. A la derecha se encuentra un \textit{dropdown menu} el cual permite añadir la canción a la cola, añadirla a otra playlist y, si no se encuentra sobre \verb|all songs| eliminarla de la playlist (El concepto de \verb|All Songs se explicará más adelante|). \\
-
-                Los atributos del componente son:
-
-                \begin{lstlisting}[caption={Atributos Song Button}]
-isModalOpen: boolean = false;
-
-isDropDownOpen: boolean = false;
-
-constructor (public songManagement:SongManagementService, public songAdding:SongAddingService, public mainScreenStatus:MainScreenStatusService) {}
-
-@Input() id!: string;
-@Input() path!: string;
-@Input() title!: string;
-@Input() artist!: string;
-@Input() album!: string;
-@Input() year!: string;
-@Input() duration!: string;
-@Input() coverPath!: string;
-@Input() isStarred!: boolean;
-
-@Input() playlistId!: number;
-
-coverUrl: string = 'assets/black.jpg';
-                \end{lstlisting}
-
-                Entre ellos se encuentran los metadatos de cada canción y la playlist en la que se encuentran mostrados ahora mismo. Estos datos son recibidos desde el componente padre. \\
-
-                Este componente posee una cantidad interesante de métodos que serán explicados a continuación:
-
-                
-
-                
 
             \subsubsection{Servicios}
 

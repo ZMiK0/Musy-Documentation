@@ -25,14 +25,14 @@
 \contentsline {paragraph}{Botón New Playlist}{10}{section*.6}%
 \contentsline {paragraph}{Boton Search}{13}{section*.7}%
 \contentsline {subsubsection}{\numberline {9.1.3}Mainscreen}{15}{subsubsection.9.1.3}%
-\contentsline {paragraph}{Playlist Button}{15}{section*.8}%
-\contentsline {paragraph}{Song Button}{16}{section*.9}%
-\contentsline {subsubsection}{\numberline {9.1.4}Servicios}{18}{subsubsection.9.1.4}%
-\contentsline {subsection}{\numberline {9.2}Backend}{18}{subsection.9.2}%
-\contentsline {subsubsection}{\numberline {9.2.1}Tauri API}{18}{subsubsection.9.2.1}%
-\contentsline {subsubsection}{\numberline {9.2.2}Sync method}{18}{subsubsection.9.2.2}%
-\contentsline {subsubsection}{\numberline {9.2.3}SQL CRUD}{18}{subsubsection.9.2.3}%
-\contentsline {section}{\numberline {10}Conclusiones}{18}{section.10}%
-\contentsline {subsection}{\numberline {10.1}Logros principales}{18}{subsection.10.1}%
-\contentsline {subsection}{\numberline {10.2}Dificultades clave}{18}{subsection.10.2}%
-\contentsline {subsection}{\numberline {10.3}Valoración global}{19}{subsection.10.3}%
+\contentsline {paragraph}{Song Button}{15}{section*.8}%
+\contentsline {paragraph}{Playlist Button}{18}{section*.9}%
+\contentsline {subsubsection}{\numberline {9.1.4}Servicios}{20}{subsubsection.9.1.4}%
+\contentsline {subsection}{\numberline {9.2}Backend}{20}{subsection.9.2}%
+\contentsline {subsubsection}{\numberline {9.2.1}Tauri API}{20}{subsubsection.9.2.1}%
+\contentsline {subsubsection}{\numberline {9.2.2}Sync method}{20}{subsubsection.9.2.2}%
+\contentsline {subsubsection}{\numberline {9.2.3}SQL CRUD}{20}{subsubsection.9.2.3}%
+\contentsline {section}{\numberline {10}Conclusiones}{20}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Logros principales}{20}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Dificultades clave}{20}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}Valoración global}{21}{subsection.10.3}%
