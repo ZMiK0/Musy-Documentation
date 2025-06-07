@@ -292,6 +292,8 @@ constructor (public mainScreenStatus:MainScreenStatusService, public songManagem
                 \paragraph{Playlist}
                 ‎ 
 
+                El componente gestiona la representación y comportamiento de las listas de reproducción en la interfaz. Su estructura básica comprende:
+
                 \begin{lstlisting}[caption={Atributos y Constructora Playlist}]
 coverPath = 'assets/black.jpg';
 
@@ -312,7 +314,9 @@ constructor (public mainScreenStatus:MainScreenStatusService) {}
 @Input() refreshFn!: () => void;
                 \end{lstlisting}
 
-                Cada playlist funciona como un botón que actualiza el contenido de la \verb|mainscreen|, que envía la lista de canciones correspondiente a ese componente mediante un servicio. Algunos de los métodos más importantes de este componente destacan:
+                Cada instancia de \verb|Playlist| actúa como elemento interactivo que actualiza el componente \verb|mainscreen| mediante un servicio. Utiliza el patrón de decoradores \verb|@Input| para recibir propiedades del componente padre. Gestiona un menú desplegable mediante el atributo \verb|isDropDownOpen|.
+                
+                Algunos de los métodos más importantes de este componente destacan:
 
                 \begin{lstlisting}[caption={getCoverPath()}]
 
@@ -332,7 +336,17 @@ async getCoverPath(): Promise<string> {
 }
                 \end{lstlisting}
 
-                Debido a que la ruta de la portada no es válida para ser mostrada directamente, ha de convertirse en un blob. Este método se encarga de ello y, en el caso de que no exista una portada se carga una imagen predeterminada.
+                Este método se encarga de:
+                \begin{enumerate}
+                    \item Verificar la existencia de una ruta de portada válida.
+                    \item Convertir la imagen local en un objeto \verb|Blob| mediante:
+                    \begin{itemize}
+                        \item Lectura del archivo con \verb|readFile|
+                        \item Creación de URL temporal con \verb|URL.createObjectURL|
+                    \end{itemize}
+                    \item Liberar recursos previos con \verb|URL.revokeObjectURL|
+                    \item Proporcionar fallback a imagen predeterminada (\verb|black.jpg|)
+                \end{enumerate}
 
                 \begin{lstlisting}[caption={Dropdown}]
 toggleDropDown() {
@@ -352,7 +366,7 @@ toggleDropDown() {
   }
                 \end{lstlisting}
 
-                Por temas de diseño, se ha decidido crear un dropdown menu (menú desplegable) con opciones como el boton de eliminación de playlist. A futuro es posible que se implementen más botones como por ejemplo para añadir una playlist a favoritos.
+                Por motivos de diseño, se ha implementado un menú desplegable (dropdown) que contiene acciones específicas para cada playlist. El estado de visualización se controla mediante la variable \verb|isDropDownOpen|, que se alterna con \verb|toggleDropDown()|. El cierre automático se gestiona mediante un \verb|@HostListener| que detecta clics fuera del área del componente. Actualmente, el menú incluye la opción de eliminación de playlists, pero su diseño permite la incorporación de nuevas funcionalidades como marcado como favorito o edición avanzada en futuras iteraciones.
 
                 \begin{figure}[H]
                     \centering
@@ -369,7 +383,7 @@ async removePlaylist() {
   }
                 \end{lstlisting}
 
-                Para eliminar una playlist de la sidebar se hace una petición al backend donde se realizará una consulta sql para eliminarla de la base de datos (Esto se verá mas adelante en el apartado de Rust y SQL).
+                El método \verb|removePlaylist()| se encarga de gestionar la eliminación de playlists mediante un proceso que consta de tres etapas principales: primero, se obtiene el directorio de datos de la aplicación mediante \verb|appDataDir()|; a continuación, se realiza una llamada al backend mediante \verb|invoke()|, enviando como parámetros el identificador de la playlist (\verb|playlist_id|) y la ruta de la base de datos (\verb|db_path|); finalmente, se ejecuta la función \verb|refreshFn()| para actualizar la interfaz. La implementación detallada de la consulta SQL y el manejo de la operación en el backend se analizará en la sección dedicada a Rust y SQL.
 
                 \paragraph{Botón New Playlist}
                 ‎ \\
@@ -418,7 +432,8 @@ async selectCover() {
 }
                 \end{lstlisting}
 
-                Usando la APP de tauri \verb|plugin-dialog| aparece una ventana del sistema que permite la selección de una imagen. Una vez seleccionada, un blob es creado y transformado en una imagen de baja resolución (con el fin de ahorrar espacio y mejorar el rendimiento). Esta nueva imagen es guardad con un nombre aleatorio dentro de \textit{pcovers}, carpeta la cual es creada si esta no existe previamente. A continuación el método \verb|createThumbnail| encontrado en la línea 13.
+                
+                El método \verb|selectCover()| gestiona la selección y procesamiento de imágenes para las portadas de playlists mediante el siguiente flujo: cuando se pulsa sobre el botón \textit{Select Cover}, se activa un diálogo de selección de archivos utilizando el \verb|plugin-dialog| de Tauri. La imagen seleccionada se convierte en un objeto \verb|Blob| y se redimensiona mediante el método \verb|createThumbnail| para optimizar su almacenamiento. El archivo resultante se guarda en el directorio \verb|pcovers| dentro de la carpeta de datos de la aplicación, con un nombre generado aleatoriamente para evitar colisiones. Si el directorio no existe previamente, se crea automáticamente durante este proceso. La ruta final de la imagen procesada se asigna al atributo \verb|coverPath| para su uso en la interfaz.
 
                 \begin{lstlisting}[caption={createThumbnail()}]
 async createThumbnail(blob: Blob, maxWidth: number, maxHeight: number): Promise<Uint8Array> {
@@ -461,7 +476,7 @@ async createThumbnail(blob: Blob, maxWidth: number, maxHeight: number): Promise<
 }
                 \end{lstlisting}
 
-                La MDN Canvas API es usada para la transformación de la imagen. \\
+                El método \verb|createThumbnail()| implementa el proceso de redimensionamiento de imágenes mediante la Canvas API, siguiendo tres etapas principales: primero, se crea un objeto \verb|Image| y se carga el \verb|Blob| de entrada mediante \verb|URL.createObjectURL()|. Segundo, al completarse la carga, se calcula el factor de escala proporcional para mantener las dimensiones dentro de los límites especificados (\verb|maxWidth| y \verb|maxHeight|), creando un elemento \verb|canvas| con las nuevas dimensiones. Finalmente, se dibuja la imagen escalada en el canvas y se convierte a un \verb|Uint8Array| comprimido en formato JPEG con calidad del 70\%, manejando posibles errores durante el proceso mediante el sistema de promesas. Esta implementación garantiza un procesamiento eficiente de imágenes para su almacenamiento optimizado en el sistema de archivos. \\
 
                 Una vez seleccionados la portada y el nombre de la playlist, al pulsar el boton \textit{done} se ejecuta el siguiente método, que realiza las siguientes acciones secuenciales:
 
@@ -511,10 +526,7 @@ async getAllSongs() {
 }
                 \end{lstlisting}
 
-                Cuando el botón de \textit{search} es pulsado, la sidebar espera a recibir todas las canciones encontradas en la carpeta de música para posteriormente popular la lista de canciones filtradas y abrir el menú modal de búsqueda. \\
-
-                En este menú es posible encontrar y buscar todas las canciones e interactuar con ellas como si estuvieran dentro de una playlist (esto es explicado más adelante).
-
+                Cuando se activa la función de búsqueda mediante el botón correspondiente, se ejecuta el siguiente proceso: en primer lugar, se obtienen todas las canciones disponibles a través del método \verb|getAllSongs()|, que realiza una llamada al backend mediante Tauri IPC para recuperar los registros de la base de datos SQLite. Una vez completada esta operación, la lista completa de canciones se asigna a la variable \verb|filteredSongs| y se activa el modal de búsqueda estableciendo \verb|isModalOpenSearch| a \verb|true|. Este menú modal permite buscar y seleccionar canciones de toda la colección musical, ofreciendo las mismas capacidades de interacción que cuando las canciones se encuentran dentro de una playlist específica, funcionalidad que se detallará más adelante en la documentación.
 
 
             \subsubsection{Mainscreen}
@@ -526,9 +538,18 @@ async getAllSongs() {
                 \label{fig:Mainscreen}
             \end{figure}
 
-            Componente donde son mostradas las canciones de una playlist junto a su información y los botones para iniciar a escuchar o para añadir a la cola.
+            Este componente se encarga de mostrar la lista de canciones pertenecientes a una playlist, presentando para cada una:
 
-            El archivo de typescript de este componente no posee nada sustancial, lo interesante es encontrado en sus subcomponentes.
+            \begin{itemize}
+                \item Información básica (título, artista, duración)
+                \item Controles interactivos:
+                \begin{itemize}
+                    \item Botón de reproducción directa
+                    \item Opción para añadir a la cola de reproducción
+                \end{itemize}
+            \end{itemize}
+
+            La implementación de este componente sigue un principio de composición, donde la lógica sustancial se encuentra distribuida en sus subcomponentes especializados, mientras que el componente principal actúa principalmente como contenedor y coordinador de la visualización. \\
 
                 \paragraph{Song Button}
                 ‎
@@ -540,7 +561,15 @@ async getAllSongs() {
                     \label{fig:songbutton}
                 \end{figure}
 
-                Cada canción dentro de una playlist tiene un componente dedicado para su gestión y su información, pulsando sobre este se inicia la reproducción directa de una canción. A la derecha se encuentra un \textit{dropdown menu} el cual permite añadir la canción a la cola, añadirla a otra playlist y, si no se encuentra sobre \verb|all songs| eliminarla de la playlist (El concepto de \verb|All Songs se explicará más adelante|). \\
+                Cada canción dentro de una playlist cuenta con un componente específico para su gestión y visualización de información. Al seleccionar el área principal del componente, se inicia automáticamente la reproducción del archivo de audio correspondiente. En la parte derecha del elemento se encuentra un menú desplegable (\textit{dropdown menu}) que proporciona las siguientes funcionalidades:
+
+                \begin{itemize}
+                    \item Añadir la canción a la cola de reproducción actual
+                    \item Agregar la canción a otra playlist existente
+                    \item Eliminar la canción de la playlist actual (función no disponible en la playlist \verb|All Songs|)
+                \end{itemize}
+
+                El concepto de \verb|All Songs|, que representa la colección completa de canciones disponibles, se explicará con mayor detalle en secciones posteriores de esta documentación.
 
                 Los atributos del componente son:
 
@@ -584,7 +613,7 @@ interface Song {
 }
                 \end{lstlisting}
 
-                Este componente posee una cantidad interesante de métodos que serán explicados a continuación:
+                El componente implementa diversos métodos para gestionar su funcionalidad, entre los cuales destaca:
 
                 \begin{lstlisting}[caption={getCoverPath()}]
 async getCoverPath(): Promise<string> {
@@ -603,7 +632,7 @@ async getCoverPath(): Promise<string> {
 }
                 \end{lstlisting}
 
-                Como ha sido explicado antes, las rutas de imágenes no son aptas para ser mostradas directamente en Angular, por ello debe de crearse un \verb|blob| y asignarselo a la variable \verb|coverPath| cuando se inicializa el componente. (Por supuesto con una imagen predeterminada en caso de que no sea posible encontrar una imagen válida).
+                Como ha sido explicado antes, las rutas de imágenes no son aptas para ser mostradas directamente en Angular, por ello debe de crearse un \verb|Blob| y asignarselo a la variable \verb|coverPath| cuando se inicializa el componente. (El manejo de la imagen predeterminada garantiza que siempre exista una representación visual, incluso cuando falla la carga de la portada original.).
 
                 \begin{lstlisting}[caption={Dropdown menu}]
 toggleDropDown() {
@@ -613,9 +642,25 @@ toggleDropDown() {
 closeDropDown() {
     this.isDropDownOpen = false;
 }
+
+@HostListener('document:click', ['$event'])
+  onClickOutside(event: Event) {
+    const target = event.target as HTMLElement;
+    if (!target.closest('.relative.inline-block')) {
+      this.closeDropDown();
+    }
+}
                 \end{lstlisting}
 
-                Para acceder a las opciones de las canciones un \textit{dropdown menu} es desplegado.
+                El menú desplegable (\textit{dropdown menu}) que contiene las opciones de gestión para cada canción implementa el siguiente comportamiento:
+
+                \begin{itemize}
+                    \item La visibilidad del menú se controla mediante el atributo booleano \verb|isDropDownOpen|
+                    \item El método \verb|toggleDropDown()| alterna el estado de visibilidad
+                    \item El método \verb|closeDropDown()| garantiza el cierre programático del menú
+                \end{itemize}
+
+                Para mejorar la experiencia de usuario, se implementa un cierre automático mediante el decorador \verb|@HostListener|, que detecta eventos de clic fuera del área del componente y ejecuta el cierre del menú cuando corresponde.
 
                 \begin{lstlisting}[caption={playSong() y addSongToQueue()}]
 playSong() {
@@ -629,7 +674,12 @@ addSongToQueue() {
 }
                 \end{lstlisting}
 
-                Los metadatos de la canción son empaquetados en una variable de tipo Song para posteriormente ser enviados al servicio \verb|song-management| ya sea para su inmediata reproducción o para ser añadidos a la cola de canciones.
+                Los métodos implementados siguen un patrón común donde los metadatos de la canción se estructuran en un objeto de tipo \verb|Song|, conteniendo todos los atributos relevantes (identificador, ruta, título, artista, álbum, año, duración, portada y estado de favorito). Este objeto se envía al servicio \verb|song-management|, diferenciándose en:
+
+                \begin{itemize}
+                    \item \verb|playSong()|: Inicia la reproducción inmediata mediante \verb|setOneSong()|
+                    \item \verb|addSongToQueue()|: Añade la canción a la cola de reproducción usando \verb|addOneSong()|
+                \end{itemize}
 
                 \begin{lstlisting}[caption={addSongToPlaylist()}]
 addSongToPlaylist() {
@@ -643,15 +693,56 @@ close() {
 }
                 \end{lstlisting}
 
-                Se reciben y se almacenan todas las playlist en el servicio \verb|song-adding| y se abre el modal con la lista de playlist para elegir en cual insertar la canción.
+                El flujo de añadir canciones a playlists sigue un proceso estructurado:
 
-                Una vez la canción ha sido añadida se cierra el menu modal y se vuelve a llamar al servicio para que libere todas las playlist de su memoria y asi mejorar el rendimiento.
+                \begin{itemize}
+                    \item \textbf{Fase de preparación}:
+                    \begin{itemize}
+                        \item Se obtienen todas las playlists disponibles mediante el servicio \verb|song-adding|.
+                        \item Se activa el modal de selección estableciendo \verb|isModalOpen| a \verb|true|.
+                    \end{itemize}
+                    
+                    \item \textbf{Fase de cierre}:
+                    \begin{itemize}
+                        \item Al completar la operación, se desactiva el modal (\verb|isModalOpen = false|).
+                        \item Se liberan los recursos del servicio mediante \verb|letGo()| para optimizar memoria.
+                    \end{itemize}
+                \end{itemize}
 
+                Este diseño garantiza una gestión eficiente de recursos durante el proceso de agregado de canciones a playlists.
+
+                \begin{lstlisting}[caption={removeSongFromPlaylist()}]
+async removeSongFromPlaylist() {
+    const data_dir = await appDataDir();
+    invoke('remove_song_from_playlist', {playlist_id: this.playlistId, song_id: this.id, db_path: data_dir});
+    this.mainScreenStatus.refresh();
+}
+                \end{lstlisting}
+
+                Cuando se activa la eliminación de una canción mediante el botón correspondiente, se ejecuta una petición al backend implementado en Rust que procesa la eliminación del registro en la base de datos SQLite. El método obtiene primero la ruta del directorio de datos mediante \verb|appDataDir()|, luego envía los parámetros necesarios (identificador de playlist, identificador de canción y ruta de la base de datos) a través de la función \verb|invoke()|. Finalmente, se actualiza el estado de la interfaz principal llamando al método \verb|refresh()| del servicio \verb|mainScreenStatus|, lo que garantiza que los cambios se reflejen inmediatamente en la vista del usuario.
+
+                \begin{lstlisting}[caption={toggleStarred()}]
+async toggleStarred() {
+    const data_dir = await appDataDir();
+    
+    if (this.isStarred) {
+      invoke('remove_is_starred', {song_id: this.id, db_path: data_dir});
+      console.log("Canción !Starred: " + this.id);
+    } else {
+      invoke('add_is_starred', {song_id: this.id, db_path: data_dir});
+      console.log("Canción Starred: " + this.id);
+    }
+
+    this.mainScreenStatus.refresh();
+}
+                \end{lstlisting}
+
+                El método \verb|toggleStarred()| gestiona el estado de favorito de las canciones mediante un proceso que alterna entre dos posibles acciones. Cuando una canción está marcada como favorita (\verb|isStarred = true|), se ejecuta la función \verb|remove_is_starred| en el backend de Rust para eliminarla de la lista especial. En caso contrario, se invoca \verb|add_is_starred| para añadirla. En ambos casos, se utiliza \verb|appDataDir()| para obtener la ruta de la base de datos y se actualiza la interfaz mediante \verb|mainScreenStatus.refresh()|. Las canciones marcadas como favoritas se agrupan automáticamente en una playlist especial accesible desde un botón específico en la barra lateral de la aplicación.
 
                 \paragraph{Playlist Button}
                 ‎
 
-                Este componente es mostrado cuando se inicia el menú modal para añadir una canción a una determinada playlist.
+                Este componente de interfaz se activa exclusivamente cuando se inicia el menú modal para añadir canciones a playlists.
 
                 Estos son sus atributos:
 
@@ -669,7 +760,7 @@ constructor (public mainScreenStatus:MainScreenStatusService) {}
 @Input() songId!: string;
                 \end{lstlisting}
 
-                El componente recibe los metadatos de una playlist junto al id de la canción para su posterior adición a esta. \\
+                Su funcionamiento principal consiste en presentar al usuario la lista completa de playlists disponibles en el sistema, permitiendo la selección del destino donde se agregará la canción actual. \\
 
                 Sus métodos más importantes son:
 
@@ -693,7 +784,7 @@ async getCoverPath(): Promise<string> {
 }
                 \end{lstlisting}
 
-                Mismo método usado en el componente anterior.
+                Este método, que sigue la misma implementación ya descrita en el componente anterior, se encarga de gestionar la visualización de las portadas de las playlists.
 
                 \begin{lstlisting}[caption={addSongToPlaylist()}]
 async addSongToPlaylist() {
@@ -703,9 +794,16 @@ async addSongToPlaylist() {
 }
                 \end{lstlisting}
 
-                Se realiza una llamada a Rust para añadir la canción a la base de datos y se actualiza la \verb|mainpage|.
+                El método \verb|addSongToPlaylist()| ejecuta el proceso de añadir una canción a una playlist específica mediante una llamada al backend implementado en Rust. Primero obtiene el directorio de datos de la aplicación usando \verb|appDataDir()|, luego envía los parámetros necesarios (ID de la playlist, ID de la canción y ruta de la base de datos) a través de la función \verb|invoke()|. Finalmente, actualiza la página principal llamando a \verb|mainScreenStatus.refresh()| para reflejar los cambios en la interfaz de usuario. Este flujo garantiza que la canción quede registrada en la base de datos y que la vista se actualice consistentemente.
+
+                \paragraph{Homeitem}
+                ‎
+
+                El componente \verb|Homeitem| representa una implementación alternativa al componente estándar \verb|Song|, desarrollado específicamente para cumplir con requerimientos particulares de diseño y funcionalidad en la playlist \textit{Starred Songs}.
 
             \subsubsection{Servicios}
+
+
 
         \subsection{Backend}
 
