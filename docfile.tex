@@ -7,6 +7,9 @@
 \usepackage{setspace}
 \usepackage{anyfontsize}
 \usepackage{hyperref}
+\usepackage[style=apa7, backend=biber]{biblatex}
+\addbibresource{referencias.bib}
+\DeclareLanguageMapping{spanish}{spanish-apa}
 \hypersetup{
     colorlinks=true,
     linkcolor=black,
@@ -615,25 +618,6 @@ interface Song {
 
                 El componente implementa diversos métodos para gestionar su funcionalidad, entre los cuales destaca:
 
-                \begin{lstlisting}[caption={getCoverPath()}]
-async getCoverPath(): Promise<string> {
-    if (!this.coverPath) return 'assets/black.jpg';
-    console.log("Hola")
-
-    const fileData = await readFile(this.coverPath);
-    
-    const blob = new Blob([fileData], { type: 'image/jpeg' });
-
-    if (this.coverUrl) {
-      URL.revokeObjectURL(this.coverUrl);
-    }
-
-    return URL.createObjectURL(blob);
-}
-                \end{lstlisting}
-
-                Como ha sido explicado antes, las rutas de imágenes no son aptas para ser mostradas directamente en Angular, por ello debe de crearse un \verb|Blob| y asignarselo a la variable \verb|coverPath| cuando se inicializa el componente. (El manejo de la imagen predeterminada garantiza que siempre exista una representación visual, incluso cuando falla la carga de la portada original.).
-
                 \begin{lstlisting}[caption={Dropdown menu}]
 toggleDropDown() {
     this.isDropDownOpen = !this.isDropDownOpen;
@@ -737,7 +721,7 @@ async toggleStarred() {
 }
                 \end{lstlisting}
 
-                El método \verb|toggleStarred()| gestiona el estado de favorito de las canciones mediante un proceso que alterna entre dos posibles acciones. Cuando una canción está marcada como favorita (\verb|isStarred = true|), se ejecuta la función \verb|remove_is_starred| en el backend de Rust para eliminarla de la lista especial. En caso contrario, se invoca \verb|add_is_starred| para añadirla. En ambos casos, se utiliza \verb|appDataDir()| para obtener la ruta de la base de datos y se actualiza la interfaz mediante \verb|mainScreenStatus.refresh()|. Las canciones marcadas como favoritas se agrupan automáticamente en una playlist especial accesible desde un botón específico en la barra lateral de la aplicación.
+                El método \verb|toggleStarred()| gestiona el estado de favorito de las canciones mediante un proceso que alterna entre dos posibles acciones. Cuando una canción está marcada como favorita (\verb|isStarred = true|), se ejecuta la función \verb|remove_is_starred| en el backend de Rust para eliminarla de la lista especial. En caso contrario, se invoca \verb|add_is_starred| para añadirla. En ambos casos, se utiliza \verb|appDataDir()| para obtener la ruta de la base de datos y se actualiza la interfaz mediante \\ \verb|mainScreenStatus.refresh()|. Las canciones marcadas como favoritas se agrupan automáticamente en una playlist especial accesible desde un botón específico en la barra lateral de la aplicación.
 
                 \paragraph{Playlist Button}
                 ‎
@@ -803,7 +787,410 @@ async addSongToPlaylist() {
 
             \subsubsection{Servicios}
 
+            Se han implementado servicios especializados para cada funcionalidad clave, tales como el manejo de listas de reproducción, la gestión de metadatos musicales y la información de la \verb|mainscreen|.
 
+                \paragraph{Main Screen Status}
+                ‎
+
+                \begin{lstlisting}[caption={Atributos Main Screen Status}]
+onHome = signal(true);
+pId: number = 0;
+pName: string = "";
+pDate: string = "";
+pCoverPath: string = "";
+pStarred: boolean = false;
+
+songs:Song[] = []
+
+constructor(public songManagement:SongManagementService) { }
+                \end{lstlisting}
+
+                El servicio \verb|MainScreenStatus| se encarga de gestionar y mantener el estado de la información mostrada en la interfaz principal de la aplicación (\verb|mainscreen|). Para ello, se han definido una serie de atributos que almacenan tanto los metadatos de la playlist actualmente visualizada como las canciones asociadas a la misma.
+
+                Entre los atributos principales se incluyen señales y variables que controlan el estado de la interfaz (\verb|onHome|), así como información específica de la playlist, como su identificador (\verb|pId|), nombre (\verb|pName|), fecha de creación (\verb|pDate|), ruta de la portada (\verb|pCoverPath|) y estado de favorito (\verb|pStarred|). Adicionalmente, se almacena un arreglo de canciones (\verb|songs|) que pertenecen a la playlist actual. Por supuesto este servicio contiene la interfaz \verb|Song| vista anteriormente.
+
+                El servicio se inicializa con una dependencia inyectada del \\ \verb|SongManagementService|, lo que permite una coordinación fluida entre la gestión del estado de la interfaz y las operaciones relacionadas con la reproducción de audio. Esta arquitectura modular facilita el mantenimiento y la escalabilidad del código. \\
+
+
+                \begin{lstlisting}[caption={setHome() y setPlaylist()}]
+setHome() {
+    this.onHome.set(true);
+    this.pId = 0;
+    this.pName = "";
+    this.pDate = "";
+    this.pCoverPath = "";
+    this.getAllStarred();
+}
+
+setPlaylist(id:number, name:string, date:string, coverPath:string, isStarred:boolean) {
+    this.onHome.set(false);
+    this.pId = id;
+    this.pName = name;
+    this.pDate = date;
+    this.pCoverPath = coverPath;
+    this.pStarred = isStarred;
+}
+                \end{lstlisting}
+
+                Los métodos \verb|setHome()| y \verb|setPlaylist()| gestionan la transición entre las diferentes vistas de la interfaz principal (\verb|mainscreen|). En el primer caso, \verb|setHome()| configura el estado para mostrar la lista de canciones marcadas como favoritas, estableciendo el valor \verb|onHome| a \verb|true| y reiniciando los metadatos de la playlist. Simultáneamente, se invoca el método \verb|getAllStarred()| para cargar las canciones destacadas.
+
+                Por otro lado, \verb|setPlaylist()| se utiliza para visualizar una playlist específica, actualizando los metadatos correspondientes (\verb|id|, \verb|name|, \verb|date|, \verb|coverPath| y estado \verb|isStarred|) y desactivando la vista de favoritos mediante \verb|onHome.set(false)|.
+
+                Cabe destacar que la nomenclatura original (\verb|Home|) fue heredada de las primeras etapas del desarrollo, cuando la estructura conceptual del proyecto aún estaba en definición. Posteriormente, esta terminología se actualizó a \verb|Starred Songs| para reflejar con mayor precisión su funcionalidad. A pesar de este cambio, se mantuvieron las referencias originales en el código para preservar la compatibilidad con los componentes existentes.
+
+                Se ha considerado una refactorización futura para unificar la nomenclatura y mejorar la coherencia del código. Actualmente, aunque los términos \verb|Home| y \verb|Starred Songs| coexisten, esta dualidad no afecta la funcionalidad del sistema. \\
+
+                \begin{lstlisting}[caption={Obtención de playlists}]
+async getAllSongs() {
+    const data_dir = await appDataDir();
+    try {
+      this.songs = await invoke<Song[]>('get_all_songs', {db_path: data_dir});
+    } catch (error) {
+      console.error('Error fetching songs:', error);
+      this.songs = [];
+    }
+}
+
+async getAllStarred() {
+    const data_dir = await appDataDir();
+    try {
+      this.songs = await invoke<Song[]>('get_all_starred', {db_path: data_dir});
+    } catch (error) {
+      console.error('Error fetching songs:', error);
+      this.songs = [];
+    }
+}
+
+async getPlaylistSongs() {
+    const data_dir = await appDataDir();
+    try {
+      this.songs = await invoke<Song[]>('get_playlist_songs', {playlist_id: this.pId, db_path: data_dir});
+    } catch (error) {
+      console.error('Error fetching songs:', error);
+      this.songs = [];
+    }
+}
+                \end{lstlisting}
+
+                Los métodos \verb|getAllSongs()|, \verb|getAllStarred()| y \verb|getPlaylistSongs()| gestionan la obtención de canciones desde diferentes fuentes, asignándolas posteriormente a la variable local \verb|songs|. En cada caso, se sigue un patrón similar: primero se obtiene el directorio de datos de la aplicación mediante \verb|appDataDir()|, luego se realiza una llamada al backend mediante \verb|invoke()|, y finalmente se manejan tanto el éxito como los posibles errores de la operación.
+
+                \begin{lstlisting}[caption={refresh()}]
+async refresh() {
+    if (this.pId != 0) {
+      await this.getPlaylistSongs();
+    } else if (this.pId == 0 && this.onHome()) {
+      await this.getAllStarred();
+    } else {
+      await this.getAllSongs();
+    }
+}
+                \end{lstlisting}
+
+                El método \verb|refresh()| se encarga de actualizar dinámicamente el contenido mostrado en la \verb|mainscreen| en función del contexto actual de reproducción. Para ello, se implementa un flujo condicional que evalúa el identificador de playlist almacenado en \verb|this.pId| y el estado de la señal \verb|onHome|.
+
+                Este enfoque garantiza que la interfaz siempre muestre el contenido más relevante según el estado actual de la aplicación, manteniendo una experiencia de usuario coherente. La implementación mediante llamadas asíncronas (\verb|await|) asegura que las operaciones de actualización se completen antes de proceder con cualquier otra acción, evitando así condiciones de carrera o estados inconsistentes en la interfaz.
+
+                \begin{lstlisting}[caption={playQueue() y addQueue()}]
+playQueue() {
+    this.songManagement.setQueue(this.songs);
+  }
+
+addQueue() {
+    this.songManagement.addQueue(this.songs);
+}
+                \end{lstlisting}
+
+                Estos métodos gestionan la interacción con la cola de reproducción a través del servicio \verb|SongManagementService|. Al pulsar sobre el nombre de la playlist, se invoca \verb|playQueue()|, que establece la lista actual de canciones (\verb|this.songs|) como nueva cola de reproducción mediante el método \verb|setQueue()| del servicio. De forma similar, al seleccionar la opción de añadir a cola, \verb|addQueue()| incorpora las canciones a la cola existente utilizando \verb|addQueue()| del mismo servicio.
+
+                Esta implementación refleja una arquitectura limpia donde la lógica de gestión de reproducción se delega completamente al servicio, permitiendo que los componentes se centren únicamente en la presentación de datos y captura de eventos de usuario. El servicio \\ \verb|SongManagementService| será analizado en profundidad en la siguiente sección de esta documentación.
+
+                \paragraph{Song Management}
+                ‎
+
+                \begin{lstlisting}[caption={Atributos Song Management}]
+songCover:string = ""
+songTitle:string = ""
+songArtist:string = ""
+
+constructor() { this.setupSongListeners() }
+
+song: HTMLAudioElement = new Audio();
+
+volume:number = 0;
+
+isPlaying:boolean = false;
+
+loopMode:string = "none" //* none - playlist - single
+shuffle:boolean = false
+
+queue:Song[] = []
+queueSave:Song[] = []
+currentIndex:number = 0
+currentIndexSave:number = 0
+currentISDelay:number = 0
+
+progress:number = 0;
+                \end{lstlisting}
+
+                El servicio \verb|SongManagementService| centraliza toda la lógica relacionada con la reproducción musical y gestión de colas en la aplicación. Sus atributos principales pueden categorizarse en tres grupos:
+
+                \begin{enumerate}
+                    \item \textbf{Metadatos visuales}: Almacena información de la canción actual (\verb|songCover|, \verb|songTitle|, \verb|songArtist|) para mostrarse en la interfaz.
+                    \item \textbf{Control de reproducción}: Incluye el elemento \verb|HTMLAudioElement| para manejo nativo del audio, junto con estados como \verb|isPlaying|, \verb|volume| y \verb|progress| que reflejan la reproducción en tiempo real.
+                    \item \textbf{Gestión de cola}: Mantiene dos versiones de la cola (\verb|queue| y \verb|queueSave|) para implementar funcionalidades como shuffle, junto con índices de posición (\verb|currentIndex|, \verb|currentIndexSave|) y modos especiales (\verb|loopMode|, \verb|shuffle|).
+                \end{enumerate}
+
+                El constructor inicializa automáticamente los listeners de eventos mediante \verb|setupSongListeners()|, preparando el servicio para responder a cambios de estado.
+
+                \begin{lstlisting}[caption={setUpSongListeners()}]
+private async setupSongListeners() {
+    this.song?.addEventListener('ended', () => this.playNext());
+    this.song?.addEventListener('timeupdate', () => {
+      if (this.song) {
+        this.progress = (this.song.currentTime / this.song.duration) * 100;
+      }
+    });
+}
+                \end{lstlisting}
+
+                El método \verb|setupSongListeners()| configura los listeners esenciales para el control de reproducción, implementando dos funcionalidades clave mediante eventos sobre el elemento \verb|HTMLAudioElement|.
+                
+                \begin{enumerate}
+                    \item El evento 'ended' activa automáticamente \verb|playNext()| al terminar la canción actual, permitiendo una reproducción continua.
+                    \item Segundo, el evento 'timeupdate' actualiza constantemente la propiedad \verb|progress| con el porcentaje de avance (calculado como la relación entre \verb|currentTime| y \verb|duration|), lo que se refleja en la barra de progreso de la interfaz.
+                \end{enumerate}
+
+                \begin{lstlisting}[caption={getCoverPath()}]
+async getCoverPath(coverPath:string): Promise<string> {
+    let coverUrl: string = 'assets/black.jpg';
+    if (!coverPath) return coverUrl;
+
+    const fileData = await readFile(coverPath);
+    
+    const blob = new Blob([fileData], { type: 'image/jpeg' });
+
+    if (coverUrl) {
+      URL.revokeObjectURL(coverUrl);
+    }
+
+    return URL.createObjectURL(blob);
+
+}
+                \end{lstlisting}
+
+                El método \verb|getCoverPath()| representa una solución centralizada para la gestión de portadas de las canciones, cuya implementación fue migrada desde el componente \verb|playbar| al servicio actual como parte de una refactorización para simplificar la arquitectura. Esta implementación unificada elimina la duplicación de código que existía cuando la funcionalidad estaba dispersa en varios componentes (a excepción de las playlists), mejorando el mantenimiento y permitiendo una gestión más eficiente de los recursos multimedia.
+
+                \begin{lstlisting}[caption={loadAndPlay()}]
+async loadAndPlay(_path:string, _index:number) {
+    try {
+      this.songTitle = this.queue[_index].title;
+      this.songArtist = this.queue[_index].artist;
+      
+      this.songCover = await this.getCoverPath(this.queue[_index].coverPath);
+
+      const path = _path;
+      
+      const fileData = await readFile(path);
+      const blob = new Blob([fileData], { type: 'audio/mp3' });
+      const audioUrl = URL.createObjectURL(blob);
+      
+      this.song.src = audioUrl;
+      await this.song.play();
+      this.isPlaying = true;
+      
+      console.log('Canción cargada correctamente');
+    } catch (error) {
+      console.error('Error al cargar la canción:', error);
+    }
+}
+                \end{lstlisting}
+
+                El método \verb|loadAndPlay()| gestiona todo el proceso de preparación y reproducción de canciones mediante un flujo secuencial. Primero actualiza los metadatos visuales (\verb|songTitle|, \verb|songArtist| y \verb|songCover|) utilizando los datos de la canción en la posición \verb|_index| de la cola. Para la portada, se emplea el método \verb|getCoverPath()| previamente descrito. Luego carga el archivo de audio desde la ruta especificada (\verb|_path|), lo convierte a un blob y genera una URL temporal para su reproducción. Finalmente asigna esta URL al elemento de audio (\verb|this.song.src|) e inicia la reproducción, actualizando el estado \verb|isPlaying|. Todo el proceso está encapsulado en un bloque try-catch que maneja posibles errores durante la carga.
+
+                \begin{lstlisting}[caption={set y add}]
+setQueue(songs:Song[]) {
+    this.queue = [...songs];
+    this.currentIndex = 0;
+    this.loadAndPlay(this.queue[0].path, 0);
+}
+
+addQueue(songs: Song[]) {
+    this.queue.push(...songs)
+}
+
+setOneSong(song:Song) {
+    this.queue = [];
+    this.queue.push(song);
+    this.currentIndex = 0;
+    this.loadAndPlay(this.queue[0].path, 0);
+}
+
+addOneSong(song:Song) {
+    this.queue.push(song);
+}
+                \end{lstlisting}
+
+                Estos métodos constituyen la API fundamental para la gestión de la cola de reproducción, mencionada recurrentemente en secciones anteriores de la documentación. La implementación sigue un patrón dual con variantes "set" (establecer) y "add" (añadir):
+
+                Los métodos \verb|setQueue()| y \verb|setOneSong()| reemplazan completamente la cola existente. En el primer caso, se recibe un array de canciones que se copia mediante el operador de propagación (\verb|...songs|), mientras que el segundo acepta una única canción, reiniciando la cola antes de añadirla. Ambos métodos comparten el mismo flujo posterior: reinician el índice actual a 0 e invocan \verb|loadAndPlay()| para comenzar la reproducción inmediata.
+
+                Por otro lado, \verb|addQueue()| y \verb|addOneSong()| implementan la funcionalidad complementaria de añadir contenido a la cola existente sin modificar el estado de reproducción actual. La versión \verb|addQueue()| utiliza el mismo operador de propagación para incorporar múltiples canciones, mientras que \verb|addOneSong()| trabaja con elementos individuales.
+
+                \begin{lstlisting}[caption={togglePlayPause()}]
+async togglePlayPause() {
+    if(!this.isPlaying) {
+      this.song.play()
+    } else {
+      this.song.pause()
+    }
+    this.isPlaying = !this.isPlaying;
+}
+                \end{lstlisting}
+                 
+                El método \verb|togglePlayPause()| implementa la funcionalidad básica de control de reproducción mediante un mecanismo de alternancia. Cuando se invoca, verifica el estado actual de reproducción a través de la variable \verb|isPlaying|. Si la reproducción está pausada (\verb|isPlaying| es falso), se ejecuta el método \verb|play()| del elemento de audio HTML. En caso contrario, se activa el método \verb|pause()|. Finalmente, se invierte el valor de \verb|isPlaying| para reflejar el nuevo estado.
+
+                \begin{lstlisting}[caption={playNext() y playPrevious()}]
+playNext() {
+    if ((this.currentIndex < this.queue.length - 1) && (this.loopMode == "none" || this.loopMode == "playlist")) {
+      this.currentIndex++;
+      this.currentISDelay++;
+      this.loadAndPlay(this.queue[this.currentIndex].path, this.currentIndex);
+    } else if ((this.currentIndex == this.queue.length - 1) && this.loopMode == "playlist") {
+      this.currentIndex = 0;
+      this.loadAndPlay(this.queue[this.currentIndex].path, this.currentIndex);
+    } else if (this.loopMode == "single") {
+      this.song.currentTime = 0
+    } else {
+      this.stop();
+    }
+    console.log("CurrentIndex: " + this.currentIndex + " CurrentIndexSave: " + this.currentIndexSave)
+}
+
+playPrevious() {
+    if(this.song.currentTime < 3) {
+      if((this.currentIndex > 0) && this.loopMode != "single") {
+        this.currentIndex--;
+        this.currentISDelay--;
+        this.loadAndPlay(this.queue[this.currentIndex].path, this.currentIndex);
+      } else if (this.currentIndex == 0) {
+        if (this.loopMode == "playlist") {
+          this.currentIndex = this.queue.length - 1
+          this.loadAndPlay(this.queue[this.currentIndex].path, this.currentIndex);
+        } else if(this.loopMode == "single") {
+          this.song.currentTime = 0
+        } else {
+          this.stop()
+        }
+      } else {
+        this.song.currentTime = 0
+      }
+    } else {
+      this.song.currentTime = 0
+    }
+    
+}
+
+stop() {
+    this.song.pause();
+    this.song.currentTime = 0;
+    this.isPlaying = false;
+}
+                \end{lstlisting}
+
+                Estos métodos implementan la lógica avanzada de navegación en la cola de reproducción, considerando diferentes modos de funcionamiento (\verb|none|, \verb|playlist| y \verb|single|). En \verb|playNext()|, se evalúa primero si hay canciones siguientes disponibles y el modo de repetición lo permite, incrementando entonces el índice y cargando la siguiente canción. Cuando se alcanza el final de la lista en modo \verb|playlist|, se reinicia al principio. Para el modo \verb|single|, simplemente se reinicia la canción actual.
+
+                El método \verb|playPrevious()| incorpora lógica adicional para diferenciar entre retroceder a la canción anterior (si la reproducción actual lleva menos de 3 segundos) o reiniciar la canción actual. Maneja correctamente los casos especiales como el inicio de la lista en modo \verb|playlist| (saltando al final) o el comportamiento específico del modo \verb|single|. Ambos métodos mantienen actualizados los índices de posición (\verb|currentIndex|, \verb|currentISDelay|) y registran el estado actual para depuración.
+
+                La implementación demuestra un manejo robusto de todos los casos posibles de navegación, proporcionando una experiencia de usuario consistente con los reproductores musicales profesionales. El diseño modular permite fácil extensión para añadir nuevos modos de reproducción o comportamientos especiales en futuras iteraciones.
+
+                \begin{lstlisting}[caption={Control de tiempo y volumen}]
+onInput(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const newTime = parseInt(input.value);
+    if (this.song) {
+      this.song.currentTime = newTime;
+    }
+}
+
+onVolume(event: Event) {
+    const inputVolume = event.target as HTMLInputElement;
+    const newVolume = parseInt(inputVolume.value) / 100;
+    if (this.song) {
+      this.song.volume = newVolume;
+    }
+    this.volume = parseInt(inputVolume.value);
+    return this.volume
+}
+                \end{lstlisting}
+
+                Estos métodos gestionan la interacción del usuario con los controles de reproducción. El método \verb|onInput()| se encarga de actualizar la posición de reproducción cuando el usuario manipula la barra de progreso. Primero obtiene el valor del elemento HTML que generó el evento, lo convierte a número entero y luego actualiza la propiedad \verb|currentTime| del elemento de audio si este está disponible.
+
+                Por su parte, \verb|onVolume()| controla los ajustes de volumen mediante un flujo similar: captura el valor del control deslizante de volumen, lo normaliza dividiendo entre 100 (para adaptarlo al rango 0-1 que espera el API de audio) y aplica este valor tanto al elemento de audio como a la variable local \verb|volume|. La conversión de tipos y normalización de valores garantiza que los controles funcionen consistentemente aunque provengan de diferentes fuentes de entrada.
+
+                Ambos métodos implementan una verificación de existencia (\verb|if (this.song)|) como medida de seguridad para evitar errores cuando no hay elemento de audio inicializado.
+
+                \begin{lstlisting}[caption={cycleLoop()}]
+cycleLoop() {
+    switch (this.loopMode) {
+      case "none":
+        this.loopMode = "playlist";
+        break;
+      case "playlist":
+        this.loopMode = "single";
+        break;
+      case "single":
+        this.loopMode = "none";
+        break;
+      default:
+        this.loopMode = "none";
+        break;
+    }
+    return this.loopMode;
+}
+                \end{lstlisting}
+
+                Este método se encarga de alternar cíclicamente la variable \verb|loopMode|.
+
+                \begin{lstlisting}[caption={Shuffle}]
+toggleShuffle() {
+    if(!this.shuffle) {
+      this.queueSave = [...this.queue];
+      this.currentIndexSave = this.currentIndex;
+      this.doShuffle();
+    } else if(this.shuffle) {
+      this.currentIndex = this.queueSave.indexOf(this.queue[this.currentIndex]);
+      this.queue = this.queueSave;
+    }
+    this.shuffle = !this.shuffle;
+    return this.shuffle;
+  }
+
+doShuffle() {
+    this.queue.unshift(this.queue[this.currentIndex])
+    this.queue.splice(this.currentIndex+1,1)
+    this.currentIndex = 0
+    let firstElement = this.queue[0]
+    let queueToShuffle = this.queue.splice(1);
+    let currentIndex2 = queueToShuffle.length;
+
+    while (currentIndex2 != 0) {
+
+      let randomIndex = Math.floor(Math.random() * currentIndex2);
+      currentIndex2--;
+
+      [queueToShuffle[currentIndex2], queueToShuffle[randomIndex]] = [queueToShuffle[randomIndex], queueToShuffle[currentIndex2]];
+    }
+    queueToShuffle.unshift(firstElement)
+    this.queue = queueToShuffle
+    
+}
+                \end{lstlisting}
+
+                La implementación del modo aleatorio (\textit{shuffle}) sigue un enfoque de dos fases mediante los métodos \verb|toggleShuffle()| y \verb|doShuffle()|. Cuando se activa el modo aleatorio, \verb|toggleShuffle()| preserva el estado original de la cola (\verb|queueSave|) y la posición actual (\verb|currentIndexSave|) antes de aplicar la aleatorización. Este diseño permite restaurar el orden inicial cuando se desactiva la función, manteniendo la coherencia con el comportamiento de reproductores profesionales.
+
+                El método \verb|doShuffle()| implementa el algoritmo Fisher-Yates para la mezcla aleatoria, optimizado para garantizar que la canción actual permanezca en primera posición durante la transición. El proceso consta de tres etapas: (1) extracción y protección de la canción en reproducción, (2) mezcla aleatoria del resto de la cola mediante intercambios indexados, y (3) reconstrucción de la cola con la canción actual preservada. Esta implementación demuestra especial atención al detalle en la experiencia de usuario, evitando saltos bruscos en la reproducción durante la activación del modo aleatorio.
+
+                El sistema mantiene sincronizados los estados paralelos (colas original y aleatoria, índices de posición) mediante operaciones atómicas, garantizando consistencia incluso en listas extensas. La solución combina eficiencia computacional (complejidad O(n) para la mezcla) con un diseño intuitivo que refleja los patrones de uso establecidos en aplicaciones de referencia del sector.
 
         \subsection{Backend}
 
@@ -836,4 +1223,5 @@ async addSongToPlaylist() {
 
         A pesar de las dificultades, el proyecto valida el potencial de Tauri para aplicaciones de audio eficientes, ofreciendo un rendimiento superior al de frameworks tradicionales. La escalabilidad de la arquitectura permite añadir funcionalidades como cambios en la apariencia en futuras iteraciones.
 
+\printbibliography
 \end{document}

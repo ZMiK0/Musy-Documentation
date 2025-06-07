@@ -27,13 +27,15 @@
 \contentsline {subsubsection}{\numberline {9.1.3}Mainscreen}{16}{subsubsection.9.1.3}%
 \contentsline {paragraph}{Song Button}{17}{section*.8}%
 \contentsline {paragraph}{Playlist Button}{22}{section*.9}%
-\contentsline {paragraph}{Homeitem}{24}{section*.10}%
-\contentsline {subsubsection}{\numberline {9.1.4}Servicios}{24}{subsubsection.9.1.4}%
-\contentsline {subsection}{\numberline {9.2}Backend}{24}{subsection.9.2}%
-\contentsline {subsubsection}{\numberline {9.2.1}Tauri API}{24}{subsubsection.9.2.1}%
-\contentsline {subsubsection}{\numberline {9.2.2}Sync method}{24}{subsubsection.9.2.2}%
-\contentsline {subsubsection}{\numberline {9.2.3}SQL CRUD}{24}{subsubsection.9.2.3}%
-\contentsline {section}{\numberline {10}Conclusiones}{24}{section.10}%
-\contentsline {subsection}{\numberline {10.1}Logros principales}{24}{subsection.10.1}%
-\contentsline {subsection}{\numberline {10.2}Dificultades clave}{25}{subsection.10.2}%
-\contentsline {subsection}{\numberline {10.3}Valoración global}{25}{subsection.10.3}%
+\contentsline {paragraph}{Homeitem}{23}{section*.10}%
+\contentsline {subsubsection}{\numberline {9.1.4}Servicios}{23}{subsubsection.9.1.4}%
+\contentsline {paragraph}{Main Screen Status}{23}{section*.11}%
+\contentsline {paragraph}{Song Management}{28}{section*.12}%
+\contentsline {subsection}{\numberline {9.2}Backend}{37}{subsection.9.2}%
+\contentsline {subsubsection}{\numberline {9.2.1}Tauri API}{37}{subsubsection.9.2.1}%
+\contentsline {subsubsection}{\numberline {9.2.2}Sync method}{37}{subsubsection.9.2.2}%
+\contentsline {subsubsection}{\numberline {9.2.3}SQL CRUD}{37}{subsubsection.9.2.3}%
+\contentsline {section}{\numberline {10}Conclusiones}{37}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Logros principales}{37}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Dificultades clave}{37}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}Valoración global}{38}{subsection.10.3}%
