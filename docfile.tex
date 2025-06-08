@@ -7,7 +7,7 @@
 \usepackage{setspace}
 \usepackage{anyfontsize}
 \usepackage{hyperref}
-\usepackage[style=apa7, backend=biber]{biblatex}
+\usepackage[style=apa, backend=biber]{biblatex}
 \addbibresource{referencias.bib}
 \DeclareLanguageMapping{spanish}{spanish-apa}
 \hypersetup{
@@ -1188,9 +1188,74 @@ doShuffle() {
 
                 La implementación del modo aleatorio (\textit{shuffle}) sigue un enfoque de dos fases mediante los métodos \verb|toggleShuffle()| y \verb|doShuffle()|. Cuando se activa el modo aleatorio, \verb|toggleShuffle()| preserva el estado original de la cola (\verb|queueSave|) y la posición actual (\verb|currentIndexSave|) antes de aplicar la aleatorización. Este diseño permite restaurar el orden inicial cuando se desactiva la función, manteniendo la coherencia con el comportamiento de reproductores profesionales.
 
-                El método \verb|doShuffle()| implementa el algoritmo Fisher-Yates para la mezcla aleatoria, optimizado para garantizar que la canción actual permanezca en primera posición durante la transición. El proceso consta de tres etapas: (1) extracción y protección de la canción en reproducción, (2) mezcla aleatoria del resto de la cola mediante intercambios indexados, y (3) reconstrucción de la cola con la canción actual preservada. Esta implementación demuestra especial atención al detalle en la experiencia de usuario, evitando saltos bruscos en la reproducción durante la activación del modo aleatorio.
+                El método \verb|doShuffle()| implementa el algoritmo Fisher-Yates (\textcite{wikifisheryates}) para la mezcla aleatoria, optimizado para garantizar que la canción actual permanezca en primera posición durante la transición. El proceso consta de tres etapas: \begin{enumerate}
+                  \item Extracción y protección de la canción en reproducción.
+                  \item Mezcla aleatoria del resto de la cola mediante intercambios indexados.
+                  \item reconstrucción de la cola con la canción actual preservada.
+                \end{enumerate}
+                
+                Esta implementación demuestra especial atención al detalle en la experiencia de usuario, evitando saltos bruscos en la reproducción durante la activación del modo aleatorio.
 
                 El sistema mantiene sincronizados los estados paralelos (colas original y aleatoria, índices de posición) mediante operaciones atómicas, garantizando consistencia incluso en listas extensas. La solución combina eficiencia computacional (complejidad O(n) para la mezcla) con un diseño intuitivo que refleja los patrones de uso establecidos en aplicaciones de referencia del sector.
+
+                \begin{lstlisting}[caption={formatTime()}]
+formatTime(seconds: number | undefined): string {
+    if (seconds === undefined || isNaN(seconds)) return '0:00';
+    
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = Math.floor(seconds % 60);
+    
+    const paddedSeconds = remainingSeconds.toString().padStart(2, '0');
+    
+    return `${minutes}:${paddedSeconds}`;
+}
+                \end{lstlisting}
+
+                El método \verb|formatTime()| implementa la conversión de segundos a un formato de tiempo legible (MM:SS) para la interfaz de usuario. Cuando recibe un valor indefinido o no numérico, devuelve por defecto '0:00' para mantener la consistencia visual. Para valores válidos, realiza tres operaciones matemáticas: primero calcula los minutos completos mediante división entera, luego obtiene los segundos restantes usando el operador módulo, y finalmente aplica un padding de dos dígitos a los segundos para mantener un formato uniforme.
+
+                La salida cumple con los estándares de reproductores musicales profesionales, mostrando siempre minutos y segundos con dos dígitos (ej: 3:05 en lugar de 3:5), lo que mejora la legibilidad y experiencia de usuario durante la reproducción.
+
+                \paragraph{Song Adding}
+                ‎
+
+                El servicio \verb|SongAddingService| se especializa en la gestión de playlists durante el proceso de añadir canciones. Su diseño minimalista cumple con el principio de responsabilidad única, enfocándose exclusivamente en dos operaciones clave: la obtención de playlists y la liberación de recursos.
+
+                \begin{lstlisting}[caption={song-adding.service.ts}]
+export class SongAddingService {
+  playlists: Playlist[] = []
+
+  constructor() { }
+
+  async getAllPlaylists() {
+    const data_dir = await appDataDir();
+    try {
+      this.playlists = await invoke<Playlist[]>('get_all_playlists', {db_path: data_dir});
+    } catch (error) {
+      console.error('Error fetching playlists:', error);
+      this.playlists = [];
+    }
+  }
+
+
+  letGo() {
+    this.playlists = [];
+  }
+
+
+}
+
+interface Playlist {
+  id: number;
+  name: string;
+  creation_date: string;
+  cover_path: string;
+  isStarred: boolean;
+}
+                \end{lstlisting}
+
+                El método principal \verb|getAllPlaylists()| establece comunicación con el backend mediante Tauri (\verb|invoke|), recuperando el listado completo de playlists desde la base de datos SQLite, este listado es mapeado en la parte de HTML del componente \textit{Song}. Implementa manejo de errores robusto que garantiza estabilidad incluso ante fallos de conexión, inicializando un array vacío como fallback. La interfaz \verb|Playlist| define la estructura de datos esperada, incluyendo metadatos esenciales como identificador único, nombre, fecha de creación, ruta de la portada y estado de favorito.
+
+                La función \verb|letGo()| proporciona un mecanismo de limpieza de memoria, liberando el array de playlists cuando ya no es necesario. Este enfoque refleja buenas prácticas de gestión de recursos en aplicaciones con componentes modales, donde la memoria puede acumularse durante ciclos repetidos de apertura/cierre.
 
         \subsection{Backend}
 
@@ -1198,10 +1263,194 @@ doShuffle() {
 
             \subsubsection{Tauri API}
 
-            \subsubsection{Sync method}
+            El archivo \verb|lib.rs| constituye el punto de entrada principal del backend desarrollado con Tauri y Rust, donde se configura la aplicación y se definen los manejadores de las operaciones entre el frontend y el sistema. Su estructura sigue un flujo bien definido que combina inicialización de plugins, gestión de permisos y registro de comandos invocables.
 
-            \subsubsection{SQL CRUD}
+            \begin{lstlisting}[caption={lib.rs}]
+use std::path::PathBuf;
+use logic::add_playlist;
+use logic::add_song;
+use logic::add_starred;
+use logic::remove_song;
+use logic::remove_a_playlist;
+use logic::remove_starred;
+use tauri_plugin_fs::FsExt;
 
+mod logic;
+use logic::Playlist;
+use logic::Song;
+
+#[tauri::command(rename_all = "snake_case")]
+async fn sync_lib(music_dir:String, app_data_dir:String) {
+    let _ = logic::sync(PathBuf::from(app_data_dir),PathBuf::from(music_dir));
+}
+
+
+#[tauri::command(rename_all = "snake_case")]
+async fn get_all_playlists(db_path:String) -> Result<Vec<Playlist>, String> {
+    let playlists = logic::get_all_playlists(db_path)?;
+
+    Ok(playlists)
+}
+
+#[tauri::command(rename_all = "snake_case")]
+async fn get_all_songs(db_path:String) -> Result<Vec<Song>, String> {
+    let all_songs = logic::get_all_songs(db_path)?;
+
+    Ok(all_songs)
+}
+
+#[tauri::command(rename_all = "snake_case")]
+async fn get_playlist_songs(playlist_id: i64, db_path: String) -> Result<Vec<Song>, String> {
+    let playlist_songs = logic::get_playlist_songs(playlist_id, db_path)?;
+
+    Ok(playlist_songs)
+}
+
+#[tauri::command(rename_all = "snake_case")]
+async fn get_all_starred(db_path:String) -> Result<Vec<Song>, String> {
+    let all_songs = logic::get_all_songs_starred(db_path)?;
+
+    Ok(all_songs)
+}
+
+#[tauri::command(rename_all = "snake_case")]
+async fn create_playlist(name:String, cover_path:String, db_path:String) {
+    let _ = add_playlist(name, cover_path, db_path);
+}
+
+#[tauri::command(rename_all = "snake_case")]
+async fn remove_playlist(playlist_id:i64, db_path:String) {
+    let _ = remove_a_playlist(playlist_id, db_path);
+}
+
+#[tauri::command(rename_all = "snake_case")]
+async fn add_song_to_playlist(playlist_id:i64, song_id:String, db_path:String) {
+    let _ = add_song(playlist_id, song_id, db_path);
+}
+
+#[tauri::command(rename_all = "snake_case")]
+async fn remove_song_from_playlist(playlist_id:i64, song_id:String, db_path:String) {
+    let _ = remove_song(playlist_id, song_id, db_path);
+}
+
+#[tauri::command(rename_all = "snake_case")]
+async fn add_is_starred(song_id:String, db_path:String) {
+    let _ = add_starred(song_id, db_path);
+}
+
+#[tauri::command(rename_all = "snake_case")]
+async fn remove_is_starred(song_id:String, db_path:String) {
+    let _ = remove_starred(song_id, db_path);
+}
+
+#[cfg_attr(mobile, tauri::mobile_entry_point)]
+pub fn run() {
+    tauri::Builder::default()
+        .plugin(tauri_plugin_opener::init())
+        .plugin(tauri_plugin_dialog::init())
+        .plugin(tauri_plugin_fs::init())
+        .setup(|app| {
+            let scope = app.fs_scope();
+            if let Err(e) = scope.allow_directory("$HOME/Music", true) {
+                eprintln!("Failed access: {}", e)
+            }
+            if let Err(e) = scope.allow_directory("$APPDATA", true) {
+                eprintln!("Failed access: {}", e)
+            }
+            if let Err(e) = scope.allow_directory("$HOME/.config", true) {
+                eprintln!("Failed access: {}", e)
+            }
+            if let Err(e) = scope.allow_directory("$HOME/Library/Application Support", true) {
+                eprintln!("Failed access: {}", e)
+            }
+            if let Err(e) = scope.allow_directory("src-tauri", true) {
+                eprintln!("Failed access: {}", e)
+            }
+            
+            Ok(())
+         })
+        .invoke_handler(tauri::generate_handler![sync_lib, get_all_playlists, get_all_songs, get_playlist_songs, get_all_starred,create_playlist, remove_playlist, add_song_to_playlist, remove_song_from_playlist, add_is_starred, remove_is_starred])
+        .run(tauri::generate_context!())
+        .expect("error while running tauri application");
+}
+              
+            \end{lstlisting}
+            
+            En la fase de setup, se definen los directorios accesibles para la aplicación mediante \verb|fs_scope()|, abarcando ubicaciones críticas multiplataforma:
+
+            \begin{itemize}
+              \item Directorios de música (\$HOME/Music).
+              \item Rutas de configuración según el SO (\verb|$APPDATA| en Windows, \verb|$HOME/.local/share/| en Linux, \verb|Library/Application Support| en macOS).
+            \end{itemize}
+
+            El método \verb|invoke_handler| asocia las funciones Rust con llamadas desde el frontend mediante \verb|generate_handler!|.
+
+            Los handlers registrados incluyen:
+
+            \begin{itemize}
+              \item Gestión de playlists (\verb|create_playlist|, \verb|remove_playlist|)
+              \item Consultas a la base de datos (\verb|get_all_songs|)
+              \item Control de canciones destacadas (\verb|add_is_starred|)
+            \end{itemize}
+
+            Finalmente, el builder se ejecuta con \verb|run()|, propagando cualquier error durante el arranque.
+
+            \subsubsection{Diseño de la base de datos}
+
+            \begin{figure}[H]
+              \centering
+              \includegraphics[width=0.8\textwidth]{media/ER.drawio.png}
+              \caption{Diagrama Entidad - Relación}
+              \label{fig:er}
+            \end{figure}
+
+            \begin{figure}[H]
+              \centering
+              \includegraphics[width=0.8\textwidth]{media/DiagramaRelacional.png}
+              \caption{Diagrama Relacional}
+              \label{fig:relacional}
+            \end{figure}
+
+            La base de datos se ha diseñado como un sistema relacional que gestiona dos entidades principales: las canciones y las listas de reproducción. El esquema sigue los principios de normalización para eliminar redundancias, utilizando una tabla intermedia para manejar la relación \textit{muchos-a-muchos} entre estas entidades.
+
+              \paragraph{All Songs}
+              ‎ \\
+
+              Funciona como repositorio central para todas las canciones disponibles en el sistema. Cada registro contiene:
+
+              \begin{itemize}
+                \item \textbf{id}: Hash único que actúa como clave primaria.
+                \item \textbf{Metadatos}: Incluye título, artista, álbum, y año de lanzamiento.
+                \item \textbf{Datos}:  Almacena la ruta del archivo, duración en segundos y ubicación de la portada.
+                \item \textbf{isStarred}: Indicador booleano que muestra si la canción ha sido marcada como favorita.
+              \end{itemize}
+
+              Esta tabla cumple una función dual como playlist especial (con ID 0 en la tabla de playlists) y presenta características únicas como la imposibilidad de eliminar canciones directamente desde ella.
+
+              \paragraph{Playlist}
+              ‎ \\
+
+              Almacena todas las listas de reproducción creadas por los usuarios con los siguientes campos:
+
+              \begin{itemize}
+                \item \textbf{id}: Identificador único autoincremental que actúa como clave primaria.
+                \item \textbf{Metadatos}: Nombre de la playlist, fecha de creación (formato ISO 8601) y ruta a la imagen de portada (previamente procesada y optimizada).
+                \item \textbf{isStarred}: Campo reservado para futuras implementaciones, actualmente no utilizado en la versión 1.0 debido a complejidades en la interacción con la interfaz gráfica.
+              \end{itemize}
+
+              \paragraph{Song Playlist}
+              ‎ \\
+
+              Establece las relaciones entre canciones y playlists mediante un diseño minimalista que contiene únicamente:
+
+              \begin{itemize}
+                \item Clave foránea a \verb|All_Songs.id|.
+                \item Clave foránea a \verb|Playlist.id|.
+              \end{itemize}
+
+              Esta estructura permite consultas eficientes tanto para recuperar todas las canciones de una playlist como para identificar en qué playlists aparece una canción específica. La integridad referencial se mantiene mediante restricciones \verb|FOREIGN KEY| que garantizan la consistencia de los datos.
+
+            \subsubsection{Logica}
 
 \section{Conclusiones}
 
@@ -1223,5 +1472,24 @@ doShuffle() {
 
         A pesar de las dificultades, el proyecto valida el potencial de Tauri para aplicaciones de audio eficientes, ofreciendo un rendimiento superior al de frameworks tradicionales. La escalabilidad de la arquitectura permite añadir funcionalidades como cambios en la apariencia en futuras iteraciones.
 
+          \subsubsection{Paginas webs visitadas durante el desarrollo}
+
+          \begin{itemize}
+            \item \textcite{angular2025} Documentación de Angular.
+            \item \textcite{cursoangular2025} Curso web de Angular.
+            \item \textcite{fontawesome} Iconos.
+            \item \textcite{lofty} Audio en Rust.
+            \item \textcite{mdnarraybuffer}
+            \item \textcite{mdnblob}
+            \item \textcite{mdncanvas}
+            \item \textcite{mdnpadStart}
+            \item \textcite{rusqlite} Bases de datos en Rust.
+            \item \textcite{stackoverflowshuffle}
+            \item \textcite{tailwind2025} Estilo de HTML.
+            \item \textcite{tauri2024} Base del programa.
+            \item \textcite{walkdir} Recorrer directorios en Rust.
+            \item \textcite{youtuberust2024} Aprendizaje de Rust
+            \item \textcite{mermaid} Para la creación de Diagramas.
+          \end{itemize}
 \printbibliography
 \end{document}

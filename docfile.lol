@@ -32,3 +32,6 @@
 \contentsline {lstlisting}{\numberline {32}Control de tiempo y volumen}{34}{lstlisting.32}%
 \contentsline {lstlisting}{\numberline {33}cycleLoop()}{35}{lstlisting.33}%
 \contentsline {lstlisting}{\numberline {34}Shuffle}{35}{lstlisting.34}%
+\contentsline {lstlisting}{\numberline {35}formatTime()}{37}{lstlisting.35}%
+\contentsline {lstlisting}{\numberline {36}song-adding.service.ts}{38}{lstlisting.36}%
+\contentsline {lstlisting}{\numberline {37}lib.rs}{39}{lstlisting.37}%

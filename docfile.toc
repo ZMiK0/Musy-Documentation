@@ -31,11 +31,16 @@
 \contentsline {subsubsection}{\numberline {9.1.4}Servicios}{23}{subsubsection.9.1.4}%
 \contentsline {paragraph}{Main Screen Status}{23}{section*.11}%
 \contentsline {paragraph}{Song Management}{28}{section*.12}%
-\contentsline {subsection}{\numberline {9.2}Backend}{37}{subsection.9.2}%
-\contentsline {subsubsection}{\numberline {9.2.1}Tauri API}{37}{subsubsection.9.2.1}%
-\contentsline {subsubsection}{\numberline {9.2.2}Sync method}{37}{subsubsection.9.2.2}%
-\contentsline {subsubsection}{\numberline {9.2.3}SQL CRUD}{37}{subsubsection.9.2.3}%
-\contentsline {section}{\numberline {10}Conclusiones}{37}{section.10}%
-\contentsline {subsection}{\numberline {10.1}Logros principales}{37}{subsection.10.1}%
-\contentsline {subsection}{\numberline {10.2}Dificultades clave}{37}{subsection.10.2}%
-\contentsline {subsection}{\numberline {10.3}Valoración global}{38}{subsection.10.3}%
+\contentsline {paragraph}{Song Adding}{37}{section*.13}%
+\contentsline {subsection}{\numberline {9.2}Backend}{39}{subsection.9.2}%
+\contentsline {subsubsection}{\numberline {9.2.1}Tauri API}{39}{subsubsection.9.2.1}%
+\contentsline {subsubsection}{\numberline {9.2.2}Diseño de la base de datos}{43}{subsubsection.9.2.2}%
+\contentsline {paragraph}{All Songs}{43}{section*.14}%
+\contentsline {paragraph}{Playlist}{44}{section*.15}%
+\contentsline {paragraph}{Song Playlist}{44}{section*.16}%
+\contentsline {subsubsection}{\numberline {9.2.3}Logica}{45}{subsubsection.9.2.3}%
+\contentsline {section}{\numberline {10}Conclusiones}{45}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Logros principales}{45}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Dificultades clave}{45}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}Valoración global}{45}{subsection.10.3}%
+\contentsline {subsubsection}{\numberline {10.3.1}Paginas webs visitadas durante el desarrollo}{46}{subsubsection.10.3.1}%

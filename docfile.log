@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024/nixos.org) (preloaded format=xelatex 1980.1.1)  8 JUN 2025 01:29
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024/nixos.org) (preloaded format=xelatex 1980.1.1)  8 JUN 2025 05:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -290,7 +290,10 @@ Package biblatex Info: ... file 'blx-dm.def' found.
 File: blx-dm.def 2024/03/21 v3.20 biblatex datamodel (PK/MW)
 )
 Package biblatex Info: Trying to load biblatex style data model...
-Package biblatex Info: ... file 'apa7.dbx' not found.
+Package biblatex Info: ... file 'apa.dbx' found.
+ (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/biblatex-apa/apa.dbx
+File: apa.dbx 2023/03/20 v9.17 APA biblatex style data model
+)
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
 \c@afterword=\count345
@@ -329,38 +332,48 @@ Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
 \c@savedshortauthor=\count378
 \c@shorteditor=\count379
 \c@savedshorteditor=\count380
-\c@labelname=\count381
-\c@savedlabelname=\count382
-\c@institution=\count383
-\c@savedinstitution=\count384
-\c@lista=\count385
-\c@savedlista=\count386
-\c@listb=\count387
-\c@savedlistb=\count388
-\c@listc=\count389
-\c@savedlistc=\count390
-\c@listd=\count391
-\c@savedlistd=\count392
-\c@liste=\count393
-\c@savedliste=\count394
-\c@listf=\count395
-\c@savedlistf=\count396
-\c@location=\count397
-\c@savedlocation=\count398
-\c@organization=\count399
-\c@savedorganization=\count400
-\c@origlocation=\count401
-\c@savedoriglocation=\count402
-\c@origpublisher=\count403
-\c@savedorigpublisher=\count404
-\c@publisher=\count405
-\c@savedpublisher=\count406
-\c@language=\count407
-\c@savedlanguage=\count408
-\c@origlanguage=\count409
-\c@savedoriglanguage=\count410
-\c@pageref=\count411
-\c@savedpageref=\count412
+\c@narrator=\count381
+\c@savednarrator=\count382
+\c@execproducer=\count383
+\c@savedexecproducer=\count384
+\c@execdirector=\count385
+\c@savedexecdirector=\count386
+\c@with=\count387
+\c@savedwith=\count388
+\c@labelname=\count389
+\c@savedlabelname=\count390
+\c@institution=\count391
+\c@savedinstitution=\count392
+\c@lista=\count393
+\c@savedlista=\count394
+\c@listb=\count395
+\c@savedlistb=\count396
+\c@listc=\count397
+\c@savedlistc=\count398
+\c@listd=\count399
+\c@savedlistd=\count400
+\c@liste=\count401
+\c@savedliste=\count402
+\c@listf=\count403
+\c@savedlistf=\count404
+\c@location=\count405
+\c@savedlocation=\count406
+\c@organization=\count407
+\c@savedorganization=\count408
+\c@origlocation=\count409
+\c@savedoriglocation=\count410
+\c@origpublisher=\count411
+\c@savedorigpublisher=\count412
+\c@publisher=\count413
+\c@savedpublisher=\count414
+\c@language=\count415
+\c@savedlanguage=\count416
+\c@origlanguage=\count417
+\c@savedoriglanguage=\count418
+\c@citation=\count419
+\c@savedcitation=\count420
+\c@pageref=\count421
+\c@savedpageref=\count422
 \shorthandwidth=\skip60
 \shortjournalwidth=\skip61
 \shortserieswidth=\skip62
@@ -387,50 +400,61 @@ Package biblatex Info: Trying to load generic definitions...
 Package biblatex Info: ... file 'biblatex.def' found.
  (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/biblatex/biblatex.def
 File: biblatex.def 2024/03/21 v3.20 biblatex compatibility (PK/MW)
-\c@textcitecount=\count413
-\c@textcitetotal=\count414
-\c@textcitemaxnames=\count415
-\c@biburlbigbreakpenalty=\count416
-\c@biburlbreakpenalty=\count417
-\c@biburlnumpenalty=\count418
-\c@biburlucpenalty=\count419
-\c@biburllcpenalty=\count420
+\c@textcitecount=\count423
+\c@textcitetotal=\count424
+\c@textcitemaxnames=\count425
+\c@biburlbigbreakpenalty=\count426
+\c@biburlbreakpenalty=\count427
+\c@biburlnumpenalty=\count428
+\c@biburlucpenalty=\count429
+\c@biburllcpenalty=\count430
 \biburlbigskip=\muskip18
 \biburlnumskip=\muskip19
 \biburlucskip=\muskip20
 \biburllcskip=\muskip21
-\c@smartand=\count421
+\c@smartand=\count431
 )
-Package biblatex Info: Trying to load bibliography style 'apa7'...
-Package biblatex Info: ... file 'apa7.bbx' not found.
-
-
-/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/biblatex/biblatex.sty:16290: Package biblatex Error: Style 'apa7' not found.
-
-See the biblatex package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.16290 \RequireBibliographyStyle{\blx@bbxfile}
-                                               
-The bibliography style 'apa7' could not be found.
-
-Package biblatex Info: Trying to load citation style 'apa7'...
-Package biblatex Info: ... file 'apa7.cbx' not found.
-
-/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/biblatex/biblatex.sty:16291: Package biblatex Error: Style 'apa7' not found.
-
-See the biblatex package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.16291 \RequireCitationStyle{\blx@cbxfile}
-                                           
-The citation style 'apa7' could not be found.
-
+Package biblatex Info: Trying to load bibliography style 'apa'...
+Package biblatex Info: ... file 'apa.bbx' found.
+ (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/biblatex-apa/apa.bbx
+File: apa.bbx 2023/03/20 v9.17 APA biblatex references style
+Package biblatex Info: Trying to load bibliography style 'standard'...
+Package biblatex Info: ... file 'standard.bbx' found.
+ (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/biblatex/bbx/standard.bbx
+File: standard.bbx 2024/03/21 v3.20 biblatex bibliography style (PK/MW)
+\c@bbx:relatedcount=\count432
+\c@bbx:relatedtotal=\count433
+)
+Package biblatex Info: Delimiter 'nameyeardelim' in context 'bib' already defined, overwriting.
+Package biblatex Info: Delimiter 'nameyeardelim' in context 'biblist' already defined, overwriting.
+Package biblatex Info: Delimiter 'nonameyeardelim' in context 'bib' already defined, overwriting.
+Package biblatex Info: Delimiter 'nonameyeardelim' in context 'biblist' already defined, overwriting.
+)
+Package biblatex Info: Trying to load citation style 'apa'...
+Package biblatex Info: ... file 'apa.cbx' found.
+ (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/biblatex-apa/apa.cbx
+File: apa.cbx 2023/03/20 v9.17 APA biblatex citation style
+Package biblatex Info: Delimiter 'nameyeardelim' in context '' already defined, overwriting.
+Package biblatex Info: Delimiter 'andothersdelim' in context '' already defined, overwriting.
+Package biblatex Info: Redefining '\fullcite'.
+Package biblatex Info: Redefining '\citeauthor'.
+Package biblatex Info: Redefining '\citeyear'.
+Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\cites'.
+Package biblatex Info: Redefining '\parencite'.
+Package biblatex Info: Redefining '\parencites'.
+Package biblatex Info: Redefining '\footcite'.
+Package biblatex Info: Redefining '\footcites'.
+Package biblatex Info: Redefining '\footcitetext'.
+Package biblatex Info: Redefining '\footcitetexts'.
+Package biblatex Info: Redefining '\smartcite'.
+Package biblatex Info: Redefining '\smartcites'.
+Package biblatex Info: Redefining '\textcite'.
+Package biblatex Info: Redefining '\textcites'.
+)
 Package biblatex Info: Trying to load configuration file...
 Package biblatex Info: ... file 'biblatex.cfg' found.
-(/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/biblatex/biblatex.cfg
+ (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/biblatex/biblatex.cfg
 File: biblatex.cfg 
 )
 Package biblatex Info: XeTeX detected.
@@ -445,24 +469,24 @@ Package: blx-case-expl3 2024/03/21 v3.20 expl3 case changing code for biblatex
 ))
 Package hyperref Info: Option `colorlinks' set `true' on input line 20.
  (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/listings/listings.sty
-\lst@mode=\count422
+\lst@mode=\count434
 \lst@gtempboxa=\box56
 \lst@token=\toks23
-\lst@length=\count423
+\lst@length=\count435
 \lst@currlwidth=\dimen152
-\lst@column=\count424
-\lst@pos=\count425
+\lst@column=\count436
+\lst@pos=\count437
 \lst@lostspace=\dimen153
 \lst@width=\dimen154
-\lst@newlines=\count426
-\lst@lineno=\count427
+\lst@newlines=\count438
+\lst@lineno=\count439
 \lst@maxwidth=\dimen155
  (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/listings/lstpatch.sty
 File: lstpatch.sty 2024/09/23 1.10c (Carsten Heinz)
 ) (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
-\c@lstnumber=\count428
-\lst@skipnumbers=\count429
+\c@lstnumber=\count440
+\lst@skipnumbers=\count441
 \lst@framebox=\box57
 ) (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/listings/listings.cfg
 File: listings.cfg 2024/09/23 1.10c listings configuration
@@ -508,8 +532,8 @@ Package fontspec Info:
 Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 (biblatex)                Loading 'csquotes' recommended.
 
-\@quotelevel=\count430
-\@quotereset=\count431
+\@quotelevel=\count442
+\@quotereset=\count443
 (./docfile.aux
 LaTeX Info: Redefining \. on input line 12.
 LaTeX Info: Redefining \% on input line 12.
@@ -620,11 +644,28 @@ Package biblatex Info: ... file 'spanish.lbx' found.
  (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/biblatex/lbx/spanish.lbx
 File: spanish.lbx 2024/03/21 v3.20 biblatex localization (PK/MW)
 ))
+Package biblatex Info: Trying to load language 'english' -> 'english-apa'...
+Package biblatex Info: ... file 'english-apa.lbx' found.
+ (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/biblatex-apa/english-apa.lbx
+File: english-apa.lbx 2023/03/20 v9.17 APA biblatex localisation
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
  (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/biblatex/lbx/english.lbx
 File: english.lbx 2024/03/21 v3.20 biblatex localization (PK/MW)
 )
+Package biblatex Info: Trying to load language 'american' -> 'american-apa'...
+Package biblatex Info: ... file 'american-apa.lbx' found.
+ (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/biblatex-apa/american-apa.lbx
+File: american-apa.lbx 2023/03/20 v9.17 APA biblatex localisation
+Package biblatex Info: Trying to load language 'american'...
+Package biblatex Info: ... file 'american.lbx' found.
+ (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/biblatex/lbx/american.lbx
+File: american.lbx 2024/03/21 v3.20 biblatex localization (PK/MW)
+Package biblatex Info: Trying to load language 'english'...
+Package biblatex Info: ... file 'english.lbx' found.
+ (/nix/store/vafgi83lld6zk7h5slx2zcd198f05v2p-texlive-2024-env-texmfdist/tex/latex/biblatex/lbx/english.lbx
+File: english.lbx 2024/03/21 v3.20 biblatex localization (PK/MW)
+))))
 Package biblatex Info: XeTeX detected.
 (biblatex)             Assuming input encoding 'utf8'.
 Package biblatex Info: Automatic encoding selection.
@@ -636,7 +677,7 @@ Package biblatex Info: ... file 'docfile.bbl' found.
  (./docfile.bbl)
 Package biblatex Info: Reference section=0 on input line 35.
 Package biblatex Info: Reference segment=0 on input line 35.
-\c@lstlisting=\count432
+\c@lstlisting=\count444
 File: media/logo-litterator.png Graphic file (type bmp)
 <media/logo-litterator.png>
 File: media/Square310x310Logo.png Graphic file (type bmp)
@@ -672,12 +713,12 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 9.
 
-Overfull \hbox (0.39418pt too wide) detected at line 39
+Overfull \hbox (0.39418pt too wide) detected at line 43
 \TU/IBMPlexSerif(0)/m/n/10.95 10.1. 
  []
 
 
-Overfull \hbox (0.39418pt too wide) detected at line 40
+Overfull \hbox (0.39418pt too wide) detected at line 44
 \TU/IBMPlexSerif(0)/m/n/10.95 10.2. 
  []
 
@@ -686,7 +727,7 @@ Overfull \hbox (0.39418pt too wide) detected at line 40
 [2
 
 ]
-Overfull \hbox (0.39418pt too wide) detected at line 41
+Overfull \hbox (0.39418pt too wide) detected at line 45
 \TU/IBMPlexSerif(0)/m/n/10.95 10.3. 
  []
 
@@ -988,14 +1029,87 @@ Overfull \hbox (6.04216pt too wide) in paragraph at lines 1152--1153
 [35]
 
 [36]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 1206.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 1206.
+
+Missing character: There is no ‎ (U+200E) in font IBM Plex Serif/OT:script=latn;language=dflt;mapping=tex-text;!
+
 
 [37]
+Overfull \hbox (1.61836pt too wide) in paragraph at lines 1256--1257
+[]\TU/IBMPlexSerif(0)/m/n/10.95 El método principal [][]\TU/lmtt/m/n/10.95 getAllPlaylists() []\TU/IBMPlexSerif(0)/m/n/10.95 establece comunicación con
+ []
 
-LaTeX Warning: Empty bibliography on input line 1226.
+
+
+[38]
+
+[39]
+
+[40]
+
+[41]
+Overfull \hbox (72.14pt too wide) in paragraph at lines 1383--1384
+[]\TU/IBMPlexSerif(0)/m/n/10.95 Rutas de configuración según el SO ([][]\TU/lmtt/m/n/10.95 $APPDATA []\TU/IBMPlexSerif(0)/m/n/10.95 en Windows, [][]\TU/lmtt/m/n/10.95 $HOME/.local/share/
+ []
+
+File: media/ER.drawio.png Graphic file (type bmp)
+<media/ER.drawio.png>
+
+
+[42]
+File: media/DiagramaRelacional.png Graphic file (type bmp)
+<media/DiagramaRelacional.png>
+
+Missing character: There is no ‎ (U+200E) in font IBM Plex Serif/OT:script=latn;language=dflt;mapping=tex-text;!
+
+Underfull \hbox (badness 10000) in paragraph at lines 1417--1418
+
+ []
 
 
 
-[38] (./docfile.aux
+[43]
+Missing character: There is no ‎ (U+200E) in font IBM Plex Serif/OT:script=latn;language=dflt;mapping=tex-text;!
+
+Underfull \hbox (badness 10000) in paragraph at lines 1431--1432
+
+ []
+
+Missing character: There is no ‎ (U+200E) in font IBM Plex Serif/OT:script=latn;language=dflt;mapping=tex-text;!
+
+Underfull \hbox (badness 10000) in paragraph at lines 1442--1443
+
+ []
+
+
+
+[44]
+
+[45]
+Overfull \hbox (17.54333pt too wide) in paragraph at lines 1495--1495
+[][]\TU/IBMPlexSerif(0)/m/n/10.95 Font Awesome Team. (s.f.). \TU/IBMPlexSerif(0)/m/it/10.95 SVGs Used\TU/IBMPlexSerif(0)/m/n/10.95 . Font Awesome. [][]$[][][][][] [] [] [] [][][][][][][][][][][] []
+ []
+
+
+
+[46]
+Overfull \hbox (24.29942pt too wide) in paragraph at lines 1495--1495
+[][]\TU/IBMPlexSerif(0)/m/n/10.95 MDN Web Docs. (s.f.-d). \TU/IBMPlexSerif(0)/m/it/10.95 String.prototype.padStart()\TU/IBMPlexSerif(0)/m/n/10.95 . Mozilla. [][]$[][][][][] [] [] [] [][][][][][][][][] []
+ []
+
+Missing character: There is no ⚙ (U+2699) in font IBM Plex Serif Italic/OT:script=latn;language=dflt;mapping=tex-text;!
+Missing character: There is no ️ (U+FE0F) in font IBM Plex Serif Italic/OT:script=latn;language=dflt;mapping=tex-text;!
+
+Overfull \hbox (50.20294pt too wide) in paragraph at lines 1495--1495
+\TU/IBMPlexSerif(0)/m/it/10.95 | Learn ⚙️ in 2024\TU/IBMPlexSerif(0)/m/n/10.95 . [][]$[][][][][] [] [] [] [][][][][] [] [][] [] [][] [] [][][][][][][][] [] [][] [] [][][][][][][][][][][][][][][][]$[][] 
+ []
+
+
+
+[47] (./docfile.aux
 LaTeX Info: Redefining \sptext on input line 12.
 LaTeX Info: Redefining \. on input line 12.
 LaTeX Info: Redefining \% on input line 12.
@@ -1012,21 +1126,22 @@ L3 programming layer <2025-01-18>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `docfile.out' has not changed.
-(rerunfilecheck)             Checksum: 1977ADA0A733FC7AC40CB10C20205D43;4424.
+(rerunfilecheck)             Checksum: FB4403CC611F30CB326C0AEAC39FD434;4806.
 
 Package biblatex Warning: Please rerun LaTeX.
+(biblatex)                Page breaks have changed.
 
 Package logreq Info: Writing requests to 'docfile.run.xml'.
 \openout1 = `docfile.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 21544 strings out of 473842
- 433035 string characters out of 5710491
- 1472628 words of memory out of 5000000
- 44358 multiletter control sequences out of 15000+600000
- 564925 words of font info for 86 fonts, out of 8000000 for 9000
+ 22610 strings out of 473842
+ 458136 string characters out of 5710491
+ 1707260 words of memory out of 5000000
+ 45393 multiletter control sequences out of 15000+600000
+ 565845 words of font info for 90 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 79i,6n,93p,956b,5933s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 79i,6n,93p,956b,6185s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on docfile.pdf (43 pages).
+Output written on docfile.pdf (52 pages).

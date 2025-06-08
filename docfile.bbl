@@ -16,5 +16,1010 @@
   {}
 \endgroup
 
+
+\refsection{0}
+  \datalist[entry]{apa/apasortcite//global/global/global}
+    \entry{angular2025}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=c621ca266c6ebbd99b2fa716591f0e63}{%
+           family={{Angular Team}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Angular}%
+      }
+      \strng{namehash}{c621ca266c6ebbd99b2fa716591f0e63}
+      \strng{fullhash}{c621ca266c6ebbd99b2fa716591f0e63}
+      \strng{fullhashraw}{c621ca266c6ebbd99b2fa716591f0e63}
+      \strng{bibnamehash}{c621ca266c6ebbd99b2fa716591f0e63}
+      \strng{authorbibnamehash}{c621ca266c6ebbd99b2fa716591f0e63}
+      \strng{authornamehash}{c621ca266c6ebbd99b2fa716591f0e63}
+      \strng{authorfullhash}{c621ca266c6ebbd99b2fa716591f0e63}
+      \strng{authorfullhashraw}{c621ca266c6ebbd99b2fa716591f0e63}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Home • Angular}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://v17.angular.io/docs
+      \endverb
+      \verb{url}
+      \verb https://v17.angular.io/docs
+      \endverb
+    \endentry
+    \entry{fontawesome}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=8a028bece1a3b1b085a4bb9e0f6fb480}{%
+           family={{Font Awesome Team}},
+           familyi={F\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Font Awesome}%
+      }
+      \strng{namehash}{8a028bece1a3b1b085a4bb9e0f6fb480}
+      \strng{fullhash}{8a028bece1a3b1b085a4bb9e0f6fb480}
+      \strng{fullhashraw}{8a028bece1a3b1b085a4bb9e0f6fb480}
+      \strng{bibnamehash}{8a028bece1a3b1b085a4bb9e0f6fb480}
+      \strng{authorbibnamehash}{8a028bece1a3b1b085a4bb9e0f6fb480}
+      \strng{authornamehash}{8a028bece1a3b1b085a4bb9e0f6fb480}
+      \strng{authorfullhash}{8a028bece1a3b1b085a4bb9e0f6fb480}
+      \strng{authorfullhashraw}{8a028bece1a3b1b085a4bb9e0f6fb480}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labeldatesource}{nodate}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{SVGs Used}
+      \verb{urlraw}
+      \verb https://fontawesome.com/
+      \endverb
+      \verb{url}
+      \verb https://fontawesome.com/
+      \endverb
+    \endentry
+    \entry{cursoangular2025}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=76e0f6efda1c9ec8e494c380400dc1cf}{%
+           family={Herrera},
+           familyi={H\bibinitperiod},
+           given={Fernando},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Udemy}%
+      }
+      \strng{namehash}{76e0f6efda1c9ec8e494c380400dc1cf}
+      \strng{fullhash}{76e0f6efda1c9ec8e494c380400dc1cf}
+      \strng{fullhashraw}{76e0f6efda1c9ec8e494c380400dc1cf}
+      \strng{bibnamehash}{76e0f6efda1c9ec8e494c380400dc1cf}
+      \strng{authorbibnamehash}{76e0f6efda1c9ec8e494c380400dc1cf}
+      \strng{authornamehash}{76e0f6efda1c9ec8e494c380400dc1cf}
+      \strng{authorfullhash}{76e0f6efda1c9ec8e494c380400dc1cf}
+      \strng{authorfullhashraw}{76e0f6efda1c9ec8e494c380400dc1cf}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Curso Angular}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://www.udemy.com/course/angular-2-fernando-herrera/
+      \endverb
+      \verb{url}
+      \verb https://www.udemy.com/course/angular-2-fernando-herrera/
+      \endverb
+    \endentry
+    \entry{lofty}{online}{}{}
+      \list{organization}{1}{%
+        {Docs.rs}%
+      }
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labeldatesource}{nodate}
+      \field{labeltitlesource}{title}
+      \field{title}{Lofty - Rust}
+      \verb{urlraw}
+      \verb https://docs.rs/lofty/latest/lofty/
+      \endverb
+      \verb{url}
+      \verb https://docs.rs/lofty/latest/lofty/
+      \endverb
+    \endentry
+    \entry{mdnarraybuffer}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=eace3534eb86e51f9a1db37427425ce9}{%
+           family={{MDN Web Docs}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Mozilla}%
+      }
+      \strng{namehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{fullhash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{fullhashraw}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{bibnamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorbibnamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authornamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorfullhash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorfullhashraw}{eace3534eb86e51f9a1db37427425ce9}
+      \field{extraname}{1}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradate}{1}
+      \field{labeldatesource}{nodate}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{ArrayBuffer}
+      \verb{urlraw}
+      \verb https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer
+      \endverb
+      \verb{url}
+      \verb https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer
+      \endverb
+    \endentry
+    \entry{mdnblob}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=eace3534eb86e51f9a1db37427425ce9}{%
+           family={{MDN Web Docs}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Mozilla}%
+      }
+      \strng{namehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{fullhash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{fullhashraw}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{bibnamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorbibnamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authornamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorfullhash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorfullhashraw}{eace3534eb86e51f9a1db37427425ce9}
+      \field{extraname}{2}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradate}{2}
+      \field{labeldatesource}{nodate}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Blob}
+      \verb{urlraw}
+      \verb https://developer.mozilla.org/en-US/docs/Web/API/Blob
+      \endverb
+      \verb{url}
+      \verb https://developer.mozilla.org/en-US/docs/Web/API/Blob
+      \endverb
+    \endentry
+    \entry{mdncanvas}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=eace3534eb86e51f9a1db37427425ce9}{%
+           family={{MDN Web Docs}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Mozilla}%
+      }
+      \strng{namehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{fullhash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{fullhashraw}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{bibnamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorbibnamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authornamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorfullhash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorfullhashraw}{eace3534eb86e51f9a1db37427425ce9}
+      \field{extraname}{3}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradate}{3}
+      \field{labeldatesource}{nodate}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Canvas API}
+      \verb{urlraw}
+      \verb https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API
+      \endverb
+      \verb{url}
+      \verb https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API
+      \endverb
+    \endentry
+    \entry{mdnpadStart}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=eace3534eb86e51f9a1db37427425ce9}{%
+           family={{MDN Web Docs}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Mozilla}%
+      }
+      \strng{namehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{fullhash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{fullhashraw}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{bibnamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorbibnamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authornamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorfullhash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorfullhashraw}{eace3534eb86e51f9a1db37427425ce9}
+      \field{extraname}{4}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradate}{4}
+      \field{labeldatesource}{nodate}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{String.prototype.padStart()}
+      \verb{urlraw}
+      \verb https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart
+      \endverb
+      \verb{url}
+      \verb https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart
+      \endverb
+    \endentry
+    \entry{mermaid}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=bd92892b43730bbb5e49863328d4fd12}{%
+           family={{Mermaid Team}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{bd92892b43730bbb5e49863328d4fd12}
+      \strng{fullhash}{bd92892b43730bbb5e49863328d4fd12}
+      \strng{fullhashraw}{bd92892b43730bbb5e49863328d4fd12}
+      \strng{bibnamehash}{bd92892b43730bbb5e49863328d4fd12}
+      \strng{authorbibnamehash}{bd92892b43730bbb5e49863328d4fd12}
+      \strng{authornamehash}{bd92892b43730bbb5e49863328d4fd12}
+      \strng{authorfullhash}{bd92892b43730bbb5e49863328d4fd12}
+      \strng{authorfullhashraw}{bd92892b43730bbb5e49863328d4fd12}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labeldatesource}{nodate}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Mermaid}
+      \verb{urlraw}
+      \verb https://mermaid.js.org/
+      \endverb
+      \verb{url}
+      \verb https://mermaid.js.org/
+      \endverb
+    \endentry
+    \entry{youtuberust2024}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=32e3047fa46e442a972d2e7375ee556e}{%
+           family={{Programming Channel}},
+           familyi={P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {YouTube}%
+      }
+      \strng{namehash}{32e3047fa46e442a972d2e7375ee556e}
+      \strng{fullhash}{32e3047fa46e442a972d2e7375ee556e}
+      \strng{fullhashraw}{32e3047fa46e442a972d2e7375ee556e}
+      \strng{bibnamehash}{32e3047fa46e442a972d2e7375ee556e}
+      \strng{authorbibnamehash}{32e3047fa46e442a972d2e7375ee556e}
+      \strng{authornamehash}{32e3047fa46e442a972d2e7375ee556e}
+      \strng{authorfullhash}{32e3047fa46e442a972d2e7375ee556e}
+      \strng{authorfullhashraw}{32e3047fa46e442a972d2e7375ee556e}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{21}
+      \field{month}{5}
+      \field{title}{Rust programming full course | Learn ⚙️ in 2024}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://youtu.be/rQ_J9WH6CGk?si=GBTKkMXJuvvyq208
+      \endverb
+      \verb{url}
+      \verb https://youtu.be/rQ_J9WH6CGk?si=GBTKkMXJuvvyq208
+      \endverb
+    \endentry
+    \entry{rusqlite}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=5d2abe4aebca77be26f48acaf83d9f3a}{%
+           family={{Rusqlite contributors}},
+           familyi={R\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {GitHub}%
+      }
+      \strng{namehash}{5d2abe4aebca77be26f48acaf83d9f3a}
+      \strng{fullhash}{5d2abe4aebca77be26f48acaf83d9f3a}
+      \strng{fullhashraw}{5d2abe4aebca77be26f48acaf83d9f3a}
+      \strng{bibnamehash}{5d2abe4aebca77be26f48acaf83d9f3a}
+      \strng{authorbibnamehash}{5d2abe4aebca77be26f48acaf83d9f3a}
+      \strng{authornamehash}{5d2abe4aebca77be26f48acaf83d9f3a}
+      \strng{authorfullhash}{5d2abe4aebca77be26f48acaf83d9f3a}
+      \strng{authorfullhashraw}{5d2abe4aebca77be26f48acaf83d9f3a}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labeldatesource}{nodate}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{rusqlite/rusqlite: Ergonomic bindings to SQLite for rust}
+      \verb{urlraw}
+      \verb https://github.com/rusqlite/rusqlite
+      \endverb
+      \verb{url}
+      \verb https://github.com/rusqlite/rusqlite
+      \endverb
+    \endentry
+    \entry{stackoverflowshuffle}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=5f84de3ac0a58f955caa9cb0d253dfc1}{%
+           family={{Stack Overflow contributors}},
+           familyi={S\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Stack Overflow}%
+      }
+      \strng{namehash}{5f84de3ac0a58f955caa9cb0d253dfc1}
+      \strng{fullhash}{5f84de3ac0a58f955caa9cb0d253dfc1}
+      \strng{fullhashraw}{5f84de3ac0a58f955caa9cb0d253dfc1}
+      \strng{bibnamehash}{5f84de3ac0a58f955caa9cb0d253dfc1}
+      \strng{authorbibnamehash}{5f84de3ac0a58f955caa9cb0d253dfc1}
+      \strng{authornamehash}{5f84de3ac0a58f955caa9cb0d253dfc1}
+      \strng{authorfullhash}{5f84de3ac0a58f955caa9cb0d253dfc1}
+      \strng{authorfullhashraw}{5f84de3ac0a58f955caa9cb0d253dfc1}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labeldatesource}{nodate}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{How to randomize (shuffle) a JavaScript array?}
+      \verb{urlraw}
+      \verb https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+      \endverb
+      \verb{url}
+      \verb https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+      \endverb
+    \endentry
+    \entry{tailwind2025}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=48dc69e06e7ff5a1447506c120e21b86}{%
+           family={{Tailwind CSS Team}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Tailwind CSS}%
+      }
+      \strng{namehash}{48dc69e06e7ff5a1447506c120e21b86}
+      \strng{fullhash}{48dc69e06e7ff5a1447506c120e21b86}
+      \strng{fullhashraw}{48dc69e06e7ff5a1447506c120e21b86}
+      \strng{bibnamehash}{48dc69e06e7ff5a1447506c120e21b86}
+      \strng{authorbibnamehash}{48dc69e06e7ff5a1447506c120e21b86}
+      \strng{authornamehash}{48dc69e06e7ff5a1447506c120e21b86}
+      \strng{authorfullhash}{48dc69e06e7ff5a1447506c120e21b86}
+      \strng{authorfullhashraw}{48dc69e06e7ff5a1447506c120e21b86}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Rapidly build modern websites without ever leaving your HTML}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://tailwindcss.com
+      \endverb
+      \verb{url}
+      \verb https://tailwindcss.com
+      \endverb
+    \endentry
+    \entry{tauri2024}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=c063ad8a44d09997a139bbae67f25e27}{%
+           family={{Tauri Team}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Tauri}%
+      }
+      \strng{namehash}{c063ad8a44d09997a139bbae67f25e27}
+      \strng{fullhash}{c063ad8a44d09997a139bbae67f25e27}
+      \strng{fullhashraw}{c063ad8a44d09997a139bbae67f25e27}
+      \strng{bibnamehash}{c063ad8a44d09997a139bbae67f25e27}
+      \strng{authorbibnamehash}{c063ad8a44d09997a139bbae67f25e27}
+      \strng{authornamehash}{c063ad8a44d09997a139bbae67f25e27}
+      \strng{authorfullhash}{c063ad8a44d09997a139bbae67f25e27}
+      \strng{authorfullhashraw}{c063ad8a44d09997a139bbae67f25e27}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{1}
+      \field{month}{10}
+      \field{title}{What is Tauri?}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://v2.tauri.app/start/
+      \endverb
+      \verb{url}
+      \verb https://v2.tauri.app/start/
+      \endverb
+    \endentry
+    \entry{walkdir}{online}{}{}
+      \list{organization}{1}{%
+        {Docs.rs}%
+      }
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labeldatesource}{nodate}
+      \field{labeltitlesource}{title}
+      \field{title}{Walkdir - Rust}
+      \verb{urlraw}
+      \verb https://docs.rs/walkdir/2.2.9/walkdir/
+      \endverb
+      \verb{url}
+      \verb https://docs.rs/walkdir/2.2.9/walkdir/
+      \endverb
+    \endentry
+    \entry{wikifisheryates}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=b6aea1a416c89509a7df1cbb69249cb6}{%
+           family={{Wikipedia contributors}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Wikipedia, The Free Encyclopedia}%
+      }
+      \strng{namehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{bibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorbibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authornamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{31}
+      \field{month}{5}
+      \field{title}{Fisher--Yates shuffle}
+      \field{urlday}{8}
+      \field{urlmonth}{6}
+      \field{urlyear}{2025}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://en.wikipedia.org/wiki/Fisher–Yates_shuffle
+      \endverb
+      \verb{url}
+      \verb https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
+      \endverb
+    \endentry
+  \enddatalist
+  \datalist[entry]{apa/global//global/global/global}
+    \entry{angular2025}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=c621ca266c6ebbd99b2fa716591f0e63}{%
+           family={{Angular Team}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Angular}%
+      }
+      \strng{namehash}{c621ca266c6ebbd99b2fa716591f0e63}
+      \strng{fullhash}{c621ca266c6ebbd99b2fa716591f0e63}
+      \strng{fullhashraw}{c621ca266c6ebbd99b2fa716591f0e63}
+      \strng{bibnamehash}{c621ca266c6ebbd99b2fa716591f0e63}
+      \strng{authorbibnamehash}{c621ca266c6ebbd99b2fa716591f0e63}
+      \strng{authornamehash}{c621ca266c6ebbd99b2fa716591f0e63}
+      \strng{authorfullhash}{c621ca266c6ebbd99b2fa716591f0e63}
+      \strng{authorfullhashraw}{c621ca266c6ebbd99b2fa716591f0e63}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Home • Angular}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://v17.angular.io/docs
+      \endverb
+      \verb{url}
+      \verb https://v17.angular.io/docs
+      \endverb
+    \endentry
+    \entry{fontawesome}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=8a028bece1a3b1b085a4bb9e0f6fb480}{%
+           family={{Font Awesome Team}},
+           familyi={F\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Font Awesome}%
+      }
+      \strng{namehash}{8a028bece1a3b1b085a4bb9e0f6fb480}
+      \strng{fullhash}{8a028bece1a3b1b085a4bb9e0f6fb480}
+      \strng{fullhashraw}{8a028bece1a3b1b085a4bb9e0f6fb480}
+      \strng{bibnamehash}{8a028bece1a3b1b085a4bb9e0f6fb480}
+      \strng{authorbibnamehash}{8a028bece1a3b1b085a4bb9e0f6fb480}
+      \strng{authornamehash}{8a028bece1a3b1b085a4bb9e0f6fb480}
+      \strng{authorfullhash}{8a028bece1a3b1b085a4bb9e0f6fb480}
+      \strng{authorfullhashraw}{8a028bece1a3b1b085a4bb9e0f6fb480}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labeldatesource}{nodate}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{SVGs Used}
+      \verb{urlraw}
+      \verb https://fontawesome.com/
+      \endverb
+      \verb{url}
+      \verb https://fontawesome.com/
+      \endverb
+    \endentry
+    \entry{cursoangular2025}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=76e0f6efda1c9ec8e494c380400dc1cf}{%
+           family={Herrera},
+           familyi={H\bibinitperiod},
+           given={Fernando},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Udemy}%
+      }
+      \strng{namehash}{76e0f6efda1c9ec8e494c380400dc1cf}
+      \strng{fullhash}{76e0f6efda1c9ec8e494c380400dc1cf}
+      \strng{fullhashraw}{76e0f6efda1c9ec8e494c380400dc1cf}
+      \strng{bibnamehash}{76e0f6efda1c9ec8e494c380400dc1cf}
+      \strng{authorbibnamehash}{76e0f6efda1c9ec8e494c380400dc1cf}
+      \strng{authornamehash}{76e0f6efda1c9ec8e494c380400dc1cf}
+      \strng{authorfullhash}{76e0f6efda1c9ec8e494c380400dc1cf}
+      \strng{authorfullhashraw}{76e0f6efda1c9ec8e494c380400dc1cf}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Curso Angular}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://www.udemy.com/course/angular-2-fernando-herrera/
+      \endverb
+      \verb{url}
+      \verb https://www.udemy.com/course/angular-2-fernando-herrera/
+      \endverb
+    \endentry
+    \entry{lofty}{online}{}{}
+      \list{organization}{1}{%
+        {Docs.rs}%
+      }
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labeldatesource}{nodate}
+      \field{labeltitlesource}{title}
+      \field{title}{Lofty - Rust}
+      \verb{urlraw}
+      \verb https://docs.rs/lofty/latest/lofty/
+      \endverb
+      \verb{url}
+      \verb https://docs.rs/lofty/latest/lofty/
+      \endverb
+    \endentry
+    \entry{mdnarraybuffer}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=eace3534eb86e51f9a1db37427425ce9}{%
+           family={{MDN Web Docs}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Mozilla}%
+      }
+      \strng{namehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{fullhash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{fullhashraw}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{bibnamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorbibnamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authornamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorfullhash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorfullhashraw}{eace3534eb86e51f9a1db37427425ce9}
+      \field{extraname}{1}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradate}{1}
+      \field{labeldatesource}{nodate}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{ArrayBuffer}
+      \verb{urlraw}
+      \verb https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer
+      \endverb
+      \verb{url}
+      \verb https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer
+      \endverb
+    \endentry
+    \entry{mdnblob}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=eace3534eb86e51f9a1db37427425ce9}{%
+           family={{MDN Web Docs}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Mozilla}%
+      }
+      \strng{namehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{fullhash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{fullhashraw}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{bibnamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorbibnamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authornamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorfullhash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorfullhashraw}{eace3534eb86e51f9a1db37427425ce9}
+      \field{extraname}{2}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradate}{2}
+      \field{labeldatesource}{nodate}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Blob}
+      \verb{urlraw}
+      \verb https://developer.mozilla.org/en-US/docs/Web/API/Blob
+      \endverb
+      \verb{url}
+      \verb https://developer.mozilla.org/en-US/docs/Web/API/Blob
+      \endverb
+    \endentry
+    \entry{mdncanvas}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=eace3534eb86e51f9a1db37427425ce9}{%
+           family={{MDN Web Docs}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Mozilla}%
+      }
+      \strng{namehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{fullhash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{fullhashraw}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{bibnamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorbibnamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authornamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorfullhash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorfullhashraw}{eace3534eb86e51f9a1db37427425ce9}
+      \field{extraname}{3}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradate}{3}
+      \field{labeldatesource}{nodate}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Canvas API}
+      \verb{urlraw}
+      \verb https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API
+      \endverb
+      \verb{url}
+      \verb https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API
+      \endverb
+    \endentry
+    \entry{mdnpadStart}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=eace3534eb86e51f9a1db37427425ce9}{%
+           family={{MDN Web Docs}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Mozilla}%
+      }
+      \strng{namehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{fullhash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{fullhashraw}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{bibnamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorbibnamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authornamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorfullhash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorfullhashraw}{eace3534eb86e51f9a1db37427425ce9}
+      \field{extraname}{4}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradate}{4}
+      \field{labeldatesource}{nodate}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{String.prototype.padStart()}
+      \verb{urlraw}
+      \verb https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart
+      \endverb
+      \verb{url}
+      \verb https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart
+      \endverb
+    \endentry
+    \entry{mermaid}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=bd92892b43730bbb5e49863328d4fd12}{%
+           family={{Mermaid Team}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{bd92892b43730bbb5e49863328d4fd12}
+      \strng{fullhash}{bd92892b43730bbb5e49863328d4fd12}
+      \strng{fullhashraw}{bd92892b43730bbb5e49863328d4fd12}
+      \strng{bibnamehash}{bd92892b43730bbb5e49863328d4fd12}
+      \strng{authorbibnamehash}{bd92892b43730bbb5e49863328d4fd12}
+      \strng{authornamehash}{bd92892b43730bbb5e49863328d4fd12}
+      \strng{authorfullhash}{bd92892b43730bbb5e49863328d4fd12}
+      \strng{authorfullhashraw}{bd92892b43730bbb5e49863328d4fd12}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labeldatesource}{nodate}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Mermaid}
+      \verb{urlraw}
+      \verb https://mermaid.js.org/
+      \endverb
+      \verb{url}
+      \verb https://mermaid.js.org/
+      \endverb
+    \endentry
+    \entry{youtuberust2024}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=32e3047fa46e442a972d2e7375ee556e}{%
+           family={{Programming Channel}},
+           familyi={P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {YouTube}%
+      }
+      \strng{namehash}{32e3047fa46e442a972d2e7375ee556e}
+      \strng{fullhash}{32e3047fa46e442a972d2e7375ee556e}
+      \strng{fullhashraw}{32e3047fa46e442a972d2e7375ee556e}
+      \strng{bibnamehash}{32e3047fa46e442a972d2e7375ee556e}
+      \strng{authorbibnamehash}{32e3047fa46e442a972d2e7375ee556e}
+      \strng{authornamehash}{32e3047fa46e442a972d2e7375ee556e}
+      \strng{authorfullhash}{32e3047fa46e442a972d2e7375ee556e}
+      \strng{authorfullhashraw}{32e3047fa46e442a972d2e7375ee556e}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{21}
+      \field{month}{5}
+      \field{title}{Rust programming full course | Learn ⚙️ in 2024}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://youtu.be/rQ_J9WH6CGk?si=GBTKkMXJuvvyq208
+      \endverb
+      \verb{url}
+      \verb https://youtu.be/rQ_J9WH6CGk?si=GBTKkMXJuvvyq208
+      \endverb
+    \endentry
+    \entry{rusqlite}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=5d2abe4aebca77be26f48acaf83d9f3a}{%
+           family={{Rusqlite contributors}},
+           familyi={R\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {GitHub}%
+      }
+      \strng{namehash}{5d2abe4aebca77be26f48acaf83d9f3a}
+      \strng{fullhash}{5d2abe4aebca77be26f48acaf83d9f3a}
+      \strng{fullhashraw}{5d2abe4aebca77be26f48acaf83d9f3a}
+      \strng{bibnamehash}{5d2abe4aebca77be26f48acaf83d9f3a}
+      \strng{authorbibnamehash}{5d2abe4aebca77be26f48acaf83d9f3a}
+      \strng{authornamehash}{5d2abe4aebca77be26f48acaf83d9f3a}
+      \strng{authorfullhash}{5d2abe4aebca77be26f48acaf83d9f3a}
+      \strng{authorfullhashraw}{5d2abe4aebca77be26f48acaf83d9f3a}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labeldatesource}{nodate}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{rusqlite/rusqlite: Ergonomic bindings to SQLite for rust}
+      \verb{urlraw}
+      \verb https://github.com/rusqlite/rusqlite
+      \endverb
+      \verb{url}
+      \verb https://github.com/rusqlite/rusqlite
+      \endverb
+    \endentry
+    \entry{stackoverflowshuffle}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=5f84de3ac0a58f955caa9cb0d253dfc1}{%
+           family={{Stack Overflow contributors}},
+           familyi={S\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Stack Overflow}%
+      }
+      \strng{namehash}{5f84de3ac0a58f955caa9cb0d253dfc1}
+      \strng{fullhash}{5f84de3ac0a58f955caa9cb0d253dfc1}
+      \strng{fullhashraw}{5f84de3ac0a58f955caa9cb0d253dfc1}
+      \strng{bibnamehash}{5f84de3ac0a58f955caa9cb0d253dfc1}
+      \strng{authorbibnamehash}{5f84de3ac0a58f955caa9cb0d253dfc1}
+      \strng{authornamehash}{5f84de3ac0a58f955caa9cb0d253dfc1}
+      \strng{authorfullhash}{5f84de3ac0a58f955caa9cb0d253dfc1}
+      \strng{authorfullhashraw}{5f84de3ac0a58f955caa9cb0d253dfc1}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labeldatesource}{nodate}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{How to randomize (shuffle) a JavaScript array?}
+      \verb{urlraw}
+      \verb https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+      \endverb
+      \verb{url}
+      \verb https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+      \endverb
+    \endentry
+    \entry{tailwind2025}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=48dc69e06e7ff5a1447506c120e21b86}{%
+           family={{Tailwind CSS Team}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Tailwind CSS}%
+      }
+      \strng{namehash}{48dc69e06e7ff5a1447506c120e21b86}
+      \strng{fullhash}{48dc69e06e7ff5a1447506c120e21b86}
+      \strng{fullhashraw}{48dc69e06e7ff5a1447506c120e21b86}
+      \strng{bibnamehash}{48dc69e06e7ff5a1447506c120e21b86}
+      \strng{authorbibnamehash}{48dc69e06e7ff5a1447506c120e21b86}
+      \strng{authornamehash}{48dc69e06e7ff5a1447506c120e21b86}
+      \strng{authorfullhash}{48dc69e06e7ff5a1447506c120e21b86}
+      \strng{authorfullhashraw}{48dc69e06e7ff5a1447506c120e21b86}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Rapidly build modern websites without ever leaving your HTML}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://tailwindcss.com
+      \endverb
+      \verb{url}
+      \verb https://tailwindcss.com
+      \endverb
+    \endentry
+    \entry{tauri2024}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=c063ad8a44d09997a139bbae67f25e27}{%
+           family={{Tauri Team}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Tauri}%
+      }
+      \strng{namehash}{c063ad8a44d09997a139bbae67f25e27}
+      \strng{fullhash}{c063ad8a44d09997a139bbae67f25e27}
+      \strng{fullhashraw}{c063ad8a44d09997a139bbae67f25e27}
+      \strng{bibnamehash}{c063ad8a44d09997a139bbae67f25e27}
+      \strng{authorbibnamehash}{c063ad8a44d09997a139bbae67f25e27}
+      \strng{authornamehash}{c063ad8a44d09997a139bbae67f25e27}
+      \strng{authorfullhash}{c063ad8a44d09997a139bbae67f25e27}
+      \strng{authorfullhashraw}{c063ad8a44d09997a139bbae67f25e27}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{1}
+      \field{month}{10}
+      \field{title}{What is Tauri?}
+      \field{year}{2024}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://v2.tauri.app/start/
+      \endverb
+      \verb{url}
+      \verb https://v2.tauri.app/start/
+      \endverb
+    \endentry
+    \entry{walkdir}{online}{}{}
+      \list{organization}{1}{%
+        {Docs.rs}%
+      }
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labeldatesource}{nodate}
+      \field{labeltitlesource}{title}
+      \field{title}{Walkdir - Rust}
+      \verb{urlraw}
+      \verb https://docs.rs/walkdir/2.2.9/walkdir/
+      \endverb
+      \verb{url}
+      \verb https://docs.rs/walkdir/2.2.9/walkdir/
+      \endverb
+    \endentry
+    \entry{wikifisheryates}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=b6aea1a416c89509a7df1cbb69249cb6}{%
+           family={{Wikipedia contributors}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Wikipedia, The Free Encyclopedia}%
+      }
+      \strng{namehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{fullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{bibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorbibnamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authornamehash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhash}{b6aea1a416c89509a7df1cbb69249cb6}
+      \strng{authorfullhashraw}{b6aea1a416c89509a7df1cbb69249cb6}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{31}
+      \field{month}{5}
+      \field{title}{Fisher--Yates shuffle}
+      \field{urlday}{8}
+      \field{urlmonth}{6}
+      \field{urlyear}{2025}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://en.wikipedia.org/wiki/Fisher–Yates_shuffle
+      \endverb
+      \verb{url}
+      \verb https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
 \endinput
 
