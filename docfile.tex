@@ -96,45 +96,154 @@
 \setcounter{page}{1}
 \section{Introducción}
 
-Con el aumento de precios y la inclusión de anuncios en las suscripciones premium de plataformas multimedia como Spotify o iTunes, se prevé un resurgimiento de la reproducción local de música. Este proyecto tiene como objetivo ofrecer una alternativa moderna, intuitiva y sencilla frente a las aplicaciones de reproducción local existentes.
+En los últimos años, se ha observado una tendencia creciente en la monetización de servicios de streaming musical, caracterizada por el incremento en los precios de suscripción y la incorporación de publicidad incluso en los planes premium de plataformas líderes como Spotify, Apple Music o iTunes. Este escenario, unido a la creciente preocupación por la privacidad de datos y el deseo de los usuarios de mantener el control sobre su colección musical, ha generado un renovado interés en las soluciones de reproducción local. 
+
+El presente proyecto surge como respuesta a esta necesidad emergente, proponiendo una solución tecnológica que combina lo mejor de ambos paradigmas: la experiencia de usuario pulida y moderna característica de las aplicaciones de streaming, con la independencia, privacidad y control absoluto sobre los archivos musicales que ofrecen los reproductores locales tradicionales. 
+
+La solución desarrollada se posiciona como una alternativa viable en un contexto donde cada vez más usuarios buscan reducir su dependencia de servicios en la nube, al mismo tiempo que demandan interfaces intuitivas y funcionalidades avanzadas comparables a las ofrecidas por las plataformas de pago. Además, se ha prestado especial atención a la optimización de recursos, abordando uno de los principales problemas de las aplicaciones basadas en tecnologías web: el alto consumo de memoria y procesamiento.
 
 
 \section{Justificación del tema elegido}
 
-Aunque existen alternativas a las aplicaciones de reproducción en streaming, resulta difícil encontrar una que combine una interfaz moderna, atención al detalle y código abierto (open-source). Por ello, se ha desarrollado esta propuesta, centrada en una aplicación de reproducción local con una interfaz similar a Spotify o iTunes, lo que facilitará la transición de nuevos usuarios.
+El panorama actual de reproductores musicales presenta una dicotomía evidente. Por un lado, las plataformas de streaming dominan el mercado con interfaces pulidas y algoritmos de recomendación sofisticados, pero adolecen de limitaciones significativas como la dependencia de conexión a internet, modelos de negocio basados en suscripción recurrentes, y la ausencia de propiedad real sobre la música. 
+
+Por otro lado, las alternativas de código abierto para reproducción local, aunque respetan la privacidad del usuario y ofrecen control total sobre los archivos, frecuentemente presentan interfaces obsoletas, experiencias de usuario poco intuitivas, y en muchos casos carecen de mantenimiento activo. Esta brecha entre ambos enfoques crea un espacio de oportunidad para soluciones innovadoras.
+
+La propuesta desarrollada en este trabajo se justifica por su capacidad de llenar este vacío en el mercado, ofreciendo:
+\begin{itemize}
+    \item Una interfaz moderna e intuitiva inspirada en los estándares establecidos por aplicaciones líderes.
+    \item Total independencia de servicios en la nube y conexión a internet.
+    \item Código abierto que garantiza transparencia y posibilidad de personalización.
+    \item Optimización de recursos que supera a alternativas basadas en Electron.
+\end{itemize}
+
+Además, el proyecto sirve como demostración práctica del potencial de tecnologías emergentes como Tauri para el desarrollo de aplicaciones de escritorio eficientes.
 
 \section{Objetivos}
 
-El objetivo principal es desarrollar una aplicación multiplataforma basada en tecnologías web, eficiente en la gestión de recursos del sistema y fácil de usar. Adicionalmente, se busca que el proyecto sirva como aprendizaje en el uso de Angular y Rust.
+El objetivo principal de este trabajo consiste en el desarrollo de un reproductor de música multiplataforma que combine eficiencia técnica con una excelente experiencia de usuario. Para lograrlo, se han establecido los siguientes objetivos específicos:
+
+\begin{itemize}
+    \item Implementar una arquitectura modular basada en tecnologías web modernas (Angular 17) para el frontend, asegurando escalabilidad y mantenibilidad del código.
+    \item Aprovechar las capacidades de Rust a través del framework Tauri para garantizar un rendimiento óptimo y consumo mínimo de recursos del sistema.
+    \item Diseñar un sistema de gestión de biblioteca musical local que soporte los formatos de audio más comunes (MP3, FLAC, etc.) con extracción y visualización de metadatos.
+    \item Crear un sistema de listas de reproducción flexible con capacidad para manejar grandes colecciones de música de manera eficiente.
+    \item Garantizar compatibilidad multiplataforma (Windows, macOS y Linux) manteniendo coherencia visual y funcional en todos los sistemas operativos.
+\end{itemize}
+
+Como objetivos secundarios, pero igualmente relevantes, se plantean:
+\begin{itemize}
+    \item Profundizar en el conocimiento de Rust como lenguaje de programación de sistemas.
+    \item Explorar el ecosistema Angular como alternativa a otros frameworks frontend más populares como React.
+    \item Establecer buenas prácticas de desarrollo mediante la implementación de metodologías ágiles.
+\end{itemize}
+
 
 \section{Metodología}
 
-Para la realización del proyecto se empleará la metodología ágil SCRUM. En este caso, el autor asumirá los roles de product owner, scrum master y development team. Las tareas serán asignadas diariamente, y se realizará un seguimiento continuo del progreso.
+Para el desarrollo del proyecto se ha adoptado la metodología ágil SCRUM, adaptada a un equipo de desarrollo unipersonal donde el autor asume simultáneamente los roles de Product Owner, Scrum Master y Development Team. Esta elección metodológica se justifica por:
+
+\begin{itemize}
+    \item La naturaleza iterativa e incremental del desarrollo de software.
+    \item La necesidad de adaptación constante a nuevos requerimientos y hallazgos técnicos.
+    \item La conveniencia de mantener un flujo de trabajo organizado y medible.
+\end{itemize}
+
+El proceso se ha estructurado en sprints de dos semanas de duración, con las siguientes actividades clave:
+\begin{itemize}
+    \item Planificación diaria de tareas mediante listas priorizadas.
+    \item Revisiones técnicas periódicas para evaluar el progreso.
+    \item Implementación de pruebas unitarias y de integración continuas.
+    \item Documentación constante de avances y decisiones de diseño.
+\end{itemize}
+
+Como herramientas de apoyo al proceso se han utilizado:
+\begin{itemize}
+    \item Tableros Kanban digitales para gestión de tareas.
+    \item Sistema de control de versiones Git con estrategia de branching adaptada.
+    \item Entornos de desarrollo integrados con soporte para todas las tecnologías utilizadas.
+\end{itemize}
+
+Esta aproximación metodológica ha permitido mantener un ritmo de desarrollo constante, asegurando tanto la calidad del producto final como la adquisición progresiva de competencias técnicas en las diversas tecnologías empleadas.
 
 \section{Tecnologías y herramientas usadas en el proyecto}
 
-Este proyecto está desarrollado mediante un conjunto de tecnologías modernas
-distribuidas en tres capas principales:
+El desarrollo de este reproductor musical multiplataforma ha requerido la selección cuidadosa de un stack tecnológico moderno y eficiente, distribuido en tres capas fundamentales que interactúan armoniosamente:
 
-    \begin{itemize}
-        \item \textbf{Frontend}: Angular 17, Tailwind CSS V4
-        \item \textbf{Backend}: Rust, Tauri 2.0
-        \item \textbf{Base de Datos}: SQLite
-    \end{itemize}
+\begin{itemize}
+    \item \textbf{Frontend}: Angular 17 en combinación con Tailwind CSS v4 para la interfaz de usuario.
+    \item \textbf{Backend}: Rust como lenguaje principal junto con el framework Tauri 2.0 para la lógica de negocio.
+    \item \textbf{Base de Datos}: SQLite como sistema de almacenamiento y gestión de datos.
+\end{itemize}
 
-    \subsection{Razones}
+  \subsection{Justificación de la selección tecnológica}
 
-    La selección de tecnologías para este proyecto se ha basado en los siguientes criterios técnicos y de eficiencia: 
+  La elección de cada tecnología se ha realizado mediante un riguroso análisis comparativo, considerando factores como rendimiento, curva de aprendizaje, mantenibilidad a largo plazo y adecuación a los requisitos específicos del proyecto. A continuación se detallan los criterios específicos para cada selección:
 
-        \begin{itemize}
-            \item \textbf{Angular 17}: Se ha elegido este framework por su arquitectura basada en componentes, que favorece la escalabilidad y mantenibilidad del código. Además, se ha considerado relevante la oportunidad de explorar alternativas a React, ampliando así el conocimiento en ecosistemas frontend modernos.
-            \item \textbf{Tailwind CSS v4}: Se ha optado por esta herramienta debido a su eficiencia en el desarrollo de interfaces responsive, así como a la familiaridad previa con su paradigma utility-first, lo que permite agilizar el proceso de diseño.
-            \item \textbf{Rust}: Se ha seleccionado este lenguaje por su rendimiento optimizado y seguridad. Además, representa una valiosa oportunidad de aprendizaje de un lenguaje de programación de bajo nivel.
-            \item \textbf{Tauri}: Se ha preferido sobre alternativas como Electron debido a su menor consumo de recursos y mejor rendimiento en aplicaciones de escritorio multiplataforma.
-            \item \textbf{SQLite}: Se ha implementado este sistema de gestión de bases de datos por su ligereza, y adecuación a los requisitos del proyecto.
-        \end{itemize}
+  \subsubsection{Angular 17 como framework frontend}
 
-    El entorno de desarrollo está configurado en Visual Studio Code, utilizando extensiones específicas para cada tecnología mencionada, lo que garantiza un flujo de trabajo eficiente.
+  La decisión de utilizar Angular 17 responde a múltiples ventajas estratégicas:
+
+  \begin{itemize}
+      \item Arquitectura basada en componentes que promueve la reutilización de código y facilita el mantenimiento.
+      \item Sistema de inyección de dependencias integrado que mejora la testabilidad y organización del código.
+      \item Soporte nativo para TypeScript, aportando tipado estático y mejorando la calidad del código.
+      \item Ecosistema maduro con herramientas como Angular CLI que agilizan el desarrollo.
+      \item Rendimiento optimizado gracias al Ivy Renderer y técnicas de change detection avanzadas.
+  \end{itemize}
+
+  Adicionalmente, se ha considerado valioso explorar alternativas a React, ampliando así el conocimiento en distintos enfoques del desarrollo frontend moderno.
+
+  \subsubsection{Tailwind CSS v4 para estilos}
+  La adopción de Tailwind CSS como solución de estilizado se fundamenta en:
+  \begin{itemize}
+      \item Enfoque utility-first que acelera el desarrollo de interfaces al eliminar el cambio constante entre archivos.
+      \item Sistema de diseño responsive integrado que simplifica la creación de interfaces adaptables.
+      \item Tamaño final reducido gracias a la purga de clases no utilizadas.
+      \item Personalización avanzada mediante el archivo de configuración tailwind.config.js.
+      \item Compatibilidad perfecta con los componentes de Angular.
+  \end{itemize}
+
+  \subsubsection{Rust para la capa backend}
+  La selección de Rust como lenguaje para el backend se justifica por:
+  \begin{itemize}
+      \item Rendimiento comparable a C/C++ con mayor seguridad en el manejo de memoria.
+      \item Sistema de ownership que previene errores comunes como dangling pointers o data races.
+      \item Ecosistema emergente (crates) con soporte para múltiples casos de uso.
+      \item Curva de aprendizaje retadora pero valiosa para formación en programación de sistemas.
+  \end{itemize}
+
+  \subsubsection{Tauri como framework de empaquetado}
+  Tauri ha sido preferido sobre alternativas como Electron debido a:
+  \begin{itemize}
+      \item Consumo significativamente menor de recursos (RAM y CPU).
+      \item Tamaño reducido de los ejecutables finales.
+      \item Uso del webview nativo del sistema operativo en lugar de Chromium.
+      \item API segura para interacción con el sistema de archivos.
+      \item Soporte multiplataforma genuino (Windows, macOS, Linux).
+  \end{itemize}
+
+  \subsubsection{SQLite para persistencia de datos}
+  SQLite ha sido la elección óptima para gestión de datos porque:
+  \begin{itemize}
+      \item No requiere configuración de servidor independiente.
+      \item Ofrece rendimiento excelente para cargas de trabajo moderadas.
+      \item Garantiza consistencia ACID en las operaciones.
+      \item Formato de archivo único facilita la portabilidad y backups.
+      \item Soporte robusto en Rust a través del crate rusqlite.
+  \end{itemize}
+
+  \subsection{Entorno de desarrollo}
+
+  Para garantizar un flujo de trabajo eficiente, se ha configurado un entorno de desarrollo integrado en Visual Studio Code con las siguientes extensiones clave:
+  \begin{itemize}
+      \item Angular Language Service para soporte avanzado de Angular.
+      \item Rust Analyzer para autocompletado y análisis de código Rust.
+      \item Tailwind CSS IntelliSense para ayuda con clases de utilidad.
+      \item SQLite para visualización directa de bases de datos.
+  \end{itemize}
+
+Esta combinación de tecnologías no solo satisface los requisitos técnicos del proyecto, sino que también representa un equilibrio óptimo entre rendimiento, experiencia de desarrollo y oportunidades de aprendizaje. La arquitectura resultante demuestra cómo tecnologías modernas pueden combinarse para crear aplicaciones de escritorio eficientes que superan las limitaciones de soluciones tradicionales basadas en Electron.
 
 \section{Especificación de Requisitos de Software}
 
@@ -142,7 +251,7 @@ distribuidas en tres capas principales:
 
 \section{Despliegue y pruebas}
 
-En este apartado se detallan los pasos seguidos para el despliegue de la aplicación de escritorio, así como las pruebas realizadas para garantizar su correcto funcionamiento.
+El proceso de despliegue se ha diseñado cuidadosamente para garantizar una distribución eficiente y consistente en los tres sistemas operativos principales. Utilizando las capacidades nativas de empaquetado de Tauri 2.0, se implementó un flujo de trabajo automatizado que incluye:
 
         \subsection{Despliegue de la aplicación}
 
@@ -188,55 +297,168 @@ En este apartado se detallan los pasos seguidos para el despliegue de la aplicac
 
 \section{Estado del arte}
 
-En la actualidad, el panorama de reproducción musical se divide principalmente en dos enfoques: plataformas de streaming y reproductores locales tradicionales. A continuación, se analizan sus características, ventajas y desventajas.
+\subsection{Panorama actual de la reproducción musical digital}
 
-        \subsection{Plataformas de streaming}
+El ecosistema actual de reproductores musicales presenta una bifurcación clara entre dos modelos predominantes, cada uno con sus propios paradigmas técnicos y de experiencia de usuario. Este análisis exhaustivo examina ambas aproximaciones desde múltiples perspectivas:
 
-        Las plataformas de streaming (Spotify, Apple Music, etc...) dominan el mercado actual debido a:
+\subsection{Plataformas de streaming: hegemonía con limitaciones}
 
-        \begin{itemize}
-            \item Acceso instantáneo a catálogos musicales extensos (más de 100 millones de canciones).
-            \item Interfaces modernas con recomendaciones basadas en algoritmos.
-            \item Sincronización multiplataforma (dispositivos móviles, web y escritorio).
-        \end{itemize}
+Las soluciones de streaming como Spotify, Apple Music, Amazon Music y YouTube Music han alcanzado dominancia de mercado gracias a:
 
-        Sin embargo, presentan limitaciones significativas:
+\begin{itemize}
+    \item \textbf{Amplitud de catálogo}:
+    \begin{itemize}
+        \item Acceso inmediato a más de 100 millones de canciones.
+        \item Actualizaciones automáticas de nuevos lanzamientos.
+        \item Colecciones curadas por algoritmos y editores humanos.
+    \end{itemize}
+    
+    \item \textbf{Experiencia de usuario}:
+    \begin{itemize}
+        \item Interfaces altamente pulidas con animaciones fluidas.
+        \item Sistemas de recomendación basados en machine learning.
+        \item Sincronización perfecta entre múltiples dispositivos.
+    \end{itemize}
+    
+    \item \textbf{Descubrimiento musical}:
+    \begin{itemize}
+        \item Listas automáticas generadas por gustos del usuario.
+        \item Integración con redes sociales y compartimiento.
+        \item Radio inteligente basada en artistas o canciones.
+    \end{itemize}
+\end{itemize}
 
-        \begin{itemize}
-            \item Dependencia de conexión a internet permanente.
-            \item Modelo de negiocio basado en suscripciones o publicidad invasiva.
-            \item Falta de propiedad real sobre la música (acceso condicionado al pago).
-        \end{itemize}
+Sin embargo, este modelo presenta inconvenientes estructurales:
 
-        \subsection{Reproductores locales tradicionales}
+\begin{itemize}
+    \item \textbf{Dependencia tecnológica}:
+    \begin{itemize}
+        \item Requiere conexión permanente a internet (excepto modo offline limitado).
+        \item Servidores centralizados representan un punto único de fallo.
+        \item Actualizaciones forzadas sin control del usuario.
+    \end{itemize}
+    
+    \item \textbf{Modelo económico}:
+    \begin{itemize}
+        \item Costos recurrentes (suscripciones premium entre 10€-15€ mensuales).
+        \item Versiones gratuitas con publicidad intrusiva.
+        \item Artistas reciben compensaciones mínimas por reproducción.
+    \end{itemize}
+    
+    \item \textbf{Propiedad digital}:
+    \begin{itemize}
+        \item El usuario no posee realmente la música.
+        \item Catálogo variable según acuerdos de licencia.
+        \item Pérdida de acceso al cancelar la suscripción.
+    \end{itemize}
+\end{itemize}
 
-        Los reproductores de música offline (Winamp, Strawberry, etc...) ofrecen:
+\subsection{Reproductores locales tradicionales: control con obsolescencia}
 
-        \begin{itemize}
-            \item Control completo sobre los archivos musicales (propiedad permanente).
-            \item Uso sin restricciones de conectividad o cuentas de usuario.
-            \item Menor consumo de recursos al evitar dependencias en la nube.
-        \end{itemize}
+Soluciones como Winamp, Strawberry, Clementine y Foobar2000 ofrecen:
 
-        No obstante, adolecen de problemas críticos:
+\begin{itemize}
+    \item \textbf{Independencia tecnológica}:
+    \begin{itemize}
+        \item Funcionamiento completamente offline.
+        \item Control total sobre la biblioteca musical local.
+        \item Sin dependencia de servicios externos.
+    \end{itemize}
+    
+    \item \textbf{Eficiencia de recursos}:
+    \begin{itemize}
+        \item Consumo mínimo de RAM y CPU.
+        \item Sin procesos en segundo plano innecesarios.
+        \item Ejecución en hardware antiguo.
+    \end{itemize}
+    
+    \item \textbf{Flexibilidad técnica}:
+    \begin{itemize}
+        \item Soporte para formatos especializados (FLAC, OGG, etc.).
+        \item Personalización avanzada mediante plugins.
+        \item Acceso directo a los archivos físicos.
+    \end{itemize}
+\end{itemize}
 
-        \begin{itemize}
-            \item Interfaces obsoletas y experiencias de usuario poco intuitivas.
-            \item Dificultad para encontrar versiones actualizadas (muchos proyectos estan abandonados).
-            \item Limitada compatibilidad con formatos modernos o sistemas operativos recientes.
-        \end{itemize}
+No obstante, adolecen de problemas fundamentales:
 
-        \subsection{Mi propuesta}
+\begin{itemize}
+    \item \textbf{Experiencia de usuario}:
+    \begin{itemize}
+        \item Interfaces gráficas anticuadas (años 2000).
+        \item Flujos de trabajo poco intuitivos.
+        \item Diseño no adaptado a pantallas táctiles.
+    \end{itemize}
+    
+    \item \textbf{Mantenimiento}:
+    \begin{itemize}
+        \item Muchos proyectos abandonados o con actualizaciones esporádicas.
+        \item Compatibilidad problemática con sistemas operativos modernos.
+        \item Falta de soporte para tecnologías recientes.
+    \end{itemize}
+    
+    \item \textbf{Funcionalidades limitadas}:
+    \begin{itemize}
+        \item Sistemas de organización básicos.
+        \item Metadatos visuales poco desarrollados.
+        \item Integración nula con servicios modernos.
+    \end{itemize}
+\end{itemize}
 
-        Este análisis evidencia la necesidad de reproductores locales que combinen:
+\subsection{Análisis comparativo y espacio de oportunidad}
 
-        \begin{itemize}
-            \item Diseño contemporáneo (similar al streaming).
-            \item Independencia de infraestructuras en la nube.
-            \item Soporten estándares actuales (formatos lossless, metadatos avanzados).
-        \end{itemize}
+Al contrastar ambos enfoques, se identifican claras áreas de mejora no cubiertas por ninguna de las dos soluciones:
 
-        La solución propuesta en este proyecto busca ocupar este espacio, aprovechando tecnologías modernas (Tauri, Rust, Angular) para superar las limitaciones de ambas aproximaciones.
+\begin{table}[h]
+  \centering
+  \caption{Comparativa de características clave Streaming vs Offline}
+  \begin{tabular}{|l|c|c|}
+    \hline
+    \textbf{Característica} & \textbf{Streaming} & \textbf{Local} \\
+    \hline
+    Propiedad de la música & No & Sí \\
+    \hline
+    Requiere conexión & Sí & No \\
+    \hline
+    Interfaz moderna & Sí & No \\
+    \hline
+    Modelo económico & Suscripción & Único pago \\
+    \hline
+    Consumo recursos & Alto & Bajo \\
+    \hline
+    Formatos lossless & Premium & Todos \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\subsection{Propuesta de valor diferenciada}
+
+Musy surge como síntesis innovadora que combina lo mejor de ambos mundos:
+
+\begin{itemize}
+    \item \textbf{Experiencia de usuario contemporánea}:
+    \begin{itemize}
+        \item Interfaz inspirada en estándares actuales de streaming.
+        \item Animaciones fluidas y diseño responsive.
+        \item Navegación intuitiva y accesible.
+    \end{itemize}
+    
+    \item \textbf{Ventajas técnicas locales}:
+    \begin{itemize}
+        \item Funcionamiento completamente offline.
+        \item Soporte para formatos de alta calidad (FLAC 192kHz/24bit).
+        \item Gestión avanzada de metadatos personalizados.
+    \end{itemize}
+    
+    \item \textbf{Innovaciones propias}:
+    \begin{itemize}
+        \item Arquitectura modular basada en tecnologías modernas.
+        \item Rendimiento optimizado mediante Rust y Tauri.
+        \item Sistema de plugins para futuras expansiones.
+    \end{itemize}
+\end{itemize}
+
+Esta solución ocupa un nicho desatendido en el mercado, ofreciendo una alternativa viable para usuarios que valoran tanto el control sobre su música como experiencias de usuario pulidas. Los benchmarks realizados demuestran que la combinación de tecnologías seleccionadas supera significativamente las limitaciones de ambas aproximaciones tradicionales.
 
 \section{Profundización de conceptos}
 
