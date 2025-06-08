@@ -567,7 +567,7 @@ En esta sección se explicarán en detalle los componentes principales de la apl
                 \label{fig:playbar}
             \end{figure}
 
-            El componente principal para la reproducción de música está compuesto por tres contenedores \verb|div|:
+            El componente principal para la reproducción de música está compuesto por tres contenedores \texttt{div}:
 
             \begin{itemize}
                 \item \textbf{Izquierdo}. En el primero se muestran la portada de la canción, el título y el artista.
@@ -575,7 +575,7 @@ En esta sección se explicarán en detalle los componentes principales de la apl
                 \item \textbf{Derecho}. El tercero incluye exclusivamente la barra de volumen. En futuras iteraciones podría implementarse un botón para gestionar la cola de reproducción.
             \end{itemize}
 
-            La parte del componente de typescript contiene únicamente métododos que llaman al servicio de manejo de canciones \verb|song-management.service.ts|.
+            La parte del componente de typescript contiene únicamente métododos que llaman al servicio de manejo de canciones \texttt{song-management.service.ts}.
 
             \subsubsection{Sidebar}
 
@@ -629,7 +629,7 @@ constructor (public mainScreenStatus:MainScreenStatusService) {}
 @Input() refreshFn!: () => void;
                 \end{lstlisting}
 
-                Cada instancia de \verb|Playlist| actúa como elemento interactivo que actualiza el componente \verb|mainscreen| mediante un servicio. Utiliza el patrón de decoradores \verb|@Input| para recibir propiedades del componente padre. Gestiona un menú desplegable mediante el atributo \verb|isDropDownOpen|.
+                Cada instancia de \texttt{Playlist} actúa como elemento interactivo que actualiza el componente \texttt{mainscreen} mediante un servicio. Utiliza el patrón de decoradores \texttt{@Input} para recibir propiedades del componente padre. Gestiona un menú desplegable mediante el atributo \texttt{isDropDownOpen}.
                 
                 Algunos de los métodos más importantes de este componente destacan:
 
@@ -654,13 +654,13 @@ async getCoverPath(): Promise<string> {
                 Este método se encarga de:
                 \begin{enumerate}
                     \item Verificar la existencia de una ruta de portada válida.
-                    \item Convertir la imagen local en un objeto \verb|Blob| mediante:
+                    \item Convertir la imagen local en un objeto \texttt{Blob} mediante:
                     \begin{itemize}
-                        \item Lectura del archivo con \verb|readFile|
-                        \item Creación de URL temporal con \verb|URL.createObjectURL|
+                        \item Lectura del archivo con \texttt{readFile}
+                        \item Creación de URL temporal con \texttt{URL.createObjectURL}
                     \end{itemize}
-                    \item Liberar recursos previos con \verb|URL.revokeObjectURL|
-                    \item Proporcionar fallback a imagen predeterminada (\verb|black.jpg|)
+                    \item Liberar recursos previos con \texttt{URL.revokeObjectURL}
+                    \item Proporcionar fallback a imagen predeterminada (\texttt{black.jpg})
                 \end{enumerate}
 
                 \begin{lstlisting}[caption={Dropdown}]
@@ -681,7 +681,7 @@ toggleDropDown() {
   }
                 \end{lstlisting}
 
-                Por motivos de diseño, se ha implementado un menú desplegable (dropdown) que contiene acciones específicas para cada playlist. El estado de visualización se controla mediante la variable \verb|isDropDownOpen|, que se alterna con \verb|toggleDropDown()|. El cierre automático se gestiona mediante un \verb|@HostListener| que detecta clics fuera del área del componente. Actualmente, el menú incluye la opción de eliminación de playlists, pero su diseño permite la incorporación de nuevas funcionalidades como marcado como favorito o edición avanzada en futuras iteraciones.
+                Por motivos de diseño, se ha implementado un menú desplegable (dropdown) que contiene acciones específicas para cada playlist. El estado de visualización se controla mediante la variable \texttt{isDropDownOpen}, que se alterna con \texttt{toggleDropDown()}. El cierre automático se gestiona mediante un \texttt{@HostListener} que detecta clics fuera del área del componente. Actualmente, el menú incluye la opción de eliminación de playlists, pero su diseño permite la incorporación de nuevas funcionalidades como marcado como favorito o edición avanzada en futuras iteraciones.
 
                 \begin{figure}[H]
                     \centering
@@ -698,7 +698,7 @@ async removePlaylist() {
   }
                 \end{lstlisting}
 
-                El método \verb|removePlaylist()| se encarga de gestionar la eliminación de playlists mediante un proceso que consta de tres etapas principales: primero, se obtiene el directorio de datos de la aplicación mediante \verb|appDataDir()|; a continuación, se realiza una llamada al backend mediante \verb|invoke()|, enviando como parámetros el identificador de la playlist (\verb|playlist_id|) y la ruta de la base de datos (\verb|db_path|); finalmente, se ejecuta la función \verb|refreshFn()| para actualizar la interfaz. La implementación detallada de la consulta SQL y el manejo de la operación en el backend se analizará en la sección dedicada a Rust y SQL.
+                El método \texttt{removePlaylist()} se encarga de gestionar la eliminación de playlists mediante un proceso que consta de tres etapas principales: primero, se obtiene el directorio de datos de la aplicación mediante \texttt{appDataDir()}; a continuación, se realiza una llamada al backend mediante \texttt{invoke()}, enviando como parámetros el identificador de la playlist (\texttt{playlist\_id}) y la ruta de la base de datos (\texttt{db\_path}); finalmente, se ejecuta la función \texttt{refreshFn()} para actualizar la interfaz. La implementación detallada de la consulta SQL y el manejo de la operación en el backend se analizará en la sección dedicada a Rust y SQL.
 
                 \paragraph{Botón New Playlist}
                 ‎ \\
@@ -710,7 +710,7 @@ async removePlaylist() {
                     \label{fig:nueva playlist}
                 \end{figure}
 
-                Cuando el atributo \verb|isModalOpen| de \verb|sidebar| cambia a \verb|true| se abre un menu modal donde es posible crear una nueva playlist vacía.
+                Cuando el atributo \texttt{isModalOpen} de \texttt{sidebar} cambia a \texttt{true} se abre un menú modal donde es posible crear una nueva playlist vacía.
 
                 Estos son los métodos más destacados:
 
@@ -748,7 +748,7 @@ async selectCover() {
                 \end{lstlisting}
 
                 
-                El método \verb|selectCover()| gestiona la selección y procesamiento de imágenes para las portadas de playlists mediante el siguiente flujo: cuando se pulsa sobre el botón \textit{Select Cover}, se activa un diálogo de selección de archivos utilizando el \verb|plugin-dialog| de Tauri. La imagen seleccionada se convierte en un objeto \verb|Blob| y se redimensiona mediante el método \verb|createThumbnail| para optimizar su almacenamiento. El archivo resultante se guarda en el directorio \verb|pcovers| dentro de la carpeta de datos de la aplicación, con un nombre generado aleatoriamente para evitar colisiones. Si el directorio no existe previamente, se crea automáticamente durante este proceso. La ruta final de la imagen procesada se asigna al atributo \verb|coverPath| para su uso en la interfaz.
+                El método \texttt{selectCover()} gestiona la selección y procesamiento de imágenes para las portadas de playlists mediante el siguiente flujo: cuando se pulsa sobre el botón \textit{Select Cover}, se activa un diálogo de selección de archivos utilizando el \texttt{plugin-dialog} de Tauri. La imagen seleccionada se convierte en un objeto \texttt{Blob} y se redimensiona mediante el método \texttt{createThumbnail} para optimizar su almacenamiento. El archivo resultante se guarda en el directorio \texttt{pcovers} dentro de la carpeta de datos de la aplicación, con un nombre generado aleatoriamente para evitar colisiones. Si el directorio no existe previamente, se crea automáticamente durante este proceso. La ruta final de la imagen procesada se asigna al atributo \texttt{coverPath} para su uso en la interfaz.
 
                 \begin{lstlisting}[caption={createThumbnail()}]
 async createThumbnail(blob: Blob, maxWidth: number, maxHeight: number): Promise<Uint8Array> {
@@ -791,7 +791,7 @@ async createThumbnail(blob: Blob, maxWidth: number, maxHeight: number): Promise<
 }
                 \end{lstlisting}
 
-                El método \verb|createThumbnail()| implementa el proceso de redimensionamiento de imágenes mediante la Canvas API, siguiendo tres etapas principales: primero, se crea un objeto \verb|Image| y se carga el \verb|Blob| de entrada mediante \verb|URL.createObjectURL()|. Segundo, al completarse la carga, se calcula el factor de escala proporcional para mantener las dimensiones dentro de los límites especificados (\verb|maxWidth| y \verb|maxHeight|), creando un elemento \verb|canvas| con las nuevas dimensiones. Finalmente, se dibuja la imagen escalada en el canvas y se convierte a un \verb|Uint8Array| comprimido en formato JPEG con calidad del 70\%, manejando posibles errores durante el proceso mediante el sistema de promesas. Esta implementación garantiza un procesamiento eficiente de imágenes para su almacenamiento optimizado en el sistema de archivos. \\
+                El método \texttt{createThumbnail()} implementa el proceso de redimensionamiento de imágenes mediante la Canvas API, siguiendo tres etapas principales: primero, se crea un objeto \texttt{Image} y se carga el \texttt{Blob} de entrada mediante \texttt{URL.createObjectURL()}. Segundo, al completarse la carga, se calcula el factor de escala proporcional para mantener las dimensiones dentro de los límites especificados (\texttt{maxWidth} y \texttt{maxHeight}), creando un elemento \texttt{canvas} con las nuevas dimensiones. Finalmente, se dibuja la imagen escalada en el canvas y se convierte a un \texttt{Uint8Array} comprimido en formato JPEG con calidad del 70\%, manejando posibles errores durante el proceso mediante el sistema de promesas. Esta implementación garantiza un procesamiento eficiente de imágenes para su almacenamiento optimizado en el sistema de archivos. \\
 
                 Una vez seleccionados la portada y el nombre de la playlist, al pulsar el boton \textit{done} se ejecuta el siguiente método, que realiza las siguientes acciones secuenciales:
 
@@ -841,7 +841,7 @@ async getAllSongs() {
 }
                 \end{lstlisting}
 
-                Cuando se activa la función de búsqueda mediante el botón correspondiente, se ejecuta el siguiente proceso: en primer lugar, se obtienen todas las canciones disponibles a través del método \verb|getAllSongs()|, que realiza una llamada al backend mediante Tauri IPC para recuperar los registros de la base de datos SQLite. Una vez completada esta operación, la lista completa de canciones se asigna a la variable \verb|filteredSongs| y se activa el modal de búsqueda estableciendo \verb|isModalOpenSearch| a \verb|true|. Este menú modal permite buscar y seleccionar canciones de toda la colección musical, ofreciendo las mismas capacidades de interacción que cuando las canciones se encuentran dentro de una playlist específica, funcionalidad que se detallará más adelante en la documentación.
+                Cuando se activa la función de búsqueda mediante el botón correspondiente, se ejecuta el siguiente proceso: en primer lugar, se obtienen todas las canciones disponibles a través del método \texttt{getAllSongs()}, que realiza una llamada al backend mediante Tauri IPC para recuperar los registros de la base de datos SQLite. Una vez completada esta operación, la lista completa de canciones se asigna a la variable \texttt{filteredSongs} y se activa el modal de búsqueda estableciendo \texttt{isModalOpenSearch} a \texttt{true}. Este menú modal permite buscar y seleccionar canciones de toda la colección musical, ofreciendo las mismas capacidades de interacción que cuando las canciones se encuentran dentro de una playlist específica, funcionalidad que se detallará más adelante en la documentación.
 
 
             \subsubsection{Mainscreen}
@@ -881,10 +881,10 @@ async getAllSongs() {
                 \begin{itemize}
                     \item Añadir la canción a la cola de reproducción actual
                     \item Agregar la canción a otra playlist existente
-                    \item Eliminar la canción de la playlist actual (función no disponible en la playlist \verb|All Songs|)
+                    \item Eliminar la canción de la playlist actual (función no disponible en la playlist \texttt{All Songs})
                 \end{itemize}
 
-                El concepto de \verb|All Songs|, que representa la colección completa de canciones disponibles, se explicará con mayor detalle en secciones posteriores de esta documentación.
+                El concepto de \texttt{All Songs}, que representa la colección completa de canciones disponibles, se explicará con mayor detalle en secciones posteriores de esta documentación.
 
                 Los atributos del componente son:
 
@@ -912,7 +912,7 @@ coverUrl: string = 'assets/black.jpg';
 
                 Entre ellos se encuentran los metadatos de cada canción y la playlist en la que se encuentran mostrados ahora mismo. Estos datos son recibidos desde el componente padre. \\
 
-                Además posee la interfaz \verb|Song|:
+                Además posee la interfaz \texttt{Song}:
 
                 \begin{lstlisting}[caption={Song}]
 interface Song {
@@ -951,12 +951,12 @@ closeDropDown() {
                 El menú desplegable (\textit{dropdown menu}) que contiene las opciones de gestión para cada canción implementa el siguiente comportamiento:
 
                 \begin{itemize}
-                    \item La visibilidad del menú se controla mediante el atributo booleano \verb|isDropDownOpen|
-                    \item El método \verb|toggleDropDown()| alterna el estado de visibilidad
-                    \item El método \verb|closeDropDown()| garantiza el cierre programático del menú
+                  \item La visibilidad del menú se controla mediante el atributo booleano \texttt{isDropDownOpen}.
+                  \item El método \texttt{toggleDropDown()} alterna el estado de visibilidad.
+                  \item El método \texttt{closeDropDown()} garantiza el cierre programático del menú.
                 \end{itemize}
 
-                Para mejorar la experiencia de usuario, se implementa un cierre automático mediante el decorador \verb|@HostListener|, que detecta eventos de clic fuera del área del componente y ejecuta el cierre del menú cuando corresponde.
+                Para mejorar la experiencia de usuario, se implementa un cierre automático mediante el decorador \texttt{@HostListener}, que detecta eventos de clic fuera del área del componente y ejecuta el cierre del menú cuando corresponde.
 
                 \begin{lstlisting}[caption={playSong() y addSongToQueue()}]
 playSong() {
@@ -970,11 +970,11 @@ addSongToQueue() {
 }
                 \end{lstlisting}
 
-                Los métodos implementados siguen un patrón común donde los metadatos de la canción se estructuran en un objeto de tipo \verb|Song|, conteniendo todos los atributos relevantes (identificador, ruta, título, artista, álbum, año, duración, portada y estado de favorito). Este objeto se envía al servicio \verb|song-management|, diferenciándose en:
+                Los métodos implementados siguen un patrón común donde los metadatos de la canción se estructuran en un objeto de tipo \texttt{Song}, conteniendo todos los atributos relevantes (identificador, ruta, título, artista, álbum, año, duración, portada y estado de favorito). Este objeto se envía al servicio \texttt{song-management}, diferenciándose en:
 
                 \begin{itemize}
-                    \item \verb|playSong()|: Inicia la reproducción inmediata mediante \verb|setOneSong()|
-                    \item \verb|addSongToQueue()|: Añade la canción a la cola de reproducción usando \verb|addOneSong()|
+                    \item \texttt{playSong()}: Inicia la reproducción inmediata mediante \texttt{setOneSong()}.
+                    \item \texttt{addSongToQueue()}: Añade la canción a la cola de reproducción usando \texttt{addOneSong()}.
                 \end{itemize}
 
                 \begin{lstlisting}[caption={addSongToPlaylist()}]
@@ -994,14 +994,14 @@ close() {
                 \begin{itemize}
                     \item \textbf{Fase de preparación}:
                     \begin{itemize}
-                        \item Se obtienen todas las playlists disponibles mediante el servicio \verb|song-adding|.
-                        \item Se activa el modal de selección estableciendo \verb|isModalOpen| a \verb|true|.
+                        \item Se obtienen todas las playlists disponibles mediante el servicio \texttt{song-adding}.
+                        \item Se activa el modal de selección estableciendo \texttt{isModalOpen} a \texttt{true}.
                     \end{itemize}
                     
                     \item \textbf{Fase de cierre}:
                     \begin{itemize}
-                        \item Al completar la operación, se desactiva el modal (\verb|isModalOpen = false|).
-                        \item Se liberan los recursos del servicio mediante \verb|letGo()| para optimizar memoria.
+                        \item Al completar la operación, se desactiva el modal (\texttt{isModalOpen = false}).
+                        \item Se liberan los recursos del servicio mediante \texttt{letGo()} para optimizar memoria.
                     \end{itemize}
                 \end{itemize}
 
@@ -1015,7 +1015,7 @@ async removeSongFromPlaylist() {
 }
                 \end{lstlisting}
 
-                Cuando se activa la eliminación de una canción mediante el botón correspondiente, se ejecuta una petición al backend implementado en Rust que procesa la eliminación del registro en la base de datos SQLite. El método obtiene primero la ruta del directorio de datos mediante \verb|appDataDir()|, luego envía los parámetros necesarios (identificador de playlist, identificador de canción y ruta de la base de datos) a través de la función \verb|invoke()|. Finalmente, se actualiza el estado de la interfaz principal llamando al método \verb|refresh()| del servicio \verb|mainScreenStatus|, lo que garantiza que los cambios se reflejen inmediatamente en la vista del usuario.
+                Cuando se activa la eliminación de una canción mediante el botón correspondiente, se ejecuta una petición al backend implementado en Rust que procesa la eliminación del registro en la base de datos SQLite. El método obtiene primero la ruta del directorio de datos mediante \texttt{appDataDir()}, luego envía los parámetros necesarios (identificador de playlist, identificador de canción y ruta de la base de datos) a través de la función \texttt{invoke()}. Finalmente, se actualiza el estado de la interfaz principal llamando al método \texttt{refresh()} del servicio \texttt{mainScreenStatus}, lo que garantiza que los cambios se reflejen inmediatamente en la vista del usuario.
 
                 \begin{lstlisting}[caption={toggleStarred()}]
 async toggleStarred() {
@@ -1033,7 +1033,7 @@ async toggleStarred() {
 }
                 \end{lstlisting}
 
-                El método \verb|toggleStarred()| gestiona el estado de favorito de las canciones mediante un proceso que alterna entre dos posibles acciones. Cuando una canción está marcada como favorita (\verb|isStarred = true|), se ejecuta la función \verb|remove_is_starred| en el backend de Rust para eliminarla de la lista especial. En caso contrario, se invoca \verb|add_is_starred| para añadirla. En ambos casos, se utiliza \verb|appDataDir()| para obtener la ruta de la base de datos y se actualiza la interfaz mediante \\ \verb|mainScreenStatus.refresh()|. Las canciones marcadas como favoritas se agrupan automáticamente en una playlist especial accesible desde un botón específico en la barra lateral de la aplicación.
+                El método \texttt{toggleStarred()} gestiona el estado de favorito de las canciones mediante un proceso que alterna entre dos posibles acciones. Cuando una canción está marcada como favorita (\texttt{isStarred = true}), se ejecuta la función \texttt{remove\_is\_starred} en el backend de Rust para eliminarla de la lista especial. En caso contrario, se invoca \texttt{add\_is\_starred} para añadirla. En ambos casos, se utiliza \texttt{appDataDir()} para obtener la ruta de la base de datos y se actualiza la interfaz mediante \texttt{mainScreenStatus.refresh()}. Las canciones marcadas como favoritas se agrupan automáticamente en una playlist especial accesible desde un botón específico en la barra lateral de la aplicación.
 
                 \paragraph{Playlist Button}
                 ‎
@@ -1090,16 +1090,16 @@ async addSongToPlaylist() {
 }
                 \end{lstlisting}
 
-                El método \verb|addSongToPlaylist()| ejecuta el proceso de añadir una canción a una playlist específica mediante una llamada al backend implementado en Rust. Primero obtiene el directorio de datos de la aplicación usando \verb|appDataDir()|, luego envía los parámetros necesarios (ID de la playlist, ID de la canción y ruta de la base de datos) a través de la función \verb|invoke()|. Finalmente, actualiza la página principal llamando a \verb|mainScreenStatus.refresh()| para reflejar los cambios en la interfaz de usuario. Este flujo garantiza que la canción quede registrada en la base de datos y que la vista se actualice consistentemente.
+                El método \texttt{addSongToPlaylist()} ejecuta el proceso de añadir una canción a una playlist específica mediante una llamada al backend implementado en Rust. Primero obtiene el directorio de datos de la aplicación usando \texttt{appDataDir()}, luego envía los parámetros necesarios (ID de la playlist, ID de la canción y ruta de la base de datos) a través de la función \texttt{invoke()}. Finalmente, actualiza la página principal llamando a \texttt{mainScreenStatus.refresh()} para reflejar los cambios en la interfaz de usuario. Este flujo garantiza que la canción quede registrada en la base de datos y que la vista se actualice consistentemente.
 
                 \paragraph{Homeitem}
                 ‎
 
-                El componente \verb|Homeitem| representa una implementación alternativa al componente estándar \verb|Song|, desarrollado específicamente para cumplir con requerimientos particulares de diseño y funcionalidad en la playlist \textit{Starred Songs}.
+                El componente \texttt{Homeitem} representa una implementación alternativa al componente estándar \texttt{Song}, desarrollado específicamente para cumplir con requerimientos particulares de diseño y funcionalidad en la playlist \textit{Starred Songs}.
 
             \subsubsection{Servicios}
 
-            Se han implementado servicios especializados para cada funcionalidad clave, tales como el manejo de listas de reproducción, la gestión de metadatos musicales y la información de la \verb|mainscreen|.
+            Se han implementado servicios especializados para cada funcionalidad clave, tales como el manejo de listas de reproducción, la gestión de metadatos musicales y la información de la \texttt{mainscreen}.
 
                 \paragraph{Main Screen Status}
                 ‎
@@ -1117,11 +1117,11 @@ songs:Song[] = []
 constructor(public songManagement:SongManagementService) { }
                 \end{lstlisting}
 
-                El servicio \verb|MainScreenStatus| se encarga de gestionar y mantener el estado de la información mostrada en la interfaz principal de la aplicación (\verb|mainscreen|). Para ello, se han definido una serie de atributos que almacenan tanto los metadatos de la playlist actualmente visualizada como las canciones asociadas a la misma. \\
+                El servicio \texttt{MainScreenStatus} se encarga de gestionar y mantener el estado de la información mostrada en la interfaz principal de la aplicación (\texttt{mainscreen}). Para ello, se han definido una serie de atributos que almacenan tanto los metadatos de la playlist actualmente visualizada como las canciones asociadas a la misma. \\
 
-                Entre los atributos principales se incluyen señales y variables que controlan el estado de la interfaz (\verb|onHome|), así como información específica de la playlist, como su identificador (\verb|pId|), nombre (\verb|pName|), fecha de creación (\verb|pDate|), ruta de la portada (\verb|pCoverPath|) y estado de favorito (\verb|pStarred|). Adicionalmente, se almacena un arreglo de canciones (\verb|songs|) que pertenecen a la playlist actual. Por supuesto este servicio contiene la interfaz \verb|Song| vista anteriormente. \\
+                Entre los atributos principales se incluyen señales y variables que controlan el estado de la interfaz (\texttt{onHome}), así como información específica de la playlist, como su identificador (\texttt{pId}), nombre (\texttt{pName}), fecha de creación (\texttt{pDate}), ruta de la portada (\texttt{pCoverPath}) y estado de favorito (\texttt{pStarred}). Adicionalmente, se almacena un arreglo de canciones (\texttt{songs}) que pertenecen a la playlist actual. Por supuesto este servicio contiene la interfaz \texttt{Song} vista anteriormente. \\
 
-                El servicio se inicializa con una dependencia inyectada del \\ \verb|SongManagementService|, lo que permite una coordinación fluida entre la gestión del estado de la interfaz y las operaciones relacionadas con la reproducción de audio. Esta arquitectura modular facilita el mantenimiento y la escalabilidad del código. \\
+                El servicio se inicializa con una dependencia inyectada del \\ \texttt{SongManagementService}, lo que permite una coordinación fluida entre la gestión del estado de la interfaz y las operaciones relacionadas con la reproducción de audio. Esta arquitectura modular facilita el mantenimiento y la escalabilidad del código. \\
 
 
                 \begin{lstlisting}[caption={setHome() y setPlaylist()}]
@@ -1144,13 +1144,13 @@ setPlaylist(id:number, name:string, date:string, coverPath:string, isStarred:boo
 }
                 \end{lstlisting}
 
-                Los métodos \verb|setHome()| y \verb|setPlaylist()| gestionan la transición entre las diferentes vistas de la interfaz principal (\verb|mainscreen|). En el primer caso, \verb|setHome()| configura el estado para mostrar la lista de canciones marcadas como favoritas, estableciendo el valor \verb|onHome| a \verb|true| y reiniciando los metadatos de la playlist. Simultáneamente, se invoca el método \verb|getAllStarred()| para cargar las canciones destacadas. \\
+                Los métodos \texttt{setHome()} y \texttt{setPlaylist()} gestionan la transición entre las diferentes vistas de la interfaz principal (\texttt{mainscreen}). En el primer caso, \texttt{setHome()} configura el estado para mostrar la lista de canciones marcadas como favoritas, estableciendo el valor \texttt{onHome} a \texttt{true} y reiniciando los metadatos de la playlist. Simultáneamente, se invoca el método \texttt{getAllStarred()} para cargar las canciones destacadas. \\
 
-                Por otro lado, \verb|setPlaylist()| se utiliza para visualizar una playlist específica, actualizando los metadatos correspondientes (\verb|id|, \verb|name|, \verb|date|, \verb|coverPath| y estado \verb|isStarred|) y desactivando la vista de favoritos mediante \verb|onHome.set(false)|. \\
+                Por otro lado, \texttt{setPlaylist()} se utiliza para visualizar una playlist específica, actualizando los metadatos correspondientes (\texttt{id}, \texttt{name}, \texttt{date}, \texttt{coverPath} y estado \texttt{isStarred}) y desactivando la vista de favoritos mediante \texttt{onHome.set(false)}. \\
 
-                Cabe destacar que la nomenclatura original (\verb|Home|) fue heredada de las primeras etapas del desarrollo, cuando la estructura conceptual del proyecto aún estaba en definición. Posteriormente, esta terminología se actualizó a \verb|Starred Songs| para reflejar con mayor precisión su funcionalidad. A pesar de este cambio, se mantuvieron las referencias originales en el código para preservar la compatibilidad con los componentes existentes. \\
+                Cabe destacar que la nomenclatura original (\texttt{Home}) fue heredada de las primeras etapas del desarrollo, cuando la estructura conceptual del proyecto aún estaba en definición. Posteriormente, esta terminología se actualizó a \texttt{Starred Songs} para reflejar con mayor precisión su funcionalidad. A pesar de este cambio, se mantuvieron las referencias originales en el código para preservar la compatibilidad con los componentes existentes. \\
 
-                Se ha considerado una refactorización futura para unificar la nomenclatura y mejorar la coherencia del código. Actualmente, aunque los términos \verb|Home| y \verb|Starred Songs| coexisten, esta dualidad no afecta la funcionalidad del sistema. \\
+                Se ha considerado una refactorización futura para unificar la nomenclatura y mejorar la coherencia del código. Actualmente, aunque los términos \texttt{Home} y \texttt{Starred Songs} coexisten, esta dualidad no afecta la funcionalidad del sistema. \\
 
                 \begin{lstlisting}[caption={Obtención de playlists}]
 async getAllSongs() {
@@ -1184,7 +1184,7 @@ async getPlaylistSongs() {
 }
                 \end{lstlisting}
 
-                Los métodos \verb|getAllSongs()|, \verb|getAllStarred()| y \verb|getPlaylistSongs()| gestionan la obtención de canciones desde diferentes fuentes, asignándolas posteriormente a la variable local \verb|songs|. En cada caso, se sigue un patrón similar: primero se obtiene el directorio de datos de la aplicación mediante \verb|appDataDir()|, luego se realiza una llamada al backend mediante \verb|invoke()|, y finalmente se manejan tanto el éxito como los posibles errores de la operación. \\
+                Los métodos \texttt{getAllSongs()}, \texttt{getAllStarred()} y \texttt{getPlaylistSongs()} gestionan la obtención de canciones desde diferentes fuentes, asignándolas posteriormente a la variable local \texttt{songs}. En cada caso, se sigue un patrón similar: primero se obtiene el directorio de datos de la aplicación mediante \texttt{appDataDir()}, luego se realiza una llamada al backend mediante \texttt{invoke()}, y finalmente se manejan tanto el éxito como los posibles errores de la operación. \\
 
                 \begin{lstlisting}[caption={refresh()}]
 async refresh() {
@@ -1198,9 +1198,9 @@ async refresh() {
 }
                 \end{lstlisting}
 
-                El método \verb|refresh()| se encarga de actualizar dinámicamente el contenido mostrado en la \verb|mainscreen| en función del contexto actual de reproducción. Para ello, se implementa un flujo condicional que evalúa el identificador de playlist almacenado en \verb|this.pId| y el estado de la señal \verb|onHome|. \\
+                El método \texttt{refresh()} se encarga de actualizar dinámicamente el contenido mostrado en la \texttt{mainscreen} en función del contexto actual de reproducción. Para ello, se implementa un flujo condicional que evalúa el identificador de playlist almacenado en \texttt{this.pId} y el estado de la señal \texttt{onHome}. \\
 
-                Este enfoque garantiza que la interfaz siempre muestre el contenido más relevante según el estado actual de la aplicación, manteniendo una experiencia de usuario coherente. La implementación mediante llamadas asíncronas (\verb|await|) asegura que las operaciones de actualización se completen antes de proceder con cualquier otra acción, evitando así condiciones de carrera o estados inconsistentes en la interfaz.
+                Este enfoque garantiza que la interfaz siempre muestre el contenido más relevante según el estado actual de la aplicación, manteniendo una experiencia de usuario coherente. La implementación mediante llamadas asíncronas (\texttt{await}) asegura que las operaciones de actualización se completen antes de proceder con cualquier otra acción, evitando así condiciones de carrera o estados inconsistentes en la interfaz.
 
                 \begin{lstlisting}[caption={playQueue() y addQueue()}]
 playQueue() {
@@ -1212,9 +1212,9 @@ addQueue() {
 }
                 \end{lstlisting}
 
-                Estos métodos gestionan la interacción con la cola de reproducción a través del servicio \verb|SongManagementService|. Al pulsar sobre el nombre de la playlist, se invoca \verb|playQueue()|, que establece la lista actual de canciones (\verb|this.songs|) como nueva cola de reproducción mediante el método \verb|setQueue()| del servicio. De forma similar, al seleccionar la opción de añadir a cola, \verb|addQueue()| incorpora las canciones a la cola existente utilizando \verb|addQueue()| del mismo servicio. \\
+                Estos métodos gestionan la interacción con la cola de reproducción a través del servicio \texttt{SongManagementService}. Al pulsar sobre el nombre de la playlist, se invoca \texttt{playQueue()}, que establece la lista actual de canciones (\texttt{this.songs}) como nueva cola de reproducción mediante el método \texttt{setQueue()} del servicio. De forma similar, al seleccionar la opción de añadir a cola, \texttt{addQueue()} incorpora las canciones a la cola existente utilizando \texttt{addQueue()} del mismo servicio. \\
 
-                Esta implementación refleja una arquitectura limpia donde la lógica de gestión de reproducción se delega completamente al servicio, permitiendo que los componentes se centren únicamente en la presentación de datos y captura de eventos de usuario. El servicio \\ \verb|SongManagementService| será analizado en profundidad en la siguiente sección de esta documentación.
+                Esta implementación refleja una arquitectura limpia donde la lógica de gestión de reproducción se delega completamente al servicio, permitiendo que los componentes se centren únicamente en la presentación de datos y captura de eventos de usuario. El servicio \\ \texttt{SongManagementService} será analizado en profundidad en la siguiente sección de esta documentación.
 
                 \paragraph{Song Management}
                 ‎
@@ -1244,15 +1244,15 @@ currentISDelay:number = 0
 progress:number = 0;
                 \end{lstlisting}
 
-                El servicio \verb|SongManagementService| centraliza toda la lógica relacionada con la reproducción musical y gestión de colas en la aplicación. Sus atributos principales pueden categorizarse en tres grupos:
+                El servicio \texttt{SongManagementService} centraliza toda la lógica relacionada con la reproducción musical y gestión de colas en la aplicación. Sus atributos principales pueden categorizarse en tres grupos:
 
                 \begin{enumerate}
-                    \item \textbf{Metadatos visuales}: Almacena información de la canción actual (\verb|songCover|, \verb|songTitle|, \verb|songArtist|) para mostrarse en la interfaz.
-                    \item \textbf{Control de reproducción}: Incluye el elemento \verb|HTMLAudioElement| para manejo nativo del audio, junto con estados como \verb|isPlaying|, \verb|volume| y \verb|progress| que reflejan la reproducción en tiempo real.
-                    \item \textbf{Gestión de cola}: Mantiene dos versiones de la cola (\verb|queue| y \verb|queueSave|) para implementar funcionalidades como shuffle, junto con índices de posición (\verb|currentIndex|, \verb|currentIndexSave|) y modos especiales (\verb|loopMode|, \verb|shuffle|).
+                    \item \textbf{Metadatos visuales}: Almacena información de la canción actual (\texttt{songCover}, \texttt{songTitle}, \texttt{songArtist}) para mostrarse en la interfaz.
+                    \item \textbf{Control de reproducción}: Incluye el elemento \texttt{HTMLAudioElement} para manejo nativo del audio, junto con estados como \texttt{isPlaying}, \texttt{volume} y \texttt{progress} que reflejan la reproducción en tiempo real.
+                    \item \textbf{Gestión de cola}: Mantiene dos versiones de la cola (\texttt{queue} y \texttt{queueSave}) para implementar funcionalidades como shuffle, junto con índices de posición (\texttt{currentIndex}, \texttt{currentIndexSave}) y modos especiales (\texttt{loopMode}, \texttt{shuffle}).
                 \end{enumerate}
 
-                El constructor inicializa automáticamente los listeners de eventos mediante \verb|setupSongListeners()|, preparando el servicio para responder a cambios de estado.
+                El constructor inicializa automáticamente los listeners de eventos mediante \texttt{setupSongListeners()}, preparando el servicio para responder a cambios de estado.
 
                 \begin{lstlisting}[caption={setUpSongListeners()}]
 private async setupSongListeners() {
@@ -1265,11 +1265,11 @@ private async setupSongListeners() {
 }
                 \end{lstlisting}
 
-                El método \verb|setupSongListeners()| configura los listeners esenciales para el control de reproducción, implementando dos funcionalidades clave mediante eventos sobre el elemento \verb|HTMLAudioElement|.
-                
+                El método \texttt{setupSongListeners()} configura los listeners esenciales para el control de reproducción, implementando dos funcionalidades clave mediante eventos sobre el elemento \texttt{HTMLAudioElement}.
+
                 \begin{enumerate}
-                    \item El evento 'ended' activa automáticamente \verb|playNext()| al terminar la canción actual, permitiendo una reproducción continua.
-                    \item Segundo, el evento 'timeupdate' actualiza constantemente la propiedad \verb|progress| con el porcentaje de avance (calculado como la relación entre \verb|currentTime| y \verb|duration|), lo que se refleja en la barra de progreso de la interfaz.
+                  \item El evento \texttt{'ended'} activa automáticamente \texttt{playNext()} al terminar la canción actual, permitiendo una reproducción continua.
+                  \item El evento \texttt{'timeupdate'} actualiza constantemente la propiedad \texttt{progress} con el porcentaje de avance (calculado como la relación entre \texttt{currentTime} y \texttt{duration}), lo que se refleja en la barra de progreso de la interfaz.
                 \end{enumerate}
 
                 \begin{lstlisting}[caption={getCoverPath()}]
@@ -1290,7 +1290,7 @@ async getCoverPath(coverPath:string): Promise<string> {
 }
                 \end{lstlisting}
 
-                El método \verb|getCoverPath()| representa una solución centralizada para la gestión de portadas de las canciones, cuya implementación fue migrada desde el componente \verb|playbar| al servicio actual como parte de una refactorización para simplificar la arquitectura. Esta implementación unificada elimina la duplicación de código que existía cuando la funcionalidad estaba dispersa en varios componentes (a excepción de las playlists), mejorando el mantenimiento y permitiendo una gestión más eficiente de los recursos multimedia.
+                El método \texttt{getCoverPath()} representa una solución centralizada para la gestión de portadas de las canciones, cuya implementación fue migrada desde el componente \texttt{playbar} al servicio actual como parte de una refactorización para simplificar la arquitectura. Esta implementación unificada elimina la duplicación de código que existía cuando la funcionalidad estaba dispersa en varios componentes (a excepción de las playlists), mejorando el mantenimiento y permitiendo una gestión más eficiente de los recursos multimedia.
 
                 \begin{lstlisting}[caption={loadAndPlay()}]
 async loadAndPlay(_path:string, _index:number) {
@@ -1317,7 +1317,7 @@ async loadAndPlay(_path:string, _index:number) {
 }
                 \end{lstlisting}
 
-                El método \verb|loadAndPlay()| gestiona todo el proceso de preparación y reproducción de canciones mediante un flujo secuencial. Primero actualiza los metadatos visuales (\verb|songTitle|, \verb|songArtist| y \verb|songCover|) utilizando los datos de la canción en la posición \verb|_index| de la cola. Para la portada, se emplea el método \verb|getCoverPath()| previamente descrito. Luego carga el archivo de audio desde la ruta especificada (\verb|_path|), lo convierte a un blob y genera una URL temporal para su reproducción. Finalmente asigna esta URL al elemento de audio (\verb|this.song.src|) e inicia la reproducción, actualizando el estado \verb|isPlaying|. Todo el proceso está encapsulado en un bloque try-catch que maneja posibles errores durante la carga.
+                El método \texttt{loadAndPlay()} gestiona todo el proceso de preparación y reproducción de canciones mediante un flujo secuencial. Primero actualiza los metadatos visuales (\texttt{songTitle}, \texttt{songArtist} y \texttt{songCover}) utilizando los datos de la canción en la posición \texttt{\_index} de la cola. Para la portada, se emplea el método \texttt{getCoverPath()} previamente descrito. Luego carga el archivo de audio desde la ruta especificada (\texttt{\_path}), lo convierte a un blob y genera una URL temporal para su reproducción. Finalmente asigna esta URL al elemento de audio (\texttt{this.song.src}) e inicia la reproducción, actualizando el estado \texttt{isPlaying}. Todo el proceso está encapsulado en un bloque try-catch que maneja posibles errores durante la carga.
 
                 \begin{lstlisting}[caption={set y add}]
 setQueue(songs:Song[]) {
@@ -1344,9 +1344,9 @@ addOneSong(song:Song) {
 
                 Estos métodos constituyen la API fundamental para la gestión de la cola de reproducción, mencionada recurrentemente en secciones anteriores de la documentación. La implementación sigue un patrón dual con variantes "set" (establecer) y "add" (añadir): \\
 
-                Los métodos \verb|setQueue()| y \verb|setOneSong()| reemplazan completamente la cola existente. En el primer caso, se recibe un array de canciones que se copia mediante el operador de propagación (\verb|...songs|), mientras que el segundo acepta una única canción, reiniciando la cola antes de añadirla. Ambos métodos comparten el mismo flujo posterior: reinician el índice actual a 0 e invocan \verb|loadAndPlay()| para comenzar la reproducción inmediata. \\
+                Los métodos \texttt{setQueue()} y \texttt{setOneSong()} reemplazan completamente la cola existente. En el primer caso, se recibe un array de canciones que se copia mediante el operador de propagación (\texttt{...songs}), mientras que el segundo acepta una única canción, reiniciando la cola antes de añadirla. Ambos métodos comparten el mismo flujo posterior: reinician el índice actual a 0 e invocan \texttt{loadAndPlay()} para comenzar la reproducción inmediata. \\
 
-                Por otro lado, \verb|addQueue()| y \verb|addOneSong()| implementan la funcionalidad complementaria de añadir contenido a la cola existente sin modificar el estado de reproducción actual. La versión \verb|addQueue()| utiliza el mismo operador de propagación para incorporar múltiples canciones, mientras que \verb|addOneSong()| trabaja con elementos individuales. \\
+                Por otro lado, \texttt{addQueue()} y \texttt{addOneSong()} implementan la funcionalidad complementaria de añadir contenido a la cola existente sin modificar el estado de reproducción actual. La versión \texttt{addQueue()} utiliza el mismo operador de propagación para incorporar múltiples canciones, mientras que \texttt{addOneSong()} trabaja con elementos individuales. \\
 
                 \begin{lstlisting}[caption={togglePlayPause()}]
 async togglePlayPause() {
@@ -1359,7 +1359,7 @@ async togglePlayPause() {
 }
                 \end{lstlisting}
                  
-                El método \verb|togglePlayPause()| implementa la funcionalidad básica de control de reproducción mediante un mecanismo de alternancia. Cuando se invoca, verifica el estado actual de reproducción a través de la variable \verb|isPlaying|. Si la reproducción está pausada (\verb|isPlaying| es falso), se ejecuta el método \verb|play()| del elemento de audio HTML. En caso contrario, se activa el método \verb|pause()|. Finalmente, se invierte el valor de \verb|isPlaying| para reflejar el nuevo estado.
+                El método \texttt{togglePlayPause()} implementa la funcionalidad básica de control de reproducción mediante un mecanismo de alternancia. Cuando se invoca, verifica el estado actual de reproducción a través de la variable \texttt{isPlaying}. Si la reproducción está pausada (\texttt{isPlaying} es falso), se ejecuta el método \texttt{play()} del elemento de audio HTML. En caso contrario, se activa el método \texttt{pause()}. Finalmente, se invierte el valor de \texttt{isPlaying} para reflejar el nuevo estado.
 
                 \begin{lstlisting}[caption={playNext() y playPrevious()}]
 playNext() {
@@ -1409,9 +1409,9 @@ stop() {
 }
                 \end{lstlisting}
 
-                Estos métodos implementan la lógica avanzada de navegación en la cola de reproducción, considerando diferentes modos de funcionamiento (\verb|none|, \verb|playlist| y \verb|single|). En \verb|playNext()|, se evalúa primero si hay canciones siguientes disponibles y el modo de repetición lo permite, incrementando entonces el índice y cargando la siguiente canción. Cuando se alcanza el final de la lista en modo \verb|playlist|, se reinicia al principio. Para el modo \verb|single|, simplemente se reinicia la canción actual. \\
+                Estos métodos implementan la lógica avanzada de navegación en la cola de reproducción, considerando diferentes modos de funcionamiento (\texttt{none}, \texttt{playlist} y \texttt{single}). En \texttt{playNext()}, se evalúa primero si hay canciones siguientes disponibles y el modo de repetición lo permite, incrementando entonces el índice y cargando la siguiente canción. Cuando se alcanza el final de la lista en modo \texttt{playlist}, se reinicia al principio. Para el modo \texttt{single}, simplemente se reinicia la canción actual. \\
 
-                El método \verb|playPrevious()| incorpora lógica adicional para diferenciar entre retroceder a la canción anterior (si la reproducción actual lleva menos de 3 segundos) o reiniciar la canción actual. Maneja correctamente los casos especiales como el inicio de la lista en modo \verb|playlist| (saltando al final) o el comportamiento específico del modo \verb|single|. Ambos métodos mantienen actualizados los índices de posición (\verb|currentIndex|, \verb|currentISDelay|) y registran el estado actual para depuración. \\
+                El método \texttt{playPrevious()} incorpora lógica adicional para diferenciar entre retroceder a la canción anterior (si la reproducción actual lleva menos de 3 segundos) o reiniciar la canción actual. Maneja correctamente los casos especiales como el inicio de la lista en modo \texttt{playlist} (saltando al final) o el comportamiento específico del modo \texttt{single}. Ambos métodos mantienen actualizados los índices de posición (\texttt{currentIndex}, \texttt{currentISDelay}) y registran el estado actual para depuración. \\
 
                 La implementación demuestra un manejo robusto de todos los casos posibles de navegación, proporcionando una experiencia de usuario consistente con los reproductores musicales profesionales. El diseño modular permite fácil extensión para añadir nuevos modos de reproducción o comportamientos especiales en futuras iteraciones. \\
 
@@ -1435,11 +1435,11 @@ onVolume(event: Event) {
 }
                 \end{lstlisting}
 
-                Estos métodos gestionan la interacción del usuario con los controles de reproducción. El método \verb|onInput()| se encarga de actualizar la posición de reproducción cuando el usuario manipula la barra de progreso. Primero obtiene el valor del elemento HTML que generó el evento, lo convierte a número entero y luego actualiza la propiedad \verb|currentTime| del elemento de audio si este está disponible. \\
+                Estos métodos gestionan la interacción del usuario con los controles de reproducción. El método \texttt{onInput()} se encarga de actualizar la posición de reproducción cuando el usuario manipula la barra de progreso. Primero obtiene el valor del elemento HTML que generó el evento, lo convierte a número entero y luego actualiza la propiedad \texttt{currentTime} del elemento de audio si este está disponible. \\
 
-                Por su parte, \verb|onVolume()| controla los ajustes de volumen mediante un flujo similar: captura el valor del control deslizante de volumen, lo normaliza dividiendo entre 100 (para adaptarlo al rango 0-1 que espera el API de audio) y aplica este valor tanto al elemento de audio como a la variable local \verb|volume|. La conversión de tipos y normalización de valores garantiza que los controles funcionen consistentemente aunque provengan de diferentes fuentes de entrada. \\
+                Por su parte, \texttt{onVolume()} controla los ajustes de volumen mediante un flujo similar: captura el valor del control deslizante de volumen, lo normaliza dividiendo entre 100 (para adaptarlo al rango 0-1 que espera el API de audio) y aplica este valor tanto al elemento de audio como a la variable local \texttt{volume}. La conversión de tipos y normalización de valores garantiza que los controles funcionen consistentemente aunque provengan de diferentes fuentes de entrada. \\
 
-                Ambos métodos implementan una verificación de existencia (\verb|if (this.song)|) como medida de seguridad para evitar errores cuando no hay elemento de audio inicializado.
+                Ambos métodos implementan una verificación de existencia (\texttt{if (this.song)}) como medida de seguridad para evitar errores cuando no hay elemento de audio inicializado.
 
                 \begin{lstlisting}[caption={cycleLoop()}]
 cycleLoop() {
@@ -1461,7 +1461,7 @@ cycleLoop() {
 }
                 \end{lstlisting}
 
-                Este método se encarga de alternar cíclicamente la variable \verb|loopMode|.
+                Este método se encarga de alternar cíclicamente la variable \texttt{loopMode}.
 
                 \begin{lstlisting}[caption={Shuffle}]
 toggleShuffle() {
@@ -1498,12 +1498,13 @@ doShuffle() {
 }
                 \end{lstlisting}
 
-                La implementación del modo aleatorio (\textit{shuffle}) sigue un enfoque de dos fases mediante los métodos \verb|toggleShuffle()| y \verb|doShuffle()|. Cuando se activa el modo aleatorio, \verb|toggleShuffle()| preserva el estado original de la cola (\verb|queueSave|) y la posición actual (\verb|currentIndexSave|) antes de aplicar la aleatorización. Este diseño permite restaurar el orden inicial cuando se desactiva la función, manteniendo la coherencia con el comportamiento de reproductores profesionales. \\
+                La implementación del modo aleatorio (\textit{shuffle}) sigue un enfoque de dos fases mediante los métodos \texttt{toggleShuffle()} y \texttt{doShuffle()}. Cuando se activa el modo aleatorio, \texttt{toggleShuffle()} preserva el estado original de la cola (\texttt{queueSave}) y la posición actual (\texttt{currentIndexSave}) antes de aplicar la aleatorización. Este diseño permite restaurar el orden inicial cuando se desactiva la función, manteniendo la coherencia con el comportamiento de reproductores profesionales.
 
-                El método \verb|doShuffle()| implementa el algoritmo Fisher-Yates (\textcite{wikifisheryates}) para la mezcla aleatoria, optimizado para garantizar que la canción actual permanezca en primera posición durante la transición. El proceso consta de tres etapas: \begin{enumerate}
-                  \item Extracción y protección de la canción en reproducción.
-                  \item Mezcla aleatoria del resto de la cola mediante intercambios indexados.
-                  \item reconstrucción de la cola con la canción actual preservada.
+                El método \texttt{doShuffle()} implementa el algoritmo Fisher-Yates (\textcite{wikifisheryates}) para la mezcla aleatoria, optimizado para garantizar que la canción actual permanezca en primera posición durante la transición. El proceso consta de tres etapas:
+                \begin{enumerate}
+                    \item Extracción y protección de la canción en reproducción
+                    \item Mezcla aleatoria del resto de la cola mediante intercambios indexados
+                    \item Reconstrucción de la cola con la canción actual preservada
                 \end{enumerate}
                 
                 Esta implementación demuestra especial atención al detalle en la experiencia de usuario, evitando saltos bruscos en la reproducción durante la activación del modo aleatorio. \\
@@ -1523,14 +1524,14 @@ formatTime(seconds: number | undefined): string {
 }
                 \end{lstlisting}
 
-                El método \verb|formatTime()| implementa la conversión de segundos a un formato de tiempo legible (MM:SS) para la interfaz de usuario. Cuando recibe un valor indefinido o no numérico, devuelve por defecto '0:00' para mantener la consistencia visual. Para valores válidos, realiza tres operaciones matemáticas: primero calcula los minutos completos mediante división entera, luego obtiene los segundos restantes usando el operador módulo, y finalmente aplica un padding de dos dígitos a los segundos para mantener un formato uniforme. \\
+                El método \texttt{formatTime()} implementa la conversión de segundos a un formato de tiempo legible (MM:SS) para la interfaz de usuario. Cuando recibe un valor indefinido o no numérico, devuelve por defecto '0:00' para mantener la consistencia visual. Para valores válidos, realiza tres operaciones matemáticas: primero calcula los minutos completos mediante división entera, luego obtiene los segundos restantes usando el operador módulo, y finalmente aplica un padding de dos dígitos a los segundos para mantener un formato uniforme. \\
 
                 La salida cumple con los estándares de reproductores musicales profesionales, mostrando siempre minutos y segundos con dos dígitos (ej: 3:05 en lugar de 3:5), lo que mejora la legibilidad y experiencia de usuario durante la reproducción. \\
 
                 \paragraph{Song Adding}
                 ‎
 
-                El servicio \verb|SongAddingService| se especializa en la gestión de playlists durante el proceso de añadir canciones. Su diseño minimalista cumple con el principio de responsabilidad única, enfocándose exclusivamente en dos operaciones clave: la obtención de playlists y la liberación de recursos.
+                El servicio \texttt{SongAddingService} se especializa en la gestión de playlists durante el proceso de añadir canciones. Su diseño minimalista cumple con el principio de responsabilidad única, enfocándose exclusivamente en dos operaciones clave: la obtención de playlists y la liberación de recursos.
 
                 \begin{lstlisting}[caption={song-adding.service.ts}]
 export class SongAddingService {
@@ -1565,9 +1566,9 @@ interface Playlist {
 }
                 \end{lstlisting}
 
-                El método principal \verb|getAllPlaylists()| establece comunicación con el backend mediante Tauri (\verb|invoke|), recuperando el listado completo de playlists desde la base de datos SQLite, este listado es mapeado en la parte de HTML del componente \textit{Song}. Implementa manejo de errores robusto que garantiza estabilidad incluso ante fallos de conexión, inicializando un array vacío como fallback. La interfaz \verb|Playlist| define la estructura de datos esperada, incluyendo metadatos esenciales como identificador único, nombre, fecha de creación, ruta de la portada y estado de favorito. \\
+                El método principal \texttt{getAllPlaylists()} establece comunicación con el backend mediante Tauri (\texttt{invoke}), recuperando el listado completo de playlists desde la base de datos SQLite. Este listado es mapeado en la parte de HTML del componente \textit{Song}. Implementa manejo de errores robusto que garantiza estabilidad incluso ante fallos de conexión, inicializando un array vacío como fallback. La interfaz \texttt{Playlist} define la estructura de datos esperada, incluyendo metadatos esenciales como identificador único, nombre, fecha de creación, ruta de la portada y estado de favorito.
 
-                La función \verb|letGo()| proporciona un mecanismo de limpieza de memoria, liberando el array de playlists cuando ya no es necesario. Este enfoque refleja buenas prácticas de gestión de recursos en aplicaciones con componentes modales, donde la memoria puede acumularse durante ciclos repetidos de apertura/cierre. \\
+                La función \texttt{letGo()} proporciona un mecanismo de limpieza de memoria, liberando el array de playlists cuando ya no es necesario. Este enfoque refleja buenas prácticas de gestión de recursos en aplicaciones con componentes modales, donde la memoria puede acumularse durante ciclos repetidos de apertura/cierre.
 
         \subsection{Backend}
 
@@ -1575,7 +1576,7 @@ interface Playlist {
 
             \subsubsection{Tauri API}
 
-            El archivo \verb|lib.rs| constituye el punto de entrada principal del backend desarrollado con Tauri y Rust, donde se configura la aplicación y se definen los manejadores de las operaciones entre el frontend y el sistema. Su estructura sigue un flujo bien definido que combina inicialización de plugins, gestión de permisos y registro de comandos invocables. \\
+            El archivo \texttt{lib.rs} constituye el punto de entrada principal del backend desarrollado con Tauri y Rust, donde se configura la aplicación y se definen los manejadores de las operaciones entre el frontend y el sistema. Su estructura sigue un flujo bien definido que combina inicialización de plugins, gestión de permisos y registro de comandos invocables. \\
 
             \begin{lstlisting}[caption={lib.rs}]
 use std::path::PathBuf;
@@ -1688,24 +1689,24 @@ pub fn run() {
               
             \end{lstlisting}
             
-            En la fase de setup, se definen los directorios accesibles para la aplicación mediante \verb|fs_scope()|, abarcando ubicaciones críticas multiplataforma:
+            En la fase de setup, se definen los directorios accesibles para la aplicación mediante \texttt{fs\_scope()}, abarcando ubicaciones críticas multiplataforma:
 
             \begin{itemize}
-              \item Directorios de música (\$HOME/Music).
-              \item Rutas de configuración según el SO (\verb|$APPDATA| en Windows, \verb|$HOME/.local/share/| en Linux, \verb|Library/Application Support| en macOS).
+                \item Directorios de música (\$HOME/Music)
+                \item Rutas de configuración según el SO (\texttt{\$APPDATA} en Windows, \texttt{\$HOME/.local/share/} en Linux, \texttt{Library/Application Support} en macOS)
             \end{itemize}
 
-            El método \verb|invoke_handler| asocia las funciones Rust con llamadas desde el frontend mediante \verb|generate_handler!|.
+            El método \texttt{invoke\_handler} asocia las funciones Rust con llamadas desde el frontend mediante \texttt{generate\_handler!}.
 
             Los handlers registrados incluyen:
 
             \begin{itemize}
-              \item Gestión de playlists (\verb|create_playlist|, \verb|remove_playlist|)
-              \item Consultas a la base de datos (\verb|get_all_songs|)
-              \item Control de canciones destacadas (\verb|add_is_starred|)
+                \item Gestión de playlists (\texttt{create\_playlist}, \texttt{remove\_playlist})
+                \item Consultas a la base de datos (\texttt{get\_all\_songs})
+                \item Control de canciones destacadas (\texttt{add\_is\_starred})
             \end{itemize}
 
-            Finalmente, el builder se ejecuta con \verb|run()|, propagando cualquier error durante el arranque.
+            Finalmente, el builder se ejecuta con \texttt{run()}, propagando cualquier error durante el arranque.
 
             \subsubsection{Diseño de la base de datos}
 
@@ -1756,15 +1757,15 @@ pub fn run() {
               Establece las relaciones entre canciones y playlists mediante un diseño minimalista que contiene únicamente:
 
               \begin{itemize}
-                \item Clave foránea a \verb|All_Songs.id|.
-                \item Clave foránea a \verb|Playlist.id|.
+                \item Clave foránea a \texttt{All\_Songs.id}.
+                \item Clave foránea a \texttt{Playlist.id}.
               \end{itemize}
 
-              Esta estructura permite consultas eficientes tanto para recuperar todas las canciones de una playlist como para identificar en qué playlists aparece una canción específica. La integridad referencial se mantiene mediante restricciones \verb|FOREIGN KEY| que garantizan la consistencia de los datos.
+              Esta estructura permite consultas eficientes tanto para recuperar todas las canciones de una playlist como para identificar en qué playlists aparece una canción específica. La integridad referencial se mantiene mediante restricciones \texttt{FOREIGN KEY} que garantizan la consistencia de los datos.
 
             \subsubsection{Logica}
 
-            El módulo \verb|logic.rs| constituye el núcleo funcional del backend, donde se implementan las operaciones críticas de gestión de datos y sincronización musical. Su diseño sigue los principios de Rust: seguridad de tipos, manejo explícito de errores y eficiencia en el acceso a recursos del sistema.
+            El módulo \texttt{logic.rs} constituye el núcleo funcional del backend, donde se implementan las operaciones críticas de gestión de datos y sincronización musical. Su diseño sigue los principios de Rust: seguridad de tipos, manejo explícito de errores y eficiencia en el acceso a recursos del sistema.
 
             \begin{lstlisting}[caption={fn sync()}]
 pub fn sync(path:PathBuf, music_path:PathBuf) -> std::io::Result<()> {
@@ -1777,16 +1778,16 @@ pub fn sync(path:PathBuf, music_path:PathBuf) -> std::io::Result<()> {
 }
             \end{lstlisting}
 
-            La función \verb|sync()| coordina el proceso completo de inicialización de la biblioteca musical mediante cuatro etapas secuenciales:
+            La función \texttt{sync()} coordina el proceso completo de inicialización de la biblioteca musical mediante cuatro etapas secuenciales:
 
             \begin{enumerate}
                 \item \textbf{Preparación del entorno}.
                 \item \textbf{Inicialización de la base de datos}.
                 \item \textbf{Limpieza de registros obsoletos}.
-                \item \textbf{Exploración del directorio musical}: \verb|walk_dir| recorre recursivamente la ruta especificada para indexar nuevos archivos.
+                \item \textbf{Exploración del directorio musical}: \texttt{walk\_dir} recorre recursivamente la ruta especificada para indexar nuevos archivos.
             \end{enumerate}
 
-            Cada etapa maneja sus errores de forma independiente, siguiendo el patrón \verb|Result| de Rust. La función principal propaga los errores mediante el operador \verb|?|, mientras que \verb|clean| utiliza \verb|unwrap| al considerarse una operación no crítica.
+            Cada etapa maneja sus errores de forma independiente, siguiendo el patrón \texttt{Result} de Rust. La función principal propaga los errores mediante el operador \texttt{?}, mientras que \texttt{clean} utiliza \texttt{unwrap} al considerarse una operación no crítica.
 
             \begin{lstlisting}[caption={fn create\_dir()}]
 fn create_dir(path:PathBuf) -> std::io::Result<()> {
@@ -1801,12 +1802,12 @@ fn create_dir(path:PathBuf) -> std::io::Result<()> {
             El proceso sigue tres pasos fundamentales:
 
             \begin{enumerate}
-              \item Construye la ruta completa concatenando el directorio base con la subcarpeta \verb|covers|.
-              \item Ejecuta la creación recursiva de directorios mediante \verb|fs::create_dir_all()|.
-              \item Maneja posibles errores con \verb|expect| para fallos críticos.
+              \item Construye la ruta completa concatenando el directorio base con la subcarpeta \texttt{covers}
+              \item Ejecuta la creación recursiva de directorios mediante \texttt{fs::create\_dir\_all()}
+              \item Maneja posibles errores con \texttt{expect} para fallos críticos
             \end{enumerate}
 
-            La implementación garantiza que exista siempre el directorio para almacenar las portadas de las canciones, requisito esencial para el funcionamiento de la interfaz gráfica. El uso de \verb|PathBuf| en lugar de manipulaciones de strings crudas facilita su uso.
+            La implementación garantiza que exista siempre el directorio para almacenar las portadas de las canciones, requisito esencial para el funcionamiento de la interfaz gráfica. El uso de \texttt{PathBuf} en lugar de manipulaciones de strings crudas facilita su uso.
 
             \begin{lstlisting}[caption={fn create\_db()}]
 fn create_db(path:PathBuf) -> std::io::Result<()> {
@@ -1845,9 +1846,9 @@ fn create_db(path:PathBuf) -> std::io::Result<()> {
 }
             \end{lstlisting}
 
-            La función \verb|create_db| genera la estructura SQLite con las tablas necesarias vistas en el punto anterior.
+            La función \texttt{create\_db} genera la estructura SQLite con las tablas necesarias vistas en el punto anterior.
 
-            El diseño utiliza \verb|if not exists| para evitar errores en ejecuciones repetidas y maneja errores mediante el operador \verb|?| de Rust.
+            El diseño utiliza \texttt{if not exists} para evitar errores en ejecuciones repetidas y maneja errores mediante el operador \texttt{?} de Rust.
 
             \begin{lstlisting}[caption={fn clean()}]
 fn clean(database_path: PathBuf) -> Result<()> {
@@ -1888,13 +1889,13 @@ fn clean(database_path: PathBuf) -> Result<()> {
             La función sigue un flujo de cuatro etapas:
 
             \begin{enumerate}
-              \item \textbf{Consulta inicial}: Recupera todos los IDs y rutas de canciones almacenadas mediante una consulta SQL parametrizada. El uso de \verb|query\_map()| permite un mapeo seguro de los resultados a tuplas Rust.
+              \item \textbf{Consulta inicial}: Recupera todos los IDs y rutas de canciones almacenadas mediante una consulta SQL parametrizada. El uso de \texttt{query\_map()} permite un mapeo seguro de los resultados a tuplas Rust.
 
               \item \textbf{Transacción}: Inicia una transacción SQLite para garantizar atomicidad en las operaciones de limpieza. Esto previene estados inconsistentes si ocurren errores durante el proceso.
 
               \item \textbf{Verificación}: Para cada canción registrada:
                 \begin{itemize}
-                  \item Comprueba la existencia del archivo físico usando \verb|Path::exists()|.
+                  \item Comprueba la existencia del archivo físico usando \texttt{Path::exists()}.
                   \item Elimina el registro de la base de datos si el archivo no existe.
                   \item Registra la operación en la consola para diagnóstico.
                 \end{itemize}
@@ -1904,7 +1905,7 @@ fn clean(database_path: PathBuf) -> Result<()> {
 
             Características técnicas destacables:
             \begin{itemize}
-              \item Manejo de errores unificado con el tipo \verb|Result| de Rust.
+              \item Manejo de errores unificado con el tipo \texttt{Result} de Rust.
               \item Uso de transacciones para garantizar integridad de datos.
               \item Consultas parametrizadas para prevenir inyección SQL.
             \end{itemize}
@@ -1925,7 +1926,7 @@ fn clean(database_path: PathBuf) -> Result<()> {
 
             Función principal que coordina el recorrido del directorio \textit{music}. \\
 
-            Utiliza \verb|WalkDir| para recorrido recursivo eficiente y filtra archivos mediante \verb|is_music()| durante el recorrido. Cada archivo válido es procesado con \verb|extract_metadata| y almacenado mediante \verb|insert_song()|.
+            Utiliza \texttt{WalkDir} para recorrido recursivo eficiente y filtra archivos mediante \texttt{is\_music()} durante el recorrido. Cada archivo válido es procesado con \texttt{extract\_metadata} y almacenado mediante \texttt{insert\_song()}.
 
             \begin{lstlisting}[caption={fn is\_music()}]
 fn is_music(entry: &DirEntry) -> bool {
@@ -1935,7 +1936,7 @@ fn is_music(entry: &DirEntry) -> bool {
 
             Filtro para identificar archivos musicales.
 
-            Soporta múltiples formatos de audio incluyendo \verb|.mp3|, \verb|.ogg|, \verb|.wav|, \verb|.flac| y \verb|.aac|. Permite recursividad al incluir directorios mediante \verb|is_dir| con manejo seguro de conversión de nombres de archivo.
+            Soporta múltiples formatos de audio incluyendo \texttt{.mp3}, \texttt{.ogg}, \texttt{.wav}, \texttt{.flac} y \texttt{.aac}. Permite recursividad al incluir directorios mediante \texttt{is\_dir} con manejo seguro de conversión de nombres de archivo.
 
             \begin{lstlisting}[caption={fn extract\_metadata()}]
 fn extract_metadata(path:&str, cover_path:PathBuf) -> std::io::Result<(String, String, String, String, u128, String)> {
@@ -1956,7 +1957,7 @@ fn extract_metadata(path:&str, cover_path:PathBuf) -> std::io::Result<(String, S
 
             Extracción de metadatos de archivos musicales. \\
 
-            Lee metadatos usando la crate \verb|lofty| con valores por defecto para campos opcionales. Convierte la duración a milisegundos y gestiona la extracción de imágenes de portada mediante \verb|create_cover()|.
+            Lee metadatos usando la crate \texttt{lofty} con valores por defecto para campos opcionales. Convierte la duración a milisegundos y gestiona la extracción de imágenes de portada mediante \texttt{create\_cover()}.
 
             \begin{lstlisting}[caption={fn create\_cover()}]
 fn create_cover(path:PathBuf, title:&str, image:Option<Vec<u8>>) -> std::io::Result<PathBuf> {
@@ -1986,7 +1987,7 @@ fn insert_song(path:PathBuf , song_path:String, title:String, artist:String, alb
 }
             \end{lstlisting}
 
-            Genera ID único mediante hash Blake3 del título usando \verb|blake3::hash()|. Formatea la duración a \verb|MM:SS| y evita duplicados con \verb|INSERT OR IGNORE|. Almacena todos los metadatos extraídos en la tabla \verb|all_songs| de la base de datos SQLite.
+            Genera ID único mediante hash Blake3 del título usando \texttt{blake3::hash()}. Formatea la duración a \texttt{MM:SS} y evita duplicados con \texttt{INSERT OR IGNORE}. Almacena todos los metadatos extraídos en la tabla \texttt{all\_songs} de la base de datos SQLite.
 
             \begin{lstlisting}[caption={Operaciones CRUD playlist}]
 pub fn add_playlist(name:String, cover_path:String, db_path:String) -> Result<()> {
@@ -2042,9 +2043,9 @@ pub fn remove_starred(song_id:String, db_path:String) -> Result<()> {
 }
             \end{lstlisting}
 
-            Métodos encargados de crear, eliminar y actualizar canciones de la base de datos. Primero se crea una conexión y posteriormente se ejecuta la consulta con los parámetros de la canción. Para las canciones favoritas se ejecuta es una consulta de \verb|UPDATE|. \\
+            Métodos encargados de crear, eliminar y actualizar canciones de la base de datos. Primero se crea una conexión y posteriormente se ejecuta la consulta con los parámetros de la canción. Para las canciones favoritas se ejecuta es una consulta de \texttt{UPDATE}. \\
 
-            La implementación de los siguientes métodos utilizan estos \verb|struct|s:
+            La implementación de los siguientes métodos utilizan estos \texttt{struct}s:
 
             \begin{lstlisting}[caption={structs Song y Playlist}]
 pub struct Song {
@@ -2071,25 +2072,25 @@ pub struct Playlist {
 }
             \end{lstlisting}
 
-            El \verb|struct| \verb|Song| contiene todos los datos relevantes de cada canción ya vistos en la sección de la base de datos, incluyendo:
+            El \texttt{struct Song} contiene todos los datos relevantes de cada canción ya vistos en la sección de la base de datos, incluyendo:
 
             \begin{itemize}
-              \item Identificador único (\verb|id|).
-              \item Ruta del archivo (\verb|path|).
-              \item Metadatos (\verb|title|, \verb|artist|, \verb|album|, \verb|year|).
-              \item Información de reproducción (\verb|duration|).
-              \item Ruta de la portada (\verb|cover_path|).
-              \item Estado (\verb|is_starred|).
+              \item Identificador único (\texttt{id}).
+              \item Ruta del archivo (\texttt{path}).
+              \item Metadatos (\texttt{title}, \texttt{artist}, \texttt{album}, \texttt{year}).
+              \item Información de reproducción (\texttt{duration}).
+              \item Ruta de la portada (\texttt{cover\_path}).
+              \item Estado (\texttt{is\_starred}).
             \end{itemize}
 
-            Por otra parte, \verb|Playlist| incluye:
+            Por otra parte, \texttt{Playlist} incluye:
 
             \begin{itemize}
-              \item Identificador único (\verb|id|).
-              \item Nombre de la \textit{Playlist} (\verb|name|).
-              \item Fecha de creación (\verb|creation_date|).
-              \item Portada (\verb|cover_path|).
-              \item Estado (\verb|is_starred|, no implementado por el momento).
+              \item Identificador único (\texttt{id}).
+              \item Nombre de la \textit{Playlist} (\texttt{name}).
+              \item Fecha de creación (\texttt{creation\_date}).
+              \item Portada (\texttt{cover\_path}).
+              \item Estado (\texttt{is\_starred}, no implementado por el momento).
             \end{itemize}
 
             \begin{lstlisting}[caption={fn get\_all\_playlists()}]
@@ -2116,13 +2117,13 @@ pub fn get_all_playlists(db_path:String) -> Result<Vec<Playlist>, String> {
 
             Esta función implementa la consulta de todas las playlists almacenadas en la base de datos. \\
 
-            El proceso se ejecuta en tres etapas principales. Primero se establece la conexión con la base de datos ubicada en \verb|playlists.db| dentro del directorio especificado. \\
+            El proceso se ejecuta en tres etapas principales. Primero se establece la conexión con la base de datos ubicada en \texttt{playlists.db} dentro del directorio especificado.
 
-            Seguidamente se prepara y ejecuta la consulta SQL que selecciona todos los campos de la tabla \verb|playlists|. \\
+            Seguidamente se prepara y ejecuta la consulta SQL que selecciona todos los campos de la tabla \texttt{playlists}.
 
-            Finalmente, los resultados son mapeados a instancias del \verb|struct| \verb|Playlist| mediante un \verb|query_map()| que procesa cada fila. El mapeo incluye todos los campos relevantes: \verb|id|, \verb|name|, \verb|creation_date|, \verb|cover_path| y \verb|is_starred|. \\
+            Finalmente, los resultados son mapeados a instancias del \texttt{struct Playlist} mediante un \texttt{query\_map()} que procesa cada fila. El mapeo incluye todos los campos relevantes: \texttt{id}, \texttt{name}, \texttt{creation\_date}, \texttt{cover\_path} y \texttt{is\_starred}.
 
-            El vector resultante con todas las playlists es devuelto al frontend a través de \verb|lib.rs|, donde será utilizado para poblar la interfaz de usuario como se ha visto previamente en esta documentación.
+            El vector resultante con todas las playlists es devuelto al frontend a través de \texttt{lib.rs}, donde será utilizado para poblar la interfaz de usuario como se ha visto previamente en esta documentación.
 
             \begin{lstlisting}[caption={fn get\_all\_songs() y fn get\_all\_songs\_starred()}]
 pub fn get_all_songs(db_path:String) -> Result<Vec<Song>, String> {
@@ -2177,13 +2178,13 @@ pub fn get_all_songs_starred(db_path:String) -> Result<Vec<Song>, String> {
 
             Estas funciones implementan el acceso a las canciones almacenadas en la base de datos, ambas comparten la misma estructura pero tienen un propósito diferente.
 
-            \verb|get_all_songs()| recupera todas las canciones almacenadas en la tabla \verb|all_songs|, mientras que \verb|get_all_songs_starred()| filtra solo aquellas marcadas como favoritas mediante la condición \verb|WHERE isStarred = 1|.
+            \texttt{get\_all\_songs()} recupera todas las canciones almacenadas en la tabla \texttt{all\_songs}, mientras que \texttt{get\_all\_songs\_starred()} filtra solo aquellas marcadas como favoritas mediante la condición \texttt{WHERE isStarred = 1}.
 
             El flujo de ejecución es idéntico en ambos casos:
             \begin{enumerate}
               \item Establece conexión con la base de datos.
               \item Prepara y ejecuta la consulta SQL correspondiente.
-              \item Mapea los resultados a instancias del \verb|struct| \verb|Song|.
+              \item Mapea los resultados a instancias del \texttt{struct Song}.
               \item Devuelve el vector de canciones o propaga cualquier error.
             \end{enumerate}
 
@@ -2223,20 +2224,20 @@ pub fn get_playlist_songs(playlist_id: i64, db_path: String) -> Result<Vec<Song>
             La función realiza una consulta SQL compleja que combina los datos de las tres tablas:
 
             \begin{itemize}
-              \item \verb|all_songs|: Contiene los metadatos completos de las canciones.
-              \item \verb|song_playlist|: Establece las relaciones entre canciones y playlists.
+              \item \texttt{all\_songs}: Contiene los metadatos completos de las canciones.
+              \item \texttt{song\_playlist}: Establece las relaciones entre canciones y playlists.
             \end{itemize}
 
-            El JOIN se realiza mediante la condición \verb|s.id = sp.song_id|, filtrando por el parámetro \verb|playlist_id| proporcionado.
+            El JOIN se realiza mediante la condición \texttt{s.id = sp.song\_id}, filtrando por el parámetro \texttt{playlist\_id} proporcionado.
 
             Los campos seleccionados incluyen todos los metadatos necesarios para la reproducción y visualización al igual que en los métodos anteriores:
             \begin{itemize}
-              \item Identificación única (\verb|id|)
-              \item Ruta del archivo (\verb|path|)
-              \item Metadatos (\verb|title|, \verb|artist|, \verb|album|, \verb|year|)
-              \item Duración formateada (\verb|duration|)
-              \item Ruta de la portada (\verb|cover_path|)
-              \item Estado (\verb|isStarred|)
+              \item Identificación única (\texttt{id}).
+              \item Ruta del archivo (\texttt{path}).
+              \item Metadatos (\texttt{title}, \texttt{artist}, \texttt{album}, \texttt{year}).
+              \item Duración formateada (\texttt{duration}).
+              \item Ruta de la portada (\texttt{cover\_path}).
+              \item Estado (\texttt{isStarred}).
             \end{itemize}
 
 \section{Trabajo Futuro}
@@ -2245,7 +2246,7 @@ El desarrollo de Musy contempla varias líneas de mejora y expansión de funcion
 
   \subsection{Implementación de Playlist favoritas}
 
-  La implementación completa del sistema \verb|is_starred| para playlists incluirá la integración de las \textit{playlists} favoritas en la actual \textbf{\textit{Starred}}, ya sea mediante un orden concreto o por último añadido.
+  La implementación completa del sistema \texttt{is\_starred} para playlists incluirá la integración de las \textit{playlists} favoritas en la actual \textbf{\textit{Starred}}, ya sea mediante un orden concreto o por último añadido.
 
   \subsection{Personalización de Temas Visuales}
   Se planea implementar un sistema de temas personalizables que permitirá a los usuarios:
@@ -2255,7 +2256,7 @@ El desarrollo de Musy contempla varias líneas de mejora y expansión de funcion
 
     \item \textbf{Modos de contraste}: Implementación de temas claros y oscuros.
 
-    \item \textbf{Almacenamiento de preferencias}: Las configuraciones de tema se guardarán en un archivo \verb|config.json| dentro del directorio de datos de la aplicación, utilizando el formato:
+    \item \textbf{Almacenamiento de preferencias}: Las configuraciones de tema se guardarán en un archivo \texttt{config.json} dentro del directorio de datos de la aplicación, utilizando el formato:
 
     \begin{lstlisting}[caption={config.json}]
     {
@@ -2286,7 +2287,7 @@ La estrategia de monetización de Musy se ha diseñado para equilibrar la sosten
   \begin{itemize}
     \item \textbf{Licencia de pago único}:
       \begin{itemize}
-        \item Precio base: 5€ en \href{https://musy.itch.io}{itch.io}.
+        \item Precio base: 5€ en \href{https://zmiko.itch.io/musy}{itch.io}.
         \item Incluye todas las funcionalidades actuales sin restricciones.
         \item Actualizaciones gratuitas.
       \end{itemize}
