@@ -119,6 +119,19 @@
       \verb https://www.udemy.com/course/angular-2-fernando-herrera/
       \endverb
     \endentry
+    \entry{IEEE830}{standard}{}{}
+      \list{organization}{1}{%
+        {IEEE Computer Society}%
+      }
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labeltitlesource}{title}
+      \field{number}{830-1998}
+      \field{title}{IEEE Recommended Practice for Software Requirements Specifications}
+      \field{year}{1998}
+    \endentry
     \entry{lofty}{online}{}{}
       \list{organization}{1}{%
         {Docs.rs}%
@@ -619,6 +632,19 @@
       \verb{url}
       \verb https://www.udemy.com/course/angular-2-fernando-herrera/
       \endverb
+    \endentry
+    \entry{IEEE830}{standard}{}{}
+      \list{organization}{1}{%
+        {IEEE Computer Society}%
+      }
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labeltitlesource}{title}
+      \field{number}{830-1998}
+      \field{title}{IEEE Recommended Practice for Software Requirements Specifications}
+      \field{year}{1998}
     \endentry
     \entry{lofty}{online}{}{}
       \list{organization}{1}{%

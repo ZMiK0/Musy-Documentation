@@ -96,18 +96,18 @@
 \setcounter{page}{1}
 \section{Introducción}
 
-En los últimos años, se ha observado una tendencia creciente en la monetización de servicios de streaming musical, caracterizada por el incremento en los precios de suscripción y la incorporación de publicidad incluso en los planes premium de plataformas líderes como Spotify, Apple Music o iTunes. Este escenario, unido a la creciente preocupación por la privacidad de datos y el deseo de los usuarios de mantener el control sobre su colección musical, ha generado un renovado interés en las soluciones de reproducción local. 
+En los últimos años, se ha observado una tendencia creciente en la monetización de servicios de streaming musical, caracterizada por el incremento en los precios de suscripción y la incorporación de publicidad incluso en los planes premium de plataformas líderes como Spotify, Apple Music o iTunes. Este escenario, unido a la creciente preocupación por la privacidad de datos y el deseo de los usuarios de mantener el control sobre su colección musical, ha generado un renovado interés en las soluciones de reproducción local. \\
 
-El presente proyecto surge como respuesta a esta necesidad emergente, proponiendo una solución tecnológica que combina lo mejor de ambos paradigmas: la experiencia de usuario pulida y moderna característica de las aplicaciones de streaming, con la independencia, privacidad y control absoluto sobre los archivos musicales que ofrecen los reproductores locales tradicionales. 
+El presente proyecto surge como respuesta a esta necesidad emergente, proponiendo una solución tecnológica que combina lo mejor de ambos paradigmas: la experiencia de usuario pulida y moderna característica de las aplicaciones de streaming, con la independencia, privacidad y control absoluto sobre los archivos musicales que ofrecen los reproductores locales tradicionales. \\
 
-La solución desarrollada se posiciona como una alternativa viable en un contexto donde cada vez más usuarios buscan reducir su dependencia de servicios en la nube, al mismo tiempo que demandan interfaces intuitivas y funcionalidades avanzadas comparables a las ofrecidas por las plataformas de pago. Además, se ha prestado especial atención a la optimización de recursos, abordando uno de los principales problemas de las aplicaciones basadas en tecnologías web: el alto consumo de memoria y procesamiento.
+La solución desarrollada se posiciona como una alternativa viable en un contexto donde cada vez más usuarios buscan reducir su dependencia de servicios en la nube, al mismo tiempo que demandan interfaces intuitivas y funcionalidades avanzadas comparables a las ofrecidas por las plataformas de pago. Además, se ha prestado especial atención a la optimización de recursos, abordando uno de los principales problemas de las aplicaciones basadas en tecnologías web: el alto consumo de memoria y procesamiento. \\
 
 
 \section{Justificación del tema elegido}
 
-El panorama actual de reproductores musicales presenta una dicotomía evidente. Por un lado, las plataformas de streaming dominan el mercado con interfaces pulidas y algoritmos de recomendación sofisticados, pero adolecen de limitaciones significativas como la dependencia de conexión a internet, modelos de negocio basados en suscripción recurrentes, y la ausencia de propiedad real sobre la música. 
+El panorama actual de reproductores musicales presenta una dicotomía evidente. Por un lado, las plataformas de streaming dominan el mercado con interfaces pulidas y algoritmos de recomendación sofisticados, pero adolecen de limitaciones significativas como la dependencia de conexión a internet, modelos de negocio basados en suscripción recurrentes, y la ausencia de propiedad real sobre la música. \\
 
-Por otro lado, las alternativas de código abierto para reproducción local, aunque respetan la privacidad del usuario y ofrecen control total sobre los archivos, frecuentemente presentan interfaces obsoletas, experiencias de usuario poco intuitivas, y en muchos casos carecen de mantenimiento activo. Esta brecha entre ambos enfoques crea un espacio de oportunidad para soluciones innovadoras.
+Por otro lado, las alternativas de código abierto para reproducción local, aunque respetan la privacidad del usuario y ofrecen control total sobre los archivos, frecuentemente presentan interfaces obsoletas, experiencias de usuario poco intuitivas, y en muchos casos carecen de mantenimiento activo. Esta brecha entre ambos enfoques crea un espacio de oportunidad para soluciones innovadoras. \\
 
 La propuesta desarrollada en este trabajo se justifica por su capacidad de llenar este vacío en el mercado, ofreciendo:
 \begin{itemize}
@@ -247,7 +247,97 @@ Esta combinación de tecnologías no solo satisface los requisitos técnicos del
 
 \section{Especificación de Requisitos de Software}
 
+La Especificación de Requisitos Software (SRS) constituye el documento fundamental que establece las bases técnicas y funcionales del sistema. Para Musy, se ha desarrollado una SRS adaptada siguiendo el estándar IEEE 830 \textcite{IEEE830}, estructurada en los siguientes apartados clave:
 
+  \subsection{Requisitos Funcionales}
+
+  \begin{itemize}
+  \item \textbf{RF-01: Gestión de Biblioteca Musical}
+    \begin{itemize}
+      \item El sistema permitirá añadir, eliminar y organizar archivos musicales en formatos MP3, FLAC, OGG y WAV.
+      \item Deberá extraer y mostrar automáticamente metadatos (título, artista, álbum, año).
+      \item Deberá generar identificadores únicos para cada canción mediante hash Blake3.
+    \end{itemize}
+
+  \item \textbf{RF-02: Sistema de Playlists}
+    \begin{itemize}
+      \item Creación/eliminación de playlists manuales.
+      \item Asociación automática de canciones a la playlist global "All Songs".
+      \item Relación muchos-a-muchos entre canciones y playlists.
+    \end{itemize}
+
+  \item \textbf{RF-03: Reproductor Musical}
+    \begin{itemize}
+      \item Control básico de reproducción (play/pause, next/previous).
+      \item Modos de repetición (ninguna, lista, canción).
+      \item Barra de progreso interactiva.
+    \end{itemize}
+  \end{itemize}
+
+  \subsection{Requisitos No Funcionales}
+
+  \begin{itemize}
+  \item \textbf{RNF-01: Rendimiento}
+    \begin{itemize}
+      \item Tiempo de carga inicial < 2 segundos para bibliotecas con 10,000 canciones.
+      \item Consumo de memoria < 150MB en reposo.
+    \end{itemize}
+
+  \item \textbf{RNF-02: Compatibilidad}
+    \begin{itemize}
+      \item Soporte para Windows 10+, macOS 12+, Linux (kernel 5.4+).
+      \item Arquitecturas x86\_64 y ARM64.
+    \end{itemize}
+
+  \item \textbf{RNF-03: Usabilidad}
+    \begin{itemize}
+      \item Interfaz responsive con soporte para pantallas desde 1280x720 hasta 4K.
+      \item Curva de aprendizaje < 15 minutos para usuarios básicos.
+    \end{itemize}
+  \end{itemize}
+
+  \subsection{Restricciones Técnicas}
+
+  \begin{itemize}
+    \item \textbf{RT-01: Tecnológicas}
+    \begin{itemize}
+      \item Stack tecnológico: Tauri + Rust + Angular.
+      \item Base de datos: SQLite con soporte para migraciones.
+    \end{itemize}
+
+  \end{itemize}
+
+  \subsection{Diagramas de Flujo}
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{media/Diagrama de Flujo 1.drawio.png}
+    \caption{Diagrama de Flujo Reload}
+    \label{fig:reload}
+  \end{figure}
+
+  \subsection{Diagramas de Casos de Uso}
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{media/CasoUso1.drawio.png}
+    \caption{Diagrama de Casos de Uso Principal}
+    \label{fig:usecase}
+  \end{figure}
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{media/CasoUso2.drawio.png}
+    \caption{Diagrama de Estados del Reproductor}
+    \label{fig:state}
+  \end{figure}
+
+  Esta especificación sirve como contrato técnico y ha sido validada mediante:
+  \begin{itemize}
+    \item Pruebas de concepto tempranas.
+    \item Revisiones de arquitectura.
+    \item Feedback de usuarios potenciales.
+  \end{itemize}
 
 \section{Despliegue y pruebas}
 
@@ -297,168 +387,168 @@ El proceso de despliegue se ha diseñado cuidadosamente para garantizar una dist
 
 \section{Estado del arte}
 
-\subsection{Panorama actual de la reproducción musical digital}
+  \subsection{Panorama actual de la reproducción musical digital}
 
-El ecosistema actual de reproductores musicales presenta una bifurcación clara entre dos modelos predominantes, cada uno con sus propios paradigmas técnicos y de experiencia de usuario. Este análisis exhaustivo examina ambas aproximaciones desde múltiples perspectivas:
+  El ecosistema actual de reproductores musicales presenta una bifurcación clara entre dos modelos predominantes, cada uno con sus propios paradigmas técnicos y de experiencia de usuario. Este análisis exhaustivo examina ambas aproximaciones desde múltiples perspectivas:
 
-\subsection{Plataformas de streaming: hegemonía con limitaciones}
+  \subsection{Plataformas de streaming: hegemonía con limitaciones}
 
-Las soluciones de streaming como Spotify, Apple Music, Amazon Music y YouTube Music han alcanzado dominancia de mercado gracias a:
+  Las soluciones de streaming como Spotify, Apple Music, Amazon Music y YouTube Music han alcanzado dominancia de mercado gracias a:
 
-\begin{itemize}
-    \item \textbf{Amplitud de catálogo}:
-    \begin{itemize}
-        \item Acceso inmediato a más de 100 millones de canciones.
-        \item Actualizaciones automáticas de nuevos lanzamientos.
-        \item Colecciones curadas por algoritmos y editores humanos.
-    \end{itemize}
-    
-    \item \textbf{Experiencia de usuario}:
-    \begin{itemize}
-        \item Interfaces altamente pulidas con animaciones fluidas.
-        \item Sistemas de recomendación basados en machine learning.
-        \item Sincronización perfecta entre múltiples dispositivos.
-    \end{itemize}
-    
-    \item \textbf{Descubrimiento musical}:
-    \begin{itemize}
-        \item Listas automáticas generadas por gustos del usuario.
-        \item Integración con redes sociales y compartimiento.
-        \item Radio inteligente basada en artistas o canciones.
-    \end{itemize}
-\end{itemize}
+  \begin{itemize}
+      \item \textbf{Amplitud de catálogo}:
+      \begin{itemize}
+          \item Acceso inmediato a más de 100 millones de canciones.
+          \item Actualizaciones automáticas de nuevos lanzamientos.
+          \item Colecciones curadas por algoritmos y editores humanos.
+      \end{itemize}
+      
+      \item \textbf{Experiencia de usuario}:
+      \begin{itemize}
+          \item Interfaces altamente pulidas con animaciones fluidas.
+          \item Sistemas de recomendación basados en machine learning.
+          \item Sincronización perfecta entre múltiples dispositivos.
+      \end{itemize}
+      
+      \item \textbf{Descubrimiento musical}:
+      \begin{itemize}
+          \item Listas automáticas generadas por gustos del usuario.
+          \item Integración con redes sociales y compartimiento.
+          \item Radio inteligente basada en artistas o canciones.
+      \end{itemize}
+  \end{itemize}
 
-Sin embargo, este modelo presenta inconvenientes estructurales:
+  Sin embargo, este modelo presenta inconvenientes estructurales:
 
-\begin{itemize}
-    \item \textbf{Dependencia tecnológica}:
-    \begin{itemize}
-        \item Requiere conexión permanente a internet (excepto modo offline limitado).
-        \item Servidores centralizados representan un punto único de fallo.
-        \item Actualizaciones forzadas sin control del usuario.
-    \end{itemize}
-    
-    \item \textbf{Modelo económico}:
-    \begin{itemize}
-        \item Costos recurrentes (suscripciones premium entre 10€-15€ mensuales).
-        \item Versiones gratuitas con publicidad intrusiva.
-        \item Artistas reciben compensaciones mínimas por reproducción.
-    \end{itemize}
-    
-    \item \textbf{Propiedad digital}:
-    \begin{itemize}
-        \item El usuario no posee realmente la música.
-        \item Catálogo variable según acuerdos de licencia.
-        \item Pérdida de acceso al cancelar la suscripción.
-    \end{itemize}
-\end{itemize}
+  \begin{itemize}
+      \item \textbf{Dependencia tecnológica}:
+      \begin{itemize}
+          \item Requiere conexión permanente a internet (excepto modo offline limitado).
+          \item Servidores centralizados representan un punto único de fallo.
+          \item Actualizaciones forzadas sin control del usuario.
+      \end{itemize}
+      
+      \item \textbf{Modelo económico}:
+      \begin{itemize}
+          \item Costos recurrentes (suscripciones premium entre 10€-15€ mensuales).
+          \item Versiones gratuitas con publicidad intrusiva.
+          \item Artistas reciben compensaciones mínimas por reproducción.
+      \end{itemize}
+      
+      \item \textbf{Propiedad digital}:
+      \begin{itemize}
+          \item El usuario no posee realmente la música.
+          \item Catálogo variable según acuerdos de licencia.
+          \item Pérdida de acceso al cancelar la suscripción.
+      \end{itemize}
+  \end{itemize}
 
-\subsection{Reproductores locales tradicionales: control con obsolescencia}
+  \subsection{Reproductores locales tradicionales: control con obsolescencia}
 
-Soluciones como Winamp, Strawberry, Clementine y Foobar2000 ofrecen:
+  Soluciones como Winamp, Strawberry, Clementine y Foobar2000 ofrecen:
 
-\begin{itemize}
-    \item \textbf{Independencia tecnológica}:
-    \begin{itemize}
-        \item Funcionamiento completamente offline.
-        \item Control total sobre la biblioteca musical local.
-        \item Sin dependencia de servicios externos.
-    \end{itemize}
-    
-    \item \textbf{Eficiencia de recursos}:
-    \begin{itemize}
-        \item Consumo mínimo de RAM y CPU.
-        \item Sin procesos en segundo plano innecesarios.
-        \item Ejecución en hardware antiguo.
-    \end{itemize}
-    
-    \item \textbf{Flexibilidad técnica}:
-    \begin{itemize}
-        \item Soporte para formatos especializados (FLAC, OGG, etc.).
-        \item Personalización avanzada mediante plugins.
-        \item Acceso directo a los archivos físicos.
-    \end{itemize}
-\end{itemize}
+  \begin{itemize}
+      \item \textbf{Independencia tecnológica}:
+      \begin{itemize}
+          \item Funcionamiento completamente offline.
+          \item Control total sobre la biblioteca musical local.
+          \item Sin dependencia de servicios externos.
+      \end{itemize}
+      
+      \item \textbf{Eficiencia de recursos}:
+      \begin{itemize}
+          \item Consumo mínimo de RAM y CPU.
+          \item Sin procesos en segundo plano innecesarios.
+          \item Ejecución en hardware antiguo.
+      \end{itemize}
+      
+      \item \textbf{Flexibilidad técnica}:
+      \begin{itemize}
+          \item Soporte para formatos especializados (FLAC, OGG, etc.).
+          \item Personalización avanzada mediante plugins.
+          \item Acceso directo a los archivos físicos.
+      \end{itemize}
+  \end{itemize}
 
-No obstante, adolecen de problemas fundamentales:
+  No obstante, adolecen de problemas fundamentales:
 
-\begin{itemize}
-    \item \textbf{Experiencia de usuario}:
-    \begin{itemize}
-        \item Interfaces gráficas anticuadas (años 2000).
-        \item Flujos de trabajo poco intuitivos.
-        \item Diseño no adaptado a pantallas táctiles.
-    \end{itemize}
-    
-    \item \textbf{Mantenimiento}:
-    \begin{itemize}
-        \item Muchos proyectos abandonados o con actualizaciones esporádicas.
-        \item Compatibilidad problemática con sistemas operativos modernos.
-        \item Falta de soporte para tecnologías recientes.
-    \end{itemize}
-    
-    \item \textbf{Funcionalidades limitadas}:
-    \begin{itemize}
-        \item Sistemas de organización básicos.
-        \item Metadatos visuales poco desarrollados.
-        \item Integración nula con servicios modernos.
-    \end{itemize}
-\end{itemize}
+  \begin{itemize}
+      \item \textbf{Experiencia de usuario}:
+      \begin{itemize}
+          \item Interfaces gráficas anticuadas (años 2000).
+          \item Flujos de trabajo poco intuitivos.
+          \item Diseño no adaptado a pantallas táctiles.
+      \end{itemize}
+      
+      \item \textbf{Mantenimiento}:
+      \begin{itemize}
+          \item Muchos proyectos abandonados o con actualizaciones esporádicas.
+          \item Compatibilidad problemática con sistemas operativos modernos.
+          \item Falta de soporte para tecnologías recientes.
+      \end{itemize}
+      
+      \item \textbf{Funcionalidades limitadas}:
+      \begin{itemize}
+          \item Sistemas de organización básicos.
+          \item Metadatos visuales poco desarrollados.
+          \item Integración nula con servicios modernos.
+      \end{itemize}
+  \end{itemize}
 
-\subsection{Análisis comparativo y espacio de oportunidad}
+  \subsection{Análisis comparativo y espacio de oportunidad}
 
-Al contrastar ambos enfoques, se identifican claras áreas de mejora no cubiertas por ninguna de las dos soluciones:
+  Al contrastar ambos enfoques, se identifican claras áreas de mejora no cubiertas por ninguna de las dos soluciones:
 
-\begin{table}[h]
-  \centering
-  \caption{Comparativa de características clave Streaming vs Offline}
-  \begin{tabular}{|l|c|c|}
-    \hline
-    \textbf{Característica} & \textbf{Streaming} & \textbf{Local} \\
-    \hline
-    Propiedad de la música & No & Sí \\
-    \hline
-    Requiere conexión & Sí & No \\
-    \hline
-    Interfaz moderna & Sí & No \\
-    \hline
-    Modelo económico & Suscripción & Único pago \\
-    \hline
-    Consumo recursos & Alto & Bajo \\
-    \hline
-    Formatos lossless & Premium & Todos \\
-    \hline
-  \end{tabular}
-\end{table}
+  \begin{table}[h]
+    \centering
+    \caption{Comparativa de características clave Streaming vs Offline}
+    \begin{tabular}{|l|c|c|}
+      \hline
+      \textbf{Característica} & \textbf{Streaming} & \textbf{Offline} \\
+      \hline
+      Propiedad de la música & No & Sí \\
+      \hline
+      Requiere conexión & Sí & No \\
+      \hline
+      Interfaz moderna & Sí & No \\
+      \hline
+      Modelo económico & Suscripción & Único pago \\
+      \hline
+      Consumo recursos & Alto & Bajo \\
+      \hline
+      Formatos lossless & Premium & Todos \\
+      \hline
+    \end{tabular}
+  \end{table}
 
-\subsection{Propuesta de valor diferenciada}
+  \subsection{Propuesta de valor diferenciada}
 
-Musy surge como síntesis innovadora que combina lo mejor de ambos mundos:
+  Musy surge como síntesis innovadora que combina lo mejor de ambos mundos:
 
-\begin{itemize}
-    \item \textbf{Experiencia de usuario contemporánea}:
-    \begin{itemize}
-        \item Interfaz inspirada en estándares actuales de streaming.
-        \item Animaciones fluidas y diseño responsive.
-        \item Navegación intuitiva y accesible.
-    \end{itemize}
-    
-    \item \textbf{Ventajas técnicas locales}:
-    \begin{itemize}
-        \item Funcionamiento completamente offline.
-        \item Soporte para formatos de alta calidad (FLAC 192kHz/24bit).
-        \item Gestión avanzada de metadatos personalizados.
-    \end{itemize}
-    
-    \item \textbf{Innovaciones propias}:
-    \begin{itemize}
-        \item Arquitectura modular basada en tecnologías modernas.
-        \item Rendimiento optimizado mediante Rust y Tauri.
-        \item Sistema de plugins para futuras expansiones.
-    \end{itemize}
-\end{itemize}
+  \begin{itemize}
+      \item \textbf{Experiencia de usuario contemporánea}:
+      \begin{itemize}
+          \item Interfaz inspirada en estándares actuales de streaming.
+          \item Animaciones fluidas y diseño responsive.
+          \item Navegación intuitiva y accesible.
+      \end{itemize}
+      
+      \item \textbf{Ventajas técnicas locales}:
+      \begin{itemize}
+          \item Funcionamiento completamente offline.
+          \item Soporte para formatos de alta calidad (FLAC 192kHz/24bit).
+          \item Gestión avanzada de metadatos personalizados.
+      \end{itemize}
+      
+      \item \textbf{Innovaciones propias}:
+      \begin{itemize}
+          \item Arquitectura modular basada en tecnologías modernas.
+          \item Rendimiento optimizado mediante Rust y Tauri.
+          \item Sistema de plugins para futuras expansiones.
+      \end{itemize}
+  \end{itemize}
 
-Esta solución ocupa un nicho desatendido en el mercado, ofreciendo una alternativa viable para usuarios que valoran tanto el control sobre su música como experiencias de usuario pulidas. Los benchmarks realizados demuestran que la combinación de tecnologías seleccionadas supera significativamente las limitaciones de ambas aproximaciones tradicionales.
+  Esta solución ocupa un nicho desatendido en el mercado, ofreciendo una alternativa viable para usuarios que valoran tanto el control sobre su música como experiencias de usuario pulidas. Los benchmarks realizados demuestran que la combinación de tecnologías seleccionadas supera significativamente las limitaciones de ambas aproximaciones tradicionales.
 
 \section{Profundización de conceptos}
 
@@ -496,7 +586,7 @@ En esta sección se explicarán en detalle los componentes principales de la apl
                 \label{fig:sidebar}
             \end{figure}
 
-            Componente donde se interactua con las playlist, ya sea creando nuevas o borrando las existentes. Contiene diversos botones para navegar por la aplicación.
+            Componente donde se interactua con las playlist, ya sea creando nuevas o borrando las existentes. Contiene diversos botones para navegar por la aplicación. \\
 
             Estos son sus atributos:
 
@@ -1027,9 +1117,9 @@ songs:Song[] = []
 constructor(public songManagement:SongManagementService) { }
                 \end{lstlisting}
 
-                El servicio \verb|MainScreenStatus| se encarga de gestionar y mantener el estado de la información mostrada en la interfaz principal de la aplicación (\verb|mainscreen|). Para ello, se han definido una serie de atributos que almacenan tanto los metadatos de la playlist actualmente visualizada como las canciones asociadas a la misma.
+                El servicio \verb|MainScreenStatus| se encarga de gestionar y mantener el estado de la información mostrada en la interfaz principal de la aplicación (\verb|mainscreen|). Para ello, se han definido una serie de atributos que almacenan tanto los metadatos de la playlist actualmente visualizada como las canciones asociadas a la misma. \\
 
-                Entre los atributos principales se incluyen señales y variables que controlan el estado de la interfaz (\verb|onHome|), así como información específica de la playlist, como su identificador (\verb|pId|), nombre (\verb|pName|), fecha de creación (\verb|pDate|), ruta de la portada (\verb|pCoverPath|) y estado de favorito (\verb|pStarred|). Adicionalmente, se almacena un arreglo de canciones (\verb|songs|) que pertenecen a la playlist actual. Por supuesto este servicio contiene la interfaz \verb|Song| vista anteriormente.
+                Entre los atributos principales se incluyen señales y variables que controlan el estado de la interfaz (\verb|onHome|), así como información específica de la playlist, como su identificador (\verb|pId|), nombre (\verb|pName|), fecha de creación (\verb|pDate|), ruta de la portada (\verb|pCoverPath|) y estado de favorito (\verb|pStarred|). Adicionalmente, se almacena un arreglo de canciones (\verb|songs|) que pertenecen a la playlist actual. Por supuesto este servicio contiene la interfaz \verb|Song| vista anteriormente. \\
 
                 El servicio se inicializa con una dependencia inyectada del \\ \verb|SongManagementService|, lo que permite una coordinación fluida entre la gestión del estado de la interfaz y las operaciones relacionadas con la reproducción de audio. Esta arquitectura modular facilita el mantenimiento y la escalabilidad del código. \\
 
@@ -1054,11 +1144,11 @@ setPlaylist(id:number, name:string, date:string, coverPath:string, isStarred:boo
 }
                 \end{lstlisting}
 
-                Los métodos \verb|setHome()| y \verb|setPlaylist()| gestionan la transición entre las diferentes vistas de la interfaz principal (\verb|mainscreen|). En el primer caso, \verb|setHome()| configura el estado para mostrar la lista de canciones marcadas como favoritas, estableciendo el valor \verb|onHome| a \verb|true| y reiniciando los metadatos de la playlist. Simultáneamente, se invoca el método \verb|getAllStarred()| para cargar las canciones destacadas.
+                Los métodos \verb|setHome()| y \verb|setPlaylist()| gestionan la transición entre las diferentes vistas de la interfaz principal (\verb|mainscreen|). En el primer caso, \verb|setHome()| configura el estado para mostrar la lista de canciones marcadas como favoritas, estableciendo el valor \verb|onHome| a \verb|true| y reiniciando los metadatos de la playlist. Simultáneamente, se invoca el método \verb|getAllStarred()| para cargar las canciones destacadas. \\
 
-                Por otro lado, \verb|setPlaylist()| se utiliza para visualizar una playlist específica, actualizando los metadatos correspondientes (\verb|id|, \verb|name|, \verb|date|, \verb|coverPath| y estado \verb|isStarred|) y desactivando la vista de favoritos mediante \verb|onHome.set(false)|.
+                Por otro lado, \verb|setPlaylist()| se utiliza para visualizar una playlist específica, actualizando los metadatos correspondientes (\verb|id|, \verb|name|, \verb|date|, \verb|coverPath| y estado \verb|isStarred|) y desactivando la vista de favoritos mediante \verb|onHome.set(false)|. \\
 
-                Cabe destacar que la nomenclatura original (\verb|Home|) fue heredada de las primeras etapas del desarrollo, cuando la estructura conceptual del proyecto aún estaba en definición. Posteriormente, esta terminología se actualizó a \verb|Starred Songs| para reflejar con mayor precisión su funcionalidad. A pesar de este cambio, se mantuvieron las referencias originales en el código para preservar la compatibilidad con los componentes existentes.
+                Cabe destacar que la nomenclatura original (\verb|Home|) fue heredada de las primeras etapas del desarrollo, cuando la estructura conceptual del proyecto aún estaba en definición. Posteriormente, esta terminología se actualizó a \verb|Starred Songs| para reflejar con mayor precisión su funcionalidad. A pesar de este cambio, se mantuvieron las referencias originales en el código para preservar la compatibilidad con los componentes existentes. \\
 
                 Se ha considerado una refactorización futura para unificar la nomenclatura y mejorar la coherencia del código. Actualmente, aunque los términos \verb|Home| y \verb|Starred Songs| coexisten, esta dualidad no afecta la funcionalidad del sistema. \\
 
@@ -1094,7 +1184,7 @@ async getPlaylistSongs() {
 }
                 \end{lstlisting}
 
-                Los métodos \verb|getAllSongs()|, \verb|getAllStarred()| y \verb|getPlaylistSongs()| gestionan la obtención de canciones desde diferentes fuentes, asignándolas posteriormente a la variable local \verb|songs|. En cada caso, se sigue un patrón similar: primero se obtiene el directorio de datos de la aplicación mediante \verb|appDataDir()|, luego se realiza una llamada al backend mediante \verb|invoke()|, y finalmente se manejan tanto el éxito como los posibles errores de la operación.
+                Los métodos \verb|getAllSongs()|, \verb|getAllStarred()| y \verb|getPlaylistSongs()| gestionan la obtención de canciones desde diferentes fuentes, asignándolas posteriormente a la variable local \verb|songs|. En cada caso, se sigue un patrón similar: primero se obtiene el directorio de datos de la aplicación mediante \verb|appDataDir()|, luego se realiza una llamada al backend mediante \verb|invoke()|, y finalmente se manejan tanto el éxito como los posibles errores de la operación. \\
 
                 \begin{lstlisting}[caption={refresh()}]
 async refresh() {
@@ -1108,7 +1198,7 @@ async refresh() {
 }
                 \end{lstlisting}
 
-                El método \verb|refresh()| se encarga de actualizar dinámicamente el contenido mostrado en la \verb|mainscreen| en función del contexto actual de reproducción. Para ello, se implementa un flujo condicional que evalúa el identificador de playlist almacenado en \verb|this.pId| y el estado de la señal \verb|onHome|.
+                El método \verb|refresh()| se encarga de actualizar dinámicamente el contenido mostrado en la \verb|mainscreen| en función del contexto actual de reproducción. Para ello, se implementa un flujo condicional que evalúa el identificador de playlist almacenado en \verb|this.pId| y el estado de la señal \verb|onHome|. \\
 
                 Este enfoque garantiza que la interfaz siempre muestre el contenido más relevante según el estado actual de la aplicación, manteniendo una experiencia de usuario coherente. La implementación mediante llamadas asíncronas (\verb|await|) asegura que las operaciones de actualización se completen antes de proceder con cualquier otra acción, evitando así condiciones de carrera o estados inconsistentes en la interfaz.
 
@@ -1122,7 +1212,7 @@ addQueue() {
 }
                 \end{lstlisting}
 
-                Estos métodos gestionan la interacción con la cola de reproducción a través del servicio \verb|SongManagementService|. Al pulsar sobre el nombre de la playlist, se invoca \verb|playQueue()|, que establece la lista actual de canciones (\verb|this.songs|) como nueva cola de reproducción mediante el método \verb|setQueue()| del servicio. De forma similar, al seleccionar la opción de añadir a cola, \verb|addQueue()| incorpora las canciones a la cola existente utilizando \verb|addQueue()| del mismo servicio.
+                Estos métodos gestionan la interacción con la cola de reproducción a través del servicio \verb|SongManagementService|. Al pulsar sobre el nombre de la playlist, se invoca \verb|playQueue()|, que establece la lista actual de canciones (\verb|this.songs|) como nueva cola de reproducción mediante el método \verb|setQueue()| del servicio. De forma similar, al seleccionar la opción de añadir a cola, \verb|addQueue()| incorpora las canciones a la cola existente utilizando \verb|addQueue()| del mismo servicio. \\
 
                 Esta implementación refleja una arquitectura limpia donde la lógica de gestión de reproducción se delega completamente al servicio, permitiendo que los componentes se centren únicamente en la presentación de datos y captura de eventos de usuario. El servicio \\ \verb|SongManagementService| será analizado en profundidad en la siguiente sección de esta documentación.
 
@@ -1252,11 +1342,11 @@ addOneSong(song:Song) {
 }
                 \end{lstlisting}
 
-                Estos métodos constituyen la API fundamental para la gestión de la cola de reproducción, mencionada recurrentemente en secciones anteriores de la documentación. La implementación sigue un patrón dual con variantes "set" (establecer) y "add" (añadir):
+                Estos métodos constituyen la API fundamental para la gestión de la cola de reproducción, mencionada recurrentemente en secciones anteriores de la documentación. La implementación sigue un patrón dual con variantes "set" (establecer) y "add" (añadir): \\
 
-                Los métodos \verb|setQueue()| y \verb|setOneSong()| reemplazan completamente la cola existente. En el primer caso, se recibe un array de canciones que se copia mediante el operador de propagación (\verb|...songs|), mientras que el segundo acepta una única canción, reiniciando la cola antes de añadirla. Ambos métodos comparten el mismo flujo posterior: reinician el índice actual a 0 e invocan \verb|loadAndPlay()| para comenzar la reproducción inmediata.
+                Los métodos \verb|setQueue()| y \verb|setOneSong()| reemplazan completamente la cola existente. En el primer caso, se recibe un array de canciones que se copia mediante el operador de propagación (\verb|...songs|), mientras que el segundo acepta una única canción, reiniciando la cola antes de añadirla. Ambos métodos comparten el mismo flujo posterior: reinician el índice actual a 0 e invocan \verb|loadAndPlay()| para comenzar la reproducción inmediata. \\
 
-                Por otro lado, \verb|addQueue()| y \verb|addOneSong()| implementan la funcionalidad complementaria de añadir contenido a la cola existente sin modificar el estado de reproducción actual. La versión \verb|addQueue()| utiliza el mismo operador de propagación para incorporar múltiples canciones, mientras que \verb|addOneSong()| trabaja con elementos individuales.
+                Por otro lado, \verb|addQueue()| y \verb|addOneSong()| implementan la funcionalidad complementaria de añadir contenido a la cola existente sin modificar el estado de reproducción actual. La versión \verb|addQueue()| utiliza el mismo operador de propagación para incorporar múltiples canciones, mientras que \verb|addOneSong()| trabaja con elementos individuales. \\
 
                 \begin{lstlisting}[caption={togglePlayPause()}]
 async togglePlayPause() {
@@ -1319,11 +1409,11 @@ stop() {
 }
                 \end{lstlisting}
 
-                Estos métodos implementan la lógica avanzada de navegación en la cola de reproducción, considerando diferentes modos de funcionamiento (\verb|none|, \verb|playlist| y \verb|single|). En \verb|playNext()|, se evalúa primero si hay canciones siguientes disponibles y el modo de repetición lo permite, incrementando entonces el índice y cargando la siguiente canción. Cuando se alcanza el final de la lista en modo \verb|playlist|, se reinicia al principio. Para el modo \verb|single|, simplemente se reinicia la canción actual.
+                Estos métodos implementan la lógica avanzada de navegación en la cola de reproducción, considerando diferentes modos de funcionamiento (\verb|none|, \verb|playlist| y \verb|single|). En \verb|playNext()|, se evalúa primero si hay canciones siguientes disponibles y el modo de repetición lo permite, incrementando entonces el índice y cargando la siguiente canción. Cuando se alcanza el final de la lista en modo \verb|playlist|, se reinicia al principio. Para el modo \verb|single|, simplemente se reinicia la canción actual. \\
 
-                El método \verb|playPrevious()| incorpora lógica adicional para diferenciar entre retroceder a la canción anterior (si la reproducción actual lleva menos de 3 segundos) o reiniciar la canción actual. Maneja correctamente los casos especiales como el inicio de la lista en modo \verb|playlist| (saltando al final) o el comportamiento específico del modo \verb|single|. Ambos métodos mantienen actualizados los índices de posición (\verb|currentIndex|, \verb|currentISDelay|) y registran el estado actual para depuración.
+                El método \verb|playPrevious()| incorpora lógica adicional para diferenciar entre retroceder a la canción anterior (si la reproducción actual lleva menos de 3 segundos) o reiniciar la canción actual. Maneja correctamente los casos especiales como el inicio de la lista en modo \verb|playlist| (saltando al final) o el comportamiento específico del modo \verb|single|. Ambos métodos mantienen actualizados los índices de posición (\verb|currentIndex|, \verb|currentISDelay|) y registran el estado actual para depuración. \\
 
-                La implementación demuestra un manejo robusto de todos los casos posibles de navegación, proporcionando una experiencia de usuario consistente con los reproductores musicales profesionales. El diseño modular permite fácil extensión para añadir nuevos modos de reproducción o comportamientos especiales en futuras iteraciones.
+                La implementación demuestra un manejo robusto de todos los casos posibles de navegación, proporcionando una experiencia de usuario consistente con los reproductores musicales profesionales. El diseño modular permite fácil extensión para añadir nuevos modos de reproducción o comportamientos especiales en futuras iteraciones. \\
 
                 \begin{lstlisting}[caption={Control de tiempo y volumen}]
 onInput(event: Event) {
@@ -1345,9 +1435,9 @@ onVolume(event: Event) {
 }
                 \end{lstlisting}
 
-                Estos métodos gestionan la interacción del usuario con los controles de reproducción. El método \verb|onInput()| se encarga de actualizar la posición de reproducción cuando el usuario manipula la barra de progreso. Primero obtiene el valor del elemento HTML que generó el evento, lo convierte a número entero y luego actualiza la propiedad \verb|currentTime| del elemento de audio si este está disponible.
+                Estos métodos gestionan la interacción del usuario con los controles de reproducción. El método \verb|onInput()| se encarga de actualizar la posición de reproducción cuando el usuario manipula la barra de progreso. Primero obtiene el valor del elemento HTML que generó el evento, lo convierte a número entero y luego actualiza la propiedad \verb|currentTime| del elemento de audio si este está disponible. \\
 
-                Por su parte, \verb|onVolume()| controla los ajustes de volumen mediante un flujo similar: captura el valor del control deslizante de volumen, lo normaliza dividiendo entre 100 (para adaptarlo al rango 0-1 que espera el API de audio) y aplica este valor tanto al elemento de audio como a la variable local \verb|volume|. La conversión de tipos y normalización de valores garantiza que los controles funcionen consistentemente aunque provengan de diferentes fuentes de entrada.
+                Por su parte, \verb|onVolume()| controla los ajustes de volumen mediante un flujo similar: captura el valor del control deslizante de volumen, lo normaliza dividiendo entre 100 (para adaptarlo al rango 0-1 que espera el API de audio) y aplica este valor tanto al elemento de audio como a la variable local \verb|volume|. La conversión de tipos y normalización de valores garantiza que los controles funcionen consistentemente aunque provengan de diferentes fuentes de entrada. \\
 
                 Ambos métodos implementan una verificación de existencia (\verb|if (this.song)|) como medida de seguridad para evitar errores cuando no hay elemento de audio inicializado.
 
@@ -1408,7 +1498,7 @@ doShuffle() {
 }
                 \end{lstlisting}
 
-                La implementación del modo aleatorio (\textit{shuffle}) sigue un enfoque de dos fases mediante los métodos \verb|toggleShuffle()| y \verb|doShuffle()|. Cuando se activa el modo aleatorio, \verb|toggleShuffle()| preserva el estado original de la cola (\verb|queueSave|) y la posición actual (\verb|currentIndexSave|) antes de aplicar la aleatorización. Este diseño permite restaurar el orden inicial cuando se desactiva la función, manteniendo la coherencia con el comportamiento de reproductores profesionales.
+                La implementación del modo aleatorio (\textit{shuffle}) sigue un enfoque de dos fases mediante los métodos \verb|toggleShuffle()| y \verb|doShuffle()|. Cuando se activa el modo aleatorio, \verb|toggleShuffle()| preserva el estado original de la cola (\verb|queueSave|) y la posición actual (\verb|currentIndexSave|) antes de aplicar la aleatorización. Este diseño permite restaurar el orden inicial cuando se desactiva la función, manteniendo la coherencia con el comportamiento de reproductores profesionales. \\
 
                 El método \verb|doShuffle()| implementa el algoritmo Fisher-Yates (\textcite{wikifisheryates}) para la mezcla aleatoria, optimizado para garantizar que la canción actual permanezca en primera posición durante la transición. El proceso consta de tres etapas: \begin{enumerate}
                   \item Extracción y protección de la canción en reproducción.
@@ -1416,7 +1506,7 @@ doShuffle() {
                   \item reconstrucción de la cola con la canción actual preservada.
                 \end{enumerate}
                 
-                Esta implementación demuestra especial atención al detalle en la experiencia de usuario, evitando saltos bruscos en la reproducción durante la activación del modo aleatorio.
+                Esta implementación demuestra especial atención al detalle en la experiencia de usuario, evitando saltos bruscos en la reproducción durante la activación del modo aleatorio. \\
 
                 El sistema mantiene sincronizados los estados paralelos (colas original y aleatoria, índices de posición) mediante operaciones atómicas, garantizando consistencia incluso en listas extensas. La solución combina eficiencia computacional (complejidad O(n) para la mezcla) con un diseño intuitivo que refleja los patrones de uso establecidos en aplicaciones de referencia del sector.
 
@@ -1433,9 +1523,9 @@ formatTime(seconds: number | undefined): string {
 }
                 \end{lstlisting}
 
-                El método \verb|formatTime()| implementa la conversión de segundos a un formato de tiempo legible (MM:SS) para la interfaz de usuario. Cuando recibe un valor indefinido o no numérico, devuelve por defecto '0:00' para mantener la consistencia visual. Para valores válidos, realiza tres operaciones matemáticas: primero calcula los minutos completos mediante división entera, luego obtiene los segundos restantes usando el operador módulo, y finalmente aplica un padding de dos dígitos a los segundos para mantener un formato uniforme.
+                El método \verb|formatTime()| implementa la conversión de segundos a un formato de tiempo legible (MM:SS) para la interfaz de usuario. Cuando recibe un valor indefinido o no numérico, devuelve por defecto '0:00' para mantener la consistencia visual. Para valores válidos, realiza tres operaciones matemáticas: primero calcula los minutos completos mediante división entera, luego obtiene los segundos restantes usando el operador módulo, y finalmente aplica un padding de dos dígitos a los segundos para mantener un formato uniforme. \\
 
-                La salida cumple con los estándares de reproductores musicales profesionales, mostrando siempre minutos y segundos con dos dígitos (ej: 3:05 en lugar de 3:5), lo que mejora la legibilidad y experiencia de usuario durante la reproducción.
+                La salida cumple con los estándares de reproductores musicales profesionales, mostrando siempre minutos y segundos con dos dígitos (ej: 3:05 en lugar de 3:5), lo que mejora la legibilidad y experiencia de usuario durante la reproducción. \\
 
                 \paragraph{Song Adding}
                 ‎
@@ -1475,9 +1565,9 @@ interface Playlist {
 }
                 \end{lstlisting}
 
-                El método principal \verb|getAllPlaylists()| establece comunicación con el backend mediante Tauri (\verb|invoke|), recuperando el listado completo de playlists desde la base de datos SQLite, este listado es mapeado en la parte de HTML del componente \textit{Song}. Implementa manejo de errores robusto que garantiza estabilidad incluso ante fallos de conexión, inicializando un array vacío como fallback. La interfaz \verb|Playlist| define la estructura de datos esperada, incluyendo metadatos esenciales como identificador único, nombre, fecha de creación, ruta de la portada y estado de favorito.
+                El método principal \verb|getAllPlaylists()| establece comunicación con el backend mediante Tauri (\verb|invoke|), recuperando el listado completo de playlists desde la base de datos SQLite, este listado es mapeado en la parte de HTML del componente \textit{Song}. Implementa manejo de errores robusto que garantiza estabilidad incluso ante fallos de conexión, inicializando un array vacío como fallback. La interfaz \verb|Playlist| define la estructura de datos esperada, incluyendo metadatos esenciales como identificador único, nombre, fecha de creación, ruta de la portada y estado de favorito. \\
 
-                La función \verb|letGo()| proporciona un mecanismo de limpieza de memoria, liberando el array de playlists cuando ya no es necesario. Este enfoque refleja buenas prácticas de gestión de recursos en aplicaciones con componentes modales, donde la memoria puede acumularse durante ciclos repetidos de apertura/cierre.
+                La función \verb|letGo()| proporciona un mecanismo de limpieza de memoria, liberando el array de playlists cuando ya no es necesario. Este enfoque refleja buenas prácticas de gestión de recursos en aplicaciones con componentes modales, donde la memoria puede acumularse durante ciclos repetidos de apertura/cierre. \\
 
         \subsection{Backend}
 
@@ -1485,7 +1575,7 @@ interface Playlist {
 
             \subsubsection{Tauri API}
 
-            El archivo \verb|lib.rs| constituye el punto de entrada principal del backend desarrollado con Tauri y Rust, donde se configura la aplicación y se definen los manejadores de las operaciones entre el frontend y el sistema. Su estructura sigue un flujo bien definido que combina inicialización de plugins, gestión de permisos y registro de comandos invocables.
+            El archivo \verb|lib.rs| constituye el punto de entrada principal del backend desarrollado con Tauri y Rust, donde se configura la aplicación y se definen los manejadores de las operaciones entre el frontend y el sistema. Su estructura sigue un flujo bien definido que combina inicialización de plugins, gestión de permisos y registro de comandos invocables. \\
 
             \begin{lstlisting}[caption={lib.rs}]
 use std::path::PathBuf;
@@ -1706,7 +1796,7 @@ fn create_dir(path:PathBuf) -> std::io::Result<()> {
 }
             \end{lstlisting}
 
-            Esta función se encarga de inicializar la estructura de directorios necesaria para el almacenamiento de archivos auxiliares.
+            Esta función se encarga de inicializar la estructura de directorios necesaria para el almacenamiento de archivos auxiliares. \\
 
             El proceso sigue tres pasos fundamentales:
 
@@ -1793,7 +1883,7 @@ fn clean(database_path: PathBuf) -> Result<()> {
 }
             \end{lstlisting}
 
-            Esta función implementa el mantenimiento de la base de datos eliminando registros de canciones cuyos archivos ya no existen en el sistema.
+            Esta función implementa el mantenimiento de la base de datos eliminando registros de canciones cuyos archivos ya no existen en el sistema. \\
 
             La función sigue un flujo de cuatro etapas:
 
@@ -1833,7 +1923,7 @@ fn clean(database_path: PathBuf) -> Result<()> {
 }
             \end{lstlisting}
 
-            Función principal que coordina el recorrido del directorio \textit{music}.
+            Función principal que coordina el recorrido del directorio \textit{music}. \\
 
             Utiliza \verb|WalkDir| para recorrido recursivo eficiente y filtra archivos mediante \verb|is_music()| durante el recorrido. Cada archivo válido es procesado con \verb|extract_metadata| y almacenado mediante \verb|insert_song()|.
 
@@ -1864,7 +1954,7 @@ fn extract_metadata(path:&str, cover_path:PathBuf) -> std::io::Result<(String, S
 }
             \end{lstlisting}
 
-            Extracción de metadatos de archivos musicales.
+            Extracción de metadatos de archivos musicales. \\
 
             Lee metadatos usando la crate \verb|lofty| con valores por defecto para campos opcionales. Convierte la duración a milisegundos y gestiona la extracción de imágenes de portada mediante \verb|create_cover()|.
 
@@ -1952,7 +2042,7 @@ pub fn remove_starred(song_id:String, db_path:String) -> Result<()> {
 }
             \end{lstlisting}
 
-            Métodos encargados de crear, eliminar y actualizar canciones de la base de datos. Primero se crea una conexión y posteriormente se ejecuta la consulta con los parámetros de la canción. Para las canciones favoritas se ejecuta es una consulta de \verb|UPDATE|.
+            Métodos encargados de crear, eliminar y actualizar canciones de la base de datos. Primero se crea una conexión y posteriormente se ejecuta la consulta con los parámetros de la canción. Para las canciones favoritas se ejecuta es una consulta de \verb|UPDATE|. \\
 
             La implementación de los siguientes métodos utilizan estos \verb|struct|s:
 
@@ -2024,13 +2114,13 @@ pub fn get_all_playlists(db_path:String) -> Result<Vec<Playlist>, String> {
 }
             \end{lstlisting}
 
-            Esta función implementa la consulta de todas las playlists almacenadas en la base de datos.
+            Esta función implementa la consulta de todas las playlists almacenadas en la base de datos. \\
 
-            El proceso se ejecuta en tres etapas principales. Primero se establece la conexión con la base de datos ubicada en \verb|playlists.db| dentro del directorio especificado.
+            El proceso se ejecuta en tres etapas principales. Primero se establece la conexión con la base de datos ubicada en \verb|playlists.db| dentro del directorio especificado. \\
 
-            Seguidamente se prepara y ejecuta la consulta SQL que selecciona todos los campos de la tabla \verb|playlists|.
+            Seguidamente se prepara y ejecuta la consulta SQL que selecciona todos los campos de la tabla \verb|playlists|. \\
 
-            Finalmente, los resultados son mapeados a instancias del \verb|struct| \verb|Playlist| mediante un \verb|query_map()| que procesa cada fila. El mapeo incluye todos los campos relevantes: \verb|id|, \verb|name|, \verb|creation_date|, \verb|cover_path| y \verb|is_starred|.
+            Finalmente, los resultados son mapeados a instancias del \verb|struct| \verb|Playlist| mediante un \verb|query_map()| que procesa cada fila. El mapeo incluye todos los campos relevantes: \verb|id|, \verb|name|, \verb|creation_date|, \verb|cover_path| y \verb|is_starred|. \\
 
             El vector resultante con todas las playlists es devuelto al frontend a través de \verb|lib.rs|, donde será utilizado para poblar la interfaz de usuario como se ha visto previamente en esta documentación.
 
@@ -2128,7 +2218,7 @@ pub fn get_playlist_songs(playlist_id: i64, db_path: String) -> Result<Vec<Song>
 }
             \end{lstlisting}
 
-            Esta función implementa la consulta de canciones pertenecientes a una playlist específica mediante una operación JOIN.
+            Esta función implementa la consulta de canciones pertenecientes a una playlist específica mediante una operación JOIN. \\
 
             La función realiza una consulta SQL compleja que combina los datos de las tres tablas:
 
@@ -2148,6 +2238,104 @@ pub fn get_playlist_songs(playlist_id: i64, db_path: String) -> Result<Vec<Song>
               \item Ruta de la portada (\verb|cover_path|)
               \item Estado (\verb|isStarred|)
             \end{itemize}
+
+\section{Trabajo Futuro}
+
+El desarrollo de Musy contempla varias líneas de mejora y expansión de funcionalidades que permitirán enriquecer la experiencia del usuario y ampliar las capacidades técnicas de la aplicación. A continuación se detallan los principales planes de desarrollo futuro:
+
+  \subsection{Implementación de Playlist favoritas}
+
+  La implementación completa del sistema \verb|is_starred| para playlists incluirá la integración de las \textit{playlists} favoritas en la actual \textbf{\textit{Starred}}, ya sea mediante un orden concreto o por último añadido.
+
+  \subsection{Personalización de Temas Visuales}
+  Se planea implementar un sistema de temas personalizables que permitirá a los usuarios:
+
+  \begin{itemize}
+    \item \textbf{Cambio de color de acento}: Los usuarios podrán seleccionar entre una paleta de colores predefinidos o definir valores RGB personalizados para los elementos interactivos de la interfaz.
+
+    \item \textbf{Modos de contraste}: Implementación de temas claros y oscuros.
+
+    \item \textbf{Almacenamiento de preferencias}: Las configuraciones de tema se guardarán en un archivo \verb|config.json| dentro del directorio de datos de la aplicación, utilizando el formato:
+
+    \begin{lstlisting}[caption={config.json}]
+    {
+      "theme": {
+        "accent_color": "#ffccff",
+        "background_color: "#cccccc",
+        "dark_mode": true
+      }
+    }
+    \end{lstlisting}
+
+  \end{itemize}
+
+  \subsection{Gestión Flexible de Directorios Musicales}
+
+  La expansión del sistema de gestión de bibliotecas musicales incluirá la capacidad de añadir y configurar mútiples directorios de música (\$HOME/Descargas/Música, /mnt/DISCO/Música, etc...)
+
+  \subsection{Creación automática de Playlist}
+
+  Al igual que la app crea automáticamente una playlist con todas las canciones, se planea implementar un generador inteligente de playlists basado en la estructura de directorios del usuario. Esta funcionalidad está diseñada específicamente para usuarios con bibliotecas musicales offline ya organizadas en carpetas, ofreciendo una transición fluida a Musy.
+
+\section{Plan de Monetización y Modelo de Negocio}
+
+La estrategia de monetización de Musy se ha diseñado para equilibrar la sostenibilidad económica del proyecto con el compromiso de ofrecer una herramienta de calidad a los usuarios. El modelo actual y las proyecciones futuras se detallan a continuación:
+
+  \subsection{Modelo Actual}
+
+  \begin{itemize}
+    \item \textbf{Licencia de pago único}:
+      \begin{itemize}
+        \item Precio base: 5€ en \href{https://musy.itch.io}{itch.io}.
+        \item Incluye todas las funcionalidades actuales sin restricciones.
+        \item Actualizaciones gratuitas.
+      \end{itemize}
+
+    \item \textbf{Ventajas competitivas}:
+      \begin{itemize}
+        \item Coste significativamente inferior al de suscripciones anuales de alternativas (ej. 120€/año en otros reproductores premium).
+        \item Sin publicidad ni telemetría invasiva.
+        \item Código abierto con licencia comercial.
+      \end{itemize}
+  \end{itemize}
+
+  \subsection{Métricas de Ventas}
+
+  \begin{table}[h]
+    \centering
+    \caption{Proyección de ingresos (primer año)}
+    \begin{tabular}{lrrr}
+      \hline
+      Canal & Precio Unitario & Unidades Estimadas & Ingreso Total \\
+      \hline
+      itch.io & 5€ & 1,200 & 6,000€ \\
+      Sponsors GitHub & - & - & 1,500€ \\
+      Donaciones & - & - & 800€ \\
+      \hline
+      Total & & & 8,300€ \\
+      \hline
+    \end{tabular}
+    \label{tab:ingresos}
+  \end{table}
+
+  \subsection{Consideraciones Éticas}
+
+  \begin{itemize}
+    \item \textbf{Compromisos garantizados}:
+      \begin{itemize}
+        \item Nunca implementar publicidad invasiva.
+        \item Mantener versión funcional completa offline.
+        \item No vender datos de usuarios.
+      \end{itemize}
+
+    \item \textbf{Transparencia}:
+      \begin{itemize}
+        \item Informe público anual de ingresos/gastos.
+        \item Roadmap público de desarrollo.
+      \end{itemize}
+  \end{itemize}
+
+  Este modelo busca demostrar que es posible monetizar software de calidad manteniendo principios éticos, ofreciendo valor real a cambio de un precio justo. Las estrategias futuras se activarán sólo cuando aporten beneficios tangibles a los usuarios, nunca como meros mecanismos de extracción de valor.
 
 \section{Conclusiones}
 

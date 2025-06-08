@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024/nixos.org) (preloaded format=xelatex 1980.1.1)  8 JUN 2025 21:34
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024/nixos.org) (preloaded format=xelatex 1980.1.1)  9 JUN 2025 00:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -717,18 +717,53 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 [2
 
 ]
-Overfull \hbox (0.39418pt too wide) detected at line 51
+Overfull \hbox (0.39418pt too wide) detected at line 56
 \TU/IBMPlexSerif(0)/m/n/10.95 10.1. 
  []
 
 
-Overfull \hbox (0.39418pt too wide) detected at line 52
+Overfull \hbox (0.39418pt too wide) detected at line 57
 \TU/IBMPlexSerif(0)/m/n/10.95 10.2. 
  []
 
 
-Overfull \hbox (0.39418pt too wide) detected at line 53
+Overfull \hbox (0.39418pt too wide) detected at line 58
 \TU/IBMPlexSerif(0)/m/n/10.95 10.3. 
+ []
+
+
+Overfull \hbox (0.39418pt too wide) detected at line 59
+\TU/IBMPlexSerif(0)/m/n/10.95 10.4. 
+ []
+
+
+Overfull \hbox (0.39418pt too wide) detected at line 61
+\TU/IBMPlexSerif(0)/m/n/10.95 11.1. 
+ []
+
+
+Overfull \hbox (0.39418pt too wide) detected at line 62
+\TU/IBMPlexSerif(0)/m/n/10.95 11.2. 
+ []
+
+
+Overfull \hbox (0.39418pt too wide) detected at line 63
+\TU/IBMPlexSerif(0)/m/n/10.95 11.3. 
+ []
+
+
+Overfull \hbox (0.39418pt too wide) detected at line 65
+\TU/IBMPlexSerif(0)/m/n/10.95 12.1. 
+ []
+
+
+Overfull \hbox (0.39418pt too wide) detected at line 66
+\TU/IBMPlexSerif(0)/m/n/10.95 12.2. 
+ []
+
+
+Overfull \hbox (0.39418pt too wide) detected at line 67
+\TU/IBMPlexSerif(0)/m/n/10.95 12.3. 
  []
 
 )
@@ -742,7 +777,9 @@ LaTeX Info: Redefining \% on input line 1.
 LaTeX Info: Redefining \sptext on input line 3.
 LaTeX Info: Redefining \. on input line 3.
 LaTeX Info: Redefining \% on input line 3.
-)
+
+
+[3])
 \tf@lof=\write6
 \openout6 = `docfile.lof'.
 
@@ -759,8 +796,6 @@ LaTeX Info: Redefining \% on input line 3.
 
  (./docfile.lol
 
-[3]
-
 [4])
 \tf@lol=\write8
 \openout8 = `docfile.lol'.
@@ -768,10 +803,35 @@ LaTeX Info: Redefining \% on input line 3.
 
 
 [5]
+Underfull \hbox (badness 10000) in paragraph at lines 99--100
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 101--102
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--104
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 108--109
+
+ []
+
+
 
 [1
 
 ]
+Underfull \hbox (badness 10000) in paragraph at lines 110--111
+
+ []
+
+
 Overfull \hbox (4.86124pt too wide) in paragraph at lines 127--128
 []\TU/IBMPlexSerif(0)/m/n/10.95 Implementar una arquitectura modular basada en tecnologías web
  []
@@ -802,49 +862,91 @@ Overfull \hbox (2.87563pt too wide) in paragraph at lines 246--247
  []
 
 
-Overfull \hbox (1.66385pt too wide) in paragraph at lines 254--255
-\TU/IBMPlexSerif(0)/m/n/10.95 operativos principales. Utilizando las capacidades nativas de empaque-
+
+[7]
+Overfull \hbox (2.02513pt too wide) in paragraph at lines 259--260
+[]\TU/IBMPlexSerif(0)/m/n/10.95 Deberá generar identificadores únicos para cada canción me-
  []
 
 
-
-[7]
-Underfull \hbox (badness 10000) in paragraph at lines 287--288
-
+Overfull \hbox (16.25285pt too wide) in paragraph at lines 282--283
+[]\TU/IBMPlexSerif(0)/m/n/10.95 Tiempo de carga inicial <2 segundos para bibliotecas con 10,000
  []
 
 
 
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 289--290
+Overfull \hbox (12.21959pt too wide) in paragraph at lines 294--295
+[]\TU/IBMPlexSerif(0)/m/n/10.95 Interfaz responsive con soporte para pantallas desde 1280x720
+ []
+
+File: media/Diagrama de Flujo 1.drawio.png Graphic file (type bmp)
+<media/Diagrama de Flujo 1.drawio.png>
+
+
+[9]
+
+[10]
+Overfull \vbox (48.88469pt too high) has occurred while \output is active []
+
+
+
+[11]
+File: media/CasoUso1.drawio.png Graphic file (type bmp)
+<media/CasoUso1.drawio.png>
+File: media/CasoUso2.drawio.png Graphic file (type bmp)
+<media/CasoUso2.drawio.png>
+
+
+[12]
+Overfull \hbox (1.66385pt too wide) in paragraph at lines 344--345
+\TU/IBMPlexSerif(0)/m/n/10.95 operativos principales. Utilizando las capacidades nativas de empaque-
+ []
+
+
+
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 377--378
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 379--380
+
+ []
+
+
+
+[14]
 File: media/imagemusyram.png Graphic file (type bmp)
 <media/imagemusyram.png>
 
 
-[9]
-Overfull \hbox (2.9632pt too wide) in paragraph at lines 345--346
+[15]
+Overfull \hbox (2.9632pt too wide) in paragraph at lines 435--436
 []\TU/IBMPlexSerif(0)/m/n/10.95 Artistas reciben compensaciones mínimas por reproducción. 
  []
 
 
 
-[10]
+[16]
 
-[11]
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-[12]
+
+
+[17]
+
+[18]
 File: media/screenshots/playbar.png Graphic file (type bmp)
 <media/screenshots/playbar.png>
 
-Overfull \hbox (3.2771pt too wide) in paragraph at lines 484--485
+Overfull \hbox (3.2771pt too wide) in paragraph at lines 574--575
 \TU/IBMPlexSerif(0)/m/n/10.95 botones de control (reproducción, aleatorio, anterior/siguiente, re-
  []
 
 
-Overfull \hbox (60.05287pt too wide) in paragraph at lines 488--489
+Overfull \hbox (60.05287pt too wide) in paragraph at lines 578--579
 \TU/IBMPlexSerif(0)/m/n/10.95 dodos que llaman al servicio de manejo de canciones [][]\TU/lmtt/m/n/10.95 song-management.service.ts[]\TU/IBMPlexSerif(0)/m/n/10.95 . 
  []
 
@@ -852,28 +954,32 @@ File: media/screenshots/sidebar.png Graphic file (type bmp)
 <media/screenshots/sidebar.png>
 
 
-[13]
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 503.
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 589--590
+
+ []
+
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 593.
 
 
-[14]
+[20]
 Missing character: There is no ‎ (U+200E) in font IBM Plex Serif/OT:script=latn;language=dflt;mapping=tex-text;!
 
-Overfull \hbox (20.23141pt too wide) in paragraph at lines 542--543
+Overfull \hbox (20.23141pt too wide) in paragraph at lines 632--633
 \TU/IBMPlexSerif(0)/m/n/10.95 padre. Gestiona un menú desplegable mediante el atributo [][]\TU/lmtt/m/n/10.95 isDropDownOpen[]\TU/IBMPlexSerif(0)/m/n/10.95 . 
  []
 
 
 
-[15]
+[21]
 
-[16]
+[22]
 File: media/screenshots/remove_playlist.png Graphic file (type bmp)
 <media/screenshots/remove_playlist.png>
 
 Missing character: There is no ‎ (U+200E) in font IBM Plex Serif/OT:script=latn;language=dflt;mapping=tex-text;!
 
-Underfull \hbox (badness 10000) in paragraph at lines 614--615
+Underfull \hbox (badness 10000) in paragraph at lines 704--705
 
  []
 
@@ -881,26 +987,26 @@ File: media/screenshots/new_playlist.png Graphic file (type bmp)
 <media/screenshots/new_playlist.png>
 
 
-[17]
+[23]
 
-[18]
-Overfull \hbox (8.21196pt too wide) in paragraph at lines 661--662
+[24]
+Overfull \hbox (8.21196pt too wide) in paragraph at lines 751--752
 \TU/IBMPlexSerif(0)/m/n/10.95 imágenes para las portadas de playlists mediante el siguiente flujo: cuan-
  []
 
 
 
-[19]
-Underfull \hbox (badness 10000) in paragraph at lines 704--705
+[25]
+Underfull \hbox (badness 10000) in paragraph at lines 794--795
 
  []
 
 
 
-[20]
+[26]
 Missing character: There is no ‎ (U+200E) in font IBM Plex Serif/OT:script=latn;language=dflt;mapping=tex-text;!
 
-Underfull \hbox (badness 10000) in paragraph at lines 727--728
+Underfull \hbox (badness 10000) in paragraph at lines 817--818
 
  []
 
@@ -908,8 +1014,8 @@ File: media/screenshots/search_song.png Graphic file (type bmp)
 <media/screenshots/search_song.png>
 
 
-[21]
-Overfull \hbox (3.97066pt too wide) in paragraph at lines 754--755
+[27]
+Overfull \hbox (3.97066pt too wide) in paragraph at lines 844--845
 \TU/IBMPlexSerif(0)/m/n/10.95 ción, la lista completa de canciones se asigna a la variable [][]\TU/lmtt/m/n/10.95 filteredSongs
  []
 
@@ -917,8 +1023,8 @@ File: media/screenshots/playlist.png Graphic file (type bmp)
 <media/screenshots/playlist.png>
 
 
-[22]
-Underfull \hbox (badness 10000) in paragraph at lines 777--778
+[28]
+Underfull \hbox (badness 10000) in paragraph at lines 867--868
 
  []
 
@@ -927,92 +1033,45 @@ File: media/screenshots/songbutton.png Graphic file (type bmp)
 <media/screenshots/songbutton.png>
 
 
-[23]
-Overfull \hbox (1.19666pt too wide) in paragraph at lines 797--798
+[29]
+Overfull \hbox (1.19666pt too wide) in paragraph at lines 887--888
 \TU/IBMPlexSerif(0)/m/n/10.95 canciones disponibles, se explicará con mayor detalle en secciones pos-
  []
 
 
 
-[24]
-Underfull \hbox (badness 10000) in paragraph at lines 823--824
+[30]
+Underfull \hbox (badness 10000) in paragraph at lines 913--914
 
  []
 
 
-Overfull \hbox (2.4761pt too wide) in paragraph at lines 841--842
+Overfull \hbox (2.4761pt too wide) in paragraph at lines 931--932
 []\TU/IBMPlexSerif(0)/m/n/10.95 El componente implementa diversos métodos para gestionar su fun-
  []
 
 
 
-[25]
-Overfull \hbox (2.5272pt too wide) in paragraph at lines 883--884
+[31]
+Overfull \hbox (2.5272pt too wide) in paragraph at lines 973--974
 []\TU/IBMPlexSerif(0)/m/n/10.95 Los métodos implementados siguen un patrón común donde los me-
  []
 
 
-Overfull \hbox (17.46832pt too wide) in paragraph at lines 886--887
+Overfull \hbox (17.46832pt too wide) in paragraph at lines 976--977
 [][][]\TU/lmtt/m/n/10.95 playSong()[]\TU/IBMPlexSerif(0)/m/n/10.95 : Inicia la reproducción inmediata mediante [][]\TU/lmtt/m/n/10.95 setOneSong() 
  []
 
 
 
-[26]
-Overfull \hbox (8.86165pt too wide) in paragraph at lines 887--888
+[32]
+Overfull \hbox (8.86165pt too wide) in paragraph at lines 977--978
 [][][]\TU/lmtt/m/n/10.95 addSongToQueue()[]\TU/IBMPlexSerif(0)/m/n/10.95 : Añade la canción a la cola de reproducción usan-
  []
 
 
-Overfull \hbox (53.56316pt too wide) in paragraph at lines 913--914
+Overfull \hbox (53.56316pt too wide) in paragraph at lines 1003--1004
 []\TU/IBMPlexSerif(0)/m/n/10.95 Al completar la operación, se desactiva el modal ([][]\TU/lmtt/m/n/10.95 isModalOpen = false[]\TU/IBMPlexSerif(0)/m/n/10.95 ). 
- []
-
-
-
-[27]
-Missing character: There is no ‎ (U+200E) in font IBM Plex Serif/OT:script=latn;language=dflt;mapping=tex-text;!
-
-
-[28]
-Underfull \hbox (badness 10000) in paragraph at lines 969--970
-
- []
-
-
-
-[29]
-Missing character: There is no ‎ (U+200E) in font IBM Plex Serif/OT:script=latn;language=dflt;mapping=tex-text;!
-Missing character: There is no ‎ (U+200E) in font IBM Plex Serif/OT:script=latn;language=dflt;mapping=tex-text;!
-
-
-[30]
-Underfull \hbox (badness 10000) in paragraph at lines 1034--1035
-
- []
-
-
-
-[31]
-Overfull \hbox (2.11281pt too wide) in paragraph at lines 1059--1060
-\TU/IBMPlexSerif(0)/m/n/10.95 específica, actualizando los metadatos correspondientes ([][]\TU/lmtt/m/n/10.95 id[]\TU/IBMPlexSerif(0)/m/n/10.95 , [][]\TU/lmtt/m/n/10.95 name[]\TU/IBMPlexSerif(0)/m/n/10.95 , [][]\TU/lmtt/m/n/10.95 date[]\TU/IBMPlexSerif(0)/m/n/10.95 ,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1063--1064
-
- []
-
-
-
-[32]
-Overfull \hbox (1.34825pt too wide) in paragraph at lines 1097--1098
-[]\TU/IBMPlexSerif(0)/m/n/10.95 Los métodos [][]\TU/lmtt/m/n/10.95 getAllSongs()[]\TU/IBMPlexSerif(0)/m/n/10.95 , [][]\TU/lmtt/m/n/10.95 getAllStarred() []\TU/IBMPlexSerif(0)/m/n/10.95 y [][]\TU/lmtt/m/n/10.95 getPlaylistSongs()
- []
-
-
-Overfull \hbox (3.67697pt too wide) in paragraph at lines 1111--1112
-[]\TU/IBMPlexSerif(0)/m/n/10.95 El método [][]\TU/lmtt/m/n/10.95 refresh() []\TU/IBMPlexSerif(0)/m/n/10.95 se encarga de actualizar dinámicamente el con-
  []
 
 
@@ -1022,194 +1081,424 @@ Missing character: There is no ‎ (U+200E) in font IBM Plex Serif/OT:script=lat
 
 
 [34]
-Overfull \hbox (18.62178pt too wide) in paragraph at lines 1162--1163
-[]\TU/IBMPlexSerif(0)/b/n/10.95 Gestión de cola\TU/IBMPlexSerif(0)/m/n/10.95 : Mantiene dos versiones de la cola ([][]\TU/lmtt/m/n/10.95 queue []\TU/IBMPlexSerif(0)/m/n/10.95 y [][]\TU/lmtt/m/n/10.95 queueSave[]\TU/IBMPlexSerif(0)/m/n/10.95 )
+Underfull \hbox (badness 10000) in paragraph at lines 1059--1060
+
  []
 
 
 
 [35]
+Missing character: There is no ‎ (U+200E) in font IBM Plex Serif/OT:script=latn;language=dflt;mapping=tex-text;!
+Missing character: There is no ‎ (U+200E) in font IBM Plex Serif/OT:script=latn;language=dflt;mapping=tex-text;!
+
 
 [36]
+Underfull \hbox (badness 10000) in paragraph at lines 1120--1121
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1122--1123
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1124--1125
+
+ []
+
+
 
 [37]
+Underfull \hbox (badness 10000) in paragraph at lines 1147--1148
+
+ []
+
+
+Overfull \hbox (2.11281pt too wide) in paragraph at lines 1149--1150
+\TU/IBMPlexSerif(0)/m/n/10.95 específica, actualizando los metadatos correspondientes ([][]\TU/lmtt/m/n/10.95 id[]\TU/IBMPlexSerif(0)/m/n/10.95 , [][]\TU/lmtt/m/n/10.95 name[]\TU/IBMPlexSerif(0)/m/n/10.95 , [][]\TU/lmtt/m/n/10.95 date[]\TU/IBMPlexSerif(0)/m/n/10.95 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1149--1150
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1151--1152
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1153--1154
+
+ []
+
+
 
 [38]
+Overfull \hbox (1.34825pt too wide) in paragraph at lines 1187--1188
+[]\TU/IBMPlexSerif(0)/m/n/10.95 Los métodos [][]\TU/lmtt/m/n/10.95 getAllSongs()[]\TU/IBMPlexSerif(0)/m/n/10.95 , [][]\TU/lmtt/m/n/10.95 getAllStarred() []\TU/IBMPlexSerif(0)/m/n/10.95 y [][]\TU/lmtt/m/n/10.95 getPlaylistSongs()
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1187--1188
+
+ []
+
+
 
 [39]
-Overfull \hbox (21.74251pt too wide) in paragraph at lines 1324--1325
-\TU/IBMPlexSerif(0)/m/n/10.95 bos métodos mantienen actualizados los índices de posición ([][]\TU/lmtt/m/n/10.95 currentIndex[]\TU/IBMPlexSerif(0)/m/n/10.95 ,
+Overfull \hbox (3.67697pt too wide) in paragraph at lines 1201--1202
+[]\TU/IBMPlexSerif(0)/m/n/10.95 El método [][]\TU/lmtt/m/n/10.95 refresh() []\TU/IBMPlexSerif(0)/m/n/10.95 se encarga de actualizar dinámicamente el con-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1201--1202
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1215--1216
+
  []
 
 
 
 [40]
-Overfull \hbox (52.60884pt too wide) in paragraph at lines 1352--1353
-[]\TU/IBMPlexSerif(0)/m/n/10.95 Ambos métodos implementan una verificación de existencia ([][]\TU/lmtt/m/n/10.95 if (this.song)[]\TU/IBMPlexSerif(0)/m/n/10.95 )
+Missing character: There is no ‎ (U+200E) in font IBM Plex Serif/OT:script=latn;language=dflt;mapping=tex-text;!
+
+Overfull \hbox (18.62178pt too wide) in paragraph at lines 1252--1253
+[]\TU/IBMPlexSerif(0)/b/n/10.95 Gestión de cola\TU/IBMPlexSerif(0)/m/n/10.95 : Mantiene dos versiones de la cola ([][]\TU/lmtt/m/n/10.95 queue []\TU/IBMPlexSerif(0)/m/n/10.95 y [][]\TU/lmtt/m/n/10.95 queueSave[]\TU/IBMPlexSerif(0)/m/n/10.95 )
  []
 
 
 
 [41]
-Overfull \hbox (6.04216pt too wide) in paragraph at lines 1374--1375
-[]\TU/IBMPlexSerif(0)/m/n/10.95 Este método se encarga de alternar cíclicamente la variable [][]\TU/lmtt/m/n/10.95 loopMode[]\TU/IBMPlexSerif(0)/m/n/10.95 . 
- []
-
-
 
 [42]
 
 [43]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 1428.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 1428.
+Underfull \hbox (badness 10000) in paragraph at lines 1345--1346
 
-Missing character: There is no ‎ (U+200E) in font IBM Plex Serif/OT:script=latn;language=dflt;mapping=tex-text;!
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1347--1348
+
+ []
+
 
 
 [44]
-Overfull \hbox (1.61836pt too wide) in paragraph at lines 1478--1479
-[]\TU/IBMPlexSerif(0)/m/n/10.95 El método principal [][]\TU/lmtt/m/n/10.95 getAllPlaylists() []\TU/IBMPlexSerif(0)/m/n/10.95 establece comunicación con
+Underfull \hbox (badness 10000) in paragraph at lines 1349--1350
+
  []
 
 
 
 [45]
+Underfull \hbox (badness 10000) in paragraph at lines 1412--1413
 
-[46]
-
-[47]
-
-[48]
-Overfull \hbox (72.14pt too wide) in paragraph at lines 1605--1606
-[]\TU/IBMPlexSerif(0)/m/n/10.95 Rutas de configuración según el SO ([][]\TU/lmtt/m/n/10.95 $APPDATA []\TU/IBMPlexSerif(0)/m/n/10.95 en Windows, [][]\TU/lmtt/m/n/10.95 $HOME/.local/share/
  []
 
-File: media/ER.drawio.png Graphic file (type bmp)
-<media/ER.drawio.png>
+
+
+[46]
+Overfull \hbox (21.74251pt too wide) in paragraph at lines 1414--1415
+\TU/IBMPlexSerif(0)/m/n/10.95 bos métodos mantienen actualizados los índices de posición ([][]\TU/lmtt/m/n/10.95 currentIndex[]\TU/IBMPlexSerif(0)/m/n/10.95 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1414--1415
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1416--1417
+
+ []
+
+
+
+[47]
+Underfull \hbox (badness 10000) in paragraph at lines 1438--1439
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1440--1441
+
+ []
+
+
+Overfull \hbox (52.60884pt too wide) in paragraph at lines 1442--1443
+[]\TU/IBMPlexSerif(0)/m/n/10.95 Ambos métodos implementan una verificación de existencia ([][]\TU/lmtt/m/n/10.95 if (this.song)[]\TU/IBMPlexSerif(0)/m/n/10.95 )
+ []
+
+
+Overfull \hbox (6.04216pt too wide) in paragraph at lines 1464--1465
+[]\TU/IBMPlexSerif(0)/m/n/10.95 Este método se encarga de alternar cíclicamente la variable [][]\TU/lmtt/m/n/10.95 loopMode[]\TU/IBMPlexSerif(0)/m/n/10.95 . 
+ []
+
+
+
+[48]
+Underfull \hbox (badness 10000) in paragraph at lines 1501--1502
+
+ []
+
 
 
 [49]
-File: media/DiagramaRelacional.png Graphic file (type bmp)
-<media/DiagramaRelacional.png>
+Underfull \hbox (badness 10000) in paragraph at lines 1509--1510
 
-Missing character: There is no ‎ (U+200E) in font IBM Plex Serif/OT:script=latn;language=dflt;mapping=tex-text;!
+ []
 
-Underfull \hbox (badness 10000) in paragraph at lines 1639--1640
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 1518.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 1518.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1526--1527
 
  []
 
 
 
 [50]
-Missing character: There is no ‎ (U+200E) in font IBM Plex Serif/OT:script=latn;language=dflt;mapping=tex-text;!
-
-Underfull \hbox (badness 10000) in paragraph at lines 1653--1654
+Underfull \hbox (badness 10000) in paragraph at lines 1528--1529
 
  []
 
 Missing character: There is no ‎ (U+200E) in font IBM Plex Serif/OT:script=latn;language=dflt;mapping=tex-text;!
-
-Underfull \hbox (badness 10000) in paragraph at lines 1664--1665
-
- []
-
 
 
 [51]
-Overfull \hbox (1.69502pt too wide) in paragraph at lines 1677--1678
-[]\TU/IBMPlexSerif(0)/m/n/10.95 El módulo [][]\TU/lmtt/m/n/10.95 logic.rs []\TU/IBMPlexSerif(0)/m/n/10.95 constituye el núcleo funcional del backend, don-
+Overfull \hbox (1.61836pt too wide) in paragraph at lines 1568--1569
+[]\TU/IBMPlexSerif(0)/m/n/10.95 El método principal [][]\TU/lmtt/m/n/10.95 getAllPlaylists() []\TU/IBMPlexSerif(0)/m/n/10.95 establece comunicación con
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1568--1569
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1570--1571
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1578--1579
+
  []
 
 
 
 [52]
-Overfull \hbox (56.18387pt too wide) in paragraph at lines 1715--1716
-[]\TU/IBMPlexSerif(0)/m/n/10.95 Ejecuta la creación recursiva de directorios mediante [][]\TU/lmtt/m/n/10.95 fs::create_dir_all()[]\TU/IBMPlexSerif(0)/m/n/10.95 . 
- []
-
-
 
 [53]
 
 [54]
-Overfull \hbox (29.22495pt too wide) in paragraph at lines 1807--1808
-[]\TU/IBMPlexSerif(0)/m/n/10.95 Comprueba la existencia del archivo físico usando [][]\TU/lmtt/m/n/10.95 Path::exists()[]\TU/IBMPlexSerif(0)/m/n/10.95 . 
- []
-
-
 
 [55]
-Overfull \hbox (5.89421pt too wide) in paragraph at lines 1848--1849
-[][]\TU/lmtt/m/n/10.95 .flac []\TU/IBMPlexSerif(0)/m/n/10.95 y [][]\TU/lmtt/m/n/10.95 .aac[]\TU/IBMPlexSerif(0)/m/n/10.95 . Permite recursividad al incluir directorios mediante [][]\TU/lmtt/m/n/10.95 is_dir
+Overfull \hbox (72.14pt too wide) in paragraph at lines 1695--1696
+[]\TU/IBMPlexSerif(0)/m/n/10.95 Rutas de configuración según el SO ([][]\TU/lmtt/m/n/10.95 $APPDATA []\TU/IBMPlexSerif(0)/m/n/10.95 en Windows, [][]\TU/lmtt/m/n/10.95 $HOME/.local/share/
  []
 
+File: media/ER.drawio.png Graphic file (type bmp)
+<media/ER.drawio.png>
+File: media/DiagramaRelacional.png Graphic file (type bmp)
+<media/DiagramaRelacional.png>
 
 
 [56]
+Missing character: There is no ‎ (U+200E) in font IBM Plex Serif/OT:script=latn;language=dflt;mapping=tex-text;!
+
+Underfull \hbox (badness 10000) in paragraph at lines 1729--1730
+
+ []
+
+Missing character: There is no ‎ (U+200E) in font IBM Plex Serif/OT:script=latn;language=dflt;mapping=tex-text;!
+
+Underfull \hbox (badness 10000) in paragraph at lines 1743--1744
+
+ []
+
+
 
 [57]
-Overfull \hbox (24.22926pt too wide) in paragraph at lines 1899--1900
-[]\TU/IBMPlexSerif(0)/m/n/10.95 Genera ID único mediante hash Blake3 del título usando [][]\TU/lmtt/m/n/10.95 blake3::hash()[]\TU/IBMPlexSerif(0)/m/n/10.95 .
+Missing character: There is no ‎ (U+200E) in font IBM Plex Serif/OT:script=latn;language=dflt;mapping=tex-text;!
+
+Underfull \hbox (badness 10000) in paragraph at lines 1754--1755
+
+ []
+
+
+Overfull \hbox (1.69502pt too wide) in paragraph at lines 1767--1768
+[]\TU/IBMPlexSerif(0)/m/n/10.95 El módulo [][]\TU/lmtt/m/n/10.95 logic.rs []\TU/IBMPlexSerif(0)/m/n/10.95 constituye el núcleo funcional del backend, don-
  []
 
 
 
 [58]
+Underfull \hbox (badness 10000) in paragraph at lines 1799--1800
 
-[59]
-Overfull \hbox (1.96144pt too wide) in paragraph at lines 1957--1958
-[]\TU/IBMPlexSerif(0)/m/n/10.95 La implementación de los siguientes métodos utilizan estos [][]\TU/lmtt/m/n/10.95 struct[]\TU/IBMPlexSerif(0)/m/n/10.95 s: 
  []
 
 
+Overfull \hbox (56.18387pt too wide) in paragraph at lines 1805--1806
+[]\TU/IBMPlexSerif(0)/m/n/10.95 Ejecuta la creación recursiva de directorios mediante [][]\TU/lmtt/m/n/10.95 fs::create_dir_all()[]\TU/IBMPlexSerif(0)/m/n/10.95 . 
+ []
+
+
+
+[59]
 
 [60]
 
 [61]
+Underfull \hbox (badness 10000) in paragraph at lines 1886--1887
 
-[62]
-
-[63]
-Overfull \hbox (5.75914pt too wide) in paragraph at lines 2090--2091
-\TU/IBMPlexSerif(0)/m/n/10.95 tabla [][]\TU/lmtt/m/n/10.95 all_songs[]\TU/IBMPlexSerif(0)/m/n/10.95 , mientras que [][]\TU/lmtt/m/n/10.95 get_all_songs_starred() []\TU/IBMPlexSerif(0)/m/n/10.95 filtra solo aque-
  []
 
 
-Overfull \hbox (15.64699pt too wide) in paragraph at lines 2090--2091
-\TU/IBMPlexSerif(0)/m/n/10.95 llas marcadas como favoritas mediante la condición [][]\TU/lmtt/m/n/10.95 WHERE isStarred = 1[]\TU/IBMPlexSerif(0)/m/n/10.95 . 
+Overfull \hbox (29.22495pt too wide) in paragraph at lines 1897--1898
+[]\TU/IBMPlexSerif(0)/m/n/10.95 Comprueba la existencia del archivo físico usando [][]\TU/lmtt/m/n/10.95 Path::exists()[]\TU/IBMPlexSerif(0)/m/n/10.95 . 
+ []
+
+
+
+[62]
+Underfull \hbox (badness 10000) in paragraph at lines 1926--1927
+
+ []
+
+
+Overfull \hbox (5.89421pt too wide) in paragraph at lines 1938--1939
+[][]\TU/lmtt/m/n/10.95 .flac []\TU/IBMPlexSerif(0)/m/n/10.95 y [][]\TU/lmtt/m/n/10.95 .aac[]\TU/IBMPlexSerif(0)/m/n/10.95 . Permite recursividad al incluir directorios mediante [][]\TU/lmtt/m/n/10.95 is_dir
+ []
+
+
+
+[63]
+Underfull \hbox (badness 10000) in paragraph at lines 1957--1958
+
  []
 
 
 
 [64]
+Overfull \hbox (24.22926pt too wide) in paragraph at lines 1989--1990
+[]\TU/IBMPlexSerif(0)/m/n/10.95 Genera ID único mediante hash Blake3 del título usando [][]\TU/lmtt/m/n/10.95 blake3::hash()[]\TU/IBMPlexSerif(0)/m/n/10.95 .
+ []
+
+
 
 [65]
 
 [66]
-Overfull \hbox (17.54333pt too wide) in paragraph at lines 2192--2192
-[][]\TU/IBMPlexSerif(0)/m/n/10.95 Font Awesome Team. (s.f.). \TU/IBMPlexSerif(0)/m/it/10.95 SVGs Used\TU/IBMPlexSerif(0)/m/n/10.95 . Font Awesome. [][]$[][][][][] [] [] [] [][][][][][][][][][][] []
+Underfull \hbox (badness 10000) in paragraph at lines 2045--2046
+
  []
 
 
-Overfull \hbox (24.29942pt too wide) in paragraph at lines 2192--2192
-[][]\TU/IBMPlexSerif(0)/m/n/10.95 MDN Web Docs. (s.f.-d). \TU/IBMPlexSerif(0)/m/it/10.95 String.prototype.padStart()\TU/IBMPlexSerif(0)/m/n/10.95 . Mozilla. [][]$[][][][][] [] [] [] [][][][][][][][][] []
+Overfull \hbox (1.96144pt too wide) in paragraph at lines 2047--2048
+[]\TU/IBMPlexSerif(0)/m/n/10.95 La implementación de los siguientes métodos utilizan estos [][]\TU/lmtt/m/n/10.95 struct[]\TU/IBMPlexSerif(0)/m/n/10.95 s: 
  []
 
 
 
 [67]
+
+[68]
+Underfull \hbox (badness 10000) in paragraph at lines 2117--2118
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2119--2120
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2121--2122
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2123--2124
+
+ []
+
+
+
+[69]
+
+[70]
+Overfull \hbox (5.75914pt too wide) in paragraph at lines 2180--2181
+\TU/IBMPlexSerif(0)/m/n/10.95 tabla [][]\TU/lmtt/m/n/10.95 all_songs[]\TU/IBMPlexSerif(0)/m/n/10.95 , mientras que [][]\TU/lmtt/m/n/10.95 get_all_songs_starred() []\TU/IBMPlexSerif(0)/m/n/10.95 filtra solo aque-
+ []
+
+
+Overfull \hbox (15.64699pt too wide) in paragraph at lines 2180--2181
+\TU/IBMPlexSerif(0)/m/n/10.95 llas marcadas como favoritas mediante la condición [][]\TU/lmtt/m/n/10.95 WHERE isStarred = 1[]\TU/IBMPlexSerif(0)/m/n/10.95 . 
+ []
+
+
+
+[71]
+Underfull \hbox (badness 10000) in paragraph at lines 2221--2222
+
+ []
+
+
+
+[72]
+
+[73]
+Overfull \hbox (26.88058pt too wide) in paragraph at lines 2307--2319
+ [][] 
+ []
+
+
+
+[74]
+
+[75]
+
+[76]
+Overfull \hbox (17.54333pt too wide) in paragraph at lines 2380--2380
+[][]\TU/IBMPlexSerif(0)/m/n/10.95 Font Awesome Team. (s.f.). \TU/IBMPlexSerif(0)/m/it/10.95 SVGs Used\TU/IBMPlexSerif(0)/m/n/10.95 . Font Awesome. [][]$[][][][][] [] [] [] [][][][][][][][][][][] []
+ []
+
+
+Package biblatex Warning: No driver for 'standard'.
+(biblatex)                Using fallback driver on input line 2379.
+
+
+Overfull \hbox (3.02672pt too wide) in paragraph at lines 2380--2380
+[][]\TU/IBMPlexSerif(0)/m/it/10.95 IEEE Recommended Practice for Software Requirements Specifications\TU/IBMPlexSerif(0)/m/n/10.95 . (1998).
+ []
+
+
+Overfull \hbox (24.29942pt too wide) in paragraph at lines 2380--2380
+[][]\TU/IBMPlexSerif(0)/m/n/10.95 MDN Web Docs. (s.f.-d). \TU/IBMPlexSerif(0)/m/it/10.95 String.prototype.padStart()\TU/IBMPlexSerif(0)/m/n/10.95 . Mozilla. [][]$[][][][][] [] [] [] [][][][][][][][][] []
+ []
+
 Missing character: There is no ⚙ (U+2699) in font IBM Plex Serif Italic/OT:script=latn;language=dflt;mapping=tex-text;!
 Missing character: There is no ️ (U+FE0F) in font IBM Plex Serif Italic/OT:script=latn;language=dflt;mapping=tex-text;!
 
-Overfull \hbox (50.20294pt too wide) in paragraph at lines 2192--2192
+Overfull \hbox (50.20294pt too wide) in paragraph at lines 2380--2380
 \TU/IBMPlexSerif(0)/m/it/10.95 | Learn ⚙️ in 2024\TU/IBMPlexSerif(0)/m/n/10.95 . [][]$[][][][][] [] [] [] [][][][][] [] [][] [] [][] [] [][][][][][][][] [] [][] [] [][][][][][][][][][][][][][][][]$[][] 
  []
 
 
 
-[68] (./docfile.aux
+[77]
+
+[78] (./docfile.aux
 LaTeX Info: Redefining \sptext on input line 12.
 LaTeX Info: Redefining \. on input line 12.
 LaTeX Info: Redefining \% on input line 12.
@@ -1226,7 +1515,7 @@ L3 programming layer <2025-01-18>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `docfile.out' has not changed.
-(rerunfilecheck)             Checksum: AD36E1FE2C5DE87F265D8E119EC7151C;7368.
+(rerunfilecheck)             Checksum: 1E5A34BB6D2D8976EB09E57212F04398;10097.
 
 Package biblatex Warning: Please rerun LaTeX.
 
@@ -1235,12 +1524,12 @@ Package logreq Info: Writing requests to 'docfile.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 22616 strings out of 473842
- 458278 string characters out of 5710491
- 1714890 words of memory out of 5000000
- 45399 multiletter control sequences out of 15000+600000
- 565845 words of font info for 90 fonts, out of 8000000 for 9000
+ 22665 strings out of 473842
+ 459668 string characters out of 5710491
+ 1702079 words of memory out of 5000000
+ 45444 multiletter control sequences out of 15000+600000
+ 565853 words of font info for 91 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  79i,8n,93p,956b,6185s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on docfile.pdf (74 pages).
+Output written on docfile.pdf (84 pages).
