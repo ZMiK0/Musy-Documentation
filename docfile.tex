@@ -1674,6 +1674,481 @@ pub fn run() {
 
             \subsubsection{Logica}
 
+            El módulo \verb|logic.rs| constituye el núcleo funcional del backend, donde se implementan las operaciones críticas de gestión de datos y sincronización musical. Su diseño sigue los principios de Rust: seguridad de tipos, manejo explícito de errores y eficiencia en el acceso a recursos del sistema.
+
+            \begin{lstlisting}[caption={fn sync()}]
+pub fn sync(path:PathBuf, music_path:PathBuf) -> std::io::Result<()> {
+    create_dir(path.clone())?;
+    create_db(path.clone())?;
+    clean(path.clone()).unwrap();
+    walk_dir(music_path, path.clone())?;
+
+    Ok(())
+}
+            \end{lstlisting}
+
+            La función \verb|sync()| coordina el proceso completo de inicialización de la biblioteca musical mediante cuatro etapas secuenciales:
+
+            \begin{enumerate}
+                \item \textbf{Preparación del entorno}.
+                \item \textbf{Inicialización de la base de datos}.
+                \item \textbf{Limpieza de registros obsoletos}.
+                \item \textbf{Exploración del directorio musical}: \verb|walk_dir| recorre recursivamente la ruta especificada para indexar nuevos archivos.
+            \end{enumerate}
+
+            Cada etapa maneja sus errores de forma independiente, siguiendo el patrón \verb|Result| de Rust. La función principal propaga los errores mediante el operador \verb|?|, mientras que \verb|clean| utiliza \verb|unwrap| al considerarse una operación no crítica.
+
+            \begin{lstlisting}[caption={fn create\_dir()}]
+fn create_dir(path:PathBuf) -> std::io::Result<()> {
+    let new_path = path.join("covers");
+    fs::create_dir_all(&new_path).expect("Error");
+    Ok(())
+}
+            \end{lstlisting}
+
+            Esta función se encarga de inicializar la estructura de directorios necesaria para el almacenamiento de archivos auxiliares.
+
+            El proceso sigue tres pasos fundamentales:
+
+            \begin{enumerate}
+              \item Construye la ruta completa concatenando el directorio base con la subcarpeta \verb|covers|.
+              \item Ejecuta la creación recursiva de directorios mediante \verb|fs::create_dir_all()|.
+              \item Maneja posibles errores con \verb|expect| para fallos críticos.
+            \end{enumerate}
+
+            La implementación garantiza que exista siempre el directorio para almacenar las portadas de las canciones, requisito esencial para el funcionamiento de la interfaz gráfica. El uso de \verb|PathBuf| en lugar de manipulaciones de strings crudas facilita su uso.
+
+            \begin{lstlisting}[caption={fn create\_db()}]
+fn create_db(path:PathBuf) -> std::io::Result<()> {
+    let conn = Connection::open(path.join("playlists.db")).expect("Error");
+    conn.execute("create table if not exists all_songs(
+        id text primary key not null,
+        path text not null,
+        title text not null,
+        artist text,
+        album text,
+        year text,
+        duration text,
+        cover_path text,
+        isStarred boolean default false
+    );",()).expect("ERROR2");
+
+    conn.execute("create table if not exists playlists (
+        id integer primary key autoincrement,
+        name text not null unique,
+        creation_date DATE default CURRENT_DATE,
+        cover_path text default '',
+        isStarred boolean default false
+    )", ()).expect("ERROR3");
+
+    conn.execute("create table if not exists song_playlist(
+        playlist_id integer not null,
+        song_id text not null,
+        foreign key (playlist_id) references playlists(id) ON DELETE CASCADE,
+        foreign key (song_id) references all_songs(id) ON DELETE CASCADE,
+        primary key (playlist_id, song_id)
+    );",() ).expect("ERROR4");
+
+    conn.execute("INSERT OR REPLACE INTO playlists (id, name) VALUES (?1,?2);", (0,"All Songs",)).expect("ERROR WHILE INSERTING");
+
+    Ok(())
+}
+            \end{lstlisting}
+
+            La función \verb|create_db| genera la estructura SQLite con las tablas necesarias vistas en el punto anterior.
+
+            El diseño utiliza \verb|if not exists| para evitar errores en ejecuciones repetidas y maneja errores mediante el operador \verb|?| de Rust.
+
+            \begin{lstlisting}[caption={fn clean()}]
+fn clean(database_path: PathBuf) -> Result<()> {
+    let mut conn = Connection::open(database_path.join("playlists.db"))?;
+
+    let rows: Vec<(String, String)> = {
+        let mut stmt = conn.prepare("SELECT id, path FROM all_songs")?;
+        let rows_iter = stmt.query_map([], |row| {
+            Ok((row.get::<_, String>(0)?, row.get::<_, String>(1)?))
+        })?;
+
+        let mut collected = Vec::new();
+        for row in rows_iter {
+            collected.push(row?);
+        }
+        collected
+    };
+
+    let tx = conn.transaction()?;
+
+    for (id, path_str) in rows {
+        println!("Checking path: {}", path_str);
+        println!("Path exists? {}", Path::new(&path_str).exists()); 
+        if !Path::new(&path_str).exists() {
+            println!("Removing song: {} - File not found: {}", id, path_str);
+            tx.execute("DELETE FROM all_songs WHERE id = ?", [id])?;
+        }
+    }
+
+    tx.commit()?;
+    println!("Operation completed.");
+    Ok(())
+}
+            \end{lstlisting}
+
+            Esta función implementa el mantenimiento de la base de datos eliminando registros de canciones cuyos archivos ya no existen en el sistema.
+
+            La función sigue un flujo de cuatro etapas:
+
+            \begin{enumerate}
+              \item \textbf{Consulta inicial}: Recupera todos los IDs y rutas de canciones almacenadas mediante una consulta SQL parametrizada. El uso de \verb|query\_map()| permite un mapeo seguro de los resultados a tuplas Rust.
+
+              \item \textbf{Transacción}: Inicia una transacción SQLite para garantizar atomicidad en las operaciones de limpieza. Esto previene estados inconsistentes si ocurren errores durante el proceso.
+
+              \item \textbf{Verificación}: Para cada canción registrada:
+                \begin{itemize}
+                  \item Comprueba la existencia del archivo físico usando \verb|Path::exists()|.
+                  \item Elimina el registro de la base de datos si el archivo no existe.
+                  \item Registra la operación en la consola para diagnóstico.
+                \end{itemize}
+
+              \item \textbf{Confirmación}: Finaliza la transacción aplicando todos los cambios de forma atómica.
+            \end{enumerate}
+
+            Características técnicas destacables:
+            \begin{itemize}
+              \item Manejo de errores unificado con el tipo \verb|Result| de Rust.
+              \item Uso de transacciones para garantizar integridad de datos.
+              \item Consultas parametrizadas para prevenir inyección SQL.
+            \end{itemize}
+
+            \begin{lstlisting}[caption={fn walk\_dir()}]
+ fn walk_dir(path:PathBuf, data_path:PathBuf) -> std::io::Result<()> {
+    for entry in WalkDir::new(&path).into_iter().filter_entry(|e| is_music(e)) {
+        let entry = entry?;
+        if entry.file_name().to_str().unwrap_or("").ends_with(".mp3") || entry.file_name().to_str().unwrap_or("").ends_with(".ogg") {
+            println!("{}", entry.path().display());
+            let data = extract_metadata(entry.path().to_str().unwrap(),data_path.join("covers"))?;
+            insert_song(data_path.clone(), entry.path().to_string_lossy().to_string(), data.0, data.1, data.2, data.3, data.4, data.5);
+        }
+    }
+    Ok(())
+}
+            \end{lstlisting}
+
+            Función principal que coordina el recorrido del directorio \textit{music}.
+
+            Utiliza \verb|WalkDir| para recorrido recursivo eficiente y filtra archivos mediante \verb|is_music()| durante el recorrido. Cada archivo válido es procesado con \verb|extract_metadata| y almacenado mediante \verb|insert_song()|.
+
+            \begin{lstlisting}[caption={fn is\_music()}]
+fn is_music(entry: &DirEntry) -> bool {
+    entry.file_name().to_str().map(|s| {s.ends_with(".mp3") || s.ends_with(".ogg") || s.ends_with(".wav") || s.ends_with(".flac") || s.ends_with(".aac")}).unwrap_or(false) || entry.file_type().is_dir()
+}
+            \end{lstlisting}
+
+            Filtro para identificar archivos musicales.
+
+            Soporta múltiples formatos de audio incluyendo \verb|.mp3|, \verb|.ogg|, \verb|.wav|, \verb|.flac| y \verb|.aac|. Permite recursividad al incluir directorios mediante \verb|is_dir| con manejo seguro de conversión de nombres de archivo.
+
+            \begin{lstlisting}[caption={fn extract\_metadata()}]
+fn extract_metadata(path:&str, cover_path:PathBuf) -> std::io::Result<(String, String, String, String, u128, String)> {
+    let tagged_file = read_from_path(path).expect("Error");
+    let first_tag = tagged_file.first_tag();
+    let title = first_tag.unwrap().title().unwrap().to_string();
+    let artist = first_tag.unwrap().artist().unwrap_or(Cow::from("Unkown")).to_string();
+    let album = first_tag.unwrap().album().unwrap_or(Cow::from("Unkown")).to_string();
+    let year = first_tag.unwrap().year().unwrap_or(0000).to_string();
+    let duration = tagged_file.properties().duration().as_millis();
+    let cover = first_tag.unwrap().pictures().first().map(|p| p.data().to_vec() );
+
+    let cover_path = create_cover(cover_path, &title, cover).expect("Error creating cover");
+
+    Ok((title,artist,album,year,duration,cover_path.to_string_lossy().to_string()))
+}
+            \end{lstlisting}
+
+            Extracción de metadatos de archivos musicales.
+
+            Lee metadatos usando la crate \verb|lofty| con valores por defecto para campos opcionales. Convierte la duración a milisegundos y gestiona la extracción de imágenes de portada mediante \verb|create_cover()|.
+
+            \begin{lstlisting}[caption={fn create\_cover()}]
+fn create_cover(path:PathBuf, title:&str, image:Option<Vec<u8>>) -> std::io::Result<PathBuf> {
+
+    let hash = blake3::hash(title.as_ref());
+    let file_name = format!("{}.jpg",hash);
+    let full_path = path.join(file_name);
+
+    let image_data = image.unwrap_or_else(|| DEFAULT_BLACK_IMAGE.to_vec());
+
+    let cover = File::create(&full_path);
+    cover?.write_all(image_data.as_ref()).expect("ERROR writing");
+    Ok(full_path)
+}
+            \end{lstlisting}
+
+            Con el propósito de no estar constantemente extrayendo la portada de la canción, se crea un archivo dentro del directorio del programa con un hash como nombre.
+
+            \begin{lstlisting}[caption={fn insert\_song()}]
+fn insert_song(path:PathBuf , song_path:String, title:String, artist:String, album:String, year:String, duration: u128, cover_path:String) {
+    let dur_secs = (duration / 1000) as i64;
+    let new_duration = format!("{}:{:02}",dur_secs / 60, dur_secs % 60);
+    let uuid = blake3::hash(title.as_ref());
+
+    let conn = Connection::open(path.join("playlists.db")).expect("Error");
+    conn.execute("INSERT OR IGNORE INTO all_songs (id, path, title, artist, album, year, duration, cover_path) VALUES (?1,?2,?3,?4,?5,?6,?7,?8);", (uuid.to_string(), song_path, title, artist, album, year, new_duration, cover_path)).expect("ERROR WHILE INSERTING");
+}
+            \end{lstlisting}
+
+            Genera ID único mediante hash Blake3 del título usando \verb|blake3::hash()|. Formatea la duración a \verb|MM:SS| y evita duplicados con \verb|INSERT OR IGNORE|. Almacena todos los metadatos extraídos en la tabla \verb|all_songs| de la base de datos SQLite.
+
+            \begin{lstlisting}[caption={Operaciones CRUD playlist}]
+pub fn add_playlist(name:String, cover_path:String, db_path:String) -> Result<()> {
+    let conn = Connection::open(PathBuf::from(db_path).join("playlists.db"))?;
+
+    conn.execute("INSERT INTO playlists (name, cover_path) VALUES (?1, ?2);", (name, cover_path)).expect("ERROR WHILE INSERTING");
+
+    Ok(())
+}
+
+pub fn remove_a_playlist(playlist_id:i64, db_path:String) -> Result<()> {
+    let conn = Connection::open(PathBuf::from(db_path).join("playlists.db"))?;
+
+    conn.execute("DELETE FROM playlists WHERE id = ?1",(playlist_id,)).expect("ERROR WHILE DELETING SONG");
+
+    Ok(())
+}
+            \end{lstlisting}
+
+            Métodos encargados de crear y eliminar \textit{playlists} de la base de datos. Primero se crea una conexión y posteriormente se ejecuta la consulta con los parámetros de la playlist.
+
+            \begin{lstlisting}[caption={Operaciones CRUD canciones}]
+pub fn add_song(playlist_id:i64, song_id:String, db_path:String) -> Result<()> {
+    let conn = Connection::open(PathBuf::from(db_path).join("playlists.db"))?;
+
+    conn.execute("INSERT OR REPLACE INTO song_playlist (playlist_id, song_id) VALUES (?1,?2);",(playlist_id, song_id)).expect("ERROR WHILE INSERTING SONG");
+
+    Ok(())
+}
+
+pub fn remove_song(playlist_id:i64, song_id:String, db_path:String) -> Result<()> {
+    let conn = Connection::open(PathBuf::from(db_path).join("playlists.db"))?;
+
+    conn.execute("DELETE FROM song_playlist WHERE playlist_id = ?1 AND song_id = ?2",(playlist_id, song_id)).expect("ERROR WHILE DELETING SONG");
+
+    Ok(())
+}
+
+pub fn add_starred(song_id:String, db_path:String) -> Result<()> {
+    let conn = Connection::open(PathBuf::from(db_path).join("playlists.db"))?;
+
+    conn.execute("UPDATE all_songs SET isStarred = 1 WHERE id = ?",(song_id,)).expect("ERROR WHILE MODIFIYING STARRED");
+
+    Ok(())
+}
+
+pub fn remove_starred(song_id:String, db_path:String) -> Result<()> {
+    let conn = Connection::open(PathBuf::from(db_path).join("playlists.db"))?;
+
+    conn.execute("UPDATE all_songs SET isStarred = 0 WHERE id = ?",(song_id,)).expect("ERROR WHILE MODIFIYING STARRED");
+
+    Ok(())
+}
+            \end{lstlisting}
+
+            Métodos encargados de crear, eliminar y actualizar canciones de la base de datos. Primero se crea una conexión y posteriormente se ejecuta la consulta con los parámetros de la canción. Para las canciones favoritas se ejecuta es una consulta de \verb|UPDATE|.
+
+            La implementación de los siguientes métodos utilizan estos \verb|struct|s:
+
+            \begin{lstlisting}[caption={structs Song y Playlist}]
+pub struct Song {
+  id: String,
+  path: String,
+  title: String,
+  artist: String,
+  album: String,
+  year: String,
+  duration: String,
+  #[serde(rename = "coverPath")]
+  cover_path: String,
+  #[serde(rename = "isStarred")]
+  is_starred: bool,
+}
+
+pub struct Playlist {
+  id: i64,
+  name: String,
+  creation_date: String,
+  cover_path: String,
+  #[serde(rename = "isStarred")]
+  is_starred: bool,
+}
+            \end{lstlisting}
+
+            El \verb|struct| \verb|Song| contiene todos los datos relevantes de cada canción ya vistos en la sección de la base de datos, incluyendo:
+
+            \begin{itemize}
+              \item Identificador único (\verb|id|).
+              \item Ruta del archivo (\verb|path|).
+              \item Metadatos (\verb|title|, \verb|artist|, \verb|album|, \verb|year|).
+              \item Información de reproducción (\verb|duration|).
+              \item Ruta de la portada (\verb|cover_path|).
+              \item Estado (\verb|is_starred|).
+            \end{itemize}
+
+            Por otra parte, \verb|Playlist| incluye:
+
+            \begin{itemize}
+              \item Identificador único (\verb|id|).
+              \item Nombre de la \textit{Playlist} (\verb|name|).
+              \item Fecha de creación (\verb|creation_date|).
+              \item Portada (\verb|cover_path|).
+              \item Estado (\verb|is_starred|, no implementado por el momento).
+            \end{itemize}
+
+            \begin{lstlisting}[caption={fn get\_all\_playlists()}]
+pub fn get_all_playlists(db_path:String) -> Result<Vec<Playlist>, String> {
+    let conn = Connection::open(PathBuf::from(db_path).join("playlists.db")).map_err(|e| e.to_string())?;
+
+    let mut stmt = conn.prepare("SELECT id, name, creation_date, cover_path, isStarred FROM playlists").map_err(|e| e.to_string())?;
+
+    let playlists = stmt.query_map([], |row| {
+        Ok(Playlist {
+            id: row.get(0)?,
+            name: row.get(1)?,
+            creation_date: row.get(2)?,
+            cover_path: row.get(3)?,
+            is_starred: row.get(4)?,
+        })
+    }).map_err(|e| e.to_string())?
+    .collect::<Result<Vec<_>, _>>()
+    .map_err(|e| e.to_string())?;
+
+    Ok(playlists)
+}
+            \end{lstlisting}
+
+            Esta función implementa la consulta de todas las playlists almacenadas en la base de datos.
+
+            El proceso se ejecuta en tres etapas principales. Primero se establece la conexión con la base de datos ubicada en \verb|playlists.db| dentro del directorio especificado.
+
+            Seguidamente se prepara y ejecuta la consulta SQL que selecciona todos los campos de la tabla \verb|playlists|.
+
+            Finalmente, los resultados son mapeados a instancias del \verb|struct| \verb|Playlist| mediante un \verb|query_map()| que procesa cada fila. El mapeo incluye todos los campos relevantes: \verb|id|, \verb|name|, \verb|creation_date|, \verb|cover_path| y \verb|is_starred|.
+
+            El vector resultante con todas las playlists es devuelto al frontend a través de \verb|lib.rs|, donde será utilizado para poblar la interfaz de usuario como se ha visto previamente en esta documentación.
+
+            \begin{lstlisting}[caption={fn get\_all\_songs() y fn get\_all\_songs\_starred()}]
+pub fn get_all_songs(db_path:String) -> Result<Vec<Song>, String> {
+    let conn = Connection::open(PathBuf::from(db_path).join("playlists.db")).map_err(|e| e.to_string())?;
+
+    let mut stmt = conn.prepare("SELECT id, path, title, artist, album, year, duration, cover_path, isStarred FROM all_songs").map_err(|e| e.to_string())?;
+
+    let all_songs = stmt.query_map([], |row| {
+        Ok(Song {
+            id: row.get(0)?,
+            path: row.get(1)?,
+            title: row.get(2)?,
+            artist: row.get(3)?,
+            album: row.get(4)?,
+            year: row.get(5)?,
+            duration: row.get(6)?,
+            cover_path: row.get(7)?,
+            is_starred: row.get(8)?,
+        })
+    }).map_err(|e| e.to_string())?
+    .collect::<Result<Vec<_>, _>>()
+    .map_err(|e| e.to_string())?;
+
+    Ok(all_songs)
+
+}
+
+pub fn get_all_songs_starred(db_path:String) -> Result<Vec<Song>, String> {
+    let conn = Connection::open(PathBuf::from(db_path).join("playlists.db")).map_err(|e| e.to_string())?;
+
+    let mut stmt = conn.prepare("SELECT id, path, title, artist, album, year, duration, cover_path, isStarred FROM all_songs WHERE isStarred = 1").map_err(|e| e.to_string())?;
+
+    let all_songs = stmt.query_map([], |row| {
+        Ok(Song {
+            id: row.get(0)?,
+            path: row.get(1)?,
+            title: row.get(2)?,
+            artist: row.get(3)?,
+            album: row.get(4)?,
+            year: row.get(5)?,
+            duration: row.get(6)?,
+            cover_path: row.get(7)?,
+            is_starred: row.get(8)?,
+        })
+    }).map_err(|e| e.to_string())?
+    .collect::<Result<Vec<_>, _>>()
+    .map_err(|e| e.to_string())?;
+
+    Ok(all_songs)
+}
+            \end{lstlisting}
+
+            Estas funciones implementan el acceso a las canciones almacenadas en la base de datos, ambas comparten la misma estructura pero tienen un propósito diferente.
+
+            \verb|get_all_songs()| recupera todas las canciones almacenadas en la tabla \verb|all_songs|, mientras que \verb|get_all_songs_starred()| filtra solo aquellas marcadas como favoritas mediante la condición \verb|WHERE isStarred = 1|.
+
+            El flujo de ejecución es idéntico en ambos casos:
+            \begin{enumerate}
+              \item Establece conexión con la base de datos.
+              \item Prepara y ejecuta la consulta SQL correspondiente.
+              \item Mapea los resultados a instancias del \verb|struct| \verb|Song|.
+              \item Devuelve el vector de canciones o propaga cualquier error.
+            \end{enumerate}
+
+            \begin{lstlisting}[caption={fn get\_playlist\_songs()}]
+pub fn get_playlist_songs(playlist_id: i64, db_path: String) -> Result<Vec<Song>, String> {
+    let conn = Connection::open(PathBuf::from(db_path).join("playlists.db"))
+        .map_err(|e| e.to_string())?;
+
+    let mut stmt = conn.prepare(
+        "SELECT s.id, s.path, s.title, s.artist, s.album, s.year, s.duration, s.cover_path, s.isStarred FROM all_songs s INNER JOIN song_playlist sp ON s.id = sp.song_id WHERE sp.playlist_id = ?1"
+    ).map_err(|e| e.to_string())?;
+
+    let playlist_songs = stmt
+        .query_map([playlist_id], |row| {
+            Ok(Song {
+                id:          row.get(0)?,
+                path:        row.get(1)?,
+                title:       row.get(2)?,
+                artist:      row.get(3)?,
+                album:       row.get(4)?,
+                year:        row.get(5)?,
+                duration:    row.get(6)?,
+                cover_path:  row.get(7)?,
+                is_starred:  row.get(8)?,
+            })
+        })
+        .map_err(|e| e.to_string())?
+        .collect::<Result<Vec<_>, _>>()
+        .map_err(|e| e.to_string())?;
+
+    Ok(playlist_songs)
+}
+            \end{lstlisting}
+
+            Esta función implementa la consulta de canciones pertenecientes a una playlist específica mediante una operación JOIN.
+
+            La función realiza una consulta SQL compleja que combina los datos de las tres tablas:
+
+            \begin{itemize}
+              \item \verb|all_songs|: Contiene los metadatos completos de las canciones.
+              \item \verb|song_playlist|: Establece las relaciones entre canciones y playlists.
+            \end{itemize}
+
+            El JOIN se realiza mediante la condición \verb|s.id = sp.song_id|, filtrando por el parámetro \verb|playlist_id| proporcionado.
+
+            Los campos seleccionados incluyen todos los metadatos necesarios para la reproducción y visualización al igual que en los métodos anteriores:
+            \begin{itemize}
+              \item Identificación única (\verb|id|)
+              \item Ruta del archivo (\verb|path|)
+              \item Metadatos (\verb|title|, \verb|artist|, \verb|album|, \verb|year|)
+              \item Duración formateada (\verb|duration|)
+              \item Ruta de la portada (\verb|cover_path|)
+              \item Estado (\verb|isStarred|)
+            \end{itemize}
+
 \section{Conclusiones}
 
         \subsection{Logros principales}

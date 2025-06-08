@@ -47,8 +47,8 @@
 \contentsline {paragraph}{Playlist}{51}{section*.15}%
 \contentsline {paragraph}{Song Playlist}{51}{section*.16}%
 \contentsline {subsubsection}{\numberline {9.2.3}Logica}{52}{subsubsection.9.2.3}%
-\contentsline {section}{\numberline {10}Conclusiones}{52}{section.10}%
-\contentsline {subsection}{\numberline {10.1}Logros principales}{52}{subsection.10.1}%
-\contentsline {subsection}{\numberline {10.2}Dificultades clave}{52}{subsection.10.2}%
-\contentsline {subsection}{\numberline {10.3}Valoración global}{52}{subsection.10.3}%
-\contentsline {subsubsection}{\numberline {10.3.1}Paginas webs visitadas durante el desarrollo}{53}{subsubsection.10.3.1}%
+\contentsline {section}{\numberline {10}Conclusiones}{66}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Logros principales}{66}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Dificultades clave}{66}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}Valoración global}{66}{subsection.10.3}%
+\contentsline {subsubsection}{\numberline {10.3.1}Paginas webs visitadas durante el desarrollo}{66}{subsubsection.10.3.1}%

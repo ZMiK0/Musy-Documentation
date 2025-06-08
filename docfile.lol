@@ -35,3 +35,18 @@
 \contentsline {lstlisting}{\numberline {35}formatTime()}{44}{lstlisting.35}%
 \contentsline {lstlisting}{\numberline {36}song-adding.service.ts}{44}{lstlisting.36}%
 \contentsline {lstlisting}{\numberline {37}lib.rs}{46}{lstlisting.37}%
+\contentsline {lstlisting}{\numberline {38}fn sync()}{52}{lstlisting.38}%
+\contentsline {lstlisting}{\numberline {39}fn create\_dir()}{53}{lstlisting.39}%
+\contentsline {lstlisting}{\numberline {40}fn create\_db()}{53}{lstlisting.40}%
+\contentsline {lstlisting}{\numberline {41}fn clean()}{54}{lstlisting.41}%
+\contentsline {lstlisting}{\numberline {42}fn walk\_dir()}{56}{lstlisting.42}%
+\contentsline {lstlisting}{\numberline {43}fn is\_music()}{56}{lstlisting.43}%
+\contentsline {lstlisting}{\numberline {44}fn extract\_metadata()}{57}{lstlisting.44}%
+\contentsline {lstlisting}{\numberline {45}fn create\_cover()}{57}{lstlisting.45}%
+\contentsline {lstlisting}{\numberline {46}fn insert\_song()}{58}{lstlisting.46}%
+\contentsline {lstlisting}{\numberline {47}Operaciones CRUD playlist}{58}{lstlisting.47}%
+\contentsline {lstlisting}{\numberline {48}Operaciones CRUD canciones}{59}{lstlisting.48}%
+\contentsline {lstlisting}{\numberline {49}structs Song y Playlist}{60}{lstlisting.49}%
+\contentsline {lstlisting}{\numberline {50}fn get\_all\_playlists()}{61}{lstlisting.50}%
+\contentsline {lstlisting}{\numberline {51}fn get\_all\_songs() y fn get\_all\_songs\_starred()}{62}{lstlisting.51}%
+\contentsline {lstlisting}{\numberline {52}fn get\_playlist\_songs()}{64}{lstlisting.52}%
