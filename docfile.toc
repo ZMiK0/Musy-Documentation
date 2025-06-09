@@ -17,52 +17,75 @@
 \contentsline {subsection}{\numberline {6.1}Requisitos Funcionales}{8}{subsection.6.1}%
 \contentsline {subsection}{\numberline {6.2}Requisitos No Funcionales}{8}{subsection.6.2}%
 \contentsline {subsection}{\numberline {6.3}Restricciones Técnicas}{9}{subsection.6.3}%
-\contentsline {subsection}{\numberline {6.4}Diagramas de Flujo}{11}{subsection.6.4}%
-\contentsline {subsection}{\numberline {6.5}Diagramas de Casos de Uso}{12}{subsection.6.5}%
-\contentsline {section}{\numberline {7}Despliegue y pruebas}{13}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Despliegue de la aplicación}{13}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Pruebas realizadas}{14}{subsection.7.2}%
-\contentsline {subsubsection}{\numberline {7.2.1}Pruebas de integración}{14}{subsubsection.7.2.1}%
-\contentsline {subsubsection}{\numberline {7.2.2}Pruebas de usabilidad}{14}{subsubsection.7.2.2}%
-\contentsline {section}{\numberline {8}Estado del arte}{15}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Panorama actual de la reproducción musical digital}{15}{subsection.8.1}%
-\contentsline {subsection}{\numberline {8.2}Plataformas de streaming: hegemonía con limitaciones}{15}{subsection.8.2}%
-\contentsline {subsection}{\numberline {8.3}Reproductores locales tradicionales: control con obsolescencia}{16}{subsection.8.3}%
-\contentsline {subsection}{\numberline {8.4}Análisis comparativo y espacio de oportunidad}{17}{subsection.8.4}%
-\contentsline {subsection}{\numberline {8.5}Propuesta de valor diferenciada}{18}{subsection.8.5}%
-\contentsline {section}{\numberline {9}Profundización de conceptos}{19}{section.9}%
-\contentsline {subsection}{\numberline {9.1}Frontend}{19}{subsection.9.1}%
-\contentsline {subsubsection}{\numberline {9.1.1}Playbar}{19}{subsubsection.9.1.1}%
-\contentsline {subsubsection}{\numberline {9.1.2}Sidebar}{20}{subsubsection.9.1.2}%
-\contentsline {paragraph}{Playlist}{21}{section*.5}%
-\contentsline {paragraph}{Botón New Playlist}{23}{section*.6}%
-\contentsline {paragraph}{Boton Search}{27}{section*.7}%
-\contentsline {subsubsection}{\numberline {9.1.3}Mainscreen}{29}{subsubsection.9.1.3}%
-\contentsline {paragraph}{Song Button}{29}{section*.8}%
-\contentsline {paragraph}{Playlist Button}{34}{section*.9}%
-\contentsline {paragraph}{Homeitem}{36}{section*.10}%
-\contentsline {subsubsection}{\numberline {9.1.4}Servicios}{36}{subsubsection.9.1.4}%
-\contentsline {paragraph}{Main Screen Status}{36}{section*.11}%
-\contentsline {paragraph}{Song Management}{41}{section*.12}%
-\contentsline {paragraph}{Song Adding}{51}{section*.13}%
-\contentsline {subsection}{\numberline {9.2}Backend}{52}{subsection.9.2}%
-\contentsline {subsubsection}{\numberline {9.2.1}Tauri API}{52}{subsubsection.9.2.1}%
-\contentsline {subsubsection}{\numberline {9.2.2}Diseño de la base de datos}{56}{subsubsection.9.2.2}%
-\contentsline {paragraph}{All Songs}{57}{section*.14}%
-\contentsline {paragraph}{Playlist}{58}{section*.15}%
-\contentsline {paragraph}{Song Playlist}{58}{section*.16}%
-\contentsline {subsubsection}{\numberline {9.2.3}Logica}{58}{subsubsection.9.2.3}%
-\contentsline {section}{\numberline {10}Trabajo Futuro}{72}{section.10}%
-\contentsline {subsection}{\numberline {10.1}Implementación de Playlist favoritas}{73}{subsection.10.1}%
-\contentsline {subsection}{\numberline {10.2}Personalización de Temas Visuales}{73}{subsection.10.2}%
-\contentsline {subsection}{\numberline {10.3}Gestión Flexible de Directorios Musicales}{73}{subsection.10.3}%
-\contentsline {subsection}{\numberline {10.4}Creación automática de Playlist}{73}{subsection.10.4}%
-\contentsline {section}{\numberline {11}Plan de Monetización y Modelo de Negocio}{74}{section.11}%
-\contentsline {subsection}{\numberline {11.1}Modelo Actual}{74}{subsection.11.1}%
-\contentsline {subsection}{\numberline {11.2}Métricas de Ventas}{74}{subsection.11.2}%
-\contentsline {subsection}{\numberline {11.3}Consideraciones Éticas}{75}{subsection.11.3}%
-\contentsline {section}{\numberline {12}Conclusiones}{75}{section.12}%
-\contentsline {subsection}{\numberline {12.1}Logros principales}{75}{subsection.12.1}%
-\contentsline {subsection}{\numberline {12.2}Dificultades clave}{75}{subsection.12.2}%
-\contentsline {subsection}{\numberline {12.3}Valoración global}{76}{subsection.12.3}%
-\contentsline {subsubsection}{\numberline {12.3.1}Paginas webs visitadas durante el desarrollo}{76}{subsubsection.12.3.1}%
+\contentsline {subsection}{\numberline {6.4}Diagramas de Flujo}{10}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Diagramas de Casos de Uso}{11}{subsection.6.5}%
+\contentsline {section}{\numberline {7}Despliegue y pruebas}{12}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Despliegue de la aplicación}{12}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Pruebas realizadas}{13}{subsection.7.2}%
+\contentsline {subsubsection}{\numberline {7.2.1}Pruebas de integración}{13}{subsubsection.7.2.1}%
+\contentsline {subsubsection}{\numberline {7.2.2}Pruebas de usabilidad}{13}{subsubsection.7.2.2}%
+\contentsline {section}{\numberline {8}Estado del arte}{14}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Panorama actual de la reproducción musical digital}{14}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Plataformas de streaming: hegemonía con limitaciones}{14}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Reproductores locales tradicionales: control con obsolescencia}{15}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Análisis comparativo y espacio de oportunidad}{16}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}Propuesta de valor diferenciada}{17}{subsection.8.5}%
+\contentsline {section}{\numberline {9}Manual de usuario}{18}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Primeros pasos}{18}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Barra lateral Sidebar}{18}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}Área principal Mainscreen}{19}{subsection.9.3}%
+\contentsline {subsubsection}{\numberline {9.3.1}Interacción con canciones}{19}{subsubsection.9.3.1}%
+\contentsline {subsubsection}{\numberline {9.3.2}Interacción con playlists}{20}{subsubsection.9.3.2}%
+\contentsline {subsection}{\numberline {9.4}Barra de reproducción Playbar}{20}{subsection.9.4}%
+\contentsline {subsubsection}{\numberline {9.4.1}Controles de reproducción}{20}{subsubsection.9.4.1}%
+\contentsline {subsubsection}{\numberline {9.4.2}Barra de progreso}{21}{subsubsection.9.4.2}%
+\contentsline {subsubsection}{\numberline {9.4.3}Controles de volumen}{21}{subsubsection.9.4.3}%
+\contentsline {subsection}{\numberline {9.5}Información de reproducción}{21}{subsection.9.5}%
+\contentsline {subsection}{\numberline {9.6}Consejos adicionales}{22}{subsection.9.6}%
+\contentsline {section}{\numberline {10}Profundización de conceptos}{22}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Frontend}{22}{subsection.10.1}%
+\contentsline {subsubsection}{\numberline {10.1.1}Playbar}{22}{subsubsection.10.1.1}%
+\contentsline {subsubsection}{\numberline {10.1.2}Sidebar}{24}{subsubsection.10.1.2}%
+\contentsline {paragraph}{Playlist}{25}{section*.5}%
+\contentsline {paragraph}{Botón New Playlist}{27}{section*.6}%
+\contentsline {paragraph}{Boton Search}{31}{section*.7}%
+\contentsline {subsubsection}{\numberline {10.1.3}Mainscreen}{33}{subsubsection.10.1.3}%
+\contentsline {paragraph}{Song Button}{33}{section*.8}%
+\contentsline {paragraph}{Playlist Button}{39}{section*.9}%
+\contentsline {paragraph}{Homeitem}{41}{section*.10}%
+\contentsline {subsubsection}{\numberline {10.1.4}Servicios}{41}{subsubsection.10.1.4}%
+\contentsline {paragraph}{Main Screen Status}{41}{section*.11}%
+\contentsline {paragraph}{Song Management}{46}{section*.12}%
+\contentsline {paragraph}{Song Adding}{56}{section*.13}%
+\contentsline {subsection}{\numberline {10.2}Backend}{57}{subsection.10.2}%
+\contentsline {subsubsection}{\numberline {10.2.1}Tauri API}{57}{subsubsection.10.2.1}%
+\contentsline {subsubsection}{\numberline {10.2.2}Diseño de la base de datos}{61}{subsubsection.10.2.2}%
+\contentsline {paragraph}{All Songs}{62}{section*.14}%
+\contentsline {paragraph}{Playlist}{63}{section*.15}%
+\contentsline {paragraph}{Song Playlist}{63}{section*.16}%
+\contentsline {subsubsection}{\numberline {10.2.3}Logica}{63}{subsubsection.10.2.3}%
+\contentsline {section}{\numberline {11}Como contribuir}{79}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Preparación del entorno de desarrollo}{79}{subsection.11.1}%
+\contentsline {subsubsection}{\numberline {11.1.1}Requisitos del sistema}{79}{subsubsection.11.1.1}%
+\contentsline {subsubsection}{\numberline {11.1.2}Herramientas esenciales}{79}{subsubsection.11.1.2}%
+\contentsline {subsubsection}{\numberline {11.1.3}Configuración del proyecto}{80}{subsubsection.11.1.3}%
+\contentsline {subsection}{\numberline {11.2}Solución de problemas comunes}{81}{subsection.11.2}%
+\contentsline {subsubsection}{\numberline {11.2.1}Problemas de ejecución}{81}{subsubsection.11.2.1}%
+\contentsline {subsubsection}{\numberline {11.2.2}Problemas de desarrollo}{82}{subsubsection.11.2.2}%
+\contentsline {subsection}{\numberline {11.3}Flujo de trabajo recomendado}{83}{subsection.11.3}%
+\contentsline {subsection}{\numberline {11.4}Áreas de contribución prioritarias}{84}{subsection.11.4}%
+\contentsline {section}{\numberline {12}Trabajo Futuro}{84}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Implementación de Playlist favoritas}{85}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}Personalización de Temas Visuales}{85}{subsection.12.2}%
+\contentsline {subsection}{\numberline {12.3}Gestión Flexible de Directorios Musicales}{85}{subsection.12.3}%
+\contentsline {subsection}{\numberline {12.4}Creación automática de Playlist}{85}{subsection.12.4}%
+\contentsline {subsection}{\numberline {12.5}Gestión de la Cola de Reproducción}{86}{subsection.12.5}%
+\contentsline {section}{\numberline {13}Plan de Monetización y Modelo de Negocio}{86}{section.13}%
+\contentsline {subsection}{\numberline {13.1}Modelo Actual}{86}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}Métricas de Ventas}{87}{subsection.13.2}%
+\contentsline {subsection}{\numberline {13.3}Consideraciones Éticas}{87}{subsection.13.3}%
+\contentsline {section}{\numberline {14}Conclusiones}{87}{section.14}%
+\contentsline {subsection}{\numberline {14.1}Logros principales}{87}{subsection.14.1}%
+\contentsline {subsection}{\numberline {14.2}Dificultades clave}{88}{subsection.14.2}%
+\contentsline {subsection}{\numberline {14.3}Valoración global}{88}{subsection.14.3}%
+\contentsline {subsubsection}{\numberline {14.3.1}Paginas webs visitadas durante el desarrollo}{88}{subsubsection.14.3.1}%

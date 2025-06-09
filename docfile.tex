@@ -304,14 +304,13 @@ La Especificación de Requisitos Software (SRS) constituye el documento fundamen
       \item Stack tecnológico: Tauri + Rust + Angular.
       \item Base de datos: SQLite con soporte para migraciones.
     \end{itemize}
-
   \end{itemize}
 
   \subsection{Diagramas de Flujo}
 
   \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{media/Diagrama de Flujo 1.drawio.png}
+    \includegraphics[width=0.4\textwidth]{media/Diagrama de Flujo 1.drawio.png}
     \caption{Diagrama de Flujo Reload}
     \label{fig:reload}
   \end{figure}
@@ -550,6 +549,163 @@ El proceso de despliegue se ha diseñado cuidadosamente para garantizar una dist
 
   Esta solución ocupa un nicho desatendido en el mercado, ofreciendo una alternativa viable para usuarios que valoran tanto el control sobre su música como experiencias de usuario pulidas. Los benchmarks realizados demuestran que la combinación de tecnologías seleccionadas supera significativamente las limitaciones de ambas aproximaciones tradicionales.
 
+\section{Manual de usuario}
+
+Bienvenid@ al manual de usuario de Musy, el reproductor musical multiplataforma diseñado para ofrecer una experiencia intuitiva y eficiente en la gestión de tu colección de musica local. Esta sección te guiará a través de todas las funcionalidades disponibles en la aplicación.
+
+  \subsection{Primeros pasos}
+
+  Antes de comenzar a utilizar Musy, es importante asegurarse de que:
+
+  \begin{itemize}
+      \item Tienes tu música descargada en el directorio de música predeterminado de tu sistema operativo:
+      \begin{itemize}
+          \item \textbf{Windows}: \texttt{C:\textbackslash Users\textbackslash [tu usuario]\textbackslash Music}.
+          \item \textbf{macOS}: \texttt{/Users/[tu usuario]/Music}.
+          \item \textbf{Linux}: \texttt{/home/[tu usuario]/Music}.
+      \end{itemize}
+      \item Los archivos musicales están en formatos compatibles (MP3, FLAC, OGG, WAV).
+      \item Has concedido los permisos necesarios cuando la aplicación lo solicitó.
+  \end{itemize}
+
+  Para iniciar la indexación de tu biblioteca musical, pulsa el botón \textbf{Reload} ubicado en la parte inferior izquierda de la interfaz. Este proceso puede tomar varios minutos dependiendo del tamaño de tu colección musical.
+
+  \subsection{Barra lateral Sidebar}
+
+  La barra lateral es el centro de control principal de Musy, donde podrás gestionar todas tus listas de reproducción y acceder a las funciones principales:
+
+  \begin{itemize}
+    \item \textbf{Listas de reproducción}: Visualiza todas tus playlists creadas. Cada entrada muestra:
+    \begin{itemize}
+      \item Nombre de la lista.
+      \item Portada personalizada (si se ha asignado).
+      \item Fecha de creación.
+    \end{itemize}
+      
+    \item \textbf{Starred}: Acceso directo a tu colección de canciones favoritas. Todas las canciones marcadas como favoritas aparecerán automáticamente aquí.
+      
+    \item \textbf{Botón de búsqueda}: Situado a la izquierda del botón Reload, permite buscar canciones en toda tu biblioteca musical.
+      
+    \item \textbf{Nueva playlist}: El botón "+ New Playlist" en la parte superior te permite crear nuevas listas de reproducción.
+  \end{itemize}
+
+  \subsection{Área principal Mainscreen}
+
+  El área principal muestra el contenido de la lista de reproducción seleccionada. Cada canción se presenta con:
+
+  \begin{itemize}
+    \item Portada del álbum.
+    \item Título de la canción.
+    \item Artista.
+    \item Duración.
+  \end{itemize}
+
+    \subsubsection{Interacción con canciones}
+
+    \begin{itemize}
+      \item \textbf{Reproducción directa}: Haz clic en cualquier parte de la entrada de una canción para comenzar su reproducción inmediata.
+        
+      \item \textbf{Menú contextual}: Al hacer clic en el botón con tres puntos a la derecha de cada canción, se despliega un menú con opciones avanzadas:
+      \begin{itemize}
+        \item \textbf{Marcar como favorita}: Añade o quita la canción de tu colección "Starred".
+        \item \textbf{Añadir a cola}: Agrega la canción al final de la cola de reproducción actual.
+        \item \textbf{Añadir a playlist}: Permite seleccionar una lista existente donde agregar la canción.
+        \item \textbf{Eliminar de esta lista}: Elimina la canción de la playlist actual (no disponible en "All Songs").  
+      \end{itemize}
+    \end{itemize}
+
+    \subsubsection{Interacción con playlists}
+
+    \begin{itemize}
+      \item \textbf{Reproducir toda la lista}: Haz clic en el nombre de la playlist en la parte superior del área principal para comenzar la reproducción secuencial de todas las canciones.
+        
+      \item \textbf{Añadir a cola}: El botón "+" junto al nombre de la playlist agrega todas sus canciones al final de la cola de reproducción actual.
+    \end{itemize}
+
+  \subsection{Barra de reproducción Playbar}
+
+  La barra de reproducción en la parte inferior de la ventana ofrece control completo sobre la experiencia musical:
+
+    \subsubsection{Controles de reproducción}
+
+    \begin{itemize}
+      \item \textbf{Botón de aleatorización} (primero desde la izquierda):
+      \begin{itemize}
+        \item Activa/desactiva el modo aleatorio.
+        \item Cuando está activo, mezcla el orden de las canciones en la cola.
+        \item Mantiene la canción actual reproduciéndose durante la transición.
+      \end{itemize}
+        
+      \item \textbf{Botón anterior} (segundo desde la izquierda):
+      \begin{itemize}
+        \item Si la reproducción lleva menos de 3 segundos: salta a la canción anterior.
+        \item Si la reproducción lleva más de 3 segundos: reinicia la canción actual.
+      \end{itemize}
+        
+      \item \textbf{Botón de play/pause} (central):
+        \begin{itemize}
+          \item Alterna entre reproducir y pausar.
+          \item Muestra estado actual mediante cambio de icono.
+        \end{itemize}
+        
+      \item \textbf{Botón siguiente} (cuarto desde la izquierda):
+        \begin{itemize}
+          \item Salta inmediatamente a la siguiente canción en la cola.
+        \end{itemize}
+        
+      \item \textbf{Botón de repetición} (último de los controles):
+        \begin{itemize}
+          \item Cicla entre tres modos:
+            \begin{itemize}
+              \item \textbf{Ninguno}: Reproduce la cola una vez y se detiene.
+              \item \textbf{Lista}: Repite toda la cola continuamente.
+              \item \textbf{Único}: Repite la canción actual indefinidamente.
+            \end{itemize}
+          \item El icono cambia para reflejar el modo actual.
+        \end{itemize}
+    \end{itemize}
+
+    \subsubsection{Barra de progreso}
+
+    \begin{itemize}
+      \item Muestra el progreso de la canción actual.
+      \item Permite arrastrar para saltar a cualquier punto de la canción.
+      \item Muestra el tiempo transcurrido y total a cada lado.
+    \end{itemize}
+
+    \subsubsection{Controles de volumen}
+
+    \begin{itemize}
+      \item \textbf{Barra deslizante}: Ajusta el volumen reproductor.
+        \begin{itemize}
+          \item Desliza hacia la izquierda para disminuir el volumen.
+          \item Desliza hacia la derecha para aumentar el volumen.
+        \end{itemize}
+      \item \textbf{Indicador visual}: Muestra el nivel de volumen actual.
+      \item \textbf{Silencio automático}: Al llegar al extremo izquierdo, el volumen se silencia completamente.
+    \end{itemize}
+
+  \subsection{Información de reproducción}
+
+  A la izquierda de la barra de reproducción se muestra información sobre la canción actual:
+
+  \begin{itemize}
+    \item Portada del álbum (en miniatura).
+    \item Título de la canción.
+    \item Nombre del artista.
+  \end{itemize}
+
+  Esta área se actualiza dinámicamente con cada cambio de canción, proporcionando siempre contexto sobre lo que se está reproduciendo.
+
+  \subsection{Consejos adicionales}
+
+  \begin{itemize}
+    \item Para una mejor experiencia, organiza tus archivos musicales con metadatos completos antes de importarlos a Musy.
+    \item Las portadas de álbum se extraen de los metadatos de los archivos musicales.
+    \item Puedes personalizar las portadas de tus playlists a la hora de su creación.
+    \item El sistema \textbf{NO} detecta automáticamente cambios en tu biblioteca musical al iniciar la aplicación, se debe pulsar de nuevo el botón \textit{Reload} tras realizar cambios.
+  \end{itemize}
+  
 \section{Profundización de conceptos}
 
 En esta sección se explicarán en detalle los componentes principales de la aplicación.
@@ -1033,10 +1189,17 @@ async toggleStarred() {
 }
                 \end{lstlisting}
 
-                El método \texttt{toggleStarred()} gestiona el estado de favorito de las canciones mediante un proceso que alterna entre dos posibles acciones. Cuando una canción está marcada como favorita (\texttt{isStarred = true}), se ejecuta la función \texttt{remove\_is\_starred} en el backend de Rust para eliminarla de la lista especial. En caso contrario, se invoca \texttt{add\_is\_starred} para añadirla. En ambos casos, se utiliza \texttt{appDataDir()} para obtener la ruta de la base de datos y se actualiza la interfaz mediante \texttt{mainScreenStatus.refresh()}. Las canciones marcadas como favoritas se agrupan automáticamente en una playlist especial accesible desde un botón específico en la barra lateral de la aplicación.
+                El método \texttt{toggleStarred()} gestiona el estado de favorito de las canciones mediante un proceso que alterna entre dos posibles acciones. Cuando una canción está marcada como favorita (\texttt{isStarred = true}), se ejecuta la función \texttt{remove\_is\_starred} en el backend de Rust para eliminarla de la lista especial. En caso contrario, se invoca \texttt{add\_is\_starred} para añadirla. En ambos casos, se utiliza \texttt{appDataDir()} para obtener la ruta de la base de datos y se actualiza la interfaz mediante \texttt{mainScreenStatus.refresh()}. Las canciones marcadas como favoritas se agrupan automáticamente en una playlist especial accesible desde un botón específico en la barra lateral de la aplicación. \\
 
                 \paragraph{Playlist Button}
                 ‎
+
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.6\textwidth]{media/screenshots/playlistbutton.png}
+                    \caption{Menú de añadir canción a playlist}
+                    \label{fig:añadir}
+                \end{figure}
 
                 Este componente de interfaz se activa exclusivamente cuando se inicia el menú modal para añadir canciones a playlists.
 
@@ -1094,6 +1257,13 @@ async addSongToPlaylist() {
 
                 \paragraph{Homeitem}
                 ‎
+
+                \begin{figure}[H]
+                    \centering
+                    \includegraphics[width=0.4\textwidth]{media/screenshots/homeitem.png}
+                    \caption{Homeitem}
+                    \label{fig:homeitem}
+                \end{figure}
 
                 El componente \texttt{Homeitem} representa una implementación alternativa al componente estándar \texttt{Song}, desarrollado específicamente para cumplir con requerimientos particulares de diseño y funcionalidad en la playlist \textit{Starred Songs}.
 
@@ -1342,7 +1512,7 @@ addOneSong(song:Song) {
 }
                 \end{lstlisting}
 
-                Estos métodos constituyen la API fundamental para la gestión de la cola de reproducción, mencionada recurrentemente en secciones anteriores de la documentación. La implementación sigue un patrón dual con variantes "set" (establecer) y "add" (añadir): \\
+                Estos métodos constituyen la API fundamental para la gestión de la cola de reproducción, mencionada recurrentemente en secciones anteriores de la documentación. La implementación sigue un patrón dual con variantes "set" (establecer) y "\ add " (añadir): \\
 
                 Los métodos \texttt{setQueue()} y \texttt{setOneSong()} reemplazan completamente la cola existente. En el primer caso, se recibe un array de canciones que se copia mediante el operador de propagación (\texttt{...songs}), mientras que el segundo acepta una única canción, reiniciando la cola antes de añadirla. Ambos métodos comparten el mismo flujo posterior: reinician el índice actual a 0 e invocan \texttt{loadAndPlay()} para comenzar la reproducción inmediata. \\
 
@@ -1696,14 +1866,14 @@ pub fn run() {
                 \item Rutas de configuración según el SO (\texttt{\$APPDATA} en Windows, \texttt{\$HOME/.local/share/} en Linux, \texttt{Library/Application Support} en macOS)
             \end{itemize}
 
-            El método \texttt{invoke\_handler} asocia las funciones Rust con llamadas desde el frontend mediante \texttt{generate\_handler!}.
+            El método \texttt{invoke\_handler()} asocia las funciones Rust con llamadas desde el frontend mediante \texttt{generate\_handler!}.
 
             Los handlers registrados incluyen:
 
             \begin{itemize}
-                \item Gestión de playlists (\texttt{create\_playlist}, \texttt{remove\_playlist})
-                \item Consultas a la base de datos (\texttt{get\_all\_songs})
-                \item Control de canciones destacadas (\texttt{add\_is\_starred})
+                \item Gestión de playlists (\texttt{create\_playlist()}, \texttt{remove\_playlist()}).
+                \item Consultas a la base de datos (\texttt{get\_all\_songs()}).
+                \item Control de canciones destacadas (\texttt{add\_is\_starred()}).
             \end{itemize}
 
             Finalmente, el builder se ejecuta con \texttt{run()}, propagando cualquier error durante el arranque.
@@ -1846,9 +2016,11 @@ fn create_db(path:PathBuf) -> std::io::Result<()> {
 }
             \end{lstlisting}
 
-            La función \texttt{create\_db} genera la estructura SQLite con las tablas necesarias vistas en el punto anterior.
+            La función \texttt{create\_db()} genera la estructura SQLite con las tablas necesarias vistas en el punto anterior, estableciendo las relaciones y restricciones adecuadas para el manejo de datos. \\
 
-            El diseño utiliza \texttt{if not exists} para evitar errores en ejecuciones repetidas y maneja errores mediante el operador \texttt{?} de Rust.
+            El diseño utiliza \texttt{if not exists} para garantizar idempotencia y evitar errores en ejecuciones repetidas, además de emplear claves primarias y foráneas para mantener la integridad referencial. Los posibles errores son manejados mediante el operador \texttt{?} de Rust, que propaga los fallos de manera controlada. \\
+
+            Se incluye también una inserción inicial para crear la playlist predeterminada "All Songs", la cual actuará como contenedor principal de las canciones encontradas en el sistema.
 
             \begin{lstlisting}[caption={fn clean()}]
 fn clean(database_path: PathBuf) -> Result<()> {
@@ -1955,9 +2127,9 @@ fn extract_metadata(path:&str, cover_path:PathBuf) -> std::io::Result<(String, S
 }
             \end{lstlisting}
 
-            Extracción de metadatos de archivos musicales. \\
+            La función \texttt{extract\_metadata()} utiliza la crate \texttt{lofty} para extraer metadatos de archivos musicales. Primero se carga el archivo con \\ \texttt{read\_from\_path} y se accede a su primer tag mediante \texttt{first\_tag()}. Los campos principales como \texttt{title}, \texttt{artist}, \texttt{album} y \texttt{year} se obtienen con valores por defecto cuando no están presentes, usando \texttt{unwrap\_or}. La duración se convierte a milisegundos con \texttt{as\_millis()} para mayor precisión.
 
-            Lee metadatos usando la crate \texttt{lofty} con valores por defecto para campos opcionales. Convierte la duración a milisegundos y gestiona la extracción de imágenes de portada mediante \texttt{create\_cover()}.
+            Las imágenes de portada se extraen mediante \texttt{pictures().first()} y se transforman a bytes con \texttt{to\_vec()}. La función \texttt{create\_cover()} guarda la imagen en disco y devuelve su ruta. Finalmente, se retorna una tupla con todos los metadatos procesados, encapsulada en un \texttt{Result} para manejo de errores.
 
             \begin{lstlisting}[caption={fn create\_cover()}]
 fn create_cover(path:PathBuf, title:&str, image:Option<Vec<u8>>) -> std::io::Result<PathBuf> {
@@ -1974,7 +2146,7 @@ fn create_cover(path:PathBuf, title:&str, image:Option<Vec<u8>>) -> std::io::Res
 }
             \end{lstlisting}
 
-            Con el propósito de no estar constantemente extrayendo la portada de la canción, se crea un archivo dentro del directorio del programa con un hash como nombre.
+            La función \texttt{create\_cover()} genera un archivo de portada en el sistema para evitar la extracción repetida desde los metadatos. Primero se crea un nombre único mediante el hash \texttt{blake3} del título de la canción, con extensión \texttt{.jpg}. Cuando no existe imagen en los metadatos (\texttt{Option::None}), se utiliza la imagen predeterminada \texttt{DEFAULT\_BLACK\_IMAGE}. El archivo se escribe en disco usando \texttt{File::create()} y \texttt{write\_all()}, devolviendo la ruta completa del archivo creado. Esta optimización reduce significativamente el procesamiento durante la reproducción musical.
 
             \begin{lstlisting}[caption={fn insert\_song()}]
 fn insert_song(path:PathBuf , song_path:String, title:String, artist:String, album:String, year:String, duration: u128, cover_path:String) {
@@ -1987,7 +2159,11 @@ fn insert_song(path:PathBuf , song_path:String, title:String, artist:String, alb
 }
             \end{lstlisting}
 
-            Genera ID único mediante hash Blake3 del título usando \texttt{blake3::hash()}. Formatea la duración a \texttt{MM:SS} y evita duplicados con \texttt{INSERT OR IGNORE}. Almacena todos los metadatos extraídos en la tabla \texttt{all\_songs} de la base de datos SQLite.
+            La función \texttt{insert\_song()} gestiona el almacenamiento de canciones en la base de datos SQLite. Se genera un ID único mediante el hash \texttt{blake3} del título, garantizando identificación consistente. \\
+            
+            La duración en milisegundos se convierte al formato \texttt{MM:SS} mediante operaciones aritméticas básicas. La conexión a la base de datos se establece con \texttt{Connection::open()}, y los metadatos se insertan en la tabla \texttt{all\_songs()} usando la cláusula \texttt{INSERT OR IGNORE} para evitar duplicados. \\
+            
+            Cada campo se asocia a parámetros posicionales (\texttt{?1} a \texttt{?8}).
 
             \begin{lstlisting}[caption={Operaciones CRUD playlist}]
 pub fn add_playlist(name:String, cover_path:String, db_path:String) -> Result<()> {
@@ -2007,7 +2183,9 @@ pub fn remove_a_playlist(playlist_id:i64, db_path:String) -> Result<()> {
 }
             \end{lstlisting}
 
-            Métodos encargados de crear y eliminar \textit{playlists} de la base de datos. Primero se crea una conexión y posteriormente se ejecuta la consulta con los parámetros de la playlist.
+            Las funciones \texttt{add\_playlist()} y \texttt{remove\_a\_playlist()} implementan las operaciones básicas de creación y eliminación de listas de reproducción. \\
+            
+            En ambos casos, se establece una conexión con la base de datos SQLite ubicada en \texttt{playlists.db} mediante \texttt{Connection::open()}. La función \texttt{add\_playlist()} recibe el nombre y ruta de la portada como parámetros, insertándolos en la tabla \texttt{playlists} mediante una consulta parametrizada con \texttt{?1} y \texttt{?2} como marcadores de posición. Por otro lado, \texttt{remove\_a\_playlist()} elimina registros basándose en el ID único de la playlist, utilizando igualmente parámetros posicionales. Ambas funciones devuelven \texttt{Result<()>} para manejo de errores, aunque usan \texttt{expect} para fallos críticos durante las operaciones de base de datos.
 
             \begin{lstlisting}[caption={Operaciones CRUD canciones}]
 pub fn add_song(playlist_id:i64, song_id:String, db_path:String) -> Result<()> {
@@ -2043,7 +2221,9 @@ pub fn remove_starred(song_id:String, db_path:String) -> Result<()> {
 }
             \end{lstlisting}
 
-            Métodos encargados de crear, eliminar y actualizar canciones de la base de datos. Primero se crea una conexión y posteriormente se ejecuta la consulta con los parámetros de la canción. Para las canciones favoritas se ejecuta es una consulta de \texttt{UPDATE}. \\
+            Este conjunto de funciones implementa las operaciones básicas de gestión de canciones en la base de datos. La función \texttt{add\_song()} establece relaciones entre canciones y playlists en la tabla \texttt{song\_playlist()} mediante \texttt{INSERT OR REPLACE}, evitando duplicados. Su contraparte \\ \texttt{remove\_song()} elimina estas relaciones usando una condición compuesta con \texttt{playlist\_id} y \texttt{song\_id}. \\
+            
+            Para el manejo de canciones favoritas, \texttt{add\_starred()} y \\ \texttt{remove\_starred()} modifican el campo \texttt{isStarred} en la tabla \texttt{all\_songs} mediante consultas \texttt{UPDATE}, alternando entre los valores 0 y 1. Todas las operaciones utilizan parámetros posicionales (\texttt{?}, \texttt{?1}, \texttt{?2}) y manejan errores críticos con \texttt{expect}. \\
 
             La implementación de los siguientes métodos utilizan estos \texttt{struct}s:
 
@@ -2240,6 +2420,234 @@ pub fn get_playlist_songs(playlist_id: i64, db_path: String) -> Result<Vec<Song>
               \item Estado (\texttt{isStarred}).
             \end{itemize}
 
+\section{Como contribuir}
+
+Musy es un proyecto de código abierto que se beneficia enormemente de las contribuciones de la comunidad. Esta sección proporciona una guía detallada para configurar un entorno de desarrollo funcional y solucionar problemas comunes que pueden surgir durante el proceso de contribución.
+
+  \subsection{Preparación del entorno de desarrollo}
+
+  Para comenzar a contribuir al proyecto Musy, necesitarás configurar correctamente tu espacio de trabajo con las siguientes herramientas:
+
+    \subsubsection{Requisitos del sistema}
+
+    \begin{itemize}
+      \item \textbf{Sistema operativo}: Windows 10/11, macOS 10.15+, o Linux con kernel 5.4+.
+      \item \textbf{Memoria RAM}: Mínimo 8GB (recomendado 16GB para desarrollo).
+      \item \textbf{Espacio en disco}: 8GB libres (para dependencias y caché).
+    \end{itemize}
+
+    \subsubsection{Herramientas esenciales}
+
+    \begin{itemize}
+      \item \textbf{Visual Studio Code (VSCode)}:
+      \begin{itemize}
+        \item Descarga la última versión estable desde \url{https://code.visualstudio.com/}.
+        \item Recomendada configuración mínima:
+        \begin{itemize}
+          \item Extensión "Rust Analyzer" para soporte de Rust.
+          \item Extensión "Angular Language Service" para TypeScript/Angular.
+          \item Extensión "SQLite" para visualización de bases de datos.
+          \item Extensión "ESLint" para análisis de código JavaScript/TypeScript.
+          \end{itemize}
+        \end{itemize}
+        
+        \item \textbf{Rust (v1.70+)}:
+          \begin{itemize}
+            \item Instalación mediante rustup (recomendado):
+              \begin{lstlisting}[caption={Instala Rust}]
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+              \end{lstlisting}
+            \item Verificar instalación:
+              \begin{lstlisting}
+rustc --version
+cargo --version
+              \end{lstlisting}
+        \end{itemize}
+        
+        \item \textbf{Node.js (v22+) y npm}:
+        \begin{itemize}
+          \item Instalar Angular CLI globalmente:
+          \begin{lstlisting}[caption={Instalar Angular}]
+npm install -g @angular/cli@17
+          \end{lstlisting}
+        \end{itemize}
+    \end{itemize}
+
+    \subsubsection{Configuración del proyecto}
+
+    Una vez instaladas las herramientas básicas, sigue estos pasos para configurar el proyecto:
+
+    \begin{enumerate}
+      \item Clona el repositorio:
+        \begin{lstlisting}[caption={Clona el repositorio}]
+git clone https://github.com/ZMiK0/Musy-app.git
+cd Musy-app
+        \end{lstlisting}
+        
+      \item Instala dependencias de frontend:
+        \begin{lstlisting}[caption={Instala las dependencias}]
+npm install -i --force
+        \end{lstlisting}
+        
+      \item Instala dependencias de Rust:
+        \begin{lstlisting}[caption={Instala las dependencias de Rust}]
+cargo build
+        \end{lstlisting}
+    \end{enumerate}
+
+  \subsection{Solución de problemas comunes}
+
+  Durante el desarrollo pueden surgir diversos problemas técnicos. A continuación se detallan los más frecuentes y sus soluciones:
+
+    \subsubsection{Problemas de ejecución}
+
+    \begin{itemize}
+        \item \textbf{Pantalla en blanco en Linux con tarjeta NVIDIA}:
+        \begin{itemize}
+          \item \textbf{Síntoma}: La aplicación se inicia pero muestra una interfaz vacía.
+          \item \textbf{Causa}: Incompatibilidad con los controladores propietarios de NVIDIA.
+          \item \textbf{Solución}: Ejecutar con la variable de entorno:
+            \begin{lstlisting}[caption={Solución Linux}]
+WEBKIT_DISABLE_DMABUF_RENDERER=1 npm run tauri dev
+            \end{lstlisting}
+          \item \textbf{Solución permanente}: Añadir la variable al archivo \texttt{.bashrc} o \texttt{.zshrc}:
+            \begin{lstlisting}
+export WEBKIT_DISABLE_DMABUF_RENDERER=1
+            \end{lstlisting}
+        \end{itemize}
+        
+        \item \textbf{Errores de permisos en macOS}:
+        \begin{itemize}
+          \item \textbf{Síntoma}: La aplicación no puede acceder al directorio de música
+          \item \textbf{Solución}:
+            \begin{enumerate}
+              \item Abrir "Preferencias del Sistema" → "Seguridad y Privacidad".
+              \item En la pestaña "Privacidad", seleccionar "Acceso a archivos y carpetas".
+              \item Añadir VSCode y Terminal a la lista de aplicaciones permitidas.
+              \item Asegurarse de que tienen acceso al directorio de música.
+            \end{enumerate}
+        \end{itemize}
+    \end{itemize}
+
+    \subsubsection{Problemas de desarrollo}
+
+    \begin{itemize}
+        \item \textbf{Errores al añadir nuevos métodos en Rust}:
+        \begin{itemize}
+          \item \textbf{Síntoma}: El nuevo método no es accesible desde el frontend.
+          \item \textbf{Causa}: Falta de permisos en la configuración de Tauri.
+          \item \textbf{Solución}:
+            \begin{enumerate}
+              \item Añadir el método a \texttt{src-tauri/permissions/music.toml}:
+                \begin{lstlisting}[caption={Solución permisos 1}]
+[[permission]]
+identifier = "music"
+description = "Music folder access."
+commands.allow = [
+    "read_file",
+    "exists",
+    "sync_lib",
+    "get_all_playlists",
+    "get_all_songs",
+    "get_playlist_songs",
+    "get_all_starred",
+    "create_playlist",
+    "add_song_to_playlist",
+    "remove_song_from_playlist",
+    "remove_playlist",
+    "add_is_starred",
+    "remove_is_starred"
+]
+
+[[scope.allow]]
+my-scope = "$HOME/Music/*"
+                \end{lstlisting}
+              \item Actualizar las capacidades en \texttt{src-tauri/capabilities/music.json}
+            \end{enumerate}
+        \end{itemize}
+        
+        \item \textbf{Problemas con nuevos directorios}:
+        \begin{itemize}
+          \item \textbf{Síntoma}: La aplicación no puede acceder a ciertas rutas
+          \item \textbf{Solución}:
+            \begin{enumerate}
+              \item Añadir el directorio a \texttt{src-tauri/capabilities/default.json}:
+                \begin{lstlisting}[caption={Solución permisos 2}]
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Capability for the main window",
+  "windows": ["main"],
+  "permissions": [
+    "core:default",
+    "opener:default",
+    "fs:allow-audio-read-recursive",
+    "music",
+    "dialog:allow-open",
+    "fs:allow-home-read-recursive",
+    "fs:allow-appdata-write-recursive"
+  ]
+}
+                \end{lstlisting}
+              \item Actualizar también \texttt{src-tauri/capabilities/music.json}.
+              \item Recompilar la aplicación después de los cambios.
+            \end{enumerate}
+        \end{itemize}
+        
+        \item \textbf{Problemas con la base de datos}:
+        \begin{itemize}
+          \item \textbf{Síntoma}: Errores al acceder a SQLite.
+          \item \textbf{Soluciones comunes}:
+            \begin{itemize}
+              \item Verificar que el archivo \texttt{playlists.db} tiene permisos de escritura.
+              \item Eliminar el archivo del directorio de la aplicación y volver a pulsar el botón \textit{Reload} dentro de la aplicación.
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+
+  \subsection{Flujo de trabajo recomendado}
+
+  Para contribuir eficientemente al proyecto, sigue este flujo de trabajo:
+
+  \begin{enumerate}
+    \item Sincroniza tu fork con el repositorio principal:
+      \begin{lstlisting}[caption={Contribuir 1}]
+      git fetch upstream
+      git merge upstream/main
+      \end{lstlisting}
+      
+    \item Crea una nueva rama para tu contribución:
+      \begin{lstlisting}[caption={Contribuir 2}]
+      git checkout -b nombre-de-tu-rama
+      \end{lstlisting}
+      
+    \item Implementa tus cambios, asegurándote de:
+      \begin{itemize}
+        \item Documentar los cambios en el código.
+        \item Mantener el estilo de código existente.
+      \end{itemize}
+      
+    \item Envía tu contribución mediante un Pull Request, incluyendo:
+      \begin{itemize}
+        \item Descripción detallada de los cambios.
+        \item Capturas de pantalla cuando sea relevante.
+      \end{itemize}
+  \end{enumerate}
+
+  \subsection{Áreas de contribución prioritarias}
+
+  El proyecto acepta contribuciones en diversas áreas:
+
+  \begin{itemize}
+    \item \textbf{Documentación}: Mejoras al manual de usuario, guías de instalación o comentarios en el código.
+    \item \textbf{Pruebas}: Creación de tests unitarios y de integración.
+    \item \textbf{Traducciones}: Localización de la interfaz a nuevos idiomas.
+    \item \textbf{Optimizaciones}: Mejoras de rendimiento en el código Rust o Angular.
+    \item \textbf{Nuevas características}: Implementación de funcionalidades solicitadas por la comunidad.
+  \end{itemize}
+
+  Antes de comenzar a trabajar en una nueva característica importante, se recomienda abrir un issue para discutir el diseño y enfoque con los mantenedores del proyecto.
+
 \section{Trabajo Futuro}
 
 El desarrollo de Musy contempla varias líneas de mejora y expansión de funcionalidades que permitirán enriquecer la experiencia del usuario y ampliar las capacidades técnicas de la aplicación. A continuación se detallan los principales planes de desarrollo futuro:
@@ -2277,6 +2685,10 @@ El desarrollo de Musy contempla varias líneas de mejora y expansión de funcion
   \subsection{Creación automática de Playlist}
 
   Al igual que la app crea automáticamente una playlist con todas las canciones, se planea implementar un generador inteligente de playlists basado en la estructura de directorios del usuario. Esta funcionalidad está diseñada específicamente para usuarios con bibliotecas musicales offline ya organizadas en carpetas, ofreciendo una transición fluida a Musy.
+
+  \subsection{Gestión de la Cola de Reproducción}
+
+  Se implementará un menú desplegable que permitirá manipular dinámicamente la cola de reproducción durante la experiencia de usuario. Esta interfaz ofrecerá opciones como reordenar, eliminar o añadir canciones a la cola.
 
 \section{Plan de Monetización y Modelo de Negocio}
 
@@ -2345,7 +2757,7 @@ La estrategia de monetización de Musy se ha diseñado para equilibrar la sosten
         Se ha desarrollado con éxito un reproductor de música multiplataforma (Linux, MacOs y Windows) utilizando Tauri, que cumple con los objetivos principales de:
 
         \begin{itemize}
-            \item Optimización de recursos (Mucho menor consumo de ram respecto a otras webapps basadas en Electro).
+            \item Optimización de recursos (Mucho menor consumo de ram respecto a otras webapps basadas en Electron).
             \item Compatibilidad de formatos de audio (FLAC, MP3, etc...).
             \item Arquitectura modular para el desarrollo futuro.
         \end{itemize}
@@ -2356,7 +2768,9 @@ La estrategia de monetización de Musy se ha diseñado para equilibrar la sosten
 
         \subsection{Valoración global}
 
-        A pesar de las dificultades, el proyecto valida el potencial de Tauri para aplicaciones de audio eficientes, ofreciendo un rendimiento superior al de frameworks tradicionales. La escalabilidad de la arquitectura permite añadir funcionalidades como cambios en la apariencia en futuras iteraciones.
+        A pesar de las dificultades técnicas encontradas durante el desarrollo, el proyecto logra validar el potencial del framework Tauri para la creación de aplicaciones de música eficientes y de alto rendimiento. Los resultados obtenidos demuestran un comportamiento notablemente superior en comparación con soluciones basadas en frameworks tradicionales, particularmente en lo que respecta al consumo de recursos y tiempos de respuesta. \\
+
+        La arquitectura escalable implementada no solo satisface los requisitos actuales, sino que también establece una base sólida para futuras expansiones.
 
           \subsubsection{Paginas webs visitadas durante el desarrollo}
 
