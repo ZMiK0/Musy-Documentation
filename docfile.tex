@@ -55,13 +55,39 @@
             \textbf{Autor:} Beltrán González Martos \\
             \textbf{Tutor:} Héctor Ángeles Borrás \\
             Desarrollo de Aplicaciones Multiplataforma \\
-            \textbf{Fecha:} 9 de junio de 2025
+            \textbf{Fecha:} Junio de 2025
         \end{spacing}
     \end{minipage}
 
     
 
 
+\end{titlepage}
+
+\begin{titlepage}
+    \centering
+
+    \includegraphics[width=0.4\textwidth]{media/logo-litterator.png}
+
+    \fontsize{26pt}{24pt}\selectfont \textbf{Trabajo Fin de Grado} \\
+    \vspace{4.5cm}
+    
+    \fontsize{24pt}{24pt}\selectfont \textbf{Musy} \\
+    \vspace{0.5cm}
+    \includegraphics[width=0.2\textwidth]{media/Square310x310Logo.png} \\
+    \vspace{2cm}
+
+    \hfill
+    \begin{minipage}{0.8\textwidth}
+        \raggedleft
+        \large
+        \begin{spacing}{1.5}
+            \textbf{Autor:} Beltrán González Martos \\
+            \textbf{Tutor:} Héctor Ángeles Borrás \\
+            Desarrollo de Aplicaciones Multiplataforma \\
+            \textbf{Fecha:} Junio de 2025
+        \end{spacing}
+    \end{minipage}
 \end{titlepage}
 
 \pagenumbering{gobble}
@@ -80,6 +106,13 @@
 \noindent \textbf{Keywords}: Tauri, Rust, Angular, music player, performance, modern UI.
 
 \selectlanguage{spanish}
+
+\begin{center}
+  \section*{Agradecimientos}
+
+  \textit{Agradecemos a los amigos del autor por dar feedback durante el desarrollo de la aplicación.}
+\end{center}
+
 
 \clearpage
 
@@ -742,7 +775,7 @@ En esta sección se explicarán en detalle los componentes principales de la apl
                 \label{fig:sidebar}
             \end{figure}
 
-            Componente donde se interactua con las playlist, ya sea creando nuevas o borrando las existentes. Contiene diversos botones para navegar por la aplicación. \\
+            Componente donde se interactua con las playlist, ya sea creando nuevas o borrando las existentes. Contiene diversos botones para navegar por la aplicación. \\ \\ \\ \\ \\
 
             Estos son sus atributos:
 
@@ -967,6 +1000,7 @@ async createPlaylist() {
     this.coverPath = "assets/black.jpg"
 }
                 \end{lstlisting}
+                ‎ \\ \\ \\ \\ \\ \\
 
                 \paragraph{Boton Search}
 
@@ -1161,7 +1195,7 @@ close() {
                     \end{itemize}
                 \end{itemize}
 
-                Este diseño garantiza una gestión eficiente de recursos durante el proceso de agregado de canciones a playlists.
+                Este diseño garantiza una gestión eficiente de recursos durante el proceso de agregado de canciones a playlists. \\
 
                 \begin{lstlisting}[caption={removeSongFromPlaylist()}]
 async removeSongFromPlaylist() {
@@ -1201,7 +1235,7 @@ async toggleStarred() {
                     \label{fig:añadir}
                 \end{figure}
 
-                Este componente de interfaz se activa exclusivamente cuando se inicia el menú modal para añadir canciones a playlists.
+                Este componente de interfaz se activa exclusivamente cuando se inicia el menú modal para añadir canciones a playlists. \\ \\ \\ \\ \\ \\ \\
 
                 Estos son sus atributos:
 
@@ -1353,6 +1387,7 @@ async getPlaylistSongs() {
     }
 }
                 \end{lstlisting}
+                ‎ \\
 
                 Los métodos \texttt{getAllSongs()}, \texttt{getAllStarred()} y \texttt{getPlaylistSongs()} gestionan la obtención de canciones desde diferentes fuentes, asignándolas posteriormente a la variable local \texttt{songs}. En cada caso, se sigue un patrón similar: primero se obtiene el directorio de datos de la aplicación mediante \texttt{appDataDir()}, luego se realiza una llamada al backend mediante \texttt{invoke()}, y finalmente se manejan tanto el éxito como los posibles errores de la operación. \\
 
@@ -1370,7 +1405,7 @@ async refresh() {
 
                 El método \texttt{refresh()} se encarga de actualizar dinámicamente el contenido mostrado en la \texttt{mainscreen} en función del contexto actual de reproducción. Para ello, se implementa un flujo condicional que evalúa el identificador de playlist almacenado en \texttt{this.pId} y el estado de la señal \texttt{onHome}. \\
 
-                Este enfoque garantiza que la interfaz siempre muestre el contenido más relevante según el estado actual de la aplicación, manteniendo una experiencia de usuario coherente. La implementación mediante llamadas asíncronas (\texttt{await}) asegura que las operaciones de actualización se completen antes de proceder con cualquier otra acción, evitando así condiciones de carrera o estados inconsistentes en la interfaz.
+                Este enfoque garantiza que la interfaz siempre muestre el contenido más relevante según el estado actual de la aplicación, manteniendo una experiencia de usuario coherente. La implementación mediante llamadas asíncronas (\texttt{await}) asegura que las operaciones de actualización se completen antes de proceder con cualquier otra acción, evitando así condiciones de carrera o estados inconsistentes en la interfaz.  \\ \\ \\ \\ \\ \\
 
                 \begin{lstlisting}[caption={playQueue() y addQueue()}]
 playQueue() {
@@ -1701,7 +1736,7 @@ formatTime(seconds: number | undefined): string {
                 \paragraph{Song Adding}
                 ‎
 
-                El servicio \texttt{SongAddingService} se especializa en la gestión de playlists durante el proceso de añadir canciones. Su diseño minimalista cumple con el principio de responsabilidad única, enfocándose exclusivamente en dos operaciones clave: la obtención de playlists y la liberación de recursos.
+                El servicio \texttt{SongAddingService} se especializa en la gestión de playlists durante el proceso de añadir canciones. Su diseño minimalista cumple con el principio de responsabilidad única, enfocándose exclusivamente en dos operaciones clave: la obtención de playlists y la liberación de recursos. \\
 
                 \begin{lstlisting}[caption={song-adding.service.ts}]
 export class SongAddingService {
@@ -1882,19 +1917,19 @@ pub fn run() {
 
             \begin{figure}[H]
               \centering
-              \includegraphics[width=0.8\textwidth]{media/ER.drawio.png}
+              \includegraphics[width=0.9\textwidth]{media/ER.drawio.png}
               \caption{Diagrama Entidad - Relación}
               \label{fig:er}
             \end{figure}
 
             \begin{figure}[H]
               \centering
-              \includegraphics[width=0.8\textwidth]{media/DiagramaRelacional.png}
+              \includegraphics[width=1\textwidth]{media/DiagramaRelacional.png}
               \caption{Diagrama Relacional}
               \label{fig:relacional}
             \end{figure}
 
-            La base de datos se ha diseñado como un sistema relacional que gestiona dos entidades principales: las canciones y las listas de reproducción. El esquema sigue los principios de normalización para eliminar redundancias, utilizando una tabla intermedia para manejar la relación \textit{muchos-a-muchos} entre estas entidades.
+            La base de datos se ha diseñado como un sistema relacional que gestiona dos entidades principales: las canciones y las listas de reproducción. El esquema sigue los principios de normalización para eliminar redundancias, utilizando una tabla intermedia para manejar la relación \textit{muchos-a-muchos} entre estas entidades. \\ \\ \\ \\
 
               \paragraph{All Songs}
               ‎ \\
@@ -1920,6 +1955,8 @@ pub fn run() {
                 \item \textbf{Metadatos}: Nombre de la playlist, fecha de creación (formato ISO 8601) y ruta a la imagen de portada (previamente procesada y optimizada).
                 \item \textbf{isStarred}: Campo reservado para futuras implementaciones, actualmente no utilizado en la versión 1.0 debido a complejidades en la interacción con la interfaz gráfica.
               \end{itemize}
+
+              ‎ \\ \\ 
 
               \paragraph{Song Playlist}
               ‎ \\
@@ -2018,7 +2055,7 @@ fn create_db(path:PathBuf) -> std::io::Result<()> {
 
             La función \texttt{create\_db()} genera la estructura SQLite con las tablas necesarias vistas en el punto anterior, estableciendo las relaciones y restricciones adecuadas para el manejo de datos. \\
 
-            El diseño utiliza \texttt{if not exists} para garantizar idempotencia y evitar errores en ejecuciones repetidas, además de emplear claves primarias y foráneas para mantener la integridad referencial. Los posibles errores son manejados mediante el operador \texttt{?} de Rust, que propaga los fallos de manera controlada. \\
+            El diseño utiliza \texttt{if not exists} para garantizar idempotencia y evitar errores en ejecuciones repetidas, además de emplear claves primarias y foráneas para mantener la integridad referencial. Los posibles errores son manejados mediante el operador \texttt{?} de Rust, que propaga los fallos de manera controlada. \\ \\
 
             Se incluye también una inserción inicial para crear la playlist predeterminada "All Songs", la cual actuará como contenedor principal de las canciones encontradas en el sistema.
 
@@ -2055,6 +2092,7 @@ fn clean(database_path: PathBuf) -> Result<()> {
     Ok(())
 }
             \end{lstlisting}
+            ‎ \\
 
             Esta función implementa el mantenimiento de la base de datos eliminando registros de canciones cuyos archivos ya no existen en el sistema. \\
 
@@ -2131,6 +2169,8 @@ fn extract_metadata(path:&str, cover_path:PathBuf) -> std::io::Result<(String, S
 
             Las imágenes de portada se extraen mediante \texttt{pictures().first()} y se transforman a bytes con \texttt{to\_vec()}. La función \texttt{create\_cover()} guarda la imagen en disco y devuelve su ruta. Finalmente, se retorna una tupla con todos los metadatos procesados, encapsulada en un \texttt{Result} para manejo de errores.
 
+            \newpage
+
             \begin{lstlisting}[caption={fn create\_cover()}]
 fn create_cover(path:PathBuf, title:&str, image:Option<Vec<u8>>) -> std::io::Result<PathBuf> {
 
@@ -2146,7 +2186,7 @@ fn create_cover(path:PathBuf, title:&str, image:Option<Vec<u8>>) -> std::io::Res
 }
             \end{lstlisting}
 
-            La función \texttt{create\_cover()} genera un archivo de portada en el sistema para evitar la extracción repetida desde los metadatos. Primero se crea un nombre único mediante el hash \texttt{blake3} del título de la canción, con extensión \texttt{.jpg}. Cuando no existe imagen en los metadatos (\texttt{Option::None}), se utiliza la imagen predeterminada \texttt{DEFAULT\_BLACK\_IMAGE}. El archivo se escribe en disco usando \texttt{File::create()} y \texttt{write\_all()}, devolviendo la ruta completa del archivo creado. Esta optimización reduce significativamente el procesamiento durante la reproducción musical.
+            La función \texttt{create\_cover()} genera un archivo de portada en el sistema para evitar la extracción repetida desde los metadatos. Primero se crea un nombre único mediante el hash \texttt{blake3} del título de la canción, con extensión \texttt{.jpg}. Cuando no existe imagen en los metadatos (\texttt{Option::None}), se utiliza la imagen predeterminada \texttt{DEFAULT\_BLACK\_IMAGE}. El archivo se escribe en disco usando \texttt{File::create()} y \texttt{write\_all()}, devolviendo la ruta completa del archivo creado. Esta optimización reduce significativamente el procesamiento durante la reproducción musical. \newpage
 
             \begin{lstlisting}[caption={fn insert\_song()}]
 fn insert_song(path:PathBuf , song_path:String, title:String, artist:String, album:String, year:String, duration: u128, cover_path:String) {
@@ -2163,7 +2203,7 @@ fn insert_song(path:PathBuf , song_path:String, title:String, artist:String, alb
             
             La duración en milisegundos se convierte al formato \texttt{MM:SS} mediante operaciones aritméticas básicas. La conexión a la base de datos se establece con \texttt{Connection::open()}, y los metadatos se insertan en la tabla \texttt{all\_songs()} usando la cláusula \texttt{INSERT OR IGNORE} para evitar duplicados. \\
             
-            Cada campo se asocia a parámetros posicionales (\texttt{?1} a \texttt{?8}).
+            Cada campo se asocia a parámetros posicionales (\texttt{?1} a \texttt{?8}). \newpage
 
             \begin{lstlisting}[caption={Operaciones CRUD playlist}]
 pub fn add_playlist(name:String, cover_path:String, db_path:String) -> Result<()> {
@@ -2185,12 +2225,11 @@ pub fn remove_a_playlist(playlist_id:i64, db_path:String) -> Result<()> {
 
             Las funciones \texttt{add\_playlist()} y \texttt{remove\_a\_playlist()} implementan las operaciones básicas de creación y eliminación de listas de reproducción. \\
             
-            En ambos casos, se establece una conexión con la base de datos SQLite ubicada en \texttt{playlists.db} mediante \texttt{Connection::open()}. La función \texttt{add\_playlist()} recibe el nombre y ruta de la portada como parámetros, insertándolos en la tabla \texttt{playlists} mediante una consulta parametrizada con \texttt{?1} y \texttt{?2} como marcadores de posición. Por otro lado, \texttt{remove\_a\_playlist()} elimina registros basándose en el ID único de la playlist, utilizando igualmente parámetros posicionales. Ambas funciones devuelven \texttt{Result<()>} para manejo de errores, aunque usan \texttt{expect} para fallos críticos durante las operaciones de base de datos.
+            En ambos casos, se establece una conexión con la base de datos SQLite ubicada en \texttt{playlists.db} mediante \texttt{Connection::open()}. La función \texttt{add\_playlist()} recibe el nombre y ruta de la portada como parámetros, insertándolos en la tabla \texttt{playlists} mediante una consulta parametrizada con \texttt{?1} y \texttt{?2} como marcadores de posición. Por otro lado, \texttt{remove\_a\_playlist()} elimina registros basándose en el ID único de la playlist, utilizando igualmente parámetros posicionales. Ambas funciones devuelven \texttt{Result<()>} para manejo de errores, aunque usan \texttt{expect} para fallos críticos durante las operaciones de base de datos. \newpage
 
             \begin{lstlisting}[caption={Operaciones CRUD canciones}]
 pub fn add_song(playlist_id:i64, song_id:String, db_path:String) -> Result<()> {
     let conn = Connection::open(PathBuf::from(db_path).join("playlists.db"))?;
-
     conn.execute("INSERT OR REPLACE INTO song_playlist (playlist_id, song_id) VALUES (?1,?2);",(playlist_id, song_id)).expect("ERROR WHILE INSERTING SONG");
 
     Ok(())
@@ -2198,7 +2237,6 @@ pub fn add_song(playlist_id:i64, song_id:String, db_path:String) -> Result<()> {
 
 pub fn remove_song(playlist_id:i64, song_id:String, db_path:String) -> Result<()> {
     let conn = Connection::open(PathBuf::from(db_path).join("playlists.db"))?;
-
     conn.execute("DELETE FROM song_playlist WHERE playlist_id = ?1 AND song_id = ?2",(playlist_id, song_id)).expect("ERROR WHILE DELETING SONG");
 
     Ok(())
@@ -2206,7 +2244,6 @@ pub fn remove_song(playlist_id:i64, song_id:String, db_path:String) -> Result<()
 
 pub fn add_starred(song_id:String, db_path:String) -> Result<()> {
     let conn = Connection::open(PathBuf::from(db_path).join("playlists.db"))?;
-
     conn.execute("UPDATE all_songs SET isStarred = 1 WHERE id = ?",(song_id,)).expect("ERROR WHILE MODIFIYING STARRED");
 
     Ok(())
@@ -2214,7 +2251,6 @@ pub fn add_starred(song_id:String, db_path:String) -> Result<()> {
 
 pub fn remove_starred(song_id:String, db_path:String) -> Result<()> {
     let conn = Connection::open(PathBuf::from(db_path).join("playlists.db"))?;
-
     conn.execute("UPDATE all_songs SET isStarred = 0 WHERE id = ?",(song_id,)).expect("ERROR WHILE MODIFIYING STARRED");
 
     Ok(())
@@ -2250,7 +2286,7 @@ pub struct Playlist {
   #[serde(rename = "isStarred")]
   is_starred: bool,
 }
-            \end{lstlisting}
+            \end{lstlisting} \newpage
 
             El \texttt{struct Song} contiene todos los datos relevantes de cada canción ya vistos en la sección de la base de datos, incluyendo:
 
@@ -2308,7 +2344,6 @@ pub fn get_all_playlists(db_path:String) -> Result<Vec<Playlist>, String> {
             \begin{lstlisting}[caption={fn get\_all\_songs() y fn get\_all\_songs\_starred()}]
 pub fn get_all_songs(db_path:String) -> Result<Vec<Song>, String> {
     let conn = Connection::open(PathBuf::from(db_path).join("playlists.db")).map_err(|e| e.to_string())?;
-
     let mut stmt = conn.prepare("SELECT id, path, title, artist, album, year, duration, cover_path, isStarred FROM all_songs").map_err(|e| e.to_string())?;
 
     let all_songs = stmt.query_map([], |row| {
@@ -2333,7 +2368,6 @@ pub fn get_all_songs(db_path:String) -> Result<Vec<Song>, String> {
 
 pub fn get_all_songs_starred(db_path:String) -> Result<Vec<Song>, String> {
     let conn = Connection::open(PathBuf::from(db_path).join("playlists.db")).map_err(|e| e.to_string())?;
-
     let mut stmt = conn.prepare("SELECT id, path, title, artist, album, year, duration, cover_path, isStarred FROM all_songs WHERE isStarred = 1").map_err(|e| e.to_string())?;
 
     let all_songs = stmt.query_map([], |row| {
@@ -2351,6 +2385,7 @@ pub fn get_all_songs_starred(db_path:String) -> Result<Vec<Song>, String> {
     }).map_err(|e| e.to_string())?
     .collect::<Result<Vec<_>, _>>()
     .map_err(|e| e.to_string())?;
+
 
     Ok(all_songs)
 }
@@ -2449,7 +2484,7 @@ Musy es un proyecto de código abierto que se beneficia enormemente de las contr
           \item Extensión "SQLite" para visualización de bases de datos.
           \item Extensión "ESLint" para análisis de código JavaScript/TypeScript.
           \end{itemize}
-        \end{itemize}
+        \end{itemize} \newpage
         
         \item \textbf{Rust (v1.70+)}:
           \begin{itemize}
@@ -2564,7 +2599,7 @@ my-scope = "$HOME/Music/*"
                 \end{lstlisting}
               \item Actualizar las capacidades en \texttt{src-tauri/capabilities/music.json}
             \end{enumerate}
-        \end{itemize}
+        \end{itemize} \newpage
         
         \item \textbf{Problemas con nuevos directorios}:
         \begin{itemize}
@@ -2603,7 +2638,7 @@ my-scope = "$HOME/Music/*"
               \item Eliminar el archivo del directorio de la aplicación y volver a pulsar el botón \textit{Reload} dentro de la aplicación.
             \end{itemize}
         \end{itemize}
-    \end{itemize}
+    \end{itemize} \newpage
 
   \subsection{Flujo de trabajo recomendado}
 
@@ -2699,10 +2734,10 @@ La estrategia de monetización de Musy se ha diseñado para equilibrar la sosten
   \begin{itemize}
     \item \textbf{Licencia de pago único}:
       \begin{itemize}
-        \item Precio base: 5€ en \href{https://zmiko.itch.io/musy}{itch.io}.
+        \item Precio base: 4.99€ en \href{https://zmiko.itch.io/musy}{itch.io}.
         \item Incluye todas las funcionalidades actuales sin restricciones.
         \item Actualizaciones gratuitas.
-      \end{itemize}
+      \end{itemize} \newpage
 
     \item \textbf{Ventajas competitivas}:
       \begin{itemize}
@@ -2721,11 +2756,11 @@ La estrategia de monetización de Musy se ha diseñado para equilibrar la sosten
       \hline
       Canal & Precio Unitario & Unidades Estimadas & Ingreso Total \\
       \hline
-      itch.io & 5€ & 1,200 & 6,000€ \\
+      itch.io & 4.99€ & 1,199€ & 5,999€ \\
       Sponsors GitHub & - & - & 1,500€ \\
       Donaciones & - & - & 800€ \\
       \hline
-      Total & & & 8,300€ \\
+      Total & & & 8,299€ \\
       \hline
     \end{tabular}
     \label{tab:ingresos}

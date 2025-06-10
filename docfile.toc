@@ -46,46 +46,46 @@
 \contentsline {subsection}{\numberline {10.1}Frontend}{22}{subsection.10.1}%
 \contentsline {subsubsection}{\numberline {10.1.1}Playbar}{22}{subsubsection.10.1.1}%
 \contentsline {subsubsection}{\numberline {10.1.2}Sidebar}{24}{subsubsection.10.1.2}%
-\contentsline {paragraph}{Playlist}{25}{section*.5}%
-\contentsline {paragraph}{Botón New Playlist}{27}{section*.6}%
-\contentsline {paragraph}{Boton Search}{31}{section*.7}%
+\contentsline {paragraph}{Playlist}{25}{section*.6}%
+\contentsline {paragraph}{Botón New Playlist}{28}{section*.7}%
+\contentsline {paragraph}{Boton Search}{32}{section*.8}%
 \contentsline {subsubsection}{\numberline {10.1.3}Mainscreen}{33}{subsubsection.10.1.3}%
-\contentsline {paragraph}{Song Button}{33}{section*.8}%
-\contentsline {paragraph}{Playlist Button}{39}{section*.9}%
-\contentsline {paragraph}{Homeitem}{41}{section*.10}%
-\contentsline {subsubsection}{\numberline {10.1.4}Servicios}{41}{subsubsection.10.1.4}%
-\contentsline {paragraph}{Main Screen Status}{41}{section*.11}%
-\contentsline {paragraph}{Song Management}{46}{section*.12}%
-\contentsline {paragraph}{Song Adding}{56}{section*.13}%
-\contentsline {subsection}{\numberline {10.2}Backend}{57}{subsection.10.2}%
-\contentsline {subsubsection}{\numberline {10.2.1}Tauri API}{57}{subsubsection.10.2.1}%
-\contentsline {subsubsection}{\numberline {10.2.2}Diseño de la base de datos}{61}{subsubsection.10.2.2}%
-\contentsline {paragraph}{All Songs}{62}{section*.14}%
-\contentsline {paragraph}{Playlist}{63}{section*.15}%
-\contentsline {paragraph}{Song Playlist}{63}{section*.16}%
-\contentsline {subsubsection}{\numberline {10.2.3}Logica}{63}{subsubsection.10.2.3}%
-\contentsline {section}{\numberline {11}Como contribuir}{79}{section.11}%
-\contentsline {subsection}{\numberline {11.1}Preparación del entorno de desarrollo}{79}{subsection.11.1}%
-\contentsline {subsubsection}{\numberline {11.1.1}Requisitos del sistema}{79}{subsubsection.11.1.1}%
-\contentsline {subsubsection}{\numberline {11.1.2}Herramientas esenciales}{79}{subsubsection.11.1.2}%
-\contentsline {subsubsection}{\numberline {11.1.3}Configuración del proyecto}{80}{subsubsection.11.1.3}%
-\contentsline {subsection}{\numberline {11.2}Solución de problemas comunes}{81}{subsection.11.2}%
-\contentsline {subsubsection}{\numberline {11.2.1}Problemas de ejecución}{81}{subsubsection.11.2.1}%
-\contentsline {subsubsection}{\numberline {11.2.2}Problemas de desarrollo}{82}{subsubsection.11.2.2}%
-\contentsline {subsection}{\numberline {11.3}Flujo de trabajo recomendado}{83}{subsection.11.3}%
-\contentsline {subsection}{\numberline {11.4}Áreas de contribución prioritarias}{84}{subsection.11.4}%
-\contentsline {section}{\numberline {12}Trabajo Futuro}{84}{section.12}%
-\contentsline {subsection}{\numberline {12.1}Implementación de Playlist favoritas}{85}{subsection.12.1}%
-\contentsline {subsection}{\numberline {12.2}Personalización de Temas Visuales}{85}{subsection.12.2}%
-\contentsline {subsection}{\numberline {12.3}Gestión Flexible de Directorios Musicales}{85}{subsection.12.3}%
-\contentsline {subsection}{\numberline {12.4}Creación automática de Playlist}{85}{subsection.12.4}%
-\contentsline {subsection}{\numberline {12.5}Gestión de la Cola de Reproducción}{86}{subsection.12.5}%
-\contentsline {section}{\numberline {13}Plan de Monetización y Modelo de Negocio}{86}{section.13}%
-\contentsline {subsection}{\numberline {13.1}Modelo Actual}{86}{subsection.13.1}%
-\contentsline {subsection}{\numberline {13.2}Métricas de Ventas}{87}{subsection.13.2}%
-\contentsline {subsection}{\numberline {13.3}Consideraciones Éticas}{87}{subsection.13.3}%
-\contentsline {section}{\numberline {14}Conclusiones}{87}{section.14}%
-\contentsline {subsection}{\numberline {14.1}Logros principales}{87}{subsection.14.1}%
-\contentsline {subsection}{\numberline {14.2}Dificultades clave}{88}{subsection.14.2}%
-\contentsline {subsection}{\numberline {14.3}Valoración global}{88}{subsection.14.3}%
-\contentsline {subsubsection}{\numberline {14.3.1}Paginas webs visitadas durante el desarrollo}{88}{subsubsection.14.3.1}%
+\contentsline {paragraph}{Song Button}{34}{section*.9}%
+\contentsline {paragraph}{Playlist Button}{39}{section*.10}%
+\contentsline {paragraph}{Homeitem}{41}{section*.11}%
+\contentsline {subsubsection}{\numberline {10.1.4}Servicios}{42}{subsubsection.10.1.4}%
+\contentsline {paragraph}{Main Screen Status}{42}{section*.12}%
+\contentsline {paragraph}{Song Management}{46}{section*.13}%
+\contentsline {paragraph}{Song Adding}{56}{section*.14}%
+\contentsline {subsection}{\numberline {10.2}Backend}{58}{subsection.10.2}%
+\contentsline {subsubsection}{\numberline {10.2.1}Tauri API}{58}{subsubsection.10.2.1}%
+\contentsline {subsubsection}{\numberline {10.2.2}Diseño de la base de datos}{62}{subsubsection.10.2.2}%
+\contentsline {paragraph}{All Songs}{63}{section*.15}%
+\contentsline {paragraph}{Playlist}{63}{section*.16}%
+\contentsline {paragraph}{Song Playlist}{64}{section*.17}%
+\contentsline {subsubsection}{\numberline {10.2.3}Logica}{64}{subsubsection.10.2.3}%
+\contentsline {section}{\numberline {11}Como contribuir}{80}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Preparación del entorno de desarrollo}{81}{subsection.11.1}%
+\contentsline {subsubsection}{\numberline {11.1.1}Requisitos del sistema}{81}{subsubsection.11.1.1}%
+\contentsline {subsubsection}{\numberline {11.1.2}Herramientas esenciales}{81}{subsubsection.11.1.2}%
+\contentsline {subsubsection}{\numberline {11.1.3}Configuración del proyecto}{82}{subsubsection.11.1.3}%
+\contentsline {subsection}{\numberline {11.2}Solución de problemas comunes}{83}{subsection.11.2}%
+\contentsline {subsubsection}{\numberline {11.2.1}Problemas de ejecución}{83}{subsubsection.11.2.1}%
+\contentsline {subsubsection}{\numberline {11.2.2}Problemas de desarrollo}{84}{subsubsection.11.2.2}%
+\contentsline {subsection}{\numberline {11.3}Flujo de trabajo recomendado}{86}{subsection.11.3}%
+\contentsline {subsection}{\numberline {11.4}Áreas de contribución prioritarias}{86}{subsection.11.4}%
+\contentsline {section}{\numberline {12}Trabajo Futuro}{87}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Implementación de Playlist favoritas}{87}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}Personalización de Temas Visuales}{87}{subsection.12.2}%
+\contentsline {subsection}{\numberline {12.3}Gestión Flexible de Directorios Musicales}{88}{subsection.12.3}%
+\contentsline {subsection}{\numberline {12.4}Creación automática de Playlist}{88}{subsection.12.4}%
+\contentsline {subsection}{\numberline {12.5}Gestión de la Cola de Reproducción}{88}{subsection.12.5}%
+\contentsline {section}{\numberline {13}Plan de Monetización y Modelo de Negocio}{88}{section.13}%
+\contentsline {subsection}{\numberline {13.1}Modelo Actual}{88}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}Métricas de Ventas}{89}{subsection.13.2}%
+\contentsline {subsection}{\numberline {13.3}Consideraciones Éticas}{89}{subsection.13.3}%
+\contentsline {section}{\numberline {14}Conclusiones}{90}{section.14}%
+\contentsline {subsection}{\numberline {14.1}Logros principales}{90}{subsection.14.1}%
+\contentsline {subsection}{\numberline {14.2}Dificultades clave}{90}{subsection.14.2}%
+\contentsline {subsection}{\numberline {14.3}Valoración global}{90}{subsection.14.3}%
+\contentsline {subsubsection}{\numberline {14.3.1}Paginas webs visitadas durante el desarrollo}{91}{subsubsection.14.3.1}%
